@@ -1,4 +1,4 @@
  * [TopContents Top Page]
  * [MeetingLog Meeting Log]
- * [ActionItem Action Item]
+
  * [http://code.google.com/p/symfony-doc-ja/wiki/WikiSyntax Wiki文法和訳]

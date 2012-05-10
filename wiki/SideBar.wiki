@@ -1,6 +1,6 @@
  * [TopContents Top Page]
  * [ProjectOverview プロジェクト概要]
  * [LoadMap ロードマップ]
- * [MeetingLog Meeting Log]
+ * [MeetingLog 議事録]
 
  * [http://code.google.com/p/symfony-doc-ja/wiki/WikiSyntax Wiki文法和訳]

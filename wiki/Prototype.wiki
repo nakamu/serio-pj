@@ -1,0 +1,10 @@
+= Introduction =
+
+Prototype作成に関する情報
+
+= Details =
+
+  * マイコンはmbedを使う(ISSUE #2)
+  * 使用するモーター、ボディ、タイヤ、ギヤなど機械系部品はタミヤのキットを使う
+
+http://serio-pj.googlecode.com/svn/wiki/img/Prototype/Prototype_body.png

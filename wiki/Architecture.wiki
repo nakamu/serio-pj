@@ -7,8 +7,7 @@ Serioの仕様検討
 
 = Details =
 
-検討中のブロック図
+ * [Motor モーター関連]
+ * 検討中のブロック図
 
 http://serio-pj.googlecode.com/svn/wiki/img/Architecture/Serio_SystemArch_20120509a.png
-
-http://code.google.com/images/code_sm.png

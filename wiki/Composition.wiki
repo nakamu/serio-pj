@@ -1,4 +1,4 @@
-#summary 作曲
+#summary 作曲全般
 
 = Introduction =
 

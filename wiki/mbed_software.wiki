@@ -10,3 +10,4 @@
 
  * 山田のmotorテストプログラム
    ** 動作確認中。
+http://serio-pj.googlecode.com/svn/wiki/bin/myMotorTest_LPC1768.bin

@@ -4,7 +4,7 @@
 
 //Switch Trigger
 DigitalIn  myInTrigBtn(p20); //Trigger
-DigitalIn  myInResetBtn(p5);  //Reset
+//DigitalIn  myInResetBtn(p5);  //Reset
 //Motor Output
 DigitalOut myOutMotor1(p21);
 DigitalOut myOutMotor2(p22);

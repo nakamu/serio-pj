@@ -18,7 +18,7 @@ public:
   void run();
 protected:
   void Output(eState curstate);
-  eState NextState(eState curstate, bool trigger, bool reset);
+  eState NextState(eState curstate, bool trigger);
 
 
 protected:

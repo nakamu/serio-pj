@@ -4,7 +4,7 @@
 
 //Switch Trigger
 extern DigitalIn  myInTrigBtn;//(p20); //Trigger
-extern DigitalIn  myInResetBtn;//(p5);  //Reset
+//extern DigitalIn  myInResetBtn;//(p5);  //Reset
 //Motor Output
 extern DigitalOut myOutMotor1;//(p21);
 extern DigitalOut myOutMotor2;//(p22);

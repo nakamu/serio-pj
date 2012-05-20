@@ -3,14 +3,14 @@
 
 MyMotor::MyMotor(){
   myInTrigBtn.mode(PullUp);
-  myInResetBtn.mode(PullUp);
+//  myInResetBtn.mode(PullUp);
   myState=eStaOff;
 }
 
 
 void  MyMotor:: run(){
   while(true){
-    myState=NextState(myState, myInTrigBtn, myInResetBtn);
+    myState=NextState(myState, myInTrigBtn.read());
     Output(myState);
     wait(WAITTIME);
   }
@@ -55,21 +55,21 @@ void MyMotor::Output(eState curstate){
 
 
 
-eState MyMotor::NextState(eState curstate, bool trigger, bool reset){
-  if(reset) return eStaOff;
+eState MyMotor::NextState(eState curstate, bool trigger){
+//  if(reset) return eStaOff;
   switch(curstate){
   case eStaOff:
-    if(trigger) return eStaActL;
-    else        return eStaOff;
+    if(trigger==0) return eStaActL;
+    else           return eStaOff;
   case eStaActL:
-    if(trigger) return eStaActR;
-    else        return eStaActL;
+    if(trigger==0) return eStaActR;
+    else           return eStaActL;
   case eStaActR:
-    if(trigger) return eStaActLR;
-    else        return eStaActR;
+    if(trigger==0) return eStaActLR;
+    else           return eStaActR;
   case eStaActLR:
-    if(trigger) return eStaOff;
-    else        return eStaActLR;
+    if(trigger==0) return eStaOff;
+    else           return eStaActLR;
   default:
     return eStaOff;
   }

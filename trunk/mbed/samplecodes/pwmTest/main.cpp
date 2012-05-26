@@ -6,9 +6,10 @@
  *            IO declarations           *
  ****************************************/
 // UART connection
-Serial     pc(p9, p10);
-//Serial     pc(USBTX, USBRX);
+//Serial     pc(p9, p10);
+Serial     pc(USBTX, USBRX);
 //Switch (Low active)
+//DigitalIn  button(p20);
 InterruptIn button(p18);
 //Motor Output
 PwmOut     pwm1(p21);
@@ -63,14 +64,15 @@ int main() {
   button.fall(&switchOnOff);
   
   // update pwm setting at every 1s
+
   timer.attach(&updatePWM, 1.0f);
   Led3 = 1;
   FixHigh = 1;
   FixLow = 0;
   
   // serial baudrate is 9600 bps
-  pc.baud(9600);
-  pc.format(8, Serial::None, 1);
+  //pc.baud(9600);
+  //pc.format(8, Serial::None, 1);
 
   // launch prompt
   prompt.run();

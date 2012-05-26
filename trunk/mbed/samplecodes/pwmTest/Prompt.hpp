@@ -2,6 +2,7 @@
 #define _PROMPT_HPP
 #include "mbed.h"
 #include "pwmParameter.hpp"
+#include <string>
 
 extern Serial pc;
 extern pwmParameter ch1;
@@ -13,12 +14,13 @@ public:
     virtual ~Prompt() {}
     void run();
 protected:
-    void  hello();
-    int   ask_ch();
-    float ask_duty();
-    float ask_period();
-    float ask_pulsewidth();
-    float get_float();
+    void   hello();
+    int    ask_ch();
+    float  ask_duty();
+    float  ask_period();
+    float  ask_pulsewidth();
+    float  get_float();
+    string get_line();
 };
 
 #endif

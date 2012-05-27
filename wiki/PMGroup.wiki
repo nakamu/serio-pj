@@ -1,4 +1,4 @@
-#進行部のページ
+#summary 進行部のページ
 
 = Introduction =
 

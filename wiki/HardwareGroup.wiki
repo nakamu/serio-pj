@@ -1,0 +1,16 @@
+= Introduction =
+
+Hardwareグループのページ
+プロジェクトで作成するハードウェアの仕様策定・実装を担当する。
+
+= Details =
+
+  * エレクトロニクス
+    * [Architecture HWアーキテクチャ]
+    * [Prototype プロトタイプ作成]
+    * [MotorDriver モータードライバ]
+    * [Camera カメラ関連]
+    * [FPGA FPGA関連]
+  * メカニック
+    * [MotorGear モーター・ギア関連]
+    * [HWFrame フレーム・ボディ]

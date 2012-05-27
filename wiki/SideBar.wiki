@@ -2,7 +2,7 @@
  * [ProjectOverview プロジェクト概要]
  * [LoadMap ロードマップ]
  * グループ
-  * [MarketGroup マーケティング]
+  * [MarketingGroup マーケティング]
   * [HardwareGroup ハード]
   * [SoftwareGroup ソフト]
   * [ArtGroup 美術]

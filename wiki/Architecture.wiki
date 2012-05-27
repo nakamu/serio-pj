@@ -2,12 +2,10 @@
 
 = Introduction =
 
-Serioの仕様検討
-
+SerioのHW仕様検討
 
 = Details =
 
- * [Motor モーター関連]
  * 検討中のブロック図
 
 http://serio-pj.googlecode.com/svn/wiki/img/Architecture/Serio_SystemArch_20120509a.png

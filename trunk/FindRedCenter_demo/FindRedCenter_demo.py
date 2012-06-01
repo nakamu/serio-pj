@@ -1,4 +1,4 @@
-﻿
+ 
 class RGB:
 	def __init__(self, r, g, b):
 		self.r = r
@@ -63,8 +63,8 @@ if __name__ == "__main__":
 	finder.clear()
 	# ピクセルずつ読み込みながらやる方法
 	provider = PixelProvider(image)
-	for i in range(3):
-		for j in range(3):
+	for j in range(3):
+		for i in range(3):
 			finder.addPixel(provider.getPixel())
 	print finder.getRedCenter()
 	

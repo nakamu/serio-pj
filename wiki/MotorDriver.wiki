@@ -24,3 +24,7 @@ http://www2.famille.ne.jp/~teddy/tubes/image/c1815.pdf
 
 
 http://serio-pj.googlecode.com/svn/wiki/img/Motor/MotorDriver.png
+
+* ブレッドボードでの実装例
+(6Vの+/-を間違えるとmbedのIQピンを破壊することになるので，慎重に．)
+http://serio-pj.googlecode.com/svn/wiki/img/Motor/motorBled.png

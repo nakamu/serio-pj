@@ -1,5 +1,12 @@
 #購入したもの
 
+2012/05/03
+・ヴィストンロボットショップ
+ビュートローバーH8/ARM用 タイヤセット: \525
+http://www.vstone.co.jp/robotshop/index.php?main_page=product_info&products_id=1990
+ビュートローバー H8/ARM用 ボールキャスタ *2: \420
+http://www.vstone.co.jp/robotshop/index.php?main_page=product_info&cPath=71_203&products_id=2065
+
 2012/05/16
 ・若松通商
 mbed: \5900

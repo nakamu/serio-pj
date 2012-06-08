@@ -4,7 +4,7 @@
 = serioプロジェクトWiki = 
  * [ProjectOverview プロジェクト概要]
  * [LoadMap ロードマップ]
- * [GuideLine ガイドライン]
+ * [GuideLine 編集ガイドライン]
  * グループ
   * [MarketingGroup マーケティング]
   * [HardwareGroup ハード]

@@ -1,3 +1,5 @@
+#summary 美術部のページ
+
 = Introduction =
 
 美術関連の作業用グループ

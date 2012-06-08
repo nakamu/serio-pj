@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Wiki, Issue編集のガイドライン
 
 = Introduction =
 
@@ -28,3 +28,4 @@ Issue作成時などはこのガイドラインに従って下さい。
  # Issueまとめ、その他の情報は各グループのトップページから辿れるようにする
   * リンク切れは無いようにする
  # 基本的に記入する形式は自由
+  * ただし、#summary はちゃんと記入すること（編集時の1行目にあるやつ。Wikiのページ一覧で表示される）

@@ -2,6 +2,13 @@
 #labels Featured
 
 = serioプロジェクトWiki = 
- * [Prototype プロトタイプ作成]
- * [Architecture アーキテクチャ検討]
- * [Composition 作曲]
+ * [ProjectOverview プロジェクト概要]
+ * [LoadMap ロードマップ]
+ * [GuideLine ガイドライン]
+ * グループ
+  * [MarketingGroup マーケティング]
+  * [HardwareGroup ハード]
+  * [SoftwareGroup ソフト]
+  * [ArtGroup 美術]
+  * [PMGroup 進行]
+ * [MeetingLog 議事録]

@@ -6,8 +6,8 @@
 = Details =
 
   * 制作物
-    * [企画]
+    * [Kikaku]
   * 動画
-    * [企画]
+    * [Kikaku]
   * メンバー
-    * [湯原メモ]
+    * [YuharaMemo]

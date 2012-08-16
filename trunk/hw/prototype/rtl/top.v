@@ -2,7 +2,7 @@
 
 module top (
 	xipMCLK,
-	xipRESET,
+	xinRESET,
 	xopCAM_PWDN,
 	xipCAM_VSYNC,
 	xipCAM_HREF,
@@ -12,32 +12,32 @@ module top (
 	xipCAM_D,
 	xopTXD,
 	xipRXD,
-	xipSW1,
-	xipSW2,
-	xipSW3,
-	xipSW4,
-	xopLED1, 
-	xopLED2, 
-	xop7Seg1_A,
-	xop7Seg1_B,
-	xop7Seg1_C,
-	xop7Seg1_D,
-	xop7Seg1_E,
-	xop7Seg1_F,
-	xop7Seg1_G,
-	xop7Seg1_DP,
-	xop7Seg2_A,
-	xop7Seg2_B,
-	xop7Seg2_C,
-	xop7Seg2_D,
-	xop7Seg2_E,
-	xop7Seg2_F,
-	xop7Seg2_G,
-	xop7Seg2_DP
+	xinSW1,
+	xinSW2,
+	xinSW3,
+	xinSW4,
+	xonLED1, 
+	xonLED2, 
+	xon7Seg1_A,
+	xon7Seg1_B,
+	xon7Seg1_C,
+	xon7Seg1_D,
+	xon7Seg1_E,
+	xon7Seg1_F,
+	xon7Seg1_G,
+	xon7Seg1_DP,
+	xon7Seg2_A,
+	xon7Seg2_B,
+	xon7Seg2_C,
+	xon7Seg2_D,
+	xon7Seg2_E,
+	xon7Seg2_F,
+	xon7Seg2_G,
+	xon7Seg2_DP
 );
 // System IO
 input       xipMCLK;     // P83
-input       xipRESET;    // P85
+input       xinRESET;    // P85
 
 // Camera IO
 // input       xipCAM_STROBE; // open input (no use)
@@ -50,32 +50,32 @@ input       xipCAM_PCLK;   // P68 : vport1_8
 input [7:0] xipCAM_D;      // P33,34,35,36,40,41,57,58
 
 // Switch
-input       xipSW1;        // P22
-input       xipSW2;        // P23
-input       xipSW3;        // P24
-input       xipSW4;        // P26
+input       xinSW1;        // P22
+input       xinSW2;        // P23
+input       xinSW3;        // P24
+input       xinSW4;        // P26
 
 // LEDs
-output      xopLED1;       // P54
-output      xopLED2;       // P53
+output      xonLED1;       // P54
+output      xonLED2;       // P53
 
 // 7-seg LEDs
-output      xop7Seg1_A;    // P91
-output      xop7Seg1_B;    // P92
-output      xop7Seg1_C;    // P12
-output      xop7Seg1_D;    // P15
-output      xop7Seg1_E;    // P16
-output      xop7Seg1_F;    // P90
-output      xop7Seg1_G;    // P86
-output      xop7Seg1_DP;   // P11
-output      xop7Seg2_A;    // P3
-output      xop7Seg2_B;    // P2
-output      xop7Seg2_C;    // P5
-output      xop7Seg2_D;    // P9
-output      xop7Seg2_E;    // P10
-output      xop7Seg2_F;    // P95
-output      xop7Seg2_G;    // P94
-output      xop7Seg2_DP;   // P4
+output      xon7Seg1_A;    // P91
+output      xon7Seg1_B;    // P92
+output      xon7Seg1_C;    // P12
+output      xon7Seg1_D;    // P15
+output      xon7Seg1_E;    // P16
+output      xon7Seg1_F;    // P90
+output      xon7Seg1_G;    // P86
+output      xon7Seg1_DP;   // P11
+output      xon7Seg2_A;    // P3
+output      xon7Seg2_B;    // P2
+output      xon7Seg2_C;    // P5
+output      xon7Seg2_D;    // P9
+output      xon7Seg2_E;    // P10
+output      xon7Seg2_F;    // P95
+output      xon7Seg2_G;    // P94
+output      xon7Seg2_DP;   // P4
 
 // RS232C
 output      xopTXD;        // P60 : vport1_1
@@ -87,14 +87,14 @@ wire w_PReset_n;
 
 clock_reset clock_reset(
 	.refclk      ( xipMCLK ),
-	.reset_n     ( ~xipRESET ),
+	.reset_n     ( xinRESET ),
 	.mclk        ( w_mclk ),
 	.mreset_n    ( w_mreset_n ),
 	.cam_clk     ( xopCAM_XCLK ),
 	.cam_reset_n ( xonCAM_RESET ),
 	.pclk        ( xipCAM_PCLK ),
 	.preset_n    ( w_PReset_n ),
-	.pll_lock    ( xopLED1 )
+	.pll_lock_n  ( xonLED1 )
 );
 
 wire [2:0] uart_MCmd;
@@ -154,7 +154,7 @@ uart_transaction uart_transaction(
 	.uart_SCmdAccept ( uart_SCmdAccept ),
 	.uart_SData      ( uart_SData ),
 	.uart_SResp      ( uart_SResp ),
-	.uart_active     ( xopLED2 )
+	.uart_active_n   ( xonLED2 )
 );
 
 line_buffer line_buffer(
@@ -184,26 +184,26 @@ debugger debugger(
 	.debugger_SResp      ( debugger_SResp ),
 	.active_link         ( active_link ),
 	.link_state          ( link_state ),
-	.pushsw1             ( xipSW1 ),
-	.pushsw2             ( xipSW2 ),
-	.pushsw3             ( xipSW3 ),
-	.pushsw4             ( xipSW4 ),
-	.Seg1_A              ( xop7Seg1_A ),
-	.Seg1_B              ( xop7Seg1_B ),
-	.Seg1_C              ( xop7Seg1_C ),
-	.Seg1_D              ( xop7Seg1_D ),
-	.Seg1_E              ( xop7Seg1_E ),
-	.Seg1_F              ( xop7Seg1_F ),
-	.Seg1_G              ( xop7Seg1_G ),
-	.Seg1_DP             ( xop7Seg1_DP ),
-	.Seg2_A              ( xop7Seg2_A ),
-	.Seg2_B              ( xop7Seg2_B ),
-	.Seg2_C              ( xop7Seg2_C ),
-	.Seg2_D              ( xop7Seg2_D ),
-	.Seg2_E              ( xop7Seg2_E ),
-	.Seg2_F              ( xop7Seg2_F ),
-	.Seg2_G              ( xop7Seg2_G ),
-	.Seg2_DP             ( xop7Seg2_DP )
+	.pushsw1             ( xinSW1 ),
+	.pushsw2             ( xinSW2 ),
+	.pushsw3             ( xinSW3 ),
+	.pushsw4             ( xinSW4 ),
+	.Seg1_A              ( xon7Seg1_A ),
+	.Seg1_B              ( xon7Seg1_B ),
+	.Seg1_C              ( xon7Seg1_C ),
+	.Seg1_D              ( xon7Seg1_D ),
+	.Seg1_E              ( xon7Seg1_E ),
+	.Seg1_F              ( xon7Seg1_F ),
+	.Seg1_G              ( xon7Seg1_G ),
+	.Seg1_DP             ( xon7Seg1_DP ),
+	.Seg2_A              ( xon7Seg2_A ),
+	.Seg2_B              ( xon7Seg2_B ),
+	.Seg2_C              ( xon7Seg2_C ),
+	.Seg2_D              ( xon7Seg2_D ),
+	.Seg2_E              ( xon7Seg2_E ),
+	.Seg2_F              ( xon7Seg2_F ),
+	.Seg2_G              ( xon7Seg2_G ),
+	.Seg2_DP             ( xon7Seg2_DP )
 );
 
 endmodule

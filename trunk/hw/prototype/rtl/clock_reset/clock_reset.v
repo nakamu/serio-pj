@@ -6,7 +6,7 @@ module clock_reset (
 	mclk, mreset_n, 
 	cam_clk, cam_reset_n, 
 	pclk, preset_n,
-	pll_lock
+	pll_lock_n
 );
 input  refclk;
 input  reset_n;
@@ -16,9 +16,11 @@ output cam_clk;
 output cam_reset_n;
 input  pclk;
 output preset_n;
-output pll_lock;
+output pll_lock_n;
 
 wire w_refclk_reset_n;
+wire w_pll_lock;
+assign pll_lock_n = w_pll_lock;
 
 // remove chattering 
 syncd01a  i_reset_sync (
@@ -35,7 +37,7 @@ dcm_pll dcm_pll (
 	.CLKFX_OUT       ( mclk ),
 	.CLKIN_IBUFG_OUT ( ),
 	.CLK0_OUT        ( ),
-	.LOCKED_OUT      ( pll_lock )
+	.LOCKED_OUT      ( w_pll_lock )
 );
 
 // reset synchronization

@@ -11,6 +11,7 @@ LINT        = verilator -Wall --lint-only --error-limit 1000 -D_LINT_WAIVED_
 ###########################
 #       Test Bench        #
 ###########################
+VERIF_DIR   = $(shell pwd)
 TOP        ?= top
 BENCH      ?= ${VERIF_DIR}/TestBench/test_${TOP}.v
 EXTRA      ?= 
@@ -22,7 +23,10 @@ RTL_FILES_COV = $(addprefix -v , ${RTL_FILES})
 #  Compile & Simulation   #
 ###########################
 compile      : ${BENCH} ${EXTRA} ${RTL_FILES}
-	${COMPILER} -g2005 -Wall -t vvp ${DEFINE} -s test_${TOP} -o run.vvp -f RTL.list ${BENCH} ${EXTRA} 
+	${COMPILER} -g2005 -Wall -t vvp ${DEFINE} \
+		-s test_${TOP} -o run.vvp \
+		-f RTL.list -f Model.list \
+		${BENCH} ${EXTRA} 
 
 sim          : compile
 	${SIM_ENGINE} run.vvp

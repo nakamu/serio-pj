@@ -7,107 +7,203 @@ module top (
 	xipCAM_VSYNC,
 	xipCAM_HREF,
 	xipCAM_PCLK,
-	xipCAM_STROBE,
 	xopCAM_XCLK,
 	xonCAM_RESET,
-	xopCAM_SIO_C,
-	xbpCAM_SIO_D,
 	xipCAM_D,
 	xopTXD,
 	xipRXD,
-	xopLD7, xopLD6, xopLD5, xopLD4, xopLD3, xopLD2, xopLD1, xopLD0,
+	xipSW1,
+	xipSW2,
+	xipSW3,
+	xipSW4,
+	xopLED1, 
+	xopLED2, 
+	xop7Seg1_A,
+	xop7Seg1_B,
+	xop7Seg1_C,
+	xop7Seg1_D,
+	xop7Seg1_E,
+	xop7Seg1_F,
+	xop7Seg1_G,
+	xop7Seg1_DP,
+	xop7Seg2_A,
+	xop7Seg2_B,
+	xop7Seg2_C,
+	xop7Seg2_D,
+	xop7Seg2_E,
+	xop7Seg2_F,
+	xop7Seg2_G,
+	xop7Seg2_DP
 );
 // System IO
-input       xipMCLK;     // T9
-input       xipRESET;    // L14
+input       xipMCLK;     // P83
+input       xipRESET;    // P85
 
 // Camera IO
-output      xopCAM_PWDN;
-input       xipCAM_VSYNC;
-input       xipCAM_HREF;
-input       xipCAM_PCLK;
-input       xipCAM_STROBE; // open input (no use)
-output      xopCAM_XCLK;
-output      xonCAM_RESET;
-input [7:0] xipCAM_D;
-//output      xopCAM_SIO_C;
-//inout       xbpCAM_SIO_D;
+// input       xipCAM_STROBE; // open input (no use)
+output      xopCAM_PWDN;   // P62 : vport1_3 
+output      xonCAM_RESET;  // P63 : vport1_4
+output      xopCAM_XCLK;   // P65 : vport1_5
+input       xipCAM_VSYNC;  // P66 : vport1_6
+input       xipCAM_HREF;   // P67 : vport1_7
+input       xipCAM_PCLK;   // P68 : vport1_8
+input [7:0] xipCAM_D;      // P33,34,35,36,40,41,57,58
+
+// Switch
+input       xipSW1;        // P22
+input       xipSW2;        // P23
+input       xipSW3;        // P24
+input       xipSW4;        // P26
 
 // LEDs
-output      xopLD7;    // P11
-output      xopLD6;    // P12
-output      xopLD5;    // N12
-output      xopLD4;    // P13
-output      xopLD3;    // N14
-output      xopLD2;    // L12
-output      xopLD1;    // P14
-output      xopLD0;    // K12
+output      xopLED1;       // P54
+output      xopLED2;       // P53
+
+// 7-seg LEDs
+output      xop7Seg1_A;    // P91
+output      xop7Seg1_B;    // P92
+output      xop7Seg1_C;    // P12
+output      xop7Seg1_D;    // P15
+output      xop7Seg1_E;    // P16
+output      xop7Seg1_F;    // P90
+output      xop7Seg1_G;    // P86
+output      xop7Seg1_DP;   // P11
+output      xop7Seg2_A;    // P3
+output      xop7Seg2_B;    // P2
+output      xop7Seg2_C;    // P5
+output      xop7Seg2_D;    // P9
+output      xop7Seg2_E;    // P10
+output      xop7Seg2_F;    // P95
+output      xop7Seg2_G;    // P94
+output      xop7Seg2_DP;   // P4
 
 // RS232C
-output      xopTXD;    // R13
-input       xipRXD;    // T13
+output      xopTXD;        // P60 : vport1_1
+input       xipRXD;        // P61 : vport1_2
 
-wire w_RSClk;
-wire w_RSReset_n;
-wire w_SCCBClk;
-wire w_SCCBReset_n;
-wire w_CamClk;
-wire w_CamReset_n;
+wire w_mclk;
+wire w_mreset_n;
 wire w_PReset_n;
 
 clock_reset clock_reset(
-	.mclk         (xipMCLK),
-	.reset_n      (~xipRESET),
-	.rs_clk       (w_RSClk),
-	.rs_reset_n   (w_RSReset_n),
-	.sccb_clk     (w_SCCBClk),
-	.sccb_reset_n (w_SCCBReset_n),
-	.cam_clk      (w_CamClk),
-	.cam_reset_n  (w_CamReset_n),
-	.pclk         (xipCAM_PCLK),
-	.preset_n     (w_PReset_n)
+	.refclk      ( xipMCLK ),
+	.reset_n     ( ~xipRESET ),
+	.mclk        ( w_mclk ),
+	.mreset_n    ( w_mreset_n ),
+	.cam_clk     ( xopCAM_XCLK ),
+	.cam_reset_n ( xonCAM_RESET ),
+	.pclk        ( xipCAM_PCLK ),
+	.preset_n    ( w_PReset_n ),
+	.pll_lock    ( xopLED1 )
 );
 
-wire       w_frameStart;
-wire       w_frameEnd;
-wire       w_writeEn;
-wire [7:0] w_writeData;
-wire       w_readStart;
-wire [7:0] w_readData;
-wire       w_txStatus;
+wire [2:0] uart_MCmd;
+wire [7:0] uart_MAddr;
+wire [7:0] uart_MData;
+wire       uart_SCmdAccept;
+wire [7:0] uart_SData;
+wire [1:0] uart_SResp;
+wire [2:0] linebuf_MCmd;
+wire [7:0] linebuf_MAddr;
+wire [7:0] linebuf_MData;
+wire       linebuf_SCmdAccept;
+wire [7:0] linebuf_SData;
+wire [1:0] linebuf_SResp;
+wire [2:0] debugger_MCmd;
+wire [7:0] debugger_MAddr;
+wire [7:0] debugger_MData;
+wire       debugger_SCmdAccept;
+wire [7:0] debugger_SData;
+wire [1:0] debugger_SResp;
+wire [1:0] active_link;
+wire [1:0] link_state;
 
-assign xopCAM_XCLK  = w_CamClk;
-assign xonCAM_RESET = w_CamReset_n;
-
-pixel_buffer pixel_buffer(
-	.writeClk  (xipCAM_PCLK),
-	.writeRst_n(w_PReset_n),
-	.VSYNC     (xipCAM_VSYNC),
-	.HREF      (xipCAM_HREF),
-	.DATA      (xipCAM_D),
-	.readClk   (w_RSClk),
-	.readRst_n (w_RSReset_n),
-	.readData  (w_readData),
-	.txStatus  (w_txStatus),
-	.txStart   (w_readStart)
+tree_link tree_link(
+	.clk                 ( w_mclk ),
+	.rst_n               ( w_mreset_n ),
+	.uart_MCmd           ( uart_MCmd ),
+	.uart_MAddr          ( uart_MAddr ),
+	.uart_MData          ( uart_MData ),
+	.uart_SCmdAccept     ( uart_SCmdAccept ),
+	.uart_SData          ( uart_SData ),
+	.uart_SResp          ( uart_SResp ),
+	.linebuf_MCmd        ( linebuf_MCmd ),
+	.linebuf_MAddr       ( linebuf_MAddr ),
+	.linebuf_MData       ( linebuf_MData ),
+	.linebuf_SCmdAccept  ( linebuf_SCmdAccept ),
+	.linebuf_SData       ( linebuf_SData ),
+	.linebuf_SResp       ( linebuf_SResp ),
+	.debugger_MCmd       ( debugger_MCmd ),
+	.debugger_MAddr      ( debugger_MAddr ),
+	.debugger_MData      ( debugger_MData ),
+	.debugger_SCmdAccept ( debugger_SCmdAccept ),
+	.debugger_SData      ( debugger_SData ),
+	.debugger_SResp      ( debugger_SResp ),
+	.active_link         ( active_link ),
+	.link_state          ( link_state )
 );
 
 uart_transaction uart_transaction(
-	.pavsv01a2rsio_01aRSClk    (w_RSClk),
-	.pavsv01a2rsio_01aReset_n  (w_RSReset_n),
-	.swdec01a2rsio_01aTestMode (4'b0000), // tie 0
-	.dbgif01a2rsio_01aTxBitRate(4'h7),    // tie const
-	.dbgif01a2rsio_01aTxStart  (w_readStart),
-	.dbgif01a2rsio_01aTxData   (w_readData),
-	.rsio_01a2dbgif01aTxStatus (w_txStatus),
-	.dbgif01a2rsio_01aRxBitRate(4'h7),    // tie const
-	.dbgif01a2rsio_01aRxFetch  (1'b0),    // tie 0
-	.rsio_01a2dbgif01aRxData   (),        // open
-	.rsio_01a2dbgif01aRxStatus (),        // open
-	.xipRXD1(xipRXD),
-	.xopTXD1(xopTXD),
-	.xipRXD2(1'b0),                       // tie 0
-	.xopTXD2(1'b0)                        // tie 0
+	.clk             ( w_mclk ),
+	.reset_n         ( w_mreset_n ),
+	.RXD1            ( xipRXD ),
+	.TXD1            ( xopTXD ),
+	.uart_MCmd       ( uart_MCmd ),
+	.uart_MAddr      ( uart_MAddr ),
+	.uart_MData      ( uart_MData ),
+	.uart_SCmdAccept ( uart_SCmdAccept ),
+	.uart_SData      ( uart_SData ),
+	.uart_SResp      ( uart_SResp ),
+	.uart_active     ( xopLED2 )
+);
+
+line_buffer line_buffer(
+	.writeClk           ( xipCAM_PCLK ),
+	.writeRst_n         ( w_PReset_n ),
+	.VSYNC              ( xipCAM_VSYNC ),
+	.HREF               ( xipCAM_HREF ),
+	.DATA               ( xipCAM_D ),
+	.readClk            ( w_mclk ),
+	.readRst_n          ( w_mreset_n ),
+	.linebuf_MCmd       ( linebuf_MCmd ),
+	.linebuf_MAddr      ( linebuf_MAddr ),
+	.linebuf_MData      ( linebuf_MData ),
+	.linebuf_SCmdAccept ( linebuf_SCmdAccept ),
+	.linebuf_SData      ( linebuf_SData ),
+	.linebuf_SResp      ( linebuf_SResp )
+);
+
+debugger debugger(
+	.clk                 ( w_mclk ),
+	.reset_n             ( w_mreset_n ),
+	.debugger_MCmd       ( debugger_MCmd ),
+	.debugger_MAddr      ( debugger_MAddr ),
+	.debugger_MData      ( debugger_MData ),
+	.debugger_SCmdAccept ( debugger_SCmdAccept ),
+	.debugger_SData      ( debugger_SData ),
+	.debugger_SResp      ( debugger_SResp ),
+	.active_link         ( active_link ),
+	.link_state          ( link_state ),
+	.pushsw1             ( xipSW1 ),
+	.pushsw2             ( xipSW2 ),
+	.pushsw3             ( xipSW3 ),
+	.pushsw4             ( xipSW4 ),
+	.Seg1_A              ( xop7Seg1_A ),
+	.Seg1_B              ( xop7Seg1_B ),
+	.Seg1_C              ( xop7Seg1_C ),
+	.Seg1_D              ( xop7Seg1_D ),
+	.Seg1_E              ( xop7Seg1_E ),
+	.Seg1_F              ( xop7Seg1_F ),
+	.Seg1_G              ( xop7Seg1_G ),
+	.Seg1_DP             ( xop7Seg1_DP ),
+	.Seg2_A              ( xop7Seg2_A ),
+	.Seg2_B              ( xop7Seg2_B ),
+	.Seg2_C              ( xop7Seg2_C ),
+	.Seg2_D              ( xop7Seg2_D ),
+	.Seg2_E              ( xop7Seg2_E ),
+	.Seg2_F              ( xop7Seg2_F ),
+	.Seg2_G              ( xop7Seg2_G ),
+	.Seg2_DP             ( xop7Seg2_DP )
 );
 
 endmodule

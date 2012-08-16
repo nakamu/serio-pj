@@ -1,47 +1,77 @@
 `timescale 1ns/1ns
 
 module test_top;
-`define MCLK_HCYCLE 10
+`define MCLK_HCYCLE 50
 `define SIM_TIME    40000000
 
-reg xipMCLK;
-reg xipRESET;
-wire xopCAM_SIO_C;
-wire xbpCAM_SIO_D;
-wire xopTXD;
-reg  xipRXD;
-wire xopLD0;
-wire xopLD1;
-wire xopLD2;
-wire xopLD3;
-wire xopLD4;
-wire xopLD5;
-wire xopLD6;
-wire xopLD7;
+reg       xipMCLK;       // P83
+reg       xipRESET;      // P85
+wire      xopCAM_PWDN;   // P62 : vport1_3 
+wire      xonCAM_RESET;  // P63 : vport1_4
+wire      xopCAM_XCLK;   // P65 : vport1_5
+reg       xipCAM_VSYNC;  // P66 : vport1_6
+reg       xipCAM_HREF;   // P67 : vport1_7
+reg       xipCAM_PCLK;   // P68 : vport1_8
+reg [7:0] xipCAM_D;      // P33,34,35,36,40,41,57,58
+reg       xipSW1;        // P22
+reg       xipSW2;        // P23
+reg       xipSW3;        // P24
+reg       xipSW4;        // P26
+wire      xopLED1;       // P54
+wire      xopLED2;       // P53
+wire      xop7Seg1_A;    // P91
+wire      xop7Seg1_B;    // P92
+wire      xop7Seg1_C;    // P12
+wire      xop7Seg1_D;    // P15
+wire      xop7Seg1_E;    // P16
+wire      xop7Seg1_F;    // P90
+wire      xop7Seg1_G;    // P86
+wire      xop7Seg1_DP;   // P11
+wire      xop7Seg2_A;    // P3
+wire      xop7Seg2_B;    // P2
+wire      xop7Seg2_C;    // P5
+wire      xop7Seg2_D;    // P9
+wire      xop7Seg2_E;    // P10
+wire      xop7Seg2_F;    // P95
+wire      xop7Seg2_G;    // P94
+wire      xop7Seg2_DP;   // P4
+wire      xopTXD;        // P60 : vport1_1
+reg       xipRXD;        // P61 : vport1_2
 
 top top(
-	.xipMCLK(xipMCLK),
-	.xipRESET(xipRESET),
-	.xopCAM_PWDN(),
-	.xipCAM_VSYNC(1'b0),
-	.xipCAM_HREF(1'b0),
-	.xipCAM_PCLK(1'b0),
-	.xipCAM_STROBE(1'b0),
-	.xopCAM_XCLK(),
-	.xonCAM_RESET(),
-	.xopCAM_SIO_C(xopCAM_SIO_C),
-	.xbpCAM_SIO_D(xbpCAM_SIO_D),
-	.xipCAM_D(8'h00),
-	.xopTXD(),
-	.xipRXD(xipRXD),
-	.xopLD7(xopLD7), 
-	.xopLD6(xopLD6), 
-	.xopLD5(xopLD5), 
-	.xopLD4(xopLD4), 
-	.xopLD3(xopLD3), 
-	.xopLD2(xopLD2), 
-	.xopLD1(xopLD1), 
-	.xopLD0(xopLD0)
+	.xipMCLK      ( xipMCLK ),
+	.xipRESET     ( xipRESET ),
+	.xopCAM_PWDN  ( xopCAM_PWDN ),
+	.xipCAM_VSYNC ( xipCAM_VSYNC ),
+	.xipCAM_HREF  ( xipCAM_HREF ),
+	.xipCAM_PCLK  ( xipCAM_PCLK ),
+	.xopCAM_XCLK  ( xopCAM_XCLK ),
+	.xonCAM_RESET ( xonCAM_RESET ),
+	.xipCAM_D     ( xipCAM_D ),
+	.xopTXD       ( xopTXD ),
+	.xipRXD       ( xipRXD ),
+	.xipSW1       ( xipSW1 ),
+	.xipSW2       ( xipSW2 ),
+	.xipSW3       ( xipSW3 ),
+	.xipSW4       ( xipSW4 ),
+	.xopLED1      ( xopLED1 ),
+	.xopLED2      ( xopLED2 ),
+	.xop7Seg1_A   ( xop7Seg1_A ),
+	.xop7Seg1_B   ( xop7Seg1_B ),
+	.xop7Seg1_C   ( xop7Seg1_C ),
+	.xop7Seg1_D   ( xop7Seg1_D ),
+	.xop7Seg1_E   ( xop7Seg1_E ),
+	.xop7Seg1_F   ( xop7Seg1_F ),
+	.xop7Seg1_G   ( xop7Seg1_G ),
+	.xop7Seg1_DP  ( xop7Seg1_DP ),
+	.xop7Seg2_A   ( xop7Seg2_A ),
+	.xop7Seg2_B   ( xop7Seg2_B ),
+	.xop7Seg2_C   ( xop7Seg2_C ),
+	.xop7Seg2_D   ( xop7Seg2_D ),
+	.xop7Seg2_E   ( xop7Seg2_E ),
+	.xop7Seg2_F   ( xop7Seg2_F ),
+	.xop7Seg2_G   ( xop7Seg2_G ),
+	.xop7Seg2_DP  ( xop7Seg2_DP )
 );
 
 /***** Main Sequence *****/

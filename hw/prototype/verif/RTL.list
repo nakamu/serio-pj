@@ -6,9 +6,9 @@
 ../rtl/lib/syncd01a.v
 ../rtl/lib/trign01a.v
 ../rtl/lib/trigp01a.v
-../rtl/clk_reset.v
-../rtl/rsio_01a.v
-../rtl/case_rom.v
-../rtl/sccb_config.v
-../rtl/sccb_bridge.v
+../rtl/clock_reset/clock_reset.v
+../rtl/debugger/debugger.v
+../rtl/line_buffer/line_buffer.v
+../rtl/tree_link/tree_link.v
+../rtl/uart_transaction/uart_transaction.v
 ../rtl/top.v

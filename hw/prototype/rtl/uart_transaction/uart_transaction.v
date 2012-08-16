@@ -11,7 +11,7 @@ module uart_transaction (
 	uart_SCmdAccept,
 	uart_SData,
 	uart_SResp,
-	uart_active,
+	uart_active_n,
 );
 
 input        clk;
@@ -24,7 +24,7 @@ output [7:0] uart_MData;
 input        uart_SCmdAccept;
 input  [7:0] uart_SData;
 input  [1:0] uart_SResp;
-output       uart_active;
+output       uart_active_n;
 
 endmodule
 

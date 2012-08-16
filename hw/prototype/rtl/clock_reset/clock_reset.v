@@ -20,7 +20,7 @@ output pll_lock_n;
 
 wire w_refclk_reset_n;
 wire w_pll_lock;
-assign pll_lock_n = w_pll_lock;
+assign pll_lock_n = ~w_pll_lock;
 
 // remove chattering 
 syncd01a  i_reset_sync (

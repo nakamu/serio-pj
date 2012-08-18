@@ -4,8 +4,8 @@
 
 `define D 1
 
-module rstx_01a (F25Clk, tx_clk, reset_n, txSerialData, txParallelData, txTrigger, txStatus);
-input        F25Clk;
+module rstx_01a (F50Clk, tx_clk, reset_n, txSerialData, txParallelData, txTrigger, txStatus);
+input        F50Clk;
 input        tx_clk;
 input        reset_n;
 output       txSerialData;
@@ -34,7 +34,7 @@ assign w_state      = (r_state == P_STATE_IDLE) ?
 	                  (r_HoldTrigger ? P_STATE_SENDING : P_STATE_IDLE) :
 	                  (|w_shiftReg) ? P_STATE_SENDING : P_STATE_IDLE;
 
-always @ (posedge F25Clk or negedge reset_n)
+always @ (posedge F50Clk or negedge reset_n)
 	if(~reset_n) r_HoldTrigger <= #`D 1'b0;
 	else         r_HoldTrigger <= #`D w_HoldTrigger;
 

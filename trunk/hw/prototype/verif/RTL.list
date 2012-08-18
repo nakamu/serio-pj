@@ -11,4 +11,5 @@
 ../rtl/line_buffer/line_buffer.v
 ../rtl/tree_link/tree_link.v
 ../rtl/uart_transaction/uart_transaction.v
+../rtl/uart_transaction/uart_io.v
 ../rtl/top.v

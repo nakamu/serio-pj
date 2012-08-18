@@ -4,8 +4,8 @@
 
 `define D 1
 
-module rsclk01a ( F25Clk, reset_n, BitRateSel, gatedClk );
-input       F25Clk;
+module rsclk01a ( F50Clk, reset_n, BitRateSel, gatedClk );
+input       F50Clk;
 input       reset_n;
 input [3:0] BitRateSel;
 output      gatedClk;
@@ -13,7 +13,7 @@ output      gatedClk;
 reg       clken;
 reg [3:0] r_bitRateSel;
 
-always @ (posedge F25Clk or negedge reset_n) 
+always @ (posedge F50Clk or negedge reset_n) 
 	if(~reset_n) r_bitRateSel <= #`D 4'h3;
 	else       r_bitRateSel <= #`D BitRateSel;
 
@@ -28,32 +28,31 @@ assign w_periodCounter = (w_errorExpired | w_clkEn) ? 15'd0 : r_periodCounter + 
 
 function [14:0] EnablePeriod;
 	input [3:0] br_sel;
-	//EnablePeriod = 15'd2603;  //   9600 bps
 	case(br_sel) 
-		4'h0 : EnablePeriod = 15'd20832; //   1200 bps
-		4'h1 : EnablePeriod = 15'd10415; //   2400 bps
-		4'h2 : EnablePeriod = 15'd5207;  //   4800 bps
-		4'h3 : EnablePeriod = 15'd2603;  //   9600 bps
-		4'h4 : EnablePeriod = 15'd1301;  //  19200 bps
-		4'h5 : EnablePeriod = 15'd650;   //  38400 bps
-		4'h6 : EnablePeriod = 15'd433;   //  57600 bps
-		4'h7 : EnablePeriod = 15'd216;   // 115000 bps
-		4'h8 : EnablePeriod = 15'd107;   // 230000 bps
-		4'h9 : EnablePeriod = 15'd53;    // 460000 bps
-		4'ha : EnablePeriod = 15'd26;    // 921000 bps
-		default : EnablePeriod = 15'd2603;
+		4'h1    : EnablePeriod = 15'd20833; //    2400 bps
+		4'h2    : EnablePeriod = 15'd10416; //    4800 bps
+		4'h3    : EnablePeriod = 15'd5208;  //    9600 bps
+		4'h4    : EnablePeriod = 15'd2604;  //   19200 bps
+		4'h5    : EnablePeriod = 15'd1302;  //   38400 bps
+		4'h6    : EnablePeriod = 15'd868;   //   57600 bps
+		4'h7    : EnablePeriod = 15'd434;   //  115000 bps
+		4'h8    : EnablePeriod = 15'd217;   //  230000 bps
+		4'h9    : EnablePeriod = 15'd108;   //  460000 bps
+		4'ha    : EnablePeriod = 15'd54;    //  921000 bps
+		4'hf    : EnablePeriod = 15'd8;     // 6250000 bps
+		default : EnablePeriod = 15'd5208;  //    9600 bps
 	endcase
 endfunction
 
 assign w_enablePeriod = EnablePeriod(r_bitRateSel);
 
-always @ (posedge F25Clk or negedge reset_n)
+always @ (posedge F50Clk or negedge reset_n)
 	if(~reset_n) r_periodCounter <= #`D 15'd0;
-	else       r_periodCounter <= #`D w_periodCounter;
+	else         r_periodCounter <= #`D w_periodCounter;
 
-always @ (posedge F25Clk or negedge reset_n)
+always @ (posedge F50Clk or negedge reset_n)
 	if(~reset_n) clken <= #`D 1'b0;
-	else       clken <= #`D w_clkEn;
+	else         clken <= #`D w_clkEn;
 
 reg  [6:0] r_accumulatedError;
 wire [6:0] w_accumulatedError;
@@ -67,31 +66,31 @@ assign w_accumulatedError = w_errorExpired ? r_accumulatedError - 7'd39:
 function [4:0] PeriodError;
 	input [3:0] br_sel;
 	case(br_sel) 
-		4'h0 : PeriodError = 5'd12;  //   1200 bps
-		4'h1 : PeriodError = 5'd24;  //   2400 bps
-		4'h2 : PeriodError = 5'd12;  //   4800 bps
-		4'h3 : PeriodError = 5'd6;   //   9600 bps
-		4'h4 : PeriodError = 5'd3;   //  19200 bps
-		4'h5 : PeriodError = 5'd2;   //  38400 bps
-		4'h6 : PeriodError = 5'd1;   //  57600 bps
-		4'h7 : PeriodError = 5'd14;  // 115000 bps
-		4'h8 : PeriodError = 5'd25;  // 230000 bps
-		4'h9 : PeriodError = 5'd13;  // 460000 bps
-		4'ha : PeriodError = 5'd5;   // 921000 bps
-		default : PeriodError = 5'd6;
+		4'h1    : PeriodError = 5'd7;   //    2400 bps
+		4'h2    : PeriodError = 5'd13;  //    4800 bps
+		4'h3    : PeriodError = 5'd7;   //    9600 bps
+		4'h4    : PeriodError = 5'd3;   //   19200 bps
+		4'h5    : PeriodError = 5'd2;   //   38400 bps
+		4'h6    : PeriodError = 5'd1;   //   57600 bps
+		4'h7    : PeriodError = 5'd16;  //  115000 bps
+		4'h8    : PeriodError = 5'd8;   //  230000 bps
+		4'h9    : PeriodError = 5'd14;  //  460000 bps
+		4'ha    : PeriodError = 5'd6;   //  921000 bps
+		4'hf    : PeriodError = 5'd0;   // 6250000 bps
+		default : PeriodError = 5'd7;   //    9600 bps
 	endcase
 endfunction
 
 assign w_periodError = PeriodError(r_bitRateSel);
 
-always @ (posedge F25Clk or negedge reset_n)
+always @ (posedge F50Clk or negedge reset_n)
 	if(~reset_n) r_accumulatedError <= #`D 7'd0;
-	else       r_accumulatedError <= #`D w_accumulatedError;
+	else         r_accumulatedError <= #`D w_accumulatedError;
 
 cgate01a  cgate01a (
 	.en(clken),      // 1 bit input 
 	.test(1'b0),     // 1 bit input 
-	.clk(F25Clk),    // 1 bit input 
+	.clk(F50Clk),    // 1 bit input 
 	.gclk(gatedClk)  // 1 bit output
 );
 

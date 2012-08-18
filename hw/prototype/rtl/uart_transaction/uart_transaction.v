@@ -56,20 +56,22 @@ uart_io uart_io (
 /**************************************************
 *            Request path State machine           *
 **************************************************/
-parameter P_STATE_IDLE         = 4'h0;
-parameter P_STATE_FETCH_CMD    = 4'h1;
-parameter P_STATE_FETCH_ADDR0  = 4'h2;
-parameter P_STATE_FETCH_ADDR1  = 4'h3;
-parameter P_STATE_FETCH_BURST0 = 4'h4;
-parameter P_STATE_FETCH_BURST1 = 4'h5;
-parameter P_STATE_FETCH_WRD0   = 4'h6;
-parameter P_STATE_FETCH_WRD1   = 4'h7;
-parameter P_STATE_ISSUE_CMD    = 4'h8;
+parameter P_STATE_IDLE          = 4'h0;
+parameter P_STATE_FETCH_CMD     = 4'h1;
+parameter P_STATE_FETCH_ADDR0   = 4'h2;
+parameter P_STATE_FETCH_ADDR1   = 4'h3;
+parameter P_STATE_FETCH_BURST0  = 4'h4;
+parameter P_STATE_FETCH_BURST1  = 4'h5;
+parameter P_STATE_FETCH_WRD0    = 4'h6;
+parameter P_STATE_FETCH_WRD1    = 4'h7;
+parameter P_STATE_ISSUE_CMD     = 4'h8;
+parameter P_STATE_CMD_HANDSHAKE = 4'h9;
 
 reg [3:0] r_req_state;
 reg [7:0] r_burst_counter;
 reg       r_burst_flag;
 reg       r_burst_type;
+reg       r_outstanding;
 reg [2:0] r_MCmd_pre;
 reg [2:0] r_MCmd;
 reg [7:0] r_MAddr;
@@ -80,6 +82,17 @@ assign w_rx_fetch = r_rx_fetch;
 
 wire   w_acceptable_cmd;
 assign w_acceptable_cmd = (w_rx_data[2:0] == 3'b001) | (w_rx_data[2:0] == 3'b010);
+
+wire [7:0] w_burst_counter;
+assign w_burst_counter = r_burst_counter - 8'h1;
+
+wire [7:0] w_MAddr_next;
+assign w_MAddr_next = r_burst_type ? r_MAddr : r_MAddr + 8'h1;
+
+wire w_WR_cmd;
+wire w_RD_cmd;
+assign w_WR_cmd = (r_MCmd_pre == 3'b001);
+assign w_RD_cmd = (r_MCmd_pre == 3'b010);
 
 always @ (posedge clk or negedge reset_n)
 	if(~reset_n) begin
@@ -121,11 +134,10 @@ always @ (posedge clk or negedge reset_n)
 			r_MAddr          <= #`D w_rx_data;
 			if(r_burst_flag)
 				r_req_state  <= #`D P_STATE_FETCH_BURST0;
-			else if(r_MCmd_pre == 3'b001)
+			else if(w_WR_cmd)
 				r_req_state  <= #`D P_STATE_FETCH_WRD0;
 			else begin
 				r_req_state  <= #`D P_STATE_ISSUE_CMD;
-				r_MCmd       <= #`D r_MCmd_pre;
 			end
 		end
 		P_STATE_FETCH_BURST0 : begin
@@ -137,11 +149,10 @@ always @ (posedge clk or negedge reset_n)
 		P_STATE_FETCH_BURST1 : begin
 			r_rx_fetch       <= #`D 1'b0;
 			r_burst_counter  <= #`D w_rx_data;
-			if(r_MCmd_pre == 3'b001)
+			if(w_WR_cmd)
 				r_req_state  <= #`D P_STATE_FETCH_WRD0;
 			else begin
 				r_req_state  <= #`D P_STATE_ISSUE_CMD;
-				r_MCmd       <= #`D r_MCmd_pre;
 			end
 		end
 		P_STATE_FETCH_WRD0 : begin
@@ -153,25 +164,47 @@ always @ (posedge clk or negedge reset_n)
 		P_STATE_FETCH_WRD1 : begin
 			r_rx_fetch  <= #`D 1'b0;
 			r_req_state <= #`D P_STATE_ISSUE_CMD;
-			r_MCmd      <= #`D r_MCmd_pre;
 			r_MData     <= #`D w_rx_data;
 		end
 		P_STATE_ISSUE_CMD : begin
+			if(~r_outstanding) begin
+				r_req_state <= #`D P_STATE_CMD_HANDSHAKE;
+				r_MCmd  <= #`D r_MCmd_pre;
+			end
+		end
+		P_STATE_CMD_HANDSHAKE : begin
 			if(uart_SCmdAccept) begin
 				r_MCmd              <= #`D 3'b000;
 				if(r_burst_counter == 8'h00) begin
 					r_req_state     <= #`D P_STATE_IDLE;
 				end else begin
-					r_burst_counter <= #`D r_burst_counter - 8'h1;
-					r_MAddr         <= #`D r_burst_type ? r_MAddr : r_MAddr + 8'h1;
-					if(r_MCmd_pre == 3'b001) begin
-						r_req_state <= #`D P_STATE_FETCH_WRD0;
-					end
+					r_burst_counter <= #`D w_burst_counter;
+					r_MAddr         <= #`D w_MAddr_next;
+					if(w_WR_cmd)
+						r_req_state     <= #`D P_STATE_FETCH_WRD0;
+					else 
+						r_req_state     <= #`D P_STATE_ISSUE_CMD;
 				end
 			end
 		end
 		default : r_req_state <= #`D P_STATE_IDLE;
 		endcase
+	end
+
+/**************************************************
+*        outstanding transaction limitter         *
+*            can't issue next cmd                 *
+*         until this I/F receives response        *
+**************************************************/
+always @ (posedge clk or negedge reset_n)
+	if(~reset_n) begin
+		r_outstanding <= #`D 1'b0;
+	end else begin
+		if(r_MCmd == 3'b010 & uart_SCmdAccept) begin
+			r_outstanding <= #`D 1'b1;
+		end else if(|uart_SResp) begin
+			r_outstanding <= #`D 1'b0;
+		end
 	end
 
 /**************************************************

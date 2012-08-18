@@ -1,7 +1,7 @@
 `define D 1
 `timescale 1ns/1ns
 
-module uart_if (
+module uart_io (
 	RSClk,
 	Reset_n,
 	TestMode,
@@ -68,19 +68,19 @@ always @ (posedge w_TxClk or negedge Reset_n)
 *                       RS232-C Tx interface                      *
 ******************************************************************/
 rsclk01a  i_TxClk (
-	.gatedClk(w_TxClk),                      // 1 bit output
+	.gatedClk(w_TxClk),     // 1 bit output
 	.BitRateSel(TxBitRate), // 4 bit input 
 	.reset_n(Reset_n),      // 1 bit input 
-	.F25Clk(RSClk)          // 1 bit input 
+	.F50Clk(RSClk)          // 1 bit input 
 );
 
 rstx_01a  rxtx_01a (
-	.F25Clk(RSClk),
+	.F50Clk(RSClk),
 	.txParallelData(TxData),  // 8 bit input 
 	.reset_n(Reset_n),        // 1 bit input 
-	.txSerialData(w_TxData),                   // 1 bit output
+	.txSerialData(w_TxData),  // 1 bit output
 	.txTrigger(TxStart),      // 1 bit input 
-	.tx_clk(w_TxClk),                          // 1 bit input 
+	.tx_clk(w_TxClk),         // 1 bit input 
 	.txStatus(TxStatus)       // 1 bit output
 );
 
@@ -88,21 +88,21 @@ rstx_01a  rxtx_01a (
 *                       RS232-C Rx interface                      *
 ******************************************************************/
 rsclk01a  i_RxClk (
-	.gatedClk(w_RxClk),                      // 1 bit output
+	.gatedClk(w_RxClk),     // 1 bit output
 	.BitRateSel(RxBitRate), // 4 bit input 
-	.reset_n(w_RxReset_n),                   // 1 bit input 
-	.F25Clk(RSClk)          // 1 bit input 
+	.reset_n(w_RxReset_n),  // 1 bit input 
+	.F50Clk(RSClk)          // 1 bit input 
 );
 
 rsrx_01a  rxrx_01a (
-	.rxParallelData(RxData), // 8 bit output
-	.rxStatus(RxStatus),     // 2 bit output
-	.rx_clk(w_RxClk),                         // 1 bit input 
-	.rxSerialData(xipRXD1),                   // 1 bit input 
-	.reset_n(Reset_n),       // 1 bit input 
-	.rxTrigger(RxFetch),     // 1 bit input 
-	.sample_clk(RSClk),      // 1 bit input 
-	.rxClkReset_n(w_RxReset_n)                // 1 bit output
+	.rxParallelData(RxData),   // 8 bit output
+	.rxStatus(RxStatus),       // 2 bit output
+	.rx_clk(w_RxClk),          // 1 bit input 
+	.rxSerialData(xipRXD1),    // 1 bit input 
+	.reset_n(Reset_n),         // 1 bit input 
+	.rxTrigger(RxFetch),       // 1 bit input 
+	.sample_clk(RSClk),        // 1 bit input 
+	.rxClkReset_n(w_RxReset_n) // 1 bit output
 );
 
 endmodule

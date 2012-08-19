@@ -196,14 +196,22 @@ always @ (posedge clk or negedge reset_n)
 *            can't issue next cmd                 *
 *         until this I/F receives response        *
 **************************************************/
+reg r_pre_unlock;
 always @ (posedge clk or negedge reset_n)
 	if(~reset_n) begin
 		r_outstanding <= #`D 1'b0;
+		r_pre_unlock  <= #`D 1'b0;
 	end else begin
 		if(r_MCmd == 3'b010 & uart_SCmdAccept) begin
+			// read request issued
 			r_outstanding <= #`D 1'b1;
-		end else if(|uart_SResp) begin
+		end else if(~r_pre_unlock & r_tx_start) begin
+			// read response has passed to UART Tx
+			r_pre_unlock  <= #`D 1'b1;
+		end else if(r_pre_unlock & ~w_tx_status) begin
+			// UART Tx is now idle, OK to issue next command
 			r_outstanding <= #`D 1'b0;
+			r_pre_unlock  <= #`D 1'b0;
 		end
 	end
 

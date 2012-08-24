@@ -12,10 +12,10 @@ module top (
 	xipCAM_D,
 	xopTXD,
 	xipRXD,
-	xinSW1,
-	xinSW2,
-	xinSW3,
-	xinSW4,
+	xipSW1,
+	xipSW2,
+	xipSW3,
+	xipSW4,
 	xonLED1, 
 	xonLED2, 
 	xon7Seg1_A,
@@ -50,10 +50,10 @@ input       xipCAM_PCLK;   // P68 : vport1_8
 input [7:0] xipCAM_D;      // P33,34,35,36,40,41,57,58
 
 // Switch
-input       xinSW1;        // P22
-input       xinSW2;        // P23
-input       xinSW3;        // P24
-input       xinSW4;        // P26
+input       xipSW1;        // P22
+input       xipSW2;        // P23
+input       xipSW3;        // P24
+input       xipSW4;        // P26
 
 // LEDs
 output      xonLED1;       // P54
@@ -83,6 +83,7 @@ input       xipRXD;        // P61 : vport1_2
 
 wire w_mclk;
 wire w_mreset_n;
+wire w_pixelclk;
 wire w_PReset_n;
 
 clock_reset clock_reset(
@@ -93,6 +94,7 @@ clock_reset clock_reset(
 	.cam_clk     ( xopCAM_XCLK ),
 	.cam_reset_n ( xonCAM_RESET ),
 	.pclk        ( xipCAM_PCLK ),
+	.pixelclk    ( w_pixelclk ),
 	.preset_n    ( w_PReset_n ),
 	.pll_lock_n  ( xonLED1 )
 );
@@ -158,7 +160,7 @@ uart_transaction uart_transaction(
 );
 
 line_buffer line_buffer(
-	.writeClk           ( xipCAM_PCLK ),
+	.writeClk           ( w_pixelclk ),
 	.writeRst_n         ( w_PReset_n ),
 	.VSYNC              ( xipCAM_VSYNC ),
 	.HREF               ( xipCAM_HREF ),
@@ -184,10 +186,10 @@ debugger debugger(
 	.debugger_SResp      ( debugger_SResp ),
 	.active_link         ( active_link ),
 	.link_state          ( link_state ),
-	.pushsw1             ( xinSW1 ),
-	.pushsw2             ( xinSW2 ),
-	.pushsw3             ( xinSW3 ),
-	.pushsw4             ( xinSW4 ),
+	.pushsw1             ( xipSW1 ),
+	.pushsw2             ( xipSW2 ),
+	.pushsw3             ( xipSW3 ),
+	.pushsw4             ( xipSW4 ),
 	.Seg1_A              ( xon7Seg1_A ),
 	.Seg1_B              ( xon7Seg1_B ),
 	.Seg1_C              ( xon7Seg1_C ),

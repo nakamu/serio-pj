@@ -13,10 +13,10 @@ reg       xipCAM_VSYNC;  // P66 : vport1_6
 reg       xipCAM_HREF;   // P67 : vport1_7
 reg       xipCAM_PCLK;   // P68 : vport1_8
 reg [7:0] xipCAM_D;      // P33,34,35,36,40,41,57,58
-reg       xinSW1;        // P22
-reg       xinSW2;        // P23
-reg       xinSW3;        // P24
-reg       xinSW4;        // P26
+reg       xipSW1;        // P22
+reg       xipSW2;        // P23
+reg       xipSW3;        // P24
+reg       xipSW4;        // P26
 wire      xonLED1;       // P54
 wire      xonLED2;       // P53
 wire      xon7Seg1_A;    // P91
@@ -50,10 +50,10 @@ top top(
 	.xipCAM_D     ( xipCAM_D ),
 	.xopTXD       ( xopTXD ),
 	.xipRXD       ( xipRXD ),
-	.xinSW1       ( xinSW1 ),
-	.xinSW2       ( xinSW2 ),
-	.xinSW3       ( xinSW3 ),
-	.xinSW4       ( xinSW4 ),
+	.xipSW1       ( xipSW1 ),
+	.xipSW2       ( xipSW2 ),
+	.xipSW3       ( xipSW3 ),
+	.xipSW4       ( xipSW4 ),
 	.xonLED1      ( xonLED1 ),
 	.xonLED2      ( xonLED2 ),
 	.xon7Seg1_A   ( xon7Seg1_A ),

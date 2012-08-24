@@ -21,7 +21,7 @@ output pll_lock_n;
 
 wire w_refclk_reset_n;
 wire w_pll_lock;
-assign pll_lock_n = w_pll_lock;
+assign pll_lock_n = ~w_pll_lock;
 wire clkx1;
 
 // remove chattering 

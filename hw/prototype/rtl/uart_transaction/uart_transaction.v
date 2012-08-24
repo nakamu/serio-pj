@@ -94,6 +94,11 @@ wire w_RD_cmd;
 assign w_WR_cmd = (r_MCmd_pre == 3'b001);
 assign w_RD_cmd = (r_MCmd_pre == 3'b010);
 
+assign uart_MAddr = r_MAddr;
+assign uart_MCmd  = r_MCmd;
+assign uart_MData = r_MData;
+assign uart_active_n = ~w_tx_status;
+
 always @ (posedge clk or negedge reset_n)
 	if(~reset_n) begin
 		r_req_state     <= #`D P_STATE_IDLE;

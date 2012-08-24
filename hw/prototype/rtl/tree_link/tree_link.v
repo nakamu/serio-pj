@@ -153,7 +153,7 @@ assign linebuf_MCmd    = (r_active_link == P_LINK_LINEBUF) ? r_MCmd : 3'b000;
 assign linebuf_MAddr   = r_MAddr;
 assign linebuf_MData   = r_MData;
 // debugger request path
-assign linebuf_MCmd    = (r_active_link == P_LINK_DEBUG) ? r_MCmd : 3'b000;
+assign debugger_MCmd   = (r_active_link == P_LINK_DEBUG) ? r_MCmd : 3'b000;
 assign debugger_MAddr  = r_MAddr;
 assign debugger_MData  = r_MData;
 // merged slave response path

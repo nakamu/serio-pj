@@ -77,6 +77,10 @@ top top(
 /***** Main Sequence *****/
 initial begin
 	xipRXD = 1'b0;
+	xipSW1 = 1'b0;
+	xipSW2 = 1'b0;
+	xipSW3 = 1'b0;
+	xipSW4 = 1'b0;
 	#`SIM_TIME $finish;
 end
 

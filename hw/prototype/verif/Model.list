@@ -1,2 +1,3 @@
 behavior/dcm_pll.v
 behavior/clock_buffer.v
+behavior/line_fifo.v

@@ -30,10 +30,15 @@ void burst_write_to_fpga(
 		// unsupported burst command
 		return;
 	}
+
+	if(burst == 0) {
+		// 0 burst is not allowed
+		return;
+	}
 	
 	wait_uartTx(); uart.putc(command); // set command
 	wait_uartTx(); uart.putc(address); // set target address
-	wait_uartTx(); uart.putc(burst);   // set burst count
+	wait_uartTx(); uart.putc(burst-1); // set burst count
 	unsigned char i;
 	for(i = 0; i < burst; i++) {
 		wait_uartTx(); uart.putc(*data++);
@@ -65,9 +70,15 @@ void burst_read_from_fpga(
 		// unsupported burst command
 		return;
 	}
+
+	if(burst == 0) {
+		// 0 burst is not allowed
+		return;
+	}
+	
 	wait_uartTx(); uart.putc(command); // set command
 	wait_uartTx(); uart.putc(address); // set target address
-	wait_uartTx(); uart.putc(burst);   // set burst count
+	wait_uartTx(); uart.putc(burst-1); // set burst count
 	unsigned char i;
 	for(i = 0; i < burst; i++) {
 		wait_uartRx();

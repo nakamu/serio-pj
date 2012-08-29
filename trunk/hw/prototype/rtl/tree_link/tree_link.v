@@ -97,6 +97,7 @@ reg  [7:0] r_SData;
 wire       w_slv_SCmdAccept;
 wire [1:0] w_slv_SResp;
 wire [7:0] w_slv_SData;
+reg        r_cmd_write;
 
 always @ (posedge clk or negedge rst_n)
 	if(~rst_n) begin
@@ -108,6 +109,7 @@ always @ (posedge clk or negedge rst_n)
 		r_SCmdAccept  <= #`D 1'b1;
 		r_SResp       <= #`D 2'b00;
 		r_SData       <= #`D 8'h00;
+		r_cmd_write   <= #`D 1'b0;
 	end else begin
 		case(r_link_state)
 		P_STATE_IDLE : begin
@@ -121,7 +123,8 @@ always @ (posedge clk or negedge rst_n)
 			end else begin
 				r_active_link <= #`D P_LINK_NONE;
 			end
-			r_SResp <= 2'b00;
+			r_SResp		<= #`D 2'b00;
+			r_cmd_write <= #`D w_cmd_write;
 		end
 		P_STATE_CMD_ACCEPT : begin
 			if(w_slv_SCmdAccept) begin
@@ -130,11 +133,12 @@ always @ (posedge clk or negedge rst_n)
 			end
 		end
 		P_STATE_WAIT_RESP : begin
-			if(|w_slv_SResp) begin
+			if((|w_slv_SResp) | r_cmd_write) begin
 				r_link_state  <= #`D P_STATE_IDLE;
 				r_SCmdAccept  <= #`D 1'b1;
 				r_SResp       <= #`D w_slv_SResp;
 				r_SData       <= #`D w_slv_SData;
+				r_cmd_write   <= #`D 1'b0;
 			end
 		end
 		endcase

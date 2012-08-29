@@ -109,6 +109,7 @@ always @ (posedge clk or negedge reset_n)
 		r_MCmd          <= #`D 3'b000;
 		r_MAddr         <= #`D 8'h00;
 		r_MData         <= #`D 8'h00;
+		r_rx_fetch      <= #`D 1'b0;
 	end else begin
 		case(r_req_state)
 		P_STATE_IDLE : begin

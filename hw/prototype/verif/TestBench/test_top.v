@@ -2,7 +2,7 @@
 
 module test_top;
 `define MCLK_HCYCLE 50
-`define SIM_TIME    40000000
+`define SIM_TIME    4000000
 
 reg       xipMCLK;       // P83
 reg       xinRESET;      // P85
@@ -74,16 +74,6 @@ top top(
 	.xon7Seg2_DP  ( xon7Seg2_DP )
 );
 
-/***** Main Sequence *****/
-initial begin
-	xipRXD = 1'b0;
-	xipSW1 = 1'b0;
-	xipSW2 = 1'b0;
-	xipSW3 = 1'b0;
-	xipSW4 = 1'b0;
-	#`SIM_TIME $finish;
-end
-
 /***** Clock & Reset *****/
 always begin
 	xipMCLK = 0; #`MCLK_HCYCLE;
@@ -96,10 +86,43 @@ initial begin
 	xinRESET = 1'b1;
 end
 
+reg rs_clk;
+
+always begin
+	rs_clk = 0; #80;
+	rs_clk = 1; #80;
+end
+
 /***** Dump waveform *****/
 initial begin
 	$dumpfile("test_top.vcd");
-	$dumpvars(0, top);
+	$dumpvars(0, test_top);
+end
+
+/***** Main Sequence *****/
+
+`include "TestBench/uart_task.v"
+
+initial begin
+	#1000;
+	xipRXD = 1'b1;
+	xipSW1 = 1'b0;
+	xipSW2 = 1'b0;
+	xipSW3 = 1'b0;
+	xipSW4 = 1'b0;
+	wait(xinRESET);
+	#10000;
+	read(8'h80);
+	read(8'h81);
+	read(8'h82);
+	read(8'h83);
+	read(8'h84);
+	read(8'h85);
+	read(8'h86);
+	read(8'h87);
+	write(8'h90, 8'h0A);
+	burst_read_incr(8'h90, 8'h3);
+	#`SIM_TIME $finish;
 end
 
 endmodule

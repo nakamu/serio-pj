@@ -81,6 +81,8 @@ output      xon7Seg2_DP;   // P4
 output      xopTXD;        // P60 : vport1_1
 input       xipRXD;        // P61 : vport1_2
 
+assign xopCAM_PWDN = 1'b0;
+
 wire w_mclk;
 wire w_mreset_n;
 wire w_pixelclk;

@@ -1,0 +1,2533 @@
+--------------------------------------------------------------------------------
+Release 14.2 Trace  (nt64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+D:\Xilinx\14.2\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -filter
+D:/work/serio-pj/hw/prototype/ise/serio_proto/iseconfig/filter.filter -intstyle
+ise -v 3 -s 4 -n 3 -fastpaths -xml top.twx top.ncd -o top.twr top.pcf -ucf
+top.ucf
+
+Design file:              top.ncd
+Physical constraint file: top.pcf
+Device,package,speed:     xc3s500e,vq100,-4 (PRODUCTION 1.27 2012-07-09)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+WARNING:Timing:3175 - xipMCLK does not clock data to xonCAM_RESET
+WARNING:Timing:3225 - Timing constraint COMP "xonCAM_RESET" OFFSET = OUT 100 ns 
+   AFTER COMP "xipMCLK"; ignored during timing analysis
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+INFO:Timing:3390 - This architecture does not support a default System Jitter 
+   value, please add SYSTEM_JITTER constraint to the UCF to modify the Clock 
+   Uncertainty calculation.
+INFO:Timing:3389 - This architecture does not support 'Discrete Jitter' and 
+   'Phase Error' calculations, these terms will be zero in the Clock 
+   Uncertainty calculation.  Please make appropriate modification to 
+   SYSTEM_JITTER to account for the unsupported Discrete Jitter and Phase 
+   Error.
+
+================================================================================
+Timing constraint: TS1 = PERIOD TIMEGRP "xipMCLK" 100 ns HIGH 50%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 1 path analyzed, 1 endpoint analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is  20.000ns.
+--------------------------------------------------------------------------------
+
+Paths for end point clock_reset/i_reset_sync/ff2_0 (SLICE_X35Y83.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (setup path):     98.224ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               clock_reset/i_reset_sync/ff1_0 (FF)
+  Destination:          clock_reset/i_reset_sync/ff2_0 (FF)
+  Requirement:          100.000ns
+  Data Path Delay:      1.748ns (Levels of Logic = 0)
+  Clock Path Skew:      -0.028ns (0.115 - 0.143)
+  Source Clock:         clock_reset/w_buffered_ref rising at 0.000ns
+  Destination Clock:    clock_reset/w_buffered_ref rising at 100.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: clock_reset/i_reset_sync/ff1_0 to clock_reset/i_reset_sync/ff2_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X34Y83.YQ      Tcko                  0.652   clock_reset/i_reset_sync/ff1<0>
+                                                       clock_reset/i_reset_sync/ff1_0
+    SLICE_X35Y83.BY      net (fanout=1)        0.735   clock_reset/i_reset_sync/ff1<0>
+    SLICE_X35Y83.CLK     Tdick                 0.361   clock_reset/i_reset_sync/ff2<0>
+                                                       clock_reset/i_reset_sync/ff2_0
+    -------------------------------------------------  ---------------------------
+    Total                                      1.748ns (1.013ns logic, 0.735ns route)
+                                                       (58.0% logic, 42.0% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: TS1 = PERIOD TIMEGRP "xipMCLK" 100 ns HIGH 50%;
+--------------------------------------------------------------------------------
+
+Paths for end point clock_reset/i_reset_sync/ff2_0 (SLICE_X35Y83.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      1.217ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               clock_reset/i_reset_sync/ff1_0 (FF)
+  Destination:          clock_reset/i_reset_sync/ff2_0 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      1.245ns (Levels of Logic = 0)
+  Clock Path Skew:      0.028ns (0.143 - 0.115)
+  Source Clock:         clock_reset/w_buffered_ref rising at 100.000ns
+  Destination Clock:    clock_reset/w_buffered_ref rising at 100.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: clock_reset/i_reset_sync/ff1_0 to clock_reset/i_reset_sync/ff2_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X34Y83.YQ      Tcko                  0.522   clock_reset/i_reset_sync/ff1<0>
+                                                       clock_reset/i_reset_sync/ff1_0
+    SLICE_X35Y83.BY      net (fanout=1)        0.588   clock_reset/i_reset_sync/ff1<0>
+    SLICE_X35Y83.CLK     Tckdi       (-Th)    -0.135   clock_reset/i_reset_sync/ff2<0>
+                                                       clock_reset/i_reset_sync/ff2_0
+    -------------------------------------------------  ---------------------------
+    Total                                      1.245ns (0.657ns logic, 0.588ns route)
+                                                       (52.8% logic, 47.2% route)
+
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: TS1 = PERIOD TIMEGRP "xipMCLK" 100 ns HIGH 50%;
+--------------------------------------------------------------------------------
+Slack: 16.933ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 3.067ns (326.052MHz) (Tdcmpfx)
+  Physical resource: clock_reset/dcm_pll/DCM_SP_INST/CLKFX
+  Logical resource: clock_reset/dcm_pll/DCM_SP_INST/CLKFX
+  Location pin: DCM_X1Y1.CLKFX
+  Clock network: clock_reset/dcm_pll/CLKFX_BUF
+--------------------------------------------------------------------------------
+Slack: 80.000ns (period - (min low pulse limit / (low pulse / period)))
+  Period: 100.000ns
+  Low pulse: 50.000ns
+  Low pulse limit: 10.000ns (Tdcmpw_CLKIN_10_25)
+  Physical resource: clock_reset/dcm_pll/DCM_SP_INST/CLKIN
+  Logical resource: clock_reset/dcm_pll/DCM_SP_INST/CLKIN
+  Location pin: DCM_X1Y1.CLKIN
+  Clock network: clock_reset/w_buffered_ref
+--------------------------------------------------------------------------------
+Slack: 80.000ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 100.000ns
+  High pulse: 50.000ns
+  High pulse limit: 10.000ns (Tdcmpw_CLKIN_10_25)
+  Physical resource: clock_reset/dcm_pll/DCM_SP_INST/CLKIN
+  Logical resource: clock_reset/dcm_pll/DCM_SP_INST/CLKIN
+  Location pin: DCM_X1Y1.CLKIN
+  Clock network: clock_reset/w_buffered_ref
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: TS2 = PERIOD TIMEGRP "xipCAM_PCLK" 30 ns HIGH 50%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 13902 paths analyzed, 590 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is  16.496ns.
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A (RAMB16_X0Y3.ENA), 158 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     13.504ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               line_buffer/sync_line_size/ff2_0 (FF)
+  Destination:          line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A (RAM)
+  Requirement:          30.000ns
+  Data Path Delay:      16.496ns (Levels of Logic = 8)
+  Clock Path Skew:      0.000ns
+  Source Clock:         w_pixelclk rising at 0.000ns
+  Destination Clock:    w_pixelclk rising at 30.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: line_buffer/sync_line_size/ff2_0 to line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X36Y22.YQ      Tcko                  0.652   line_buffer/sync_line_size/ff2<1>
+                                                       line_buffer/sync_line_size/ff2_0
+    SLICE_X37Y15.F2      net (fanout=1)        0.947   line_buffer/sync_line_size/ff2<0>
+    SLICE_X37Y15.COUT    Topcyf                1.162   line_buffer/w_capture_area_addsub0000<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_lut<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<1>
+    SLICE_X37Y16.CIN     net (fanout=1)        0.000   line_buffer/Madd_w_capture_area_addsub0000_cy<1>
+    SLICE_X37Y16.Y       Tciny                 0.869   line_buffer/w_capture_area_addsub0000<2>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<2>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_xor<3>
+    SLICE_X39Y13.G4      net (fanout=1)        0.588   line_buffer/w_capture_area_addsub0000<3>
+    SLICE_X39Y13.COUT    Topcyg                1.001   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<3>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_lut<3>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<3>
+    SLICE_X39Y14.CIN     net (fanout=1)        0.000   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<3>
+    SLICE_X39Y14.COUT    Tbyp                  0.118   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<5>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<4>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<5>
+    SLICE_X39Y15.CIN     net (fanout=1)        0.000   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<5>
+    SLICE_X39Y15.COUT    Tbyp                  0.118   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<6>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+    SLICE_X39Y16.CIN     net (fanout=1)        0.000   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+    SLICE_X39Y16.XB      Tcinxb                0.404   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+    SLICE_X50Y27.G4      net (fanout=7)        1.945   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+    SLICE_X50Y27.Y       Tilo                  0.759   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<1>
+                                                       line_buffer/w_fifo_write_enable1
+    SLICE_X50Y27.F3      net (fanout=2)        0.044   line_buffer/w_fifo_write_enable
+    SLICE_X50Y27.X       Tilo                  0.759   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<1>
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/bindec_a.bindec_inst_a/ENOUT_1_mux00001
+    RAMB16_X0Y3.ENA      net (fanout=8)        6.360   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<1>
+    RAMB16_X0Y3.CLKA     Tbeck                 0.770   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A
+    -------------------------------------------------  ---------------------------
+    Total                                     16.496ns (6.612ns logic, 9.884ns route)
+                                                       (40.1% logic, 59.9% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     13.504ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               line_buffer/sync_line_size/ff2_0 (FF)
+  Destination:          line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A (RAM)
+  Requirement:          30.000ns
+  Data Path Delay:      16.496ns (Levels of Logic = 8)
+  Clock Path Skew:      0.000ns
+  Source Clock:         w_pixelclk rising at 0.000ns
+  Destination Clock:    w_pixelclk rising at 30.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: line_buffer/sync_line_size/ff2_0 to line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X36Y22.YQ      Tcko                  0.652   line_buffer/sync_line_size/ff2<1>
+                                                       line_buffer/sync_line_size/ff2_0
+    SLICE_X37Y15.F2      net (fanout=1)        0.947   line_buffer/sync_line_size/ff2<0>
+    SLICE_X37Y15.COUT    Topcyf                1.162   line_buffer/w_capture_area_addsub0000<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_lut<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<1>
+    SLICE_X37Y16.CIN     net (fanout=1)        0.000   line_buffer/Madd_w_capture_area_addsub0000_cy<1>
+    SLICE_X37Y16.COUT    Tbyp                  0.118   line_buffer/w_capture_area_addsub0000<2>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<2>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<3>
+    SLICE_X37Y17.CIN     net (fanout=1)        0.000   line_buffer/Madd_w_capture_area_addsub0000_cy<3>
+    SLICE_X37Y17.COUT    Tbyp                  0.118   line_buffer/w_capture_area_addsub0000<4>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<4>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<5>
+    SLICE_X37Y18.CIN     net (fanout=1)        0.000   line_buffer/Madd_w_capture_area_addsub0000_cy<5>
+    SLICE_X37Y18.Y       Tciny                 0.869   line_buffer/w_capture_area_addsub0000<6>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<6>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_xor<7>
+    SLICE_X39Y15.G4      net (fanout=1)        0.588   line_buffer/w_capture_area_addsub0000<7>
+    SLICE_X39Y15.COUT    Topcyg                1.001   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_lut<7>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+    SLICE_X39Y16.CIN     net (fanout=1)        0.000   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+    SLICE_X39Y16.XB      Tcinxb                0.404   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+    SLICE_X50Y27.G4      net (fanout=7)        1.945   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+    SLICE_X50Y27.Y       Tilo                  0.759   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<1>
+                                                       line_buffer/w_fifo_write_enable1
+    SLICE_X50Y27.F3      net (fanout=2)        0.044   line_buffer/w_fifo_write_enable
+    SLICE_X50Y27.X       Tilo                  0.759   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<1>
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/bindec_a.bindec_inst_a/ENOUT_1_mux00001
+    RAMB16_X0Y3.ENA      net (fanout=8)        6.360   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<1>
+    RAMB16_X0Y3.CLKA     Tbeck                 0.770   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A
+    -------------------------------------------------  ---------------------------
+    Total                                     16.496ns (6.612ns logic, 9.884ns route)
+                                                       (40.1% logic, 59.9% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     13.532ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               line_buffer/sync_line_size/ff2_0 (FF)
+  Destination:          line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A (RAM)
+  Requirement:          30.000ns
+  Data Path Delay:      16.468ns (Levels of Logic = 8)
+  Clock Path Skew:      0.000ns
+  Source Clock:         w_pixelclk rising at 0.000ns
+  Destination Clock:    w_pixelclk rising at 30.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: line_buffer/sync_line_size/ff2_0 to line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X36Y22.YQ      Tcko                  0.652   line_buffer/sync_line_size/ff2<1>
+                                                       line_buffer/sync_line_size/ff2_0
+    SLICE_X37Y15.F2      net (fanout=1)        0.947   line_buffer/sync_line_size/ff2<0>
+    SLICE_X37Y15.COUT    Topcyf                1.162   line_buffer/w_capture_area_addsub0000<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_lut<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<1>
+    SLICE_X37Y16.CIN     net (fanout=1)        0.000   line_buffer/Madd_w_capture_area_addsub0000_cy<1>
+    SLICE_X37Y16.COUT    Tbyp                  0.118   line_buffer/w_capture_area_addsub0000<2>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<2>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<3>
+    SLICE_X37Y17.CIN     net (fanout=1)        0.000   line_buffer/Madd_w_capture_area_addsub0000_cy<3>
+    SLICE_X37Y17.Y       Tciny                 0.869   line_buffer/w_capture_area_addsub0000<4>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<4>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_xor<5>
+    SLICE_X39Y14.G4      net (fanout=1)        0.560   line_buffer/w_capture_area_addsub0000<5>
+    SLICE_X39Y14.COUT    Topcyg                1.001   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<5>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_lut<5>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<5>
+    SLICE_X39Y15.CIN     net (fanout=1)        0.000   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<5>
+    SLICE_X39Y15.COUT    Tbyp                  0.118   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<6>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+    SLICE_X39Y16.CIN     net (fanout=1)        0.000   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+    SLICE_X39Y16.XB      Tcinxb                0.404   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+    SLICE_X50Y27.G4      net (fanout=7)        1.945   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+    SLICE_X50Y27.Y       Tilo                  0.759   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<1>
+                                                       line_buffer/w_fifo_write_enable1
+    SLICE_X50Y27.F3      net (fanout=2)        0.044   line_buffer/w_fifo_write_enable
+    SLICE_X50Y27.X       Tilo                  0.759   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<1>
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/bindec_a.bindec_inst_a/ENOUT_1_mux00001
+    RAMB16_X0Y3.ENA      net (fanout=8)        6.360   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<1>
+    RAMB16_X0Y3.CLKA     Tbeck                 0.770   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A
+    -------------------------------------------------  ---------------------------
+    Total                                     16.468ns (6.612ns logic, 9.856ns route)
+                                                       (40.2% logic, 59.8% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A (RAMB16_X0Y4.ENA), 158 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     14.163ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               line_buffer/sync_line_size/ff2_0 (FF)
+  Destination:          line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A (RAM)
+  Requirement:          30.000ns
+  Data Path Delay:      15.837ns (Levels of Logic = 8)
+  Clock Path Skew:      0.000ns
+  Source Clock:         w_pixelclk rising at 0.000ns
+  Destination Clock:    w_pixelclk rising at 30.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: line_buffer/sync_line_size/ff2_0 to line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X36Y22.YQ      Tcko                  0.652   line_buffer/sync_line_size/ff2<1>
+                                                       line_buffer/sync_line_size/ff2_0
+    SLICE_X37Y15.F2      net (fanout=1)        0.947   line_buffer/sync_line_size/ff2<0>
+    SLICE_X37Y15.COUT    Topcyf                1.162   line_buffer/w_capture_area_addsub0000<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_lut<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<1>
+    SLICE_X37Y16.CIN     net (fanout=1)        0.000   line_buffer/Madd_w_capture_area_addsub0000_cy<1>
+    SLICE_X37Y16.Y       Tciny                 0.869   line_buffer/w_capture_area_addsub0000<2>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<2>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_xor<3>
+    SLICE_X39Y13.G4      net (fanout=1)        0.588   line_buffer/w_capture_area_addsub0000<3>
+    SLICE_X39Y13.COUT    Topcyg                1.001   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<3>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_lut<3>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<3>
+    SLICE_X39Y14.CIN     net (fanout=1)        0.000   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<3>
+    SLICE_X39Y14.COUT    Tbyp                  0.118   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<5>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<4>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<5>
+    SLICE_X39Y15.CIN     net (fanout=1)        0.000   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<5>
+    SLICE_X39Y15.COUT    Tbyp                  0.118   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<6>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+    SLICE_X39Y16.CIN     net (fanout=1)        0.000   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+    SLICE_X39Y16.XB      Tcinxb                0.404   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+    SLICE_X50Y27.G4      net (fanout=7)        1.945   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+    SLICE_X50Y27.Y       Tilo                  0.759   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<1>
+                                                       line_buffer/w_fifo_write_enable1
+    SLICE_X53Y26.G2      net (fanout=2)        0.420   line_buffer/w_fifo_write_enable
+    SLICE_X53Y26.Y       Tilo                  0.704   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<0>
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/bindec_a.bindec_inst_a/ENOUT_0_mux00001
+    RAMB16_X0Y4.ENA      net (fanout=8)        5.380   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<0>
+    RAMB16_X0Y4.CLKA     Tbeck                 0.770   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A
+    -------------------------------------------------  ---------------------------
+    Total                                     15.837ns (6.557ns logic, 9.280ns route)
+                                                       (41.4% logic, 58.6% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     14.163ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               line_buffer/sync_line_size/ff2_0 (FF)
+  Destination:          line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A (RAM)
+  Requirement:          30.000ns
+  Data Path Delay:      15.837ns (Levels of Logic = 8)
+  Clock Path Skew:      0.000ns
+  Source Clock:         w_pixelclk rising at 0.000ns
+  Destination Clock:    w_pixelclk rising at 30.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: line_buffer/sync_line_size/ff2_0 to line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X36Y22.YQ      Tcko                  0.652   line_buffer/sync_line_size/ff2<1>
+                                                       line_buffer/sync_line_size/ff2_0
+    SLICE_X37Y15.F2      net (fanout=1)        0.947   line_buffer/sync_line_size/ff2<0>
+    SLICE_X37Y15.COUT    Topcyf                1.162   line_buffer/w_capture_area_addsub0000<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_lut<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<1>
+    SLICE_X37Y16.CIN     net (fanout=1)        0.000   line_buffer/Madd_w_capture_area_addsub0000_cy<1>
+    SLICE_X37Y16.COUT    Tbyp                  0.118   line_buffer/w_capture_area_addsub0000<2>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<2>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<3>
+    SLICE_X37Y17.CIN     net (fanout=1)        0.000   line_buffer/Madd_w_capture_area_addsub0000_cy<3>
+    SLICE_X37Y17.COUT    Tbyp                  0.118   line_buffer/w_capture_area_addsub0000<4>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<4>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<5>
+    SLICE_X37Y18.CIN     net (fanout=1)        0.000   line_buffer/Madd_w_capture_area_addsub0000_cy<5>
+    SLICE_X37Y18.Y       Tciny                 0.869   line_buffer/w_capture_area_addsub0000<6>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<6>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_xor<7>
+    SLICE_X39Y15.G4      net (fanout=1)        0.588   line_buffer/w_capture_area_addsub0000<7>
+    SLICE_X39Y15.COUT    Topcyg                1.001   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_lut<7>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+    SLICE_X39Y16.CIN     net (fanout=1)        0.000   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+    SLICE_X39Y16.XB      Tcinxb                0.404   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+    SLICE_X50Y27.G4      net (fanout=7)        1.945   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+    SLICE_X50Y27.Y       Tilo                  0.759   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<1>
+                                                       line_buffer/w_fifo_write_enable1
+    SLICE_X53Y26.G2      net (fanout=2)        0.420   line_buffer/w_fifo_write_enable
+    SLICE_X53Y26.Y       Tilo                  0.704   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<0>
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/bindec_a.bindec_inst_a/ENOUT_0_mux00001
+    RAMB16_X0Y4.ENA      net (fanout=8)        5.380   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<0>
+    RAMB16_X0Y4.CLKA     Tbeck                 0.770   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A
+    -------------------------------------------------  ---------------------------
+    Total                                     15.837ns (6.557ns logic, 9.280ns route)
+                                                       (41.4% logic, 58.6% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     14.191ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               line_buffer/sync_line_size/ff2_0 (FF)
+  Destination:          line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A (RAM)
+  Requirement:          30.000ns
+  Data Path Delay:      15.809ns (Levels of Logic = 8)
+  Clock Path Skew:      0.000ns
+  Source Clock:         w_pixelclk rising at 0.000ns
+  Destination Clock:    w_pixelclk rising at 30.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: line_buffer/sync_line_size/ff2_0 to line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X36Y22.YQ      Tcko                  0.652   line_buffer/sync_line_size/ff2<1>
+                                                       line_buffer/sync_line_size/ff2_0
+    SLICE_X37Y15.F2      net (fanout=1)        0.947   line_buffer/sync_line_size/ff2<0>
+    SLICE_X37Y15.COUT    Topcyf                1.162   line_buffer/w_capture_area_addsub0000<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_lut<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<1>
+    SLICE_X37Y16.CIN     net (fanout=1)        0.000   line_buffer/Madd_w_capture_area_addsub0000_cy<1>
+    SLICE_X37Y16.COUT    Tbyp                  0.118   line_buffer/w_capture_area_addsub0000<2>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<2>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<3>
+    SLICE_X37Y17.CIN     net (fanout=1)        0.000   line_buffer/Madd_w_capture_area_addsub0000_cy<3>
+    SLICE_X37Y17.Y       Tciny                 0.869   line_buffer/w_capture_area_addsub0000<4>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<4>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_xor<5>
+    SLICE_X39Y14.G4      net (fanout=1)        0.560   line_buffer/w_capture_area_addsub0000<5>
+    SLICE_X39Y14.COUT    Topcyg                1.001   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<5>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_lut<5>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<5>
+    SLICE_X39Y15.CIN     net (fanout=1)        0.000   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<5>
+    SLICE_X39Y15.COUT    Tbyp                  0.118   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<6>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+    SLICE_X39Y16.CIN     net (fanout=1)        0.000   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+    SLICE_X39Y16.XB      Tcinxb                0.404   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+    SLICE_X50Y27.G4      net (fanout=7)        1.945   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+    SLICE_X50Y27.Y       Tilo                  0.759   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<1>
+                                                       line_buffer/w_fifo_write_enable1
+    SLICE_X53Y26.G2      net (fanout=2)        0.420   line_buffer/w_fifo_write_enable
+    SLICE_X53Y26.Y       Tilo                  0.704   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<0>
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/bindec_a.bindec_inst_a/ENOUT_0_mux00001
+    RAMB16_X0Y4.ENA      net (fanout=8)        5.380   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<0>
+    RAMB16_X0Y4.CLKA     Tbeck                 0.770   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A
+    -------------------------------------------------  ---------------------------
+    Total                                     15.809ns (6.557ns logic, 9.252ns route)
+                                                       (41.5% logic, 58.5% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A (RAMB16_X0Y3.WEA), 157 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     14.441ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               line_buffer/sync_line_size/ff2_0 (FF)
+  Destination:          line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A (RAM)
+  Requirement:          30.000ns
+  Data Path Delay:      15.559ns (Levels of Logic = 7)
+  Clock Path Skew:      0.000ns
+  Source Clock:         w_pixelclk rising at 0.000ns
+  Destination Clock:    w_pixelclk rising at 30.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: line_buffer/sync_line_size/ff2_0 to line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X36Y22.YQ      Tcko                  0.652   line_buffer/sync_line_size/ff2<1>
+                                                       line_buffer/sync_line_size/ff2_0
+    SLICE_X37Y15.F2      net (fanout=1)        0.947   line_buffer/sync_line_size/ff2<0>
+    SLICE_X37Y15.COUT    Topcyf                1.162   line_buffer/w_capture_area_addsub0000<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_lut<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<1>
+    SLICE_X37Y16.CIN     net (fanout=1)        0.000   line_buffer/Madd_w_capture_area_addsub0000_cy<1>
+    SLICE_X37Y16.Y       Tciny                 0.869   line_buffer/w_capture_area_addsub0000<2>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<2>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_xor<3>
+    SLICE_X39Y13.G4      net (fanout=1)        0.588   line_buffer/w_capture_area_addsub0000<3>
+    SLICE_X39Y13.COUT    Topcyg                1.001   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<3>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_lut<3>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<3>
+    SLICE_X39Y14.CIN     net (fanout=1)        0.000   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<3>
+    SLICE_X39Y14.COUT    Tbyp                  0.118   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<5>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<4>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<5>
+    SLICE_X39Y15.CIN     net (fanout=1)        0.000   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<5>
+    SLICE_X39Y15.COUT    Tbyp                  0.118   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<6>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+    SLICE_X39Y16.CIN     net (fanout=1)        0.000   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+    SLICE_X39Y16.XB      Tcinxb                0.404   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+    SLICE_X48Y27.F3      net (fanout=7)        2.065   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+    SLICE_X48Y27.X       Tilo                  0.759   line_buffer/w_overflow
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/ram_wr_en_i1
+    RAMB16_X0Y3.WEA      net (fanout=40)       5.623   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/ram_wr_en
+    RAMB16_X0Y3.CLKA     Tbwck                 1.253   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A
+    -------------------------------------------------  ---------------------------
+    Total                                     15.559ns (6.336ns logic, 9.223ns route)
+                                                       (40.7% logic, 59.3% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     14.441ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               line_buffer/sync_line_size/ff2_0 (FF)
+  Destination:          line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A (RAM)
+  Requirement:          30.000ns
+  Data Path Delay:      15.559ns (Levels of Logic = 7)
+  Clock Path Skew:      0.000ns
+  Source Clock:         w_pixelclk rising at 0.000ns
+  Destination Clock:    w_pixelclk rising at 30.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: line_buffer/sync_line_size/ff2_0 to line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X36Y22.YQ      Tcko                  0.652   line_buffer/sync_line_size/ff2<1>
+                                                       line_buffer/sync_line_size/ff2_0
+    SLICE_X37Y15.F2      net (fanout=1)        0.947   line_buffer/sync_line_size/ff2<0>
+    SLICE_X37Y15.COUT    Topcyf                1.162   line_buffer/w_capture_area_addsub0000<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_lut<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<1>
+    SLICE_X37Y16.CIN     net (fanout=1)        0.000   line_buffer/Madd_w_capture_area_addsub0000_cy<1>
+    SLICE_X37Y16.COUT    Tbyp                  0.118   line_buffer/w_capture_area_addsub0000<2>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<2>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<3>
+    SLICE_X37Y17.CIN     net (fanout=1)        0.000   line_buffer/Madd_w_capture_area_addsub0000_cy<3>
+    SLICE_X37Y17.COUT    Tbyp                  0.118   line_buffer/w_capture_area_addsub0000<4>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<4>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<5>
+    SLICE_X37Y18.CIN     net (fanout=1)        0.000   line_buffer/Madd_w_capture_area_addsub0000_cy<5>
+    SLICE_X37Y18.Y       Tciny                 0.869   line_buffer/w_capture_area_addsub0000<6>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<6>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_xor<7>
+    SLICE_X39Y15.G4      net (fanout=1)        0.588   line_buffer/w_capture_area_addsub0000<7>
+    SLICE_X39Y15.COUT    Topcyg                1.001   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_lut<7>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+    SLICE_X39Y16.CIN     net (fanout=1)        0.000   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+    SLICE_X39Y16.XB      Tcinxb                0.404   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+    SLICE_X48Y27.F3      net (fanout=7)        2.065   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+    SLICE_X48Y27.X       Tilo                  0.759   line_buffer/w_overflow
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/ram_wr_en_i1
+    RAMB16_X0Y3.WEA      net (fanout=40)       5.623   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/ram_wr_en
+    RAMB16_X0Y3.CLKA     Tbwck                 1.253   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A
+    -------------------------------------------------  ---------------------------
+    Total                                     15.559ns (6.336ns logic, 9.223ns route)
+                                                       (40.7% logic, 59.3% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     14.469ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               line_buffer/sync_line_size/ff2_0 (FF)
+  Destination:          line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A (RAM)
+  Requirement:          30.000ns
+  Data Path Delay:      15.531ns (Levels of Logic = 7)
+  Clock Path Skew:      0.000ns
+  Source Clock:         w_pixelclk rising at 0.000ns
+  Destination Clock:    w_pixelclk rising at 30.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: line_buffer/sync_line_size/ff2_0 to line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X36Y22.YQ      Tcko                  0.652   line_buffer/sync_line_size/ff2<1>
+                                                       line_buffer/sync_line_size/ff2_0
+    SLICE_X37Y15.F2      net (fanout=1)        0.947   line_buffer/sync_line_size/ff2<0>
+    SLICE_X37Y15.COUT    Topcyf                1.162   line_buffer/w_capture_area_addsub0000<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_lut<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<0>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<1>
+    SLICE_X37Y16.CIN     net (fanout=1)        0.000   line_buffer/Madd_w_capture_area_addsub0000_cy<1>
+    SLICE_X37Y16.COUT    Tbyp                  0.118   line_buffer/w_capture_area_addsub0000<2>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<2>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<3>
+    SLICE_X37Y17.CIN     net (fanout=1)        0.000   line_buffer/Madd_w_capture_area_addsub0000_cy<3>
+    SLICE_X37Y17.Y       Tciny                 0.869   line_buffer/w_capture_area_addsub0000<4>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_cy<4>
+                                                       line_buffer/Madd_w_capture_area_addsub0000_xor<5>
+    SLICE_X39Y14.G4      net (fanout=1)        0.560   line_buffer/w_capture_area_addsub0000<5>
+    SLICE_X39Y14.COUT    Topcyg                1.001   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<5>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_lut<5>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<5>
+    SLICE_X39Y15.CIN     net (fanout=1)        0.000   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<5>
+    SLICE_X39Y15.COUT    Tbyp                  0.118   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<6>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+    SLICE_X39Y16.CIN     net (fanout=1)        0.000   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<7>
+    SLICE_X39Y16.XB      Tcinxb                0.404   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+                                                       line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+    SLICE_X48Y27.F3      net (fanout=7)        2.065   line_buffer/Mcompar_w_capture_area_cmp_lt0000_cy<8>
+    SLICE_X48Y27.X       Tilo                  0.759   line_buffer/w_overflow
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/ram_wr_en_i1
+    RAMB16_X0Y3.WEA      net (fanout=40)       5.623   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/ram_wr_en
+    RAMB16_X0Y3.CLKA     Tbwck                 1.253   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A
+    -------------------------------------------------  ---------------------------
+    Total                                     15.531ns (6.336ns logic, 9.195ns route)
+                                                       (40.8% logic, 59.2% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: TS2 = PERIOD TIMEGRP "xipCAM_PCLK" 30 ns HIGH 50%;
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A (RAMB16_X1Y2.ADDRA6), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.892ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/count_d2_6 (FF)
+  Destination:          line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A (RAM)
+  Requirement:          0.000ns
+  Data Path Delay:      0.903ns (Levels of Logic = 0)
+  Clock Path Skew:      0.011ns (0.034 - 0.023)
+  Source Clock:         w_pixelclk rising at 30.000ns
+  Destination Clock:    w_pixelclk rising at 30.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/count_d2_6 to line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X55Y27.YQ      Tcko                  0.470   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/count_d2<7>
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/count_d2_6
+    RAMB16_X1Y2.ADDRA6   net (fanout=18)       0.564   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/count_d2<6>
+    RAMB16_X1Y2.CLKA     Tbcka       (-Th)     0.131   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s3_noinit.ram/dpram.dp1x1.ram
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s3_noinit.ram/dpram.dp1x1.ram.A
+    -------------------------------------------------  ---------------------------
+    Total                                      0.903ns (0.339ns logic, 0.564ns route)
+                                                       (37.5% logic, 62.5% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[2].wr_stg_inst/Q_7 (SLICE_X65Y2.BX), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.930ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[1].wr_stg_inst/Q_7 (FF)
+  Destination:          line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[2].wr_stg_inst/Q_7 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.930ns (Levels of Logic = 0)
+  Clock Path Skew:      0.000ns
+  Source Clock:         w_pixelclk rising at 30.000ns
+  Destination Clock:    w_pixelclk rising at 30.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[1].wr_stg_inst/Q_7 to line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[2].wr_stg_inst/Q_7
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X65Y3.XQ       Tcko                  0.473   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_q<1><7>
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[1].wr_stg_inst/Q_7
+    SLICE_X65Y2.BX       net (fanout=1)        0.364   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_q<1><7>
+    SLICE_X65Y2.CLK      Tckdi       (-Th)    -0.093   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_q<2><7>
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[2].wr_stg_inst/Q_7
+    -------------------------------------------------  ---------------------------
+    Total                                      0.930ns (0.566ns logic, 0.364ns route)
+                                                       (60.9% logic, 39.1% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/r_DATA_3 (SLICE_X65Y34.BX), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.931ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               line_buffer/r_DATA_pre_3 (FF)
+  Destination:          line_buffer/r_DATA_3 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.931ns (Levels of Logic = 0)
+  Clock Path Skew:      0.000ns
+  Source Clock:         w_pixelclk rising at 30.000ns
+  Destination Clock:    w_pixelclk rising at 30.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: line_buffer/r_DATA_pre_3 to line_buffer/r_DATA_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X64Y34.XQ      Tcko                  0.474   line_buffer/r_DATA_pre<3>
+                                                       line_buffer/r_DATA_pre_3
+    SLICE_X65Y34.BX      net (fanout=1)        0.364   line_buffer/r_DATA_pre<3>
+    SLICE_X65Y34.CLK     Tckdi       (-Th)    -0.093   line_buffer/r_DATA<3>
+                                                       line_buffer/r_DATA_3
+    -------------------------------------------------  ---------------------------
+    Total                                      0.931ns (0.567ns logic, 0.364ns route)
+                                                       (60.9% logic, 39.1% route)
+
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: TS2 = PERIOD TIMEGRP "xipCAM_PCLK" 30 ns HIGH 50%;
+--------------------------------------------------------------------------------
+Slack: 26.808ns (period - (min low pulse limit / (low pulse / period)))
+  Period: 30.000ns
+  Low pulse: 15.000ns
+  Low pulse limit: 1.596ns (Trpw)
+  Physical resource: line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/count<0>/SR
+  Logical resource: line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/count_0/SR
+  Location pin: SLICE_X55Y15.SR
+  Clock network: line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg<1>
+--------------------------------------------------------------------------------
+Slack: 26.808ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 30.000ns
+  High pulse: 15.000ns
+  High pulse limit: 1.596ns (Trpw)
+  Physical resource: line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/count<0>/SR
+  Logical resource: line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/count_0/SR
+  Location pin: SLICE_X55Y15.SR
+  Clock network: line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg<1>
+--------------------------------------------------------------------------------
+Slack: 26.808ns (period - (min low pulse limit / (low pulse / period)))
+  Period: 30.000ns
+  Low pulse: 15.000ns
+  Low pulse limit: 1.596ns (Trpw)
+  Physical resource: line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/count<0>/SR
+  Logical resource: line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/count_1/SR
+  Location pin: SLICE_X55Y15.SR
+  Clock network: line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg<1>
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: TS_uart_transaction_uart_io_i_RxClk_cgate01a_latched = 
+PERIOD TIMEGRP         "uart_transaction/uart_io/i_RxClk/cgate01a/latched" 20 
+ns HIGH 50%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 0 paths analyzed, 0 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 component switching limit errors)
+ Minimum period is   3.192ns.
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: TS_uart_transaction_uart_io_i_RxClk_cgate01a_latched = PERIOD TIMEGRP
+        "uart_transaction/uart_io/i_RxClk/cgate01a/latched" 20 ns HIGH 50%;
+--------------------------------------------------------------------------------
+Slack: 16.808ns (period - (min low pulse limit / (low pulse / period)))
+  Period: 20.000ns
+  Low pulse: 10.000ns
+  Low pulse limit: 1.596ns (Trpw)
+  Physical resource: uart_transaction/uart_io/rxrx_01a/r_rxCount<1>/SR
+  Logical resource: uart_transaction/uart_io/rxrx_01a/r_rxCount_1/SR
+  Location pin: SLICE_X13Y16.SR
+  Clock network: clock_reset/i_reset_m/reset2_reg
+--------------------------------------------------------------------------------
+Slack: 16.808ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 10.000ns
+  High pulse limit: 1.596ns (Trpw)
+  Physical resource: uart_transaction/uart_io/rxrx_01a/r_rxCount<1>/SR
+  Logical resource: uart_transaction/uart_io/rxrx_01a/r_rxCount_1/SR
+  Location pin: SLICE_X13Y16.SR
+  Clock network: clock_reset/i_reset_m/reset2_reg
+--------------------------------------------------------------------------------
+Slack: 16.808ns (period - (min low pulse limit / (low pulse / period)))
+  Period: 20.000ns
+  Low pulse: 10.000ns
+  Low pulse limit: 1.596ns (Trpw)
+  Physical resource: uart_transaction/uart_io/rxrx_01a/r_rxCount<1>/SR
+  Logical resource: uart_transaction/uart_io/rxrx_01a/r_rxCount_0/SR
+  Location pin: SLICE_X13Y16.SR
+  Clock network: clock_reset/i_reset_m/reset2_reg
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: TS_uart_transaction_uart_io_i_TxClk_cgate01a_latched = 
+PERIOD TIMEGRP         "uart_transaction/uart_io/i_TxClk/cgate01a/latched" 20 
+ns HIGH 50%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 0 paths analyzed, 0 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 component switching limit errors)
+ Minimum period is   3.192ns.
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: TS_uart_transaction_uart_io_i_TxClk_cgate01a_latched = PERIOD TIMEGRP
+        "uart_transaction/uart_io/i_TxClk/cgate01a/latched" 20 ns HIGH 50%;
+--------------------------------------------------------------------------------
+Slack: 16.808ns (period - (min low pulse limit / (low pulse / period)))
+  Period: 20.000ns
+  Low pulse: 10.000ns
+  Low pulse limit: 1.596ns (Trpw)
+  Physical resource: uart_transaction/uart_io/rxtx_01a/r_shiftReg<1>/SR
+  Logical resource: uart_transaction/uart_io/rxtx_01a/r_shiftReg_1/SR
+  Location pin: SLICE_X31Y43.SR
+  Clock network: clock_reset/i_reset_m/reset2_reg
+--------------------------------------------------------------------------------
+Slack: 16.808ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 10.000ns
+  High pulse limit: 1.596ns (Trpw)
+  Physical resource: uart_transaction/uart_io/rxtx_01a/r_shiftReg<1>/SR
+  Logical resource: uart_transaction/uart_io/rxtx_01a/r_shiftReg_1/SR
+  Location pin: SLICE_X31Y43.SR
+  Clock network: clock_reset/i_reset_m/reset2_reg
+--------------------------------------------------------------------------------
+Slack: 16.808ns (period - (min low pulse limit / (low pulse / period)))
+  Period: 20.000ns
+  Low pulse: 10.000ns
+  Low pulse limit: 1.596ns (Trpw)
+  Physical resource: uart_transaction/uart_io/rxtx_01a/r_shiftReg<1>/SR
+  Logical resource: uart_transaction/uart_io/rxtx_01a/r_shiftReg_0/SR
+  Location pin: SLICE_X31Y43.SR
+  Clock network: clock_reset/i_reset_m/reset2_reg
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: TS_clock_reset_cam_clk = PERIOD TIMEGRP 
+"clock_reset/cam_clk" 20 ns HIGH 50%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 1 path analyzed, 1 endpoint analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is   3.192ns.
+--------------------------------------------------------------------------------
+
+Paths for end point clock_reset/i_reset_cam/reset2_reg (SLICE_X53Y37.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (setup path):     18.512ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               clock_reset/i_reset_cam/reset1_reg (FF)
+  Destination:          clock_reset/i_reset_cam/reset2_reg (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      1.487ns (Levels of Logic = 0)
+  Clock Path Skew:      -0.001ns (0.006 - 0.007)
+  Source Clock:         clock_reset/cam_clk rising at 0.000ns
+  Destination Clock:    clock_reset/cam_clk rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: clock_reset/i_reset_cam/reset1_reg to clock_reset/i_reset_cam/reset2_reg
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X52Y37.YQ      Tcko                  0.652   clock_reset/i_reset_cam/reset1_reg
+                                                       clock_reset/i_reset_cam/reset1_reg
+    SLICE_X53Y37.BY      net (fanout=1)        0.474   clock_reset/i_reset_cam/reset1_reg
+    SLICE_X53Y37.CLK     Tdick                 0.361   clock_reset/i_reset_cam/reset2_reg
+                                                       clock_reset/i_reset_cam/reset2_reg
+    -------------------------------------------------  ---------------------------
+    Total                                      1.487ns (1.013ns logic, 0.474ns route)
+                                                       (68.1% logic, 31.9% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: TS_clock_reset_cam_clk = PERIOD TIMEGRP "clock_reset/cam_clk" 20 ns HIGH 50%;
+--------------------------------------------------------------------------------
+
+Paths for end point clock_reset/i_reset_cam/reset2_reg (SLICE_X53Y37.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      1.035ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               clock_reset/i_reset_cam/reset1_reg (FF)
+  Destination:          clock_reset/i_reset_cam/reset2_reg (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      1.036ns (Levels of Logic = 0)
+  Clock Path Skew:      0.001ns (0.007 - 0.006)
+  Source Clock:         clock_reset/cam_clk rising at 20.000ns
+  Destination Clock:    clock_reset/cam_clk rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: clock_reset/i_reset_cam/reset1_reg to clock_reset/i_reset_cam/reset2_reg
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X52Y37.YQ      Tcko                  0.522   clock_reset/i_reset_cam/reset1_reg
+                                                       clock_reset/i_reset_cam/reset1_reg
+    SLICE_X53Y37.BY      net (fanout=1)        0.379   clock_reset/i_reset_cam/reset1_reg
+    SLICE_X53Y37.CLK     Tckdi       (-Th)    -0.135   clock_reset/i_reset_cam/reset2_reg
+                                                       clock_reset/i_reset_cam/reset2_reg
+    -------------------------------------------------  ---------------------------
+    Total                                      1.036ns (0.657ns logic, 0.379ns route)
+                                                       (63.4% logic, 36.6% route)
+
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: TS_clock_reset_cam_clk = PERIOD TIMEGRP "clock_reset/cam_clk" 20 ns HIGH 50%;
+--------------------------------------------------------------------------------
+Slack: 16.808ns (period - (min low pulse limit / (low pulse / period)))
+  Period: 20.000ns
+  Low pulse: 10.000ns
+  Low pulse limit: 1.596ns (Trpw)
+  Physical resource: clock_reset/cam_clk/SR
+  Logical resource: clock_reset/cam_clk/SR
+  Location pin: SLICE_X46Y23.SR
+  Clock network: clock_reset/i_reset_m/reset2_reg
+--------------------------------------------------------------------------------
+Slack: 16.808ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 10.000ns
+  High pulse limit: 1.596ns (Trpw)
+  Physical resource: clock_reset/cam_clk/SR
+  Logical resource: clock_reset/cam_clk/SR
+  Location pin: SLICE_X46Y23.SR
+  Clock network: clock_reset/i_reset_m/reset2_reg
+--------------------------------------------------------------------------------
+Slack: 16.808ns (period - (min low pulse limit / (low pulse / period)))
+  Period: 20.000ns
+  Low pulse: 10.000ns
+  Low pulse limit: 1.596ns (Trpw)
+  Physical resource: clock_reset/i_reset_cam/reset1_reg/SR
+  Logical resource: clock_reset/i_reset_cam/reset1_reg/SR
+  Location pin: SLICE_X52Y37.SR
+  Clock network: clock_reset/i_reset_cam/reset_in_inv
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: TS_clock_reset_dcm_pll_CLKFX_BUF = PERIOD TIMEGRP         
+"clock_reset_dcm_pll_CLKFX_BUF" TS1 / 5 HIGH 50%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 5850 paths analyzed, 1373 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is  15.230ns.
+--------------------------------------------------------------------------------
+
+Paths for end point uart_transaction/uart_io/rxrx_01a/r_shiftInData_7 (SLICE_X12Y17.BX), 1 path
+--------------------------------------------------------------------------------
+Slack (setup path):     4.770ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               uart_transaction/uart_io/rxrx_01a/r_rxdSync1 (FF)
+  Destination:          uart_transaction/uart_io/rxrx_01a/r_shiftInData_7 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      15.230ns (Levels of Logic = 0)
+  Clock Path Skew:      0.000ns
+  Source Clock:         w_mclk rising at 0.000ns
+  Destination Clock:    uart_transaction/uart_io/w_RxClk rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: uart_transaction/uart_io/rxrx_01a/r_rxdSync1 to uart_transaction/uart_io/rxrx_01a/r_shiftInData_7
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X22Y7.XQ       Tcko                  0.592   uart_transaction/uart_io/rxrx_01a/r_rxdSync1
+                                                       uart_transaction/uart_io/rxrx_01a/r_rxdSync1
+    SLICE_X12Y17.BX      net (fanout=2)       14.278   uart_transaction/uart_io/rxrx_01a/r_rxdSync1
+    SLICE_X12Y17.CLK     Tdick                 0.360   uart_transaction/uart_io/rxrx_01a/r_shiftInData<7>
+                                                       uart_transaction/uart_io/rxrx_01a/r_shiftInData_7
+    -------------------------------------------------  ---------------------------
+    Total                                     15.230ns (0.952ns logic, 14.278ns route)
+                                                       (6.3% logic, 93.7% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point uart_transaction/uart_io/rxtx_01a/r_shiftReg_7 (SLICE_X30Y44.F3), 1 path
+--------------------------------------------------------------------------------
+Slack (setup path):     6.242ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               uart_transaction/r_tx_data_6 (FF)
+  Destination:          uart_transaction/uart_io/rxtx_01a/r_shiftReg_7 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      13.758ns (Levels of Logic = 1)
+  Clock Path Skew:      0.000ns
+  Source Clock:         w_mclk rising at 0.000ns
+  Destination Clock:    uart_transaction/uart_io/w_TxClk rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: uart_transaction/r_tx_data_6 to uart_transaction/uart_io/rxtx_01a/r_shiftReg_7
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X30Y42.YQ      Tcko                  0.652   uart_transaction/r_tx_data<7>
+                                                       uart_transaction/r_tx_data_6
+    SLICE_X30Y44.F3      net (fanout=1)       12.214   uart_transaction/r_tx_data<6>
+    SLICE_X30Y44.CLK     Tfck                  0.892   uart_transaction/uart_io/rxtx_01a/r_shiftReg<7>
+                                                       uart_transaction/uart_io/rxtx_01a/w_shiftReg<7>1
+                                                       uart_transaction/uart_io/rxtx_01a/r_shiftReg_7
+    -------------------------------------------------  ---------------------------
+    Total                                     13.758ns (1.544ns logic, 12.214ns route)
+                                                       (11.2% logic, 88.8% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram.B (RAMB16_X0Y4.ENB), 17 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     7.239ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               tree_link/r_MCmd_1 (FF)
+  Destination:          line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram.B (RAM)
+  Requirement:          20.000ns
+  Data Path Delay:      12.761ns (Levels of Logic = 4)
+  Clock Path Skew:      0.000ns
+  Source Clock:         w_mclk rising at 0.000ns
+  Destination Clock:    w_mclk rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: tree_link/r_MCmd_1 to line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram.B
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X27Y51.XQ      Tcko                  0.591   tree_link/r_MCmd<1>
+                                                       tree_link/r_MCmd_1
+    SLICE_X26Y50.G1      net (fanout=7)        0.836   tree_link/r_MCmd<1>
+    SLICE_X26Y50.Y       Tilo                  0.759   line_buffer/r_read_enable
+                                                       line_buffer/w_fifo_read_enable11
+    SLICE_X34Y45.F1      net (fanout=8)        1.578   line_buffer/w_read_enable
+    SLICE_X34Y45.X       Tilo                  0.759   line_buffer/w_fifo_read_enable
+                                                       line_buffer/w_fifo_read_enable1
+    SLICE_X48Y48.G1      net (fanout=7)        1.427   line_buffer/w_fifo_read_enable
+    SLICE_X48Y48.Y       Tilo                  0.759   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/enb_array<1>
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.rfwft/RAM_RD_EN_FWFT1_1
+    SLICE_X48Y49.G4      net (fanout=18)       0.141   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.rfwft/RAM_RD_EN_FWFT1
+    SLICE_X48Y49.Y       Tilo                  0.759   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/enb_array<0>
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/bindec_b.bindec_inst_b/ENOUT_0_mux00001
+    RAMB16_X0Y4.ENB      net (fanout=8)        4.382   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/enb_array<0>
+    RAMB16_X0Y4.CLKB     Tbeck                 0.770   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram.B
+    -------------------------------------------------  ---------------------------
+    Total                                     12.761ns (4.397ns logic, 8.364ns route)
+                                                       (34.5% logic, 65.5% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     7.358ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               tree_link/r_active_link_0_1 (FF)
+  Destination:          line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram.B (RAM)
+  Requirement:          20.000ns
+  Data Path Delay:      12.642ns (Levels of Logic = 4)
+  Clock Path Skew:      0.000ns
+  Source Clock:         w_mclk rising at 0.000ns
+  Destination Clock:    w_mclk rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: tree_link/r_active_link_0_1 to line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram.B
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X26Y48.YQ      Tcko                  0.652   tree_link/r_active_link_0_1
+                                                       tree_link/r_active_link_0_1
+    SLICE_X26Y50.G4      net (fanout=1)        0.656   tree_link/r_active_link_0_1
+    SLICE_X26Y50.Y       Tilo                  0.759   line_buffer/r_read_enable
+                                                       line_buffer/w_fifo_read_enable11
+    SLICE_X34Y45.F1      net (fanout=8)        1.578   line_buffer/w_read_enable
+    SLICE_X34Y45.X       Tilo                  0.759   line_buffer/w_fifo_read_enable
+                                                       line_buffer/w_fifo_read_enable1
+    SLICE_X48Y48.G1      net (fanout=7)        1.427   line_buffer/w_fifo_read_enable
+    SLICE_X48Y48.Y       Tilo                  0.759   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/enb_array<1>
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.rfwft/RAM_RD_EN_FWFT1_1
+    SLICE_X48Y49.G4      net (fanout=18)       0.141   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.rfwft/RAM_RD_EN_FWFT1
+    SLICE_X48Y49.Y       Tilo                  0.759   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/enb_array<0>
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/bindec_b.bindec_inst_b/ENOUT_0_mux00001
+    RAMB16_X0Y4.ENB      net (fanout=8)        4.382   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/enb_array<0>
+    RAMB16_X0Y4.CLKB     Tbeck                 0.770   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram.B
+    -------------------------------------------------  ---------------------------
+    Total                                     12.642ns (4.458ns logic, 8.184ns route)
+                                                       (35.3% logic, 64.7% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     7.482ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               tree_link/r_MCmd_0 (FF)
+  Destination:          line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram.B (RAM)
+  Requirement:          20.000ns
+  Data Path Delay:      12.518ns (Levels of Logic = 4)
+  Clock Path Skew:      0.000ns
+  Source Clock:         w_mclk rising at 0.000ns
+  Destination Clock:    w_mclk rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: tree_link/r_MCmd_0 to line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram.B
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X25Y48.XQ      Tcko                  0.591   tree_link/r_MCmd<0>
+                                                       tree_link/r_MCmd_0
+    SLICE_X26Y50.G2      net (fanout=7)        0.593   tree_link/r_MCmd<0>
+    SLICE_X26Y50.Y       Tilo                  0.759   line_buffer/r_read_enable
+                                                       line_buffer/w_fifo_read_enable11
+    SLICE_X34Y45.F1      net (fanout=8)        1.578   line_buffer/w_read_enable
+    SLICE_X34Y45.X       Tilo                  0.759   line_buffer/w_fifo_read_enable
+                                                       line_buffer/w_fifo_read_enable1
+    SLICE_X48Y48.G1      net (fanout=7)        1.427   line_buffer/w_fifo_read_enable
+    SLICE_X48Y48.Y       Tilo                  0.759   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/enb_array<1>
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.rfwft/RAM_RD_EN_FWFT1_1
+    SLICE_X48Y49.G4      net (fanout=18)       0.141   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.rfwft/RAM_RD_EN_FWFT1
+    SLICE_X48Y49.Y       Tilo                  0.759   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/enb_array<0>
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/bindec_b.bindec_inst_b/ENOUT_0_mux00001
+    RAMB16_X0Y4.ENB      net (fanout=8)        4.382   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/enb_array<0>
+    RAMB16_X0Y4.CLKB     Tbeck                 0.770   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp1x1.ram.B
+    -------------------------------------------------  ---------------------------
+    Total                                     12.518ns (4.397ns logic, 8.121ns route)
+                                                       (35.1% logic, 64.9% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: TS_clock_reset_dcm_pll_CLKFX_BUF = PERIOD TIMEGRP
+        "clock_reset_dcm_pll_CLKFX_BUF" TS1 / 5 HIGH 50%;
+--------------------------------------------------------------------------------
+
+Paths for end point uart_transaction/uart_io/rxrx_01a/r_shiftInData_3 (SLICE_X14Y27.BX), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.825ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               uart_transaction/uart_io/rxrx_01a/r_shiftInData_4 (FF)
+  Destination:          uart_transaction/uart_io/rxrx_01a/r_shiftInData_3 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      1.202ns (Levels of Logic = 0)
+  Clock Path Skew:      0.377ns (1.356 - 0.979)
+  Source Clock:         uart_transaction/uart_io/w_RxClk rising at 20.000ns
+  Destination Clock:    uart_transaction/uart_io/w_RxClk rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: uart_transaction/uart_io/rxrx_01a/r_shiftInData_4 to uart_transaction/uart_io/rxrx_01a/r_shiftInData_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y23.YQ      Tcko                  0.470   uart_transaction/uart_io/rxrx_01a/r_shiftInData<5>
+                                                       uart_transaction/uart_io/rxrx_01a/r_shiftInData_4
+    SLICE_X14Y27.BX      net (fanout=2)        0.598   uart_transaction/uart_io/rxrx_01a/r_shiftInData<4>
+    SLICE_X14Y27.CLK     Tckdi       (-Th)    -0.134   uart_transaction/uart_io/rxrx_01a/r_shiftInData<3>
+                                                       uart_transaction/uart_io/rxrx_01a/r_shiftInData_3
+    -------------------------------------------------  ---------------------------
+    Total                                      1.202ns (0.604ns logic, 0.598ns route)
+                                                       (50.2% logic, 49.8% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point tree_link/r_MData_1 (SLICE_X25Y46.BX), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.923ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               uart_transaction/r_MData_1 (FF)
+  Destination:          tree_link/r_MData_1 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.930ns (Levels of Logic = 0)
+  Clock Path Skew:      0.007ns (0.043 - 0.036)
+  Source Clock:         w_mclk rising at 20.000ns
+  Destination Clock:    w_mclk rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: uart_transaction/r_MData_1 to tree_link/r_MData_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X23Y46.XQ      Tcko                  0.473   uart_transaction/r_MData<1>
+                                                       uart_transaction/r_MData_1
+    SLICE_X25Y46.BX      net (fanout=1)        0.364   uart_transaction/r_MData<1>
+    SLICE_X25Y46.CLK     Tckdi       (-Th)    -0.093   tree_link/r_MData<1>
+                                                       tree_link/r_MData_1
+    -------------------------------------------------  ---------------------------
+    Total                                      0.930ns (0.566ns logic, 0.364ns route)
+                                                       (60.9% logic, 39.1% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[2].rd_stg_inst/Q_7 (SLICE_X55Y66.BX), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.931ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[1].rd_stg_inst/Q_7 (FF)
+  Destination:          line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[2].rd_stg_inst/Q_7 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.931ns (Levels of Logic = 0)
+  Clock Path Skew:      0.000ns
+  Source Clock:         w_mclk rising at 20.000ns
+  Destination Clock:    w_mclk rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[1].rd_stg_inst/Q_7 to line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[2].rd_stg_inst/Q_7
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X54Y66.XQ      Tcko                  0.474   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_q<1><7>
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[1].rd_stg_inst/Q_7
+    SLICE_X55Y66.BX      net (fanout=1)        0.364   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_q<1><7>
+    SLICE_X55Y66.CLK     Tckdi       (-Th)    -0.093   line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_q<2><7>
+                                                       line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[2].rd_stg_inst/Q_7
+    -------------------------------------------------  ---------------------------
+    Total                                      0.931ns (0.567ns logic, 0.364ns route)
+                                                       (60.9% logic, 39.1% route)
+
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: TS_clock_reset_dcm_pll_CLKFX_BUF = PERIOD TIMEGRP
+        "clock_reset_dcm_pll_CLKFX_BUF" TS1 / 5 HIGH 50%;
+--------------------------------------------------------------------------------
+Slack: 16.808ns (period - (min low pulse limit / (low pulse / period)))
+  Period: 20.000ns
+  Low pulse: 10.000ns
+  Low pulse limit: 1.596ns (Trpw)
+  Physical resource: line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/count<0>/SR
+  Logical resource: line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/count_0/SR
+  Location pin: SLICE_X55Y49.SR
+  Clock network: line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg<2>
+--------------------------------------------------------------------------------
+Slack: 16.808ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 10.000ns
+  High pulse limit: 1.596ns (Trpw)
+  Physical resource: line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/count<0>/SR
+  Logical resource: line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/count_0/SR
+  Location pin: SLICE_X55Y49.SR
+  Clock network: line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg<2>
+--------------------------------------------------------------------------------
+Slack: 16.808ns (period - (min low pulse limit / (low pulse / period)))
+  Period: 20.000ns
+  Low pulse: 10.000ns
+  Low pulse limit: 1.596ns (Trpw)
+  Physical resource: line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/count<0>/SR
+  Logical resource: line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/count_1/SR
+  Location pin: SLICE_X55Y49.SR
+  Clock network: line_buffer/i_fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg<2>
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: COMP "xipCAM_D<0>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP 
+"xipCAM_PCLK"         "RISING";
+For more information, see Offset In Analysis in the Timing Closure User Guide (UG612).
+
+ 1 path analyzed, 1 endpoint analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors)
+ Offset is  -0.073ns.
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/r_DATA_pre_0 (SLICE_X64Y41.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (setup path):     15.073ns (requirement - (data path - clock path - clock arrival + uncertainty))
+  Source:               xipCAM_D<0> (PAD)
+  Destination:          line_buffer/r_DATA_pre_0 (FF)
+  Destination Clock:    w_pixelclk rising at 0.000ns
+  Requirement:          15.000ns
+  Data Path Delay:      2.322ns (Levels of Logic = 1)
+  Clock Path Delay:     2.395ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: xipCAM_D<0> to line_buffer/r_DATA_pre_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P60.I                Tiopi                 1.300   xipCAM_D<0>
+                                                       xipCAM_D<0>
+                                                       xipCAM_D_0_IBUF
+    SLICE_X64Y41.BY      net (fanout=1)        0.640   xipCAM_D_0_IBUF
+    SLICE_X64Y41.CLK     Tdick                 0.382   line_buffer/r_DATA_pre<1>
+                                                       line_buffer/r_DATA_pre_0
+    -------------------------------------------------  ---------------------------
+    Total                                      2.322ns (1.682ns logic, 0.640ns route)
+                                                       (72.4% logic, 27.6% route)
+
+  Minimum Clock Path: xipCAM_PCLK to line_buffer/r_DATA_pre_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P40.I                Tiopi                 1.040   xipCAM_PCLK
+                                                       xipCAM_PCLK
+                                                       clock_reset/p_bufi
+    BUFGMUX_X1Y1.I0      net (fanout=1)        0.036   clock_reset/pclk_pre
+    BUFGMUX_X1Y1.O       Tgi0o                 1.166   clock_reset/p_buf
+                                                       clock_reset/p_buf.GCLKMUX
+                                                       clock_reset/p_buf
+    SLICE_X64Y41.CLK     net (fanout=127)      0.153   w_pixelclk
+    -------------------------------------------------  ---------------------------
+    Total                                      2.395ns (2.206ns logic, 0.189ns route)
+                                                       (92.1% logic, 7.9% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: COMP "xipCAM_D<0>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP "xipCAM_PCLK"
+        "RISING";
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/r_DATA_pre_0 (SLICE_X64Y41.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      13.721ns (requirement - (clock path + clock arrival + uncertainty - data path))
+  Source:               xipCAM_D<0> (PAD)
+  Destination:          line_buffer/r_DATA_pre_0 (FF)
+  Destination Clock:    w_pixelclk rising at 0.000ns
+  Requirement:          15.000ns
+  Data Path Delay:      1.704ns (Levels of Logic = 1)
+  Clock Path Delay:     2.983ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: xipCAM_D<0> to line_buffer/r_DATA_pre_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P60.I                Tiopi                 1.040   xipCAM_D<0>
+                                                       xipCAM_D<0>
+                                                       xipCAM_D_0_IBUF
+    SLICE_X64Y41.BY      net (fanout=1)        0.512   xipCAM_D_0_IBUF
+    SLICE_X64Y41.CLK     Tckdi       (-Th)    -0.152   line_buffer/r_DATA_pre<1>
+                                                       line_buffer/r_DATA_pre_0
+    -------------------------------------------------  ---------------------------
+    Total                                      1.704ns (1.192ns logic, 0.512ns route)
+                                                       (70.0% logic, 30.0% route)
+
+  Maximum Clock Path: xipCAM_PCLK to line_buffer/r_DATA_pre_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P40.I                Tiopi                 1.300   xipCAM_PCLK
+                                                       xipCAM_PCLK
+                                                       clock_reset/p_bufi
+    BUFGMUX_X1Y1.I0      net (fanout=1)        0.046   clock_reset/pclk_pre
+    BUFGMUX_X1Y1.O       Tgi0o                 1.457   clock_reset/p_buf
+                                                       clock_reset/p_buf.GCLKMUX
+                                                       clock_reset/p_buf
+    SLICE_X64Y41.CLK     net (fanout=127)      0.180   w_pixelclk
+    -------------------------------------------------  ---------------------------
+    Total                                      2.983ns (2.757ns logic, 0.226ns route)
+                                                       (92.4% logic, 7.6% route)
+
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: COMP "xipCAM_D<1>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP 
+"xipCAM_PCLK"         "RISING";
+For more information, see Offset In Analysis in the Timing Closure User Guide (UG612).
+
+ 1 path analyzed, 1 endpoint analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors)
+ Minimum allowable offset is   0.186ns.
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/r_DATA_pre_1 (SLICE_X64Y41.BX), 1 path
+--------------------------------------------------------------------------------
+Slack (setup path):     14.814ns (requirement - (data path - clock path - clock arrival + uncertainty))
+  Source:               xipCAM_D<1> (PAD)
+  Destination:          line_buffer/r_DATA_pre_1 (FF)
+  Destination Clock:    w_pixelclk rising at 0.000ns
+  Requirement:          15.000ns
+  Data Path Delay:      2.581ns (Levels of Logic = 1)
+  Clock Path Delay:     2.395ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: xipCAM_D<1> to line_buffer/r_DATA_pre_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P61.I                Tiopi                 1.300   xipCAM_D<1>
+                                                       xipCAM_D<1>
+                                                       xipCAM_D_1_IBUF
+    SLICE_X64Y41.BX      net (fanout=1)        0.921   xipCAM_D_1_IBUF
+    SLICE_X64Y41.CLK     Tdick                 0.360   line_buffer/r_DATA_pre<1>
+                                                       line_buffer/r_DATA_pre_1
+    -------------------------------------------------  ---------------------------
+    Total                                      2.581ns (1.660ns logic, 0.921ns route)
+                                                       (64.3% logic, 35.7% route)
+
+  Minimum Clock Path: xipCAM_PCLK to line_buffer/r_DATA_pre_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P40.I                Tiopi                 1.040   xipCAM_PCLK
+                                                       xipCAM_PCLK
+                                                       clock_reset/p_bufi
+    BUFGMUX_X1Y1.I0      net (fanout=1)        0.036   clock_reset/pclk_pre
+    BUFGMUX_X1Y1.O       Tgi0o                 1.166   clock_reset/p_buf
+                                                       clock_reset/p_buf.GCLKMUX
+                                                       clock_reset/p_buf
+    SLICE_X64Y41.CLK     net (fanout=127)      0.153   w_pixelclk
+    -------------------------------------------------  ---------------------------
+    Total                                      2.395ns (2.206ns logic, 0.189ns route)
+                                                       (92.1% logic, 7.9% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: COMP "xipCAM_D<1>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP "xipCAM_PCLK"
+        "RISING";
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/r_DATA_pre_1 (SLICE_X64Y41.BX), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      13.928ns (requirement - (clock path + clock arrival + uncertainty - data path))
+  Source:               xipCAM_D<1> (PAD)
+  Destination:          line_buffer/r_DATA_pre_1 (FF)
+  Destination Clock:    w_pixelclk rising at 0.000ns
+  Requirement:          15.000ns
+  Data Path Delay:      1.911ns (Levels of Logic = 1)
+  Clock Path Delay:     2.983ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: xipCAM_D<1> to line_buffer/r_DATA_pre_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P61.I                Tiopi                 1.040   xipCAM_D<1>
+                                                       xipCAM_D<1>
+                                                       xipCAM_D_1_IBUF
+    SLICE_X64Y41.BX      net (fanout=1)        0.737   xipCAM_D_1_IBUF
+    SLICE_X64Y41.CLK     Tckdi       (-Th)    -0.134   line_buffer/r_DATA_pre<1>
+                                                       line_buffer/r_DATA_pre_1
+    -------------------------------------------------  ---------------------------
+    Total                                      1.911ns (1.174ns logic, 0.737ns route)
+                                                       (61.4% logic, 38.6% route)
+
+  Maximum Clock Path: xipCAM_PCLK to line_buffer/r_DATA_pre_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P40.I                Tiopi                 1.300   xipCAM_PCLK
+                                                       xipCAM_PCLK
+                                                       clock_reset/p_bufi
+    BUFGMUX_X1Y1.I0      net (fanout=1)        0.046   clock_reset/pclk_pre
+    BUFGMUX_X1Y1.O       Tgi0o                 1.457   clock_reset/p_buf
+                                                       clock_reset/p_buf.GCLKMUX
+                                                       clock_reset/p_buf
+    SLICE_X64Y41.CLK     net (fanout=127)      0.180   w_pixelclk
+    -------------------------------------------------  ---------------------------
+    Total                                      2.983ns (2.757ns logic, 0.226ns route)
+                                                       (92.4% logic, 7.6% route)
+
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: COMP "xipCAM_D<2>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP 
+"xipCAM_PCLK"         "RISING";
+For more information, see Offset In Analysis in the Timing Closure User Guide (UG612).
+
+ 1 path analyzed, 1 endpoint analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors)
+ Minimum allowable offset is   0.276ns.
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/r_DATA_pre_2 (SLICE_X64Y34.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (setup path):     14.724ns (requirement - (data path - clock path - clock arrival + uncertainty))
+  Source:               xipCAM_D<2> (PAD)
+  Destination:          line_buffer/r_DATA_pre_2 (FF)
+  Destination Clock:    w_pixelclk rising at 0.000ns
+  Requirement:          15.000ns
+  Data Path Delay:      2.665ns (Levels of Logic = 1)
+  Clock Path Delay:     2.389ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: xipCAM_D<2> to line_buffer/r_DATA_pre_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P62.I                Tiopi                 1.300   xipCAM_D<2>
+                                                       xipCAM_D<2>
+                                                       xipCAM_D_2_IBUF
+    SLICE_X64Y34.BY      net (fanout=1)        0.983   xipCAM_D_2_IBUF
+    SLICE_X64Y34.CLK     Tdick                 0.382   line_buffer/r_DATA_pre<3>
+                                                       line_buffer/r_DATA_pre_2
+    -------------------------------------------------  ---------------------------
+    Total                                      2.665ns (1.682ns logic, 0.983ns route)
+                                                       (63.1% logic, 36.9% route)
+
+  Minimum Clock Path: xipCAM_PCLK to line_buffer/r_DATA_pre_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P40.I                Tiopi                 1.040   xipCAM_PCLK
+                                                       xipCAM_PCLK
+                                                       clock_reset/p_bufi
+    BUFGMUX_X1Y1.I0      net (fanout=1)        0.036   clock_reset/pclk_pre
+    BUFGMUX_X1Y1.O       Tgi0o                 1.166   clock_reset/p_buf
+                                                       clock_reset/p_buf.GCLKMUX
+                                                       clock_reset/p_buf
+    SLICE_X64Y34.CLK     net (fanout=127)      0.147   w_pixelclk
+    -------------------------------------------------  ---------------------------
+    Total                                      2.389ns (2.206ns logic, 0.183ns route)
+                                                       (92.3% logic, 7.7% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: COMP "xipCAM_D<2>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP "xipCAM_PCLK"
+        "RISING";
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/r_DATA_pre_2 (SLICE_X64Y34.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      14.003ns (requirement - (clock path + clock arrival + uncertainty - data path))
+  Source:               xipCAM_D<2> (PAD)
+  Destination:          line_buffer/r_DATA_pre_2 (FF)
+  Destination Clock:    w_pixelclk rising at 0.000ns
+  Requirement:          15.000ns
+  Data Path Delay:      1.979ns (Levels of Logic = 1)
+  Clock Path Delay:     2.976ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: xipCAM_D<2> to line_buffer/r_DATA_pre_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P62.I                Tiopi                 1.040   xipCAM_D<2>
+                                                       xipCAM_D<2>
+                                                       xipCAM_D_2_IBUF
+    SLICE_X64Y34.BY      net (fanout=1)        0.787   xipCAM_D_2_IBUF
+    SLICE_X64Y34.CLK     Tckdi       (-Th)    -0.152   line_buffer/r_DATA_pre<3>
+                                                       line_buffer/r_DATA_pre_2
+    -------------------------------------------------  ---------------------------
+    Total                                      1.979ns (1.192ns logic, 0.787ns route)
+                                                       (60.2% logic, 39.8% route)
+
+  Maximum Clock Path: xipCAM_PCLK to line_buffer/r_DATA_pre_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P40.I                Tiopi                 1.300   xipCAM_PCLK
+                                                       xipCAM_PCLK
+                                                       clock_reset/p_bufi
+    BUFGMUX_X1Y1.I0      net (fanout=1)        0.046   clock_reset/pclk_pre
+    BUFGMUX_X1Y1.O       Tgi0o                 1.457   clock_reset/p_buf
+                                                       clock_reset/p_buf.GCLKMUX
+                                                       clock_reset/p_buf
+    SLICE_X64Y34.CLK     net (fanout=127)      0.173   w_pixelclk
+    -------------------------------------------------  ---------------------------
+    Total                                      2.976ns (2.757ns logic, 0.219ns route)
+                                                       (92.6% logic, 7.4% route)
+
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: COMP "xipCAM_D<3>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP 
+"xipCAM_PCLK"         "RISING";
+For more information, see Offset In Analysis in the Timing Closure User Guide (UG612).
+
+ 1 path analyzed, 1 endpoint analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors)
+ Minimum allowable offset is   0.166ns.
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/r_DATA_pre_3 (SLICE_X64Y34.BX), 1 path
+--------------------------------------------------------------------------------
+Slack (setup path):     14.834ns (requirement - (data path - clock path - clock arrival + uncertainty))
+  Source:               xipCAM_D<3> (PAD)
+  Destination:          line_buffer/r_DATA_pre_3 (FF)
+  Destination Clock:    w_pixelclk rising at 0.000ns
+  Requirement:          15.000ns
+  Data Path Delay:      2.555ns (Levels of Logic = 1)
+  Clock Path Delay:     2.389ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: xipCAM_D<3> to line_buffer/r_DATA_pre_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P63.I                Tiopi                 1.300   xipCAM_D<3>
+                                                       xipCAM_D<3>
+                                                       xipCAM_D_3_IBUF
+    SLICE_X64Y34.BX      net (fanout=1)        0.895   xipCAM_D_3_IBUF
+    SLICE_X64Y34.CLK     Tdick                 0.360   line_buffer/r_DATA_pre<3>
+                                                       line_buffer/r_DATA_pre_3
+    -------------------------------------------------  ---------------------------
+    Total                                      2.555ns (1.660ns logic, 0.895ns route)
+                                                       (65.0% logic, 35.0% route)
+
+  Minimum Clock Path: xipCAM_PCLK to line_buffer/r_DATA_pre_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P40.I                Tiopi                 1.040   xipCAM_PCLK
+                                                       xipCAM_PCLK
+                                                       clock_reset/p_bufi
+    BUFGMUX_X1Y1.I0      net (fanout=1)        0.036   clock_reset/pclk_pre
+    BUFGMUX_X1Y1.O       Tgi0o                 1.166   clock_reset/p_buf
+                                                       clock_reset/p_buf.GCLKMUX
+                                                       clock_reset/p_buf
+    SLICE_X64Y34.CLK     net (fanout=127)      0.147   w_pixelclk
+    -------------------------------------------------  ---------------------------
+    Total                                      2.389ns (2.206ns logic, 0.183ns route)
+                                                       (92.3% logic, 7.7% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: COMP "xipCAM_D<3>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP "xipCAM_PCLK"
+        "RISING";
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/r_DATA_pre_3 (SLICE_X64Y34.BX), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      13.914ns (requirement - (clock path + clock arrival + uncertainty - data path))
+  Source:               xipCAM_D<3> (PAD)
+  Destination:          line_buffer/r_DATA_pre_3 (FF)
+  Destination Clock:    w_pixelclk rising at 0.000ns
+  Requirement:          15.000ns
+  Data Path Delay:      1.890ns (Levels of Logic = 1)
+  Clock Path Delay:     2.976ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: xipCAM_D<3> to line_buffer/r_DATA_pre_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P63.I                Tiopi                 1.040   xipCAM_D<3>
+                                                       xipCAM_D<3>
+                                                       xipCAM_D_3_IBUF
+    SLICE_X64Y34.BX      net (fanout=1)        0.716   xipCAM_D_3_IBUF
+    SLICE_X64Y34.CLK     Tckdi       (-Th)    -0.134   line_buffer/r_DATA_pre<3>
+                                                       line_buffer/r_DATA_pre_3
+    -------------------------------------------------  ---------------------------
+    Total                                      1.890ns (1.174ns logic, 0.716ns route)
+                                                       (62.1% logic, 37.9% route)
+
+  Maximum Clock Path: xipCAM_PCLK to line_buffer/r_DATA_pre_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P40.I                Tiopi                 1.300   xipCAM_PCLK
+                                                       xipCAM_PCLK
+                                                       clock_reset/p_bufi
+    BUFGMUX_X1Y1.I0      net (fanout=1)        0.046   clock_reset/pclk_pre
+    BUFGMUX_X1Y1.O       Tgi0o                 1.457   clock_reset/p_buf
+                                                       clock_reset/p_buf.GCLKMUX
+                                                       clock_reset/p_buf
+    SLICE_X64Y34.CLK     net (fanout=127)      0.173   w_pixelclk
+    -------------------------------------------------  ---------------------------
+    Total                                      2.976ns (2.757ns logic, 0.219ns route)
+                                                       (92.6% logic, 7.4% route)
+
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: COMP "xipCAM_D<4>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP 
+"xipCAM_PCLK"         "RISING";
+For more information, see Offset In Analysis in the Timing Closure User Guide (UG612).
+
+ 1 path analyzed, 1 endpoint analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors)
+ Minimum allowable offset is   0.269ns.
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/r_DATA_pre_4 (SLICE_X64Y55.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (setup path):     14.731ns (requirement - (data path - clock path - clock arrival + uncertainty))
+  Source:               xipCAM_D<4> (PAD)
+  Destination:          line_buffer/r_DATA_pre_4 (FF)
+  Destination Clock:    w_pixelclk rising at 0.000ns
+  Requirement:          15.000ns
+  Data Path Delay:      2.660ns (Levels of Logic = 1)
+  Clock Path Delay:     2.391ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: xipCAM_D<4> to line_buffer/r_DATA_pre_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P65.I                Tiopi                 1.300   xipCAM_D<4>
+                                                       xipCAM_D<4>
+                                                       xipCAM_D_4_IBUF
+    SLICE_X64Y55.BY      net (fanout=1)        0.978   xipCAM_D_4_IBUF
+    SLICE_X64Y55.CLK     Tdick                 0.382   line_buffer/r_DATA_pre<5>
+                                                       line_buffer/r_DATA_pre_4
+    -------------------------------------------------  ---------------------------
+    Total                                      2.660ns (1.682ns logic, 0.978ns route)
+                                                       (63.2% logic, 36.8% route)
+
+  Minimum Clock Path: xipCAM_PCLK to line_buffer/r_DATA_pre_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P40.I                Tiopi                 1.040   xipCAM_PCLK
+                                                       xipCAM_PCLK
+                                                       clock_reset/p_bufi
+    BUFGMUX_X1Y1.I0      net (fanout=1)        0.036   clock_reset/pclk_pre
+    BUFGMUX_X1Y1.O       Tgi0o                 1.166   clock_reset/p_buf
+                                                       clock_reset/p_buf.GCLKMUX
+                                                       clock_reset/p_buf
+    SLICE_X64Y55.CLK     net (fanout=127)      0.149   w_pixelclk
+    -------------------------------------------------  ---------------------------
+    Total                                      2.391ns (2.206ns logic, 0.185ns route)
+                                                       (92.3% logic, 7.7% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: COMP "xipCAM_D<4>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP "xipCAM_PCLK"
+        "RISING";
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/r_DATA_pre_4 (SLICE_X64Y55.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      13.996ns (requirement - (clock path + clock arrival + uncertainty - data path))
+  Source:               xipCAM_D<4> (PAD)
+  Destination:          line_buffer/r_DATA_pre_4 (FF)
+  Destination Clock:    w_pixelclk rising at 0.000ns
+  Requirement:          15.000ns
+  Data Path Delay:      1.975ns (Levels of Logic = 1)
+  Clock Path Delay:     2.979ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: xipCAM_D<4> to line_buffer/r_DATA_pre_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P65.I                Tiopi                 1.040   xipCAM_D<4>
+                                                       xipCAM_D<4>
+                                                       xipCAM_D_4_IBUF
+    SLICE_X64Y55.BY      net (fanout=1)        0.783   xipCAM_D_4_IBUF
+    SLICE_X64Y55.CLK     Tckdi       (-Th)    -0.152   line_buffer/r_DATA_pre<5>
+                                                       line_buffer/r_DATA_pre_4
+    -------------------------------------------------  ---------------------------
+    Total                                      1.975ns (1.192ns logic, 0.783ns route)
+                                                       (60.4% logic, 39.6% route)
+
+  Maximum Clock Path: xipCAM_PCLK to line_buffer/r_DATA_pre_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P40.I                Tiopi                 1.300   xipCAM_PCLK
+                                                       xipCAM_PCLK
+                                                       clock_reset/p_bufi
+    BUFGMUX_X1Y1.I0      net (fanout=1)        0.046   clock_reset/pclk_pre
+    BUFGMUX_X1Y1.O       Tgi0o                 1.457   clock_reset/p_buf
+                                                       clock_reset/p_buf.GCLKMUX
+                                                       clock_reset/p_buf
+    SLICE_X64Y55.CLK     net (fanout=127)      0.176   w_pixelclk
+    -------------------------------------------------  ---------------------------
+    Total                                      2.979ns (2.757ns logic, 0.222ns route)
+                                                       (92.5% logic, 7.5% route)
+
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: COMP "xipCAM_D<5>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP 
+"xipCAM_PCLK"         "RISING";
+For more information, see Offset In Analysis in the Timing Closure User Guide (UG612).
+
+ 1 path analyzed, 1 endpoint analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors)
+ Minimum allowable offset is   0.723ns.
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/r_DATA_pre_5 (SLICE_X64Y55.BX), 1 path
+--------------------------------------------------------------------------------
+Slack (setup path):     14.277ns (requirement - (data path - clock path - clock arrival + uncertainty))
+  Source:               xipCAM_D<5> (PAD)
+  Destination:          line_buffer/r_DATA_pre_5 (FF)
+  Destination Clock:    w_pixelclk rising at 0.000ns
+  Requirement:          15.000ns
+  Data Path Delay:      3.114ns (Levels of Logic = 1)
+  Clock Path Delay:     2.391ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: xipCAM_D<5> to line_buffer/r_DATA_pre_5
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P66.I                Tiopi                 1.300   xipCAM_D<5>
+                                                       xipCAM_D<5>
+                                                       xipCAM_D_5_IBUF
+    SLICE_X64Y55.BX      net (fanout=1)        1.454   xipCAM_D_5_IBUF
+    SLICE_X64Y55.CLK     Tdick                 0.360   line_buffer/r_DATA_pre<5>
+                                                       line_buffer/r_DATA_pre_5
+    -------------------------------------------------  ---------------------------
+    Total                                      3.114ns (1.660ns logic, 1.454ns route)
+                                                       (53.3% logic, 46.7% route)
+
+  Minimum Clock Path: xipCAM_PCLK to line_buffer/r_DATA_pre_5
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P40.I                Tiopi                 1.040   xipCAM_PCLK
+                                                       xipCAM_PCLK
+                                                       clock_reset/p_bufi
+    BUFGMUX_X1Y1.I0      net (fanout=1)        0.036   clock_reset/pclk_pre
+    BUFGMUX_X1Y1.O       Tgi0o                 1.166   clock_reset/p_buf
+                                                       clock_reset/p_buf.GCLKMUX
+                                                       clock_reset/p_buf
+    SLICE_X64Y55.CLK     net (fanout=127)      0.149   w_pixelclk
+    -------------------------------------------------  ---------------------------
+    Total                                      2.391ns (2.206ns logic, 0.185ns route)
+                                                       (92.3% logic, 7.7% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: COMP "xipCAM_D<5>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP "xipCAM_PCLK"
+        "RISING";
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/r_DATA_pre_5 (SLICE_X64Y55.BX), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      14.359ns (requirement - (clock path + clock arrival + uncertainty - data path))
+  Source:               xipCAM_D<5> (PAD)
+  Destination:          line_buffer/r_DATA_pre_5 (FF)
+  Destination Clock:    w_pixelclk rising at 0.000ns
+  Requirement:          15.000ns
+  Data Path Delay:      2.338ns (Levels of Logic = 1)
+  Clock Path Delay:     2.979ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: xipCAM_D<5> to line_buffer/r_DATA_pre_5
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P66.I                Tiopi                 1.040   xipCAM_D<5>
+                                                       xipCAM_D<5>
+                                                       xipCAM_D_5_IBUF
+    SLICE_X64Y55.BX      net (fanout=1)        1.164   xipCAM_D_5_IBUF
+    SLICE_X64Y55.CLK     Tckdi       (-Th)    -0.134   line_buffer/r_DATA_pre<5>
+                                                       line_buffer/r_DATA_pre_5
+    -------------------------------------------------  ---------------------------
+    Total                                      2.338ns (1.174ns logic, 1.164ns route)
+                                                       (50.2% logic, 49.8% route)
+
+  Maximum Clock Path: xipCAM_PCLK to line_buffer/r_DATA_pre_5
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P40.I                Tiopi                 1.300   xipCAM_PCLK
+                                                       xipCAM_PCLK
+                                                       clock_reset/p_bufi
+    BUFGMUX_X1Y1.I0      net (fanout=1)        0.046   clock_reset/pclk_pre
+    BUFGMUX_X1Y1.O       Tgi0o                 1.457   clock_reset/p_buf
+                                                       clock_reset/p_buf.GCLKMUX
+                                                       clock_reset/p_buf
+    SLICE_X64Y55.CLK     net (fanout=127)      0.176   w_pixelclk
+    -------------------------------------------------  ---------------------------
+    Total                                      2.979ns (2.757ns logic, 0.222ns route)
+                                                       (92.5% logic, 7.5% route)
+
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: COMP "xipCAM_D<6>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP 
+"xipCAM_PCLK"         "RISING";
+For more information, see Offset In Analysis in the Timing Closure User Guide (UG612).
+
+ 1 path analyzed, 1 endpoint analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors)
+ Minimum allowable offset is   1.228ns.
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/r_DATA_pre_6 (SLICE_X65Y29.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (setup path):     13.772ns (requirement - (data path - clock path - clock arrival + uncertainty))
+  Source:               xipCAM_D<6> (PAD)
+  Destination:          line_buffer/r_DATA_pre_6 (FF)
+  Destination Clock:    w_pixelclk rising at 0.000ns
+  Requirement:          15.000ns
+  Data Path Delay:      3.610ns (Levels of Logic = 1)
+  Clock Path Delay:     2.382ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: xipCAM_D<6> to line_buffer/r_DATA_pre_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P67.I                Tiopi                 1.300   xipCAM_D<6>
+                                                       xipCAM_D<6>
+                                                       xipCAM_D_6_IBUF
+    SLICE_X65Y29.BY      net (fanout=1)        1.949   xipCAM_D_6_IBUF
+    SLICE_X65Y29.CLK     Tdick                 0.361   line_buffer/r_DATA_pre<7>
+                                                       line_buffer/r_DATA_pre_6
+    -------------------------------------------------  ---------------------------
+    Total                                      3.610ns (1.661ns logic, 1.949ns route)
+                                                       (46.0% logic, 54.0% route)
+
+  Minimum Clock Path: xipCAM_PCLK to line_buffer/r_DATA_pre_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P40.I                Tiopi                 1.040   xipCAM_PCLK
+                                                       xipCAM_PCLK
+                                                       clock_reset/p_bufi
+    BUFGMUX_X1Y1.I0      net (fanout=1)        0.036   clock_reset/pclk_pre
+    BUFGMUX_X1Y1.O       Tgi0o                 1.166   clock_reset/p_buf
+                                                       clock_reset/p_buf.GCLKMUX
+                                                       clock_reset/p_buf
+    SLICE_X65Y29.CLK     net (fanout=127)      0.140   w_pixelclk
+    -------------------------------------------------  ---------------------------
+    Total                                      2.382ns (2.206ns logic, 0.176ns route)
+                                                       (92.6% logic, 7.4% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: COMP "xipCAM_D<6>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP "xipCAM_PCLK"
+        "RISING";
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/r_DATA_pre_6 (SLICE_X65Y29.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      14.766ns (requirement - (clock path + clock arrival + uncertainty - data path))
+  Source:               xipCAM_D<6> (PAD)
+  Destination:          line_buffer/r_DATA_pre_6 (FF)
+  Destination Clock:    w_pixelclk rising at 0.000ns
+  Requirement:          15.000ns
+  Data Path Delay:      2.734ns (Levels of Logic = 1)
+  Clock Path Delay:     2.968ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: xipCAM_D<6> to line_buffer/r_DATA_pre_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P67.I                Tiopi                 1.040   xipCAM_D<6>
+                                                       xipCAM_D<6>
+                                                       xipCAM_D_6_IBUF
+    SLICE_X65Y29.BY      net (fanout=1)        1.559   xipCAM_D_6_IBUF
+    SLICE_X65Y29.CLK     Tckdi       (-Th)    -0.135   line_buffer/r_DATA_pre<7>
+                                                       line_buffer/r_DATA_pre_6
+    -------------------------------------------------  ---------------------------
+    Total                                      2.734ns (1.175ns logic, 1.559ns route)
+                                                       (43.0% logic, 57.0% route)
+
+  Maximum Clock Path: xipCAM_PCLK to line_buffer/r_DATA_pre_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P40.I                Tiopi                 1.300   xipCAM_PCLK
+                                                       xipCAM_PCLK
+                                                       clock_reset/p_bufi
+    BUFGMUX_X1Y1.I0      net (fanout=1)        0.046   clock_reset/pclk_pre
+    BUFGMUX_X1Y1.O       Tgi0o                 1.457   clock_reset/p_buf
+                                                       clock_reset/p_buf.GCLKMUX
+                                                       clock_reset/p_buf
+    SLICE_X65Y29.CLK     net (fanout=127)      0.165   w_pixelclk
+    -------------------------------------------------  ---------------------------
+    Total                                      2.968ns (2.757ns logic, 0.211ns route)
+                                                       (92.9% logic, 7.1% route)
+
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: COMP "xipCAM_D<7>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP 
+"xipCAM_PCLK"         "RISING";
+For more information, see Offset In Analysis in the Timing Closure User Guide (UG612).
+
+ 1 path analyzed, 1 endpoint analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors)
+ Minimum allowable offset is   0.867ns.
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/r_DATA_pre_7 (SLICE_X65Y29.BX), 1 path
+--------------------------------------------------------------------------------
+Slack (setup path):     14.133ns (requirement - (data path - clock path - clock arrival + uncertainty))
+  Source:               xipCAM_D<7> (PAD)
+  Destination:          line_buffer/r_DATA_pre_7 (FF)
+  Destination Clock:    w_pixelclk rising at 0.000ns
+  Requirement:          15.000ns
+  Data Path Delay:      3.249ns (Levels of Logic = 1)
+  Clock Path Delay:     2.382ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: xipCAM_D<7> to line_buffer/r_DATA_pre_7
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P68.I                Tiopi                 1.300   xipCAM_D<7>
+                                                       xipCAM_D<7>
+                                                       xipCAM_D_7_IBUF
+    SLICE_X65Y29.BX      net (fanout=1)        1.641   xipCAM_D_7_IBUF
+    SLICE_X65Y29.CLK     Tdick                 0.308   line_buffer/r_DATA_pre<7>
+                                                       line_buffer/r_DATA_pre_7
+    -------------------------------------------------  ---------------------------
+    Total                                      3.249ns (1.608ns logic, 1.641ns route)
+                                                       (49.5% logic, 50.5% route)
+
+  Minimum Clock Path: xipCAM_PCLK to line_buffer/r_DATA_pre_7
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P40.I                Tiopi                 1.040   xipCAM_PCLK
+                                                       xipCAM_PCLK
+                                                       clock_reset/p_bufi
+    BUFGMUX_X1Y1.I0      net (fanout=1)        0.036   clock_reset/pclk_pre
+    BUFGMUX_X1Y1.O       Tgi0o                 1.166   clock_reset/p_buf
+                                                       clock_reset/p_buf.GCLKMUX
+                                                       clock_reset/p_buf
+    SLICE_X65Y29.CLK     net (fanout=127)      0.140   w_pixelclk
+    -------------------------------------------------  ---------------------------
+    Total                                      2.382ns (2.206ns logic, 0.176ns route)
+                                                       (92.6% logic, 7.4% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: COMP "xipCAM_D<7>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP "xipCAM_PCLK"
+        "RISING";
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/r_DATA_pre_7 (SLICE_X65Y29.BX), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      14.478ns (requirement - (clock path + clock arrival + uncertainty - data path))
+  Source:               xipCAM_D<7> (PAD)
+  Destination:          line_buffer/r_DATA_pre_7 (FF)
+  Destination Clock:    w_pixelclk rising at 0.000ns
+  Requirement:          15.000ns
+  Data Path Delay:      2.446ns (Levels of Logic = 1)
+  Clock Path Delay:     2.968ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: xipCAM_D<7> to line_buffer/r_DATA_pre_7
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P68.I                Tiopi                 1.040   xipCAM_D<7>
+                                                       xipCAM_D<7>
+                                                       xipCAM_D_7_IBUF
+    SLICE_X65Y29.BX      net (fanout=1)        1.313   xipCAM_D_7_IBUF
+    SLICE_X65Y29.CLK     Tckdi       (-Th)    -0.093   line_buffer/r_DATA_pre<7>
+                                                       line_buffer/r_DATA_pre_7
+    -------------------------------------------------  ---------------------------
+    Total                                      2.446ns (1.133ns logic, 1.313ns route)
+                                                       (46.3% logic, 53.7% route)
+
+  Maximum Clock Path: xipCAM_PCLK to line_buffer/r_DATA_pre_7
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P40.I                Tiopi                 1.300   xipCAM_PCLK
+                                                       xipCAM_PCLK
+                                                       clock_reset/p_bufi
+    BUFGMUX_X1Y1.I0      net (fanout=1)        0.046   clock_reset/pclk_pre
+    BUFGMUX_X1Y1.O       Tgi0o                 1.457   clock_reset/p_buf
+                                                       clock_reset/p_buf.GCLKMUX
+                                                       clock_reset/p_buf
+    SLICE_X65Y29.CLK     net (fanout=127)      0.165   w_pixelclk
+    -------------------------------------------------  ---------------------------
+    Total                                      2.968ns (2.757ns logic, 0.211ns route)
+                                                       (92.9% logic, 7.1% route)
+
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: COMP "xipCAM_HREF" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP 
+"xipCAM_PCLK"         "RISING";
+For more information, see Offset In Analysis in the Timing Closure User Guide (UG612).
+
+ 1 path analyzed, 1 endpoint analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors)
+ Minimum allowable offset is   0.032ns.
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/r_HREF_pre (SLICE_X36Y10.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (setup path):     14.968ns (requirement - (data path - clock path - clock arrival + uncertainty))
+  Source:               xipCAM_HREF (PAD)
+  Destination:          line_buffer/r_HREF_pre (FF)
+  Destination Clock:    w_pixelclk rising at 0.000ns
+  Requirement:          15.000ns
+  Data Path Delay:      2.419ns (Levels of Logic = 1)
+  Clock Path Delay:     2.387ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: xipCAM_HREF to line_buffer/r_HREF_pre
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P36.I                Tiopi                 1.300   xipCAM_HREF
+                                                       xipCAM_HREF
+                                                       xipCAM_HREF_IBUF
+    SLICE_X36Y10.BY      net (fanout=1)        0.737   xipCAM_HREF_IBUF
+    SLICE_X36Y10.CLK     Tdick                 0.382   line_buffer/r_HREF_pre
+                                                       line_buffer/r_HREF_pre
+    -------------------------------------------------  ---------------------------
+    Total                                      2.419ns (1.682ns logic, 0.737ns route)
+                                                       (69.5% logic, 30.5% route)
+
+  Minimum Clock Path: xipCAM_PCLK to line_buffer/r_HREF_pre
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P40.I                Tiopi                 1.040   xipCAM_PCLK
+                                                       xipCAM_PCLK
+                                                       clock_reset/p_bufi
+    BUFGMUX_X1Y1.I0      net (fanout=1)        0.036   clock_reset/pclk_pre
+    BUFGMUX_X1Y1.O       Tgi0o                 1.166   clock_reset/p_buf
+                                                       clock_reset/p_buf.GCLKMUX
+                                                       clock_reset/p_buf
+    SLICE_X36Y10.CLK     net (fanout=127)      0.145   w_pixelclk
+    -------------------------------------------------  ---------------------------
+    Total                                      2.387ns (2.206ns logic, 0.181ns route)
+                                                       (92.4% logic, 7.6% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: COMP "xipCAM_HREF" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP "xipCAM_PCLK"
+        "RISING";
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/r_HREF_pre (SLICE_X36Y10.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      13.808ns (requirement - (clock path + clock arrival + uncertainty - data path))
+  Source:               xipCAM_HREF (PAD)
+  Destination:          line_buffer/r_HREF_pre (FF)
+  Destination Clock:    w_pixelclk rising at 0.000ns
+  Requirement:          15.000ns
+  Data Path Delay:      1.782ns (Levels of Logic = 1)
+  Clock Path Delay:     2.974ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: xipCAM_HREF to line_buffer/r_HREF_pre
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P36.I                Tiopi                 1.040   xipCAM_HREF
+                                                       xipCAM_HREF
+                                                       xipCAM_HREF_IBUF
+    SLICE_X36Y10.BY      net (fanout=1)        0.590   xipCAM_HREF_IBUF
+    SLICE_X36Y10.CLK     Tckdi       (-Th)    -0.152   line_buffer/r_HREF_pre
+                                                       line_buffer/r_HREF_pre
+    -------------------------------------------------  ---------------------------
+    Total                                      1.782ns (1.192ns logic, 0.590ns route)
+                                                       (66.9% logic, 33.1% route)
+
+  Maximum Clock Path: xipCAM_PCLK to line_buffer/r_HREF_pre
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P40.I                Tiopi                 1.300   xipCAM_PCLK
+                                                       xipCAM_PCLK
+                                                       clock_reset/p_bufi
+    BUFGMUX_X1Y1.I0      net (fanout=1)        0.046   clock_reset/pclk_pre
+    BUFGMUX_X1Y1.O       Tgi0o                 1.457   clock_reset/p_buf
+                                                       clock_reset/p_buf.GCLKMUX
+                                                       clock_reset/p_buf
+    SLICE_X36Y10.CLK     net (fanout=127)      0.171   w_pixelclk
+    -------------------------------------------------  ---------------------------
+    Total                                      2.974ns (2.757ns logic, 0.217ns route)
+                                                       (92.7% logic, 7.3% route)
+
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: COMP "xipCAM_VSYNC" OFFSET = IN 15 ns VALID 30 ns BEFORE 
+COMP "xipCAM_PCLK"         "RISING";
+For more information, see Offset In Analysis in the Timing Closure User Guide (UG612).
+
+ 1 path analyzed, 1 endpoint analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors)
+ Minimum allowable offset is   0.585ns.
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/r_VSYNC (SLICE_X41Y9.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (setup path):     14.415ns (requirement - (data path - clock path - clock arrival + uncertainty))
+  Source:               xipCAM_VSYNC (PAD)
+  Destination:          line_buffer/r_VSYNC (FF)
+  Destination Clock:    w_pixelclk rising at 0.000ns
+  Requirement:          15.000ns
+  Data Path Delay:      2.969ns (Levels of Logic = 1)
+  Clock Path Delay:     2.384ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: xipCAM_VSYNC to line_buffer/r_VSYNC
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P35.I                Tiopi                 1.300   xipCAM_VSYNC
+                                                       xipCAM_VSYNC
+                                                       xipCAM_VSYNC_IBUF
+    SLICE_X41Y9.BY       net (fanout=1)        1.308   xipCAM_VSYNC_IBUF
+    SLICE_X41Y9.CLK      Tdick                 0.361   line_buffer/r_VSYNC
+                                                       line_buffer/r_VSYNC
+    -------------------------------------------------  ---------------------------
+    Total                                      2.969ns (1.661ns logic, 1.308ns route)
+                                                       (55.9% logic, 44.1% route)
+
+  Minimum Clock Path: xipCAM_PCLK to line_buffer/r_VSYNC
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P40.I                Tiopi                 1.040   xipCAM_PCLK
+                                                       xipCAM_PCLK
+                                                       clock_reset/p_bufi
+    BUFGMUX_X1Y1.I0      net (fanout=1)        0.036   clock_reset/pclk_pre
+    BUFGMUX_X1Y1.O       Tgi0o                 1.166   clock_reset/p_buf
+                                                       clock_reset/p_buf.GCLKMUX
+                                                       clock_reset/p_buf
+    SLICE_X41Y9.CLK      net (fanout=127)      0.142   w_pixelclk
+    -------------------------------------------------  ---------------------------
+    Total                                      2.384ns (2.206ns logic, 0.178ns route)
+                                                       (92.5% logic, 7.5% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: COMP "xipCAM_VSYNC" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP "xipCAM_PCLK"
+        "RISING";
+--------------------------------------------------------------------------------
+
+Paths for end point line_buffer/r_VSYNC (SLICE_X41Y9.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      14.251ns (requirement - (clock path + clock arrival + uncertainty - data path))
+  Source:               xipCAM_VSYNC (PAD)
+  Destination:          line_buffer/r_VSYNC (FF)
+  Destination Clock:    w_pixelclk rising at 0.000ns
+  Requirement:          15.000ns
+  Data Path Delay:      2.221ns (Levels of Logic = 1)
+  Clock Path Delay:     2.970ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: xipCAM_VSYNC to line_buffer/r_VSYNC
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P35.I                Tiopi                 1.040   xipCAM_VSYNC
+                                                       xipCAM_VSYNC
+                                                       xipCAM_VSYNC_IBUF
+    SLICE_X41Y9.BY       net (fanout=1)        1.046   xipCAM_VSYNC_IBUF
+    SLICE_X41Y9.CLK      Tckdi       (-Th)    -0.135   line_buffer/r_VSYNC
+                                                       line_buffer/r_VSYNC
+    -------------------------------------------------  ---------------------------
+    Total                                      2.221ns (1.175ns logic, 1.046ns route)
+                                                       (52.9% logic, 47.1% route)
+
+  Maximum Clock Path: xipCAM_PCLK to line_buffer/r_VSYNC
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P40.I                Tiopi                 1.300   xipCAM_PCLK
+                                                       xipCAM_PCLK
+                                                       clock_reset/p_bufi
+    BUFGMUX_X1Y1.I0      net (fanout=1)        0.046   clock_reset/pclk_pre
+    BUFGMUX_X1Y1.O       Tgi0o                 1.457   clock_reset/p_buf
+                                                       clock_reset/p_buf.GCLKMUX
+                                                       clock_reset/p_buf
+    SLICE_X41Y9.CLK      net (fanout=127)      0.167   w_pixelclk
+    -------------------------------------------------  ---------------------------
+    Total                                      2.970ns (2.757ns logic, 0.213ns route)
+                                                       (92.8% logic, 7.2% route)
+
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: COMP "xonCAM_RESET" OFFSET = OUT 100 ns AFTER COMP 
+"xipMCLK";
+For more information, see Offset Out Analysis in the Timing Closure User Guide (UG612).
+
+ 0 paths analyzed, 0 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: COMP "xopCAM_XCLK" OFFSET = OUT 100 ns AFTER COMP "xipMCLK";
+For more information, see Offset Out Analysis in the Timing Closure User Guide (UG612).
+
+ 1 path analyzed, 1 endpoint analyzed, 0 failing endpoints
+ 0 timing errors detected.
+ Minimum allowable offset is   9.126ns.
+--------------------------------------------------------------------------------
+
+Paths for end point xopCAM_XCLK (P41.PAD), 1 path
+--------------------------------------------------------------------------------
+Slack (slowest paths):  90.874ns (requirement - (clock arrival + clock path + data path + uncertainty))
+  Source:               clock_reset/cam_clk (FF)
+  Destination:          xopCAM_XCLK (PAD)
+  Source Clock:         w_mclk rising at 0.000ns
+  Requirement:          100.000ns
+  Data Path Delay:      8.644ns (Levels of Logic = 1)
+  Clock Path Delay:     0.482ns (Levels of Logic = 3)
+  Clock Uncertainty:    0.000ns
+
+  Maximum Clock Path: xipMCLK to clock_reset/cam_clk
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P83.I                Tiopi                 1.300   xipMCLK
+                                                       xipMCLK
+                                                       clock_reset/dcm_pll/CLKIN_IBUFG_INST
+    DCM_X1Y1.CLKIN       net (fanout=3)        0.721   clock_reset/w_buffered_ref
+    DCM_X1Y1.CLKFX       Tdcmino              -3.520   clock_reset/dcm_pll/DCM_SP_INST
+                                                       clock_reset/dcm_pll/DCM_SP_INST
+    BUFGMUX_X2Y11.I0     net (fanout=1)        0.398   clock_reset/dcm_pll/CLKFX_BUF
+    BUFGMUX_X2Y11.O      Tgi0o                 1.457   clock_reset/dcm_pll/CLKFX_BUFG_INST
+                                                       clock_reset/dcm_pll/CLKFX_BUFG_INST.GCLKMUX
+                                                       clock_reset/dcm_pll/CLKFX_BUFG_INST
+    SLICE_X46Y23.CLK     net (fanout=278)      0.126   w_mclk
+    -------------------------------------------------  ---------------------------
+    Total                                      0.482ns (-0.763ns logic, 1.245ns route)
+
+  Maximum Data Path: clock_reset/cam_clk to xopCAM_XCLK
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X46Y23.YQ      Tcko                  0.652   clock_reset/cam_clk
+                                                       clock_reset/cam_clk
+    P41.O1               net (fanout=4)        4.744   clock_reset/cam_clk
+    P41.PAD              Tioop                 3.248   xopCAM_XCLK
+                                                       xopCAM_XCLK_OBUF
+                                                       xopCAM_XCLK
+    -------------------------------------------------  ---------------------------
+    Total                                      8.644ns (3.900ns logic, 4.744ns route)
+                                                       (45.1% logic, 54.9% route)
+
+--------------------------------------------------------------------------------
+
+Fastest Paths: COMP "xopCAM_XCLK" OFFSET = OUT 100 ns AFTER COMP "xipMCLK";
+--------------------------------------------------------------------------------
+
+Paths for end point xopCAM_XCLK (P41.PAD), 1 path
+--------------------------------------------------------------------------------
+Delay (fastest paths):  6.535ns (clock arrival + clock path + data path - uncertainty)
+  Source:               clock_reset/cam_clk (FF)
+  Destination:          xopCAM_XCLK (PAD)
+  Source Clock:         w_mclk rising at 0.000ns
+  Data Path Delay:      7.051ns (Levels of Logic = 1)
+  Clock Path Delay:     -0.516ns (Levels of Logic = 3)
+  Clock Uncertainty:    0.000ns
+
+  Minimum Clock Path: xipMCLK to clock_reset/cam_clk
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P83.I                Tiopi                 1.040   xipMCLK
+                                                       xipMCLK
+                                                       clock_reset/dcm_pll/CLKIN_IBUFG_INST
+    DCM_X1Y1.CLKIN       net (fanout=3)        0.577   clock_reset/w_buffered_ref
+    DCM_X1Y1.CLKFX       Tdcmino              -3.725   clock_reset/dcm_pll/DCM_SP_INST
+                                                       clock_reset/dcm_pll/DCM_SP_INST
+    BUFGMUX_X2Y11.I0     net (fanout=1)        0.319   clock_reset/dcm_pll/CLKFX_BUF
+    BUFGMUX_X2Y11.O      Tgi0o                 1.166   clock_reset/dcm_pll/CLKFX_BUFG_INST
+                                                       clock_reset/dcm_pll/CLKFX_BUFG_INST.GCLKMUX
+                                                       clock_reset/dcm_pll/CLKFX_BUFG_INST
+    SLICE_X46Y23.CLK     net (fanout=278)      0.107   w_mclk
+    -------------------------------------------------  ---------------------------
+    Total                                     -0.516ns (-1.519ns logic, 1.003ns route)
+
+  Minimum Data Path: clock_reset/cam_clk to xopCAM_XCLK
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X46Y23.YQ      Tcko                  0.522   clock_reset/cam_clk
+                                                       clock_reset/cam_clk
+    P41.O1               net (fanout=4)        3.795   clock_reset/cam_clk
+    P41.PAD              Tioop                 2.734   xopCAM_XCLK
+                                                       xopCAM_XCLK_OBUF
+                                                       xopCAM_XCLK
+    -------------------------------------------------  ---------------------------
+    Total                                      7.051ns (3.256ns logic, 3.795ns route)
+                                                       (46.2% logic, 53.8% route)
+
+--------------------------------------------------------------------------------
+
+
+Derived Constraint Report
+Derived Constraints for TS1
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|                               |   Period    |       Actual Period       |      Timing Errors        |      Paths Analyzed       |
+|           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
+|                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|TS1                            |    100.000ns|     20.000ns|     76.150ns|            0|            0|            1|         5850|
+| TS_clock_reset_dcm_pll_CLKFX_B|     20.000ns|     15.230ns|          N/A|            0|            0|         5850|            0|
+| UF                            |             |             |             |             |             |             |             |
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+
+All constraints were met.
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock xipCAM_PCLK
+------------+------------+------------+------------------+--------+
+            |Max Setup to|Max Hold to |                  | Clock  |
+Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
+------------+------------+------------+------------------+--------+
+xipCAM_D<0> |   -0.073(R)|    1.279(R)|w_pixelclk        |   0.000|
+xipCAM_D<1> |    0.186(R)|    1.072(R)|w_pixelclk        |   0.000|
+xipCAM_D<2> |    0.276(R)|    0.997(R)|w_pixelclk        |   0.000|
+xipCAM_D<3> |    0.166(R)|    1.086(R)|w_pixelclk        |   0.000|
+xipCAM_D<4> |    0.269(R)|    1.004(R)|w_pixelclk        |   0.000|
+xipCAM_D<5> |    0.723(R)|    0.641(R)|w_pixelclk        |   0.000|
+xipCAM_D<6> |    1.228(R)|    0.234(R)|w_pixelclk        |   0.000|
+xipCAM_D<7> |    0.867(R)|    0.522(R)|w_pixelclk        |   0.000|
+xipCAM_HREF |    0.032(R)|    1.192(R)|w_pixelclk        |   0.000|
+xipCAM_VSYNC|    0.585(R)|    0.749(R)|w_pixelclk        |   0.000|
+------------+------------+------------+------------------+--------+
+
+Clock xipMCLK to Pad
+------------+------------+------------------+--------+
+            | clk (edge) |                  | Clock  |
+Destination |   to PAD   |Internal Clock(s) | Phase  |
+------------+------------+------------------+--------+
+xopCAM_XCLK |    9.126(R)|w_mclk            |   0.000|
+------------+------------+------------------+--------+
+
+Clock to Setup on destination clock xipCAM_PCLK
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+xipCAM_PCLK    |   16.496|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock xipMCLK
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+xipMCLK        |   15.230|         |         |         |
+---------------+---------+---------+---------+---------+
+
+COMP "xipCAM_D<0>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP "xipCAM_PCLK"         "RISING";
+Worst Case Data Window 1.206; Ideal Clock Offset To Actual Clock -0.676; 
+------------------+------------+------------+---------+---------+-------------+
+                  |            |            |  Setup  |  Hold   |Source Offset|
+Source            |   Setup    |    Hold    |  Slack  |  Slack  |  To Center  |
+------------------+------------+------------+---------+---------+-------------+
+xipCAM_D<0>       |   -0.073(R)|    1.279(R)|   15.073|   13.721|        0.676|
+------------------+------------+------------+---------+---------+-------------+
+Worst Case Summary|      -0.073|       1.279|   15.073|   13.721|             |
+------------------+------------+------------+---------+---------+-------------+
+
+COMP "xipCAM_D<1>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP "xipCAM_PCLK"         "RISING";
+Worst Case Data Window 1.258; Ideal Clock Offset To Actual Clock -0.443; 
+------------------+------------+------------+---------+---------+-------------+
+                  |            |            |  Setup  |  Hold   |Source Offset|
+Source            |   Setup    |    Hold    |  Slack  |  Slack  |  To Center  |
+------------------+------------+------------+---------+---------+-------------+
+xipCAM_D<1>       |    0.186(R)|    1.072(R)|   14.814|   13.928|        0.443|
+------------------+------------+------------+---------+---------+-------------+
+Worst Case Summary|       0.186|       1.072|   14.814|   13.928|             |
+------------------+------------+------------+---------+---------+-------------+
+
+COMP "xipCAM_D<2>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP "xipCAM_PCLK"         "RISING";
+Worst Case Data Window 1.273; Ideal Clock Offset To Actual Clock -0.361; 
+------------------+------------+------------+---------+---------+-------------+
+                  |            |            |  Setup  |  Hold   |Source Offset|
+Source            |   Setup    |    Hold    |  Slack  |  Slack  |  To Center  |
+------------------+------------+------------+---------+---------+-------------+
+xipCAM_D<2>       |    0.276(R)|    0.997(R)|   14.724|   14.003|        0.361|
+------------------+------------+------------+---------+---------+-------------+
+Worst Case Summary|       0.276|       0.997|   14.724|   14.003|             |
+------------------+------------+------------+---------+---------+-------------+
+
+COMP "xipCAM_D<3>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP "xipCAM_PCLK"         "RISING";
+Worst Case Data Window 1.252; Ideal Clock Offset To Actual Clock -0.460; 
+------------------+------------+------------+---------+---------+-------------+
+                  |            |            |  Setup  |  Hold   |Source Offset|
+Source            |   Setup    |    Hold    |  Slack  |  Slack  |  To Center  |
+------------------+------------+------------+---------+---------+-------------+
+xipCAM_D<3>       |    0.166(R)|    1.086(R)|   14.834|   13.914|        0.460|
+------------------+------------+------------+---------+---------+-------------+
+Worst Case Summary|       0.166|       1.086|   14.834|   13.914|             |
+------------------+------------+------------+---------+---------+-------------+
+
+COMP "xipCAM_D<4>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP "xipCAM_PCLK"         "RISING";
+Worst Case Data Window 1.273; Ideal Clock Offset To Actual Clock -0.367; 
+------------------+------------+------------+---------+---------+-------------+
+                  |            |            |  Setup  |  Hold   |Source Offset|
+Source            |   Setup    |    Hold    |  Slack  |  Slack  |  To Center  |
+------------------+------------+------------+---------+---------+-------------+
+xipCAM_D<4>       |    0.269(R)|    1.004(R)|   14.731|   13.996|        0.367|
+------------------+------------+------------+---------+---------+-------------+
+Worst Case Summary|       0.269|       1.004|   14.731|   13.996|             |
+------------------+------------+------------+---------+---------+-------------+
+
+COMP "xipCAM_D<5>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP "xipCAM_PCLK"         "RISING";
+Worst Case Data Window 1.364; Ideal Clock Offset To Actual Clock 0.041; 
+------------------+------------+------------+---------+---------+-------------+
+                  |            |            |  Setup  |  Hold   |Source Offset|
+Source            |   Setup    |    Hold    |  Slack  |  Slack  |  To Center  |
+------------------+------------+------------+---------+---------+-------------+
+xipCAM_D<5>       |    0.723(R)|    0.641(R)|   14.277|   14.359|       -0.041|
+------------------+------------+------------+---------+---------+-------------+
+Worst Case Summary|       0.723|       0.641|   14.277|   14.359|             |
+------------------+------------+------------+---------+---------+-------------+
+
+COMP "xipCAM_D<6>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP "xipCAM_PCLK"         "RISING";
+Worst Case Data Window 1.462; Ideal Clock Offset To Actual Clock 0.497; 
+------------------+------------+------------+---------+---------+-------------+
+                  |            |            |  Setup  |  Hold   |Source Offset|
+Source            |   Setup    |    Hold    |  Slack  |  Slack  |  To Center  |
+------------------+------------+------------+---------+---------+-------------+
+xipCAM_D<6>       |    1.228(R)|    0.234(R)|   13.772|   14.766|       -0.497|
+------------------+------------+------------+---------+---------+-------------+
+Worst Case Summary|       1.228|       0.234|   13.772|   14.766|             |
+------------------+------------+------------+---------+---------+-------------+
+
+COMP "xipCAM_D<7>" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP "xipCAM_PCLK"         "RISING";
+Worst Case Data Window 1.389; Ideal Clock Offset To Actual Clock 0.173; 
+------------------+------------+------------+---------+---------+-------------+
+                  |            |            |  Setup  |  Hold   |Source Offset|
+Source            |   Setup    |    Hold    |  Slack  |  Slack  |  To Center  |
+------------------+------------+------------+---------+---------+-------------+
+xipCAM_D<7>       |    0.867(R)|    0.522(R)|   14.133|   14.478|       -0.173|
+------------------+------------+------------+---------+---------+-------------+
+Worst Case Summary|       0.867|       0.522|   14.133|   14.478|             |
+------------------+------------+------------+---------+---------+-------------+
+
+COMP "xipCAM_HREF" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP "xipCAM_PCLK"         "RISING";
+Worst Case Data Window 1.224; Ideal Clock Offset To Actual Clock -0.580; 
+------------------+------------+------------+---------+---------+-------------+
+                  |            |            |  Setup  |  Hold   |Source Offset|
+Source            |   Setup    |    Hold    |  Slack  |  Slack  |  To Center  |
+------------------+------------+------------+---------+---------+-------------+
+xipCAM_HREF       |    0.032(R)|    1.192(R)|   14.968|   13.808|        0.580|
+------------------+------------+------------+---------+---------+-------------+
+Worst Case Summary|       0.032|       1.192|   14.968|   13.808|             |
+------------------+------------+------------+---------+---------+-------------+
+
+COMP "xipCAM_VSYNC" OFFSET = IN 15 ns VALID 30 ns BEFORE COMP "xipCAM_PCLK"         "RISING";
+Worst Case Data Window 1.334; Ideal Clock Offset To Actual Clock -0.082; 
+------------------+------------+------------+---------+---------+-------------+
+                  |            |            |  Setup  |  Hold   |Source Offset|
+Source            |   Setup    |    Hold    |  Slack  |  Slack  |  To Center  |
+------------------+------------+------------+---------+---------+-------------+
+xipCAM_VSYNC      |    0.585(R)|    0.749(R)|   14.415|   14.251|        0.082|
+------------------+------------+------------+---------+---------+-------------+
+Worst Case Summary|       0.585|       0.749|   14.415|   14.251|             |
+------------------+------------+------------+---------+---------+-------------+
+
+COMP "xopCAM_XCLK" OFFSET = OUT 100 ns AFTER COMP "xipMCLK";
+Bus Skew: 0.000 ns; 
+-----------------------------------------------+-------------+--------------+
+PAD                                            | Delay (ns)  |Edge Skew (ns)|
+-----------------------------------------------+-------------+--------------+
+xopCAM_XCLK                                    |        9.126|         0.000|
+-----------------------------------------------+-------------+--------------+
+
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
+
+Constraints cover 19765 paths, 0 nets, and 3697 connections
+
+Design statistics:
+   Minimum period:  20.000ns{1}   (Maximum frequency:  50.000MHz)
+   Minimum input required time before clock:   1.228ns
+   Minimum output required time after clock:   9.126ns
+
+
+------------------------------------Footnotes-----------------------------------
+1)  The minimum period statistic assumes all single cycle delays.
+
+Analysis completed SAT 1 SEP 12:33:59 2012 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 191 MB
+
+
+

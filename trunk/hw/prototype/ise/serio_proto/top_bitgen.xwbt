@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=D:\work\serio-pj\hw\prototype\ise\serio_proto\top.ncd
+OUTFILE=D:\work\serio-pj\hw\prototype\ise\serio_proto\top.bit
+FAMILY=Spartan3E
+PART=xc3s500e-4vq100
+WORKINGDIR=D:\work\serio-pj\hw\prototype\ise\serio_proto
+LICENSE=WebPack
+USER_INFO=175490219_0_0_517

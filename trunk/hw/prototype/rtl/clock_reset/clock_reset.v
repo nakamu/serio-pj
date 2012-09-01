@@ -25,8 +25,9 @@ assign pll_lock_n = ~w_pll_lock;
 wire clkx1;
 
 // remove chattering 
+wire w_buffered_ref;
 syncd01a  i_reset_sync (
-	.clk( refclk ),           // 1 bit input 
+	.clk( w_buffered_ref ),           // 1 bit input 
 	.reset_n(1'b1),           // 1 bit input 
 	.d(reset_n),              // 1 bit input 
 	.q(w_refclk_reset_n)      // 1 bit output
@@ -37,7 +38,7 @@ dcm_pll dcm_pll (
 	.CLKIN_IN        ( refclk ),
 	.RST_IN          ( ~w_refclk_reset_n ),
 	.CLKFX_OUT       ( mclk ),
-	.CLKIN_IBUFG_OUT ( ),
+	.CLKIN_IBUFG_OUT ( w_buffered_ref ),
 	.CLK0_OUT        ( ),
 	.LOCKED_OUT      ( w_pll_lock )
 );

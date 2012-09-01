@@ -12,7 +12,7 @@ module uart_transaction (
 	uart_SCmdAccept,
 	uart_SData,
 	uart_SResp,
-	uart_active_n,
+	uart_active_n
 );
 
 input        clk;
@@ -198,30 +198,6 @@ always @ (posedge clk or negedge reset_n)
 	end
 
 /**************************************************
-*        outstanding transaction limitter         *
-*            can't issue next cmd                 *
-*         until this I/F receives response        *
-**************************************************/
-reg r_pre_unlock;
-always @ (posedge clk or negedge reset_n)
-	if(~reset_n) begin
-		r_outstanding <= #`D 1'b0;
-		r_pre_unlock  <= #`D 1'b0;
-	end else begin
-		if(r_MCmd == 3'b010 & uart_SCmdAccept) begin
-			// read request issued
-			r_outstanding <= #`D 1'b1;
-		end else if(~r_pre_unlock & r_tx_start) begin
-			// read response has passed to UART Tx
-			r_pre_unlock  <= #`D 1'b1;
-		end else if(r_pre_unlock & ~w_tx_status) begin
-			// UART Tx is now idle, OK to issue next command
-			r_outstanding <= #`D 1'b0;
-			r_pre_unlock  <= #`D 1'b0;
-		end
-	end
-
-/**************************************************
 *           Response path State machine           *
 **************************************************/
 parameter P_STATE_CAPTURE = 1'b0;
@@ -258,6 +234,32 @@ always @ (posedge clk or negedge reset_n)
 		end
 		endcase
 	end
+	
+/**************************************************
+*        outstanding transaction limitter         *
+*            can't issue next cmd                 *
+*         until this I/F receives response        *
+**************************************************/
+reg r_pre_unlock;
+always @ (posedge clk or negedge reset_n)
+	if(~reset_n) begin
+		r_outstanding <= #`D 1'b0;
+		r_pre_unlock  <= #`D 1'b0;
+	end else begin
+		if(r_MCmd == 3'b010 & uart_SCmdAccept) begin
+			// read request issued
+			r_outstanding <= #`D 1'b1;
+		end else if(~r_pre_unlock & r_tx_start) begin
+			// read response has passed to UART Tx
+			r_pre_unlock  <= #`D 1'b1;
+		end else if(r_pre_unlock & ~w_tx_status) begin
+			// UART Tx is now idle, OK to issue next command
+			r_outstanding <= #`D 1'b0;
+			r_pre_unlock  <= #`D 1'b0;
+		end
+	end
+
+
 
 endmodule
 

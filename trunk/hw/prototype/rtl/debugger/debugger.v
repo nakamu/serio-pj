@@ -69,84 +69,6 @@ output       Seg2_G;
 output       Seg2_DP;
 
 /****************************
-*          bus I/F          *
-****************************/
-reg [7:0] r_debug_reg1;
-reg [7:0] r_debug_reg2;
-reg [7:0] r_debug_reg3;
-reg [7:0] r_debug_reg4;
-
-wire w_write_enable;
-wire w_read_enable;
-assign w_write_enable = (debugger_MCmd == 3'b001) ? 1'b1 : 1'b0;
-assign w_read_enable  = (debugger_MCmd == 3'b010) ? 1'b1 : 1'b0;
-
-reg r_read_enable;
-always @ (posedge clk or negedge reset_n)
-	if(~reset_n) r_read_enable <= #`D 2'b00;
-	else         r_read_enable <= #`D w_read_enable;
-
-// always receive request and return resp at 1 cycle
-assign debugger_SCmdAccept = 1'b1;
-assign debugger_SResp      = {1'b0, r_read_enable};
-
-// read data
-reg [7:0] debugger_SData;
-always @ (posedge clk or negedge reset_n)
-	if(~reset_n) begin
-		debugger_SData <= #`D 8'h00;
-	end else begin
-		if(w_read_enable) begin
-			case(debugger_MAddr[6:0])
-				7'h00 : debugger_SData <= #`D 8'h44;
-				7'h01 : debugger_SData <= #`D 8'h45;
-				7'h02 : debugger_SData <= #`D 8'h41;
-				7'h03 : debugger_SData <= #`D 8'h44;
-				7'h04 : debugger_SData <= #`D 8'h42;
-				7'h05 : debugger_SData <= #`D 8'h45;
-				7'h06 : debugger_SData <= #`D 8'h45;
-				7'h07 : debugger_SData <= #`D 8'h46;
-				7'h10 : debugger_SData <= #`D r_debug_reg1;
-				7'h11 : debugger_SData <= #`D r_debug_reg2;
-				7'h12 : debugger_SData <= #`D r_debug_reg3;
-				7'h13 : debugger_SData <= #`D r_debug_reg4;
-				7'h20 : debugger_SData <= #`D {4'b0000, r_select1};
-				7'h21 : debugger_SData <= #`D {4'b0000, r_select2};
-				7'h22 : debugger_SData <= #`D {4'b0000, r_selected_out1};
-				7'h23 : debugger_SData <= #`D {4'b0000, r_selected_out2};
-				7'h30 : debugger_SData <= #`D {2'b00, link_state, 2'b00, active_link};
-				default : debugger_SData <= #`D 8'h00;
-			endcase
-		end
-	end
-
-// write data
-wire w_write_enable_debug_reg1; 
-wire w_write_enable_debug_reg2; 
-wire w_write_enable_debug_reg3; 
-wire w_write_enable_debug_reg4; 
-assign w_write_enable_debug_reg1 = w_write_enable & (debugger_MAddr[6:0] == 7'h10);
-assign w_write_enable_debug_reg2 = w_write_enable & (debugger_MAddr[6:0] == 7'h11);
-assign w_write_enable_debug_reg3 = w_write_enable & (debugger_MAddr[6:0] == 7'h12);
-assign w_write_enable_debug_reg4 = w_write_enable & (debugger_MAddr[6:0] == 7'h13);
-
-always @ (posedge clk or negedge reset_n)
-	if(~reset_n) r_debug_reg1 <= #`D 8'h00;
-	else         r_debug_reg1 <= #`D w_write_enable_debug_reg1 ? debugger_MData : r_debug_reg1;
-
-always @ (posedge clk or negedge reset_n)
-	if(~reset_n) r_debug_reg2 <= #`D 8'h00;
-	else         r_debug_reg2 <= #`D w_write_enable_debug_reg2 ? debugger_MData : r_debug_reg2;
-
-always @ (posedge clk or negedge reset_n)
-	if(~reset_n) r_debug_reg3 <= #`D 8'h00;
-	else         r_debug_reg3 <= #`D w_write_enable_debug_reg3 ? debugger_MData : r_debug_reg3;
-
-always @ (posedge clk or negedge reset_n)
-	if(~reset_n) r_debug_reg4 <= #`D 8'h00;
-	else         r_debug_reg4 <= #`D w_write_enable_debug_reg4 ? debugger_MData : r_debug_reg4;
-
-/****************************
 *         switch box        *
 ****************************/
 wire   w_sw_pushing;
@@ -187,6 +109,10 @@ always @ (posedge clk or negedge reset_n)
 
 reg [3:0] r_selected_out1;
 reg [3:0] r_selected_out2;
+reg [7:0] r_debug_reg1;
+reg [7:0] r_debug_reg2;
+reg [7:0] r_debug_reg3;
+reg [7:0] r_debug_reg4;
 
 always @ (posedge clk or negedge reset_n)
 	if(~reset_n) begin
@@ -307,6 +233,81 @@ function [7:0] decode_7seg;
 		default : decode_7seg = 8'hxx;
 	endcase
 endfunction
+
+/****************************
+*          bus I/F          *
+****************************/
+
+wire w_write_enable;
+wire w_read_enable;
+assign w_write_enable = (debugger_MCmd == 3'b001) ? 1'b1 : 1'b0;
+assign w_read_enable  = (debugger_MCmd == 3'b010) ? 1'b1 : 1'b0;
+
+reg r_read_enable;
+always @ (posedge clk or negedge reset_n)
+	if(~reset_n) r_read_enable <= #`D 2'b00;
+	else         r_read_enable <= #`D w_read_enable;
+
+// always receive request and return resp at 1 cycle
+assign debugger_SCmdAccept = 1'b1;
+assign debugger_SResp      = {1'b0, r_read_enable};
+
+// read data
+reg [7:0] debugger_SData;
+always @ (posedge clk or negedge reset_n)
+	if(~reset_n) begin
+		debugger_SData <= #`D 8'h00;
+	end else begin
+		if(w_read_enable) begin
+			case(debugger_MAddr[6:0])
+				7'h00 : debugger_SData <= #`D 8'h44;
+				7'h01 : debugger_SData <= #`D 8'h45;
+				7'h02 : debugger_SData <= #`D 8'h41;
+				7'h03 : debugger_SData <= #`D 8'h44;
+				7'h04 : debugger_SData <= #`D 8'h42;
+				7'h05 : debugger_SData <= #`D 8'h45;
+				7'h06 : debugger_SData <= #`D 8'h45;
+				7'h07 : debugger_SData <= #`D 8'h46;
+				7'h10 : debugger_SData <= #`D r_debug_reg1;
+				7'h11 : debugger_SData <= #`D r_debug_reg2;
+				7'h12 : debugger_SData <= #`D r_debug_reg3;
+				7'h13 : debugger_SData <= #`D r_debug_reg4;
+				7'h20 : debugger_SData <= #`D {4'b0000, r_select1};
+				7'h21 : debugger_SData <= #`D {4'b0000, r_select2};
+				7'h22 : debugger_SData <= #`D {4'b0000, r_selected_out1};
+				7'h23 : debugger_SData <= #`D {4'b0000, r_selected_out2};
+				7'h30 : debugger_SData <= #`D {2'b00, link_state, 2'b00, active_link};
+				default : debugger_SData <= #`D 8'h00;
+			endcase
+		end
+	end
+
+// write data
+wire w_write_enable_debug_reg1; 
+wire w_write_enable_debug_reg2; 
+wire w_write_enable_debug_reg3; 
+wire w_write_enable_debug_reg4; 
+assign w_write_enable_debug_reg1 = w_write_enable & (debugger_MAddr[6:0] == 7'h10);
+assign w_write_enable_debug_reg2 = w_write_enable & (debugger_MAddr[6:0] == 7'h11);
+assign w_write_enable_debug_reg3 = w_write_enable & (debugger_MAddr[6:0] == 7'h12);
+assign w_write_enable_debug_reg4 = w_write_enable & (debugger_MAddr[6:0] == 7'h13);
+
+always @ (posedge clk or negedge reset_n)
+	if(~reset_n) r_debug_reg1 <= #`D 8'h00;
+	else         r_debug_reg1 <= #`D w_write_enable_debug_reg1 ? debugger_MData : r_debug_reg1;
+
+always @ (posedge clk or negedge reset_n)
+	if(~reset_n) r_debug_reg2 <= #`D 8'h00;
+	else         r_debug_reg2 <= #`D w_write_enable_debug_reg2 ? debugger_MData : r_debug_reg2;
+
+always @ (posedge clk or negedge reset_n)
+	if(~reset_n) r_debug_reg3 <= #`D 8'h00;
+	else         r_debug_reg3 <= #`D w_write_enable_debug_reg3 ? debugger_MData : r_debug_reg3;
+
+always @ (posedge clk or negedge reset_n)
+	if(~reset_n) r_debug_reg4 <= #`D 8'h00;
+	else         r_debug_reg4 <= #`D w_write_enable_debug_reg4 ? debugger_MData : r_debug_reg4;
+
 
 endmodule
 

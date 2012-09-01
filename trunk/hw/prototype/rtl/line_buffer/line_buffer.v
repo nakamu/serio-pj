@@ -162,6 +162,7 @@ trigp01a vsync_trigger (
 *         Capture State machine        *
 ***************************************/
 reg [3:0] r_cap_state;
+wire w_capture_area;
 parameter P_STATE_INIT  = 4'h0;
 parameter P_STATE_WAIT0 = 4'h1;
 parameter P_STATE_WAIT1 = 4'h2;
@@ -214,7 +215,6 @@ always @ (posedge writeClk or negedge writeRst_n)
 		end
 	end
 
-wire w_capture_area;
 assign w_capture_area = (r_linecount >= w_line_addr) & (r_linecount < w_line_addr + {4'h0, w_line_size});
 
 /***************************************
@@ -228,18 +228,31 @@ wire       w_fifo_read_enable;
 assign w_fifo_read_enable  = w_read_enable & (linebuf_MAddr[6:0] == 7'h00);
 assign w_fifo_write_enable = r_HREF & w_capture_area;
 
-line_fifo line_fifo(
-	.RST       ( writeRst_n ),
-	.WR_CLK    ( writeClk ),
-	.DIN       ( r_DATA ),
-	.WR_EN     ( w_fifo_write_enable ),
-	.FULL      ( w_full ),
-	.OVERFLOW  ( w_overflow ),
-	.RD_CLK    ( readClk ),
-	.DOUT      ( w_read_data ),
-	.RD_EN     ( w_fifo_read_enable ),
-	.EMPTY     ( w_fifo_status[2] ),
-	.UNDERFLOW ( w_fifo_status[3] )
+/*line_fifo line_fifo(
+	.rst       ( writeRst_n ),
+	.wr_clk    ( writeClk ),
+	.din       ( r_DATA ),
+	.wr_en     ( w_fifo_write_enable ),
+	.full      ( w_full ),
+	.overflow  ( w_overflow ),
+	.rd_clk    ( readClk ),
+	.dout      ( w_read_data ),
+	.rd_en     ( w_fifo_read_enable ),
+	.empty     ( w_fifo_status[2] ),
+	.underflow ( w_fifo_status[3] )
+);*/
+line_fifo i_fifo (
+  .rst(writeRst_n), // input rst
+  .wr_clk(writeClk), // input wr_clk
+  .rd_clk(readClk), // input rd_clk
+  .din(r_DATA), // input [7 : 0] din
+  .wr_en(w_fifo_write_enable), // input wr_en
+  .rd_en(w_fifo_read_enable), // input rd_en
+  .dout(w_read_data), // output [7 : 0] dout
+  .full(w_full), // output full
+  .overflow(w_overflow), // output overflow
+  .empty(w_fifo_status[2]), // output empty
+  .underflow(w_fifo_status[3]) // output underflow
 );
 
 syncd01a sync_flag_full(

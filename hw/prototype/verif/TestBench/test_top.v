@@ -2,17 +2,17 @@
 
 module test_top;
 `define MCLK_HCYCLE 50
-`define SIM_TIME    4000000
+`define SIM_TIME    8000000
 
-reg       xipMCLK;       // P83
-reg       xinRESET;      // P85
-wire      xopCAM_PWDN;   // P62 : vport1_3 
-wire      xonCAM_RESET;  // P63 : vport1_4
-wire      xopCAM_XCLK;   // P65 : vport1_5
-reg       xipCAM_VSYNC;  // P66 : vport1_6
-reg       xipCAM_HREF;   // P67 : vport1_7
-reg       xipCAM_PCLK;   // P68 : vport1_8
-reg [7:0] xipCAM_D;      // P33,34,35,36,40,41,57,58
+reg        xipMCLK;       // P83
+reg        xinRESET;      // P85
+wire       xopCAM_PWDN;   // P62 : vport1_3 
+wire       xonCAM_RESET;  // P63 : vport1_4
+wire       xopCAM_XCLK;   // P65 : vport1_5
+wire       xipCAM_VSYNC;  // P66 : vport1_6
+wire       xipCAM_HREF;   // P67 : vport1_7
+wire       xipCAM_PCLK;   // P68 : vport1_8
+wire [7:0] xipCAM_D;      // P33,34,35,36,40,41,57,58
 reg       xipSW1;        // P22
 reg       xipSW2;        // P23
 reg       xipSW3;        // P24
@@ -74,6 +74,15 @@ top top(
 	.xon7Seg2_DP  ( xon7Seg2_DP )
 );
 
+reg enable;
+frame_driver frame_driver(
+	.reset_n(enable),
+	.PCLK(xipCAM_PCLK),
+	.VSYNC(xipCAM_VSYNC),
+	.HREF(xipCAM_HREF),
+	.DATA(xipCAM_D)
+);
+
 /***** Clock & Reset *****/
 always begin
 	xipMCLK = 0; #`MCLK_HCYCLE;
@@ -103,8 +112,13 @@ end
 
 `include "TestBench/uart_task.v"
 
+reg [7:0] rdata;
+integer i;
+integer uart_message_on;
 initial begin
 	#1000;
+	uart_message_on = 1;
+	enable = 0;
 	xipRXD = 1'b1;
 	xipSW1 = 1'b0;
 	xipSW2 = 1'b0;
@@ -112,17 +126,35 @@ initial begin
 	xipSW4 = 1'b0;
 	wait(xinRESET);
 	#10000;
-	read(8'h80);
-	read(8'h81);
-	read(8'h82);
-	read(8'h83);
-	read(8'h84);
-	read(8'h85);
-	read(8'h86);
-	read(8'h87);
+	read(8'h80, rdata);
+	read(8'h81, rdata);
+	read(8'h82, rdata);
+	read(8'h83, rdata);
+	read(8'h84, rdata);
+	read(8'h85, rdata);
+	read(8'h86, rdata);
+	read(8'h87, rdata);
 	write(8'h90, 8'h0A);
 	burst_read_incr(8'h90, 8'h3);
+	write(8'h10, 8'h01);
+	read(8'h14, rdata);
+	uart_message_on = 0;
+	enable = 1;
+	while(rdata[0] != 1'b1) begin
+		read(8'h14, rdata);
+	end
+	uart_message_on = 1;
+	for(i = 0; i < 3072; i = i+1) begin
+		burst_read_strm(8'h00, 8'hC7);
+		burst_read_strm(8'h00, 8'hC7);
+		burst_read_strm(8'h00, 8'hC7);
+		burst_read_strm(8'h00, 8'hC7);
+	end
+	
 	#`SIM_TIME $finish;
 end
 
 endmodule
+
+`include "TestBench/frame_driver.v"
+

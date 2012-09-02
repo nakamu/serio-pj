@@ -61,7 +61,7 @@ always @ (posedge readClk or negedge readRst_n)
 		linebuf_SData   <= #`D 8'h00;
 		r_capture_start <= #`D 1'b0;
 		r_line_addr     <= #`D 9'h000;
-		r_line_size     <= #`D 5'h00;
+		r_line_size     <= #`D 5'd20; // 20
 	end else begin
 		if(w_read_enable) 
 			case(linebuf_MAddr[6:0])

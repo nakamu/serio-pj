@@ -115,8 +115,16 @@ void readBMIHeader(BitmapInfoHeader *bi, FILE *fp){
 
 void dump_pixels (FILE *fp) {
 	unsigned char buf;
+	int count;
+
+	count = 0;
 	while(fread(&buf, 1, 1, fp) != 0) {
-		printf("%02x\n", buf);
+		printf("%02x", buf);
+		count++;
+		if(count == 3) {
+			printf("\n"); 
+			count = 0;
+		}
 	}
 	return;
 }

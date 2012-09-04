@@ -5,75 +5,75 @@
 * 32768 words, first word fall through *
 ***************************************/
 module line_fifo (
-	RST,
-	WR_CLK,
-	DIN,
-	WR_EN,
-	FULL,
-	OVERFLOW,
-	RD_CLK,
-	DOUT,
-	RD_EN,
-	EMPTY,
-	UNDERFLOW
+	rst,
+	wr_clk,
+	din,
+	wr_en,
+	full,
+	overflow,
+	rd_clk,
+	dout,
+	rd_en,
+	empty,
+	underflow
 );
-input        RST;
-input        WR_CLK;
-input [7:0]  DIN;
-input        WR_EN;
-output       FULL;
-output       OVERFLOW;
-input        RD_CLK;
-output [7:0] DOUT;
-input        RD_EN;
-output       EMPTY;
-output       UNDERFLOW;
+input        rst;
+input        wr_clk;
+input  [7:0] din;
+input        wr_en;
+output       full;
+output       overflow;
+input        rd_clk;
+output [7:0] dout;
+input        rd_en;
+output       empty;
+output       underflow;
 
 reg [7:0] buffer [0:32767];
 
 reg [14:0] r_rptr;
 reg [14:0] r_wptr;
 
-assign DOUT = buffer[r_rptr];
+assign dout = buffer[r_rptr];
 
 wire w_rdrst_n;
 wire w_wrrst_n;
-assign w_wrrst_n = ~RST;
+assign w_wrrst_n = ~rst;
 
 rsync02a rsync (
-	.clk(RD_CLK),
-	.reset_in(~RST),
+	.clk(rd_clk),
+	.reset_in(~rst),
 	.reset_out(w_rdrst_n)
 );
 
-reg EMPTY;
-reg UNDERFLOW;
-always @ (posedge RD_CLK or negedge w_rdrst_n)
+reg empty;
+reg underflow;
+always @ (posedge rd_clk or negedge w_rdrst_n)
 	if(~w_rdrst_n) begin
 		r_rptr    <= 15'h00;
-		EMPTY     <= 1'b0;
-		UNDERFLOW <= 1'b0;
+		empty     <= 1'b0;
+		underflow <= 1'b0;
 	end else begin
-		r_rptr    <= RD_EN ? r_rptr + 15'h1 : r_rptr;
-		EMPTY     <= (r_rptr + 15'h1 == r_wptr) ? 1'b1 : 1'b0;
-		UNDERFLOW <= RD_EN & EMPTY ? 1'b1 : UNDERFLOW ? 1'b1 : 1'b0;
+		r_rptr    <= rd_en ? r_rptr + 15'h1 : r_rptr;
+		empty     <= (r_rptr + 15'h1 == r_wptr) ? 1'b1 : 1'b0;
+		underflow <= rd_en & empty ? 1'b1 : underflow ? 1'b1 : 1'b0;
 	end
 
-reg FULL;
-reg OVERFLOW;
+reg full;
+reg overflow;
 reg r_fullmask;
-always @ (posedge WR_CLK or negedge w_wrrst_n)
+always @ (posedge wr_clk or negedge w_wrrst_n)
 	if(~w_wrrst_n) begin
 		r_wptr     <= 15'h00;
-		FULL       <= 1'b0;
-		OVERFLOW   <= 1'b0;
+		full       <= 1'b0;
+		overflow   <= 1'b0;
 		r_fullmask <= 1'b0;
 	end else begin
-		buffer[r_wptr] <= WR_EN ? DIN : buffer[r_wptr]; 
-		r_wptr     <= WR_EN ? r_wptr + 15'h1 : r_wptr;
-		FULL       <= (r_rptr == r_wptr) ? r_fullmask : 1'b0;
-		OVERFLOW   <= (WR_EN & FULL) ? 1'b1 : OVERFLOW ? 1'b1 : 1'b0;
-		r_fullmask <= WR_EN ? 1'b1 : r_fullmask ? 1'b1 : 1'b0;
+		buffer[r_wptr] <= wr_en ? din : buffer[r_wptr]; 
+		r_wptr     <= wr_en ? r_wptr + 15'h1 : r_wptr;
+		full       <= (r_rptr == r_wptr) ? r_fullmask : 1'b0;
+		overflow   <= (wr_en & full) ? 1'b1 : overflow ? 1'b1 : 1'b0;
+		r_fullmask <= wr_en ? 1'b1 : r_fullmask ? 1'b1 : 1'b0;
 	end
 
 endmodule

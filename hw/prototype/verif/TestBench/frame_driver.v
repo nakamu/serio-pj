@@ -48,7 +48,7 @@ always @ (posedge pclk or negedge reset_n) begin
 end
 
 wire [18:0] pointer;
-assign pointer = h_count + v_count*640;
+assign pointer = v_count < 20 ? 19'h0 : h_count + (v_count-20)*640;
 
 reg [23:0] picture [0:307199];
 initial $readmemh("picture.hex", picture);

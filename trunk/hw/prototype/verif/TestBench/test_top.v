@@ -2,7 +2,7 @@
 
 module test_top;
 `define MCLK_HCYCLE 50
-`define SIM_TIME    8000000
+`define SIM_TIME    6000000
 
 reg        xipMCLK;       // P83
 reg        xinRESET;      // P85
@@ -105,7 +105,7 @@ end
 /***** Dump waveform *****/
 initial begin
 	$dumpfile("test_top.vcd");
-	$dumpvars(0, test_top);
+	$dumpvars(3, test_top);
 end
 
 /***** Main Sequence *****/

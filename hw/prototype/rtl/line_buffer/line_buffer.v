@@ -226,7 +226,7 @@ wire       w_full;
 wire       w_overflow;
 wire       w_fifo_read_enable;
 assign w_fifo_read_enable  = w_read_enable & (linebuf_MAddr[6:0] == 7'h00);
-assign w_fifo_write_enable = r_HREF & w_capture_area;
+assign w_fifo_write_enable = r_HREF & w_capture_area & (r_cap_state != P_STATE_INIT);
 
 line_fifo line_fifo(
 	.rst       ( ~writeRst_n ),

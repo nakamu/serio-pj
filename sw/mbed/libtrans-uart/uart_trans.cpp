@@ -3,16 +3,6 @@
 
 uart_trans::uart_trans() {}
 
-	void write(unsigned char addr, unsigned char *data);
-	void burst_write(unsigned char addr, unsigned char *data, 
-					 int type, unsigned char burst);
-	void read(unsigned char addr, unsigned char *data);
-	void burst_read(unsigned char addr, unsigned char *data,
-					int type, unsigned char burst); 
-	void wait_uartTx();
-	void wait_uartRx();
-
-
 // mbedのUARTにデータが来るまでwait
 void uart_trans::wait_uartRx() {
 	while(1) { if(uart.readable()) { break; }

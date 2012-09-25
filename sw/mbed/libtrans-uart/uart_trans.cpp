@@ -1,4 +1,3 @@
-
 #include "uart_trans.hpp"
 
 uart_trans::uart_trans() {}
@@ -70,9 +69,9 @@ void uart_trans::burst_read(
 	unsigned char command;
 
 	if(type == CMD_BURST_INCR) {
-		command = CMD_UART_INCR_BURST_WRITE;
+		command = CMD_UART_INCR_BURST_READ;
 	} else if(type == CMD_BURST_STRM) {
-		command = CMD_UART_STRM_BURST_WRITE;
+		command = CMD_UART_STRM_BURST_READ;
 	} else {
 		// unsupported burst command
 		return;

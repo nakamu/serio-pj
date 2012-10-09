@@ -1,0 +1,16 @@
+#summary One-sentence summary of this page.
+
+= 第４回 ミーティング？ =
+
+ミーティングなのか飲み会なのか、定かじゃないが
+一応10/12のミーティングの議事録及び資料のページ
+
+
+= Details =
+
+議事録:
+  * ここに議事録を書く
+
+資料:
+  * 中村分:
+http://code.google.com/p/serio-pj/source/browse/wiki/meeting_file/ProgressReport_20121012_nakamura.ppt

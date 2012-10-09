@@ -13,4 +13,4 @@
 
 資料:
   * 中村分:
-http://code.google.com/p/serio-pj/source/browse/wiki/meeting_file/ProgressReport_20121012_nakamura.ppt
+http://code.google.com/p/serio-pj/source/browse/wiki/meeting_file/meeting04/ProgressReport_20121012_nakamura.ppt

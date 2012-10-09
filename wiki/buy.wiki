@@ -1,4 +1,6 @@
-#購入したもの
+#summary 購入したものリスト
+
+= 購入したもの =
 
 ||購入日||購入者||購入物||購入場所||価格||グループ||備考||
 ||2012/05/03||yone2||ビュートローバー HB/ARM用 タイヤセット||ヴィストンロボットショップ||\525||HW||http://www.vstone.co.jp/robotshop/index.php?main_page=product_info&products_id=1990||
@@ -25,4 +27,5 @@
 ||2012/05/31||lahan||FL studio mobile HD||iTunes Store||\1700||Art|| ||
 ||2012/06/30||yamada||会場費用||川崎市産業振興会館||\5400||General||午後：第一会議室，夜間：第二研修室||
 ||2012/06/30||joseph||ポストイット・ペン||川崎丸善||\1512||General|| ||
-||2012/07/02||lahan||FL studio Signature Bundle||IL||$179.4||Art||請求時に日本円にupdate予定||
+||2012/07/02||lahan||FL studio Signature Bundle||IL||\14595||Art||請求時に日本円にupdate予定||
+||2012/07/20||lahan||Alesis Q49||amazon||\4000||Art||金額は予算負担分||

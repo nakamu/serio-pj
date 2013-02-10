@@ -26,7 +26,7 @@ wire        w_HoldTrigger;
 assign w_HoldTrigger = txTrigger ? 1'b1 : (r_HoldTrigger & (r_state == P_STATE_SENDING)) ? 
 	                   1'b0 : r_HoldTrigger;
 
-assign txStatus     = (r_state != P_STATE_IDLE);
+assign txStatus     = r_HoldTrigger | (r_state != P_STATE_IDLE);
 assign w_shiftReg   = (r_state == P_STATE_IDLE) & r_HoldTrigger ? 
 	                  {1'b1, txParallelData, 1'b0} : {1'b0, r_shiftReg[9:1]};
 assign txSerialData = (r_state == P_STATE_IDLE) ? 1'b1 : r_shiftReg[0];

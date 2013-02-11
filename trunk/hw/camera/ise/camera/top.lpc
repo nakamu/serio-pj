@@ -1,0 +1,97 @@
+# top.lpc  
+#   The constraints in this file were created simply to be viewed.  
+#   If you wish to use these constraints, please copy them into your  
+#   project's constraint file. If you do not have a project constraints  
+#   file yet, please use the "Project->New Source" menu to create one.
+
+
+
+#pin2ucf - Mon Feb 11 23:05:20 2013
+#The following constraints were newly added
+NET "xbpDATA2<12>" LOC = C3;
+NET "xbpDATA2<5>" LOC = G2;
+NET "xbpDATA2<13>" LOC = K2;
+NET "xbpDATA2<6>" LOC = E1;
+NET "xbpDATA2<14>" LOC = M1;
+NET "xbpDATA2<7>" LOC = D1;
+NET "xopCAM_PWDN" LOC = B8;
+NET "xbpDATA2<15>" LOC = N1;
+NET "xbpDATA2<8>" LOC = D2;
+NET "xbpDATA2<9>" LOC = E2;
+NET "xonCAM_RESET" LOC = B7;
+NET "xonOE" LOC = K4;
+NET "xipCAM_VSYNC" LOC = A9;
+NET "xbpDATA1<0>" LOC = N7;
+NET "xbpDATA1<1>" LOC = T8;
+NET "xipCAM_D<0>" LOC = A10;
+NET "xbpDATA1<2>" LOC = R6;
+NET "xipCAM_D<1>" LOC = B10;
+NET "xbpDATA1<3>" LOC = T5;
+NET "xipCAM_HREF" LOC = A8;
+NET "xipCAM_D<2>" LOC = B12;
+NET "xbpDATA1<4>" LOC = R5;
+NET "xonWE" LOC = G3;
+NET "xipCAM_D<3>" LOC = B11;
+NET "xbpDATA1<5>" LOC = C2;
+NET "xipCAM_D<4>" LOC = B13;
+NET "xbpDATA1<6>" LOC = C1;
+NET "xipCAM_D<5>" LOC = A12;
+NET "xbpDATA1<7>" LOC = B1;
+NET "xonCE1" LOC = P7;
+NET "xonCE2" LOC = N5;
+NET "xipCAM_D<6>" LOC = B14;
+NET "xbpDATA1<8>" LOC = D3;
+NET "xipRESET" LOC = L14;
+NET "xbpCAM_SIO_D" LOC = A5;
+NET "xipCAM_D<7>" LOC = A13;
+NET "xbpDATA1<9>" LOC = P8;
+NET "xopAddr<0>" LOC = L5;
+NET "xopAddr<10>" LOC = G5;
+NET "xopAddr<1>" LOC = N3;
+NET "xonLB1" LOC = P6;
+NET "xopTXD" LOC = R13;
+NET "xonLB2" LOC = P5;
+NET "xopAddr<11>" LOC = H3;
+NET "xopAddr<2>" LOC = M4;
+NET "xopAddr<12>" LOC = H4;
+NET "xopAddr<3>" LOC = M3;
+NET "xopAddr<13>" LOC = J4;
+NET "xopAddr<4>" LOC = L4;
+NET "xopAddr<14>" LOC = J3;
+NET "xopAddr<5>" LOC = G4;
+NET "xopAddr<15>" LOC = K3;
+NET "xopAddr<6>" LOC = F3;
+NET "xopAddr<16>" LOC = K5;
+NET "xopCAM_SIO_C" LOC = B5;
+NET "xopAddr<7>" LOC = F4;
+NET "xipCAM_STROBE" LOC = A7;
+NET "xonUB1" LOC = T4;
+NET "xopAddr<17>" LOC = L3;
+NET "xonUB2" LOC = R4;
+NET "xopAddr<8>" LOC = E3;
+NET "xopAddr<9>" LOC = E4;
+NET "xbpDATA1<10>" LOC = F2;
+NET "xbpDATA1<11>" LOC = H1;
+NET "xipMCLK" LOC = T9;
+NET "xipCAM_PCLK" LOC = D9;
+NET "xbpDATA1<12>" LOC = J2;
+NET "xbpDATA1<13>" LOC = L2;
+NET "xipRXD" LOC = T13;
+NET "xbpDATA1<14>" LOC = P1;
+NET "xbpDATA1<15>" LOC = R1;
+NET "xopCAM_XCLK" LOC = B6;
+NET "xopLD0" LOC = K12;
+NET "xopLD1" LOC = P14;
+NET "xopLD2" LOC = L12;
+NET "xopLD3" LOC = N14;
+NET "xopLD4" LOC = P13;
+NET "xopLD5" LOC = N12;
+NET "xopLD6" LOC = P12;
+NET "xbpDATA2<0>" LOC = P2;
+NET "xopLD7" LOC = P11;
+NET "xbpDATA2<1>" LOC = N2;
+NET "xbpDATA2<2>" LOC = M2;
+NET "xbpDATA2<10>" LOC = G1;
+NET "xbpDATA2<3>" LOC = K1;
+NET "xbpDATA2<11>" LOC = F5;
+NET "xbpDATA2<4>" LOC = J1;

@@ -1,0 +1,1550 @@
+Release 14.2 - xst P.28xd (nt64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.20 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.20 secs
+ 
+--> Reading design: top.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "top.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "top"
+Output Format                      : NGC
+Target Device                      : xc3s200-4-ft256
+
+---- Source Options
+Top Module Name                    : top
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 8
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "../../rtl/lib/trigp01a.v" in library work
+Compiling verilog file "../../rtl/lib/trign01a.v" in library work
+Module <trigp01a> compiled
+Compiling verilog file "../../rtl/lib/rsync02a.v" in library work
+Module <trign01a> compiled
+Compiling verilog file "../../rtl/lib/cgate01a.v" in library work
+Module <rsync02a> compiled
+Compiling verilog file "../../rtl/lib/syncd01a.v" in library work
+Module <cgate01a> compiled
+Compiling verilog file "../../rtl/lib/rstx_01a.v" in library work
+Module <syncd01a> compiled
+Compiling verilog file "../../rtl/lib/rsrx_01a.v" in library work
+Module <rstx_01a> compiled
+Compiling verilog file "../../rtl/lib/rsclk01a.v" in library work
+Module <rsrx_01a> compiled
+Compiling verilog file "../../rtl/case_rom.v" in library work
+Module <rsclk01a> compiled
+Compiling verilog file "../../rtl/sram_if.v" in library work
+Module <case_rom> compiled
+Compiling verilog file "../../rtl/sccb_config.v" in library work
+Module <sram_if> compiled
+Compiling verilog file "../../rtl/sccb_bridge.v" in library work
+Module <sccb_config> compiled
+Compiling verilog file "../../rtl/rsio_01a.v" in library work
+Module <sccb_bridge> compiled
+Compiling verilog file "../../rtl/pixel_buffer.v" in library work
+Module <rsio_01a> compiled
+Compiling verilog file "../../rtl/main_sequencer.v" in library work
+Module <pixel_buffer> compiled
+Compiling verilog file "../../rtl/dump_sequencer.v" in library work
+Module <main_sequencer> compiled
+Compiling verilog file "../../rtl/clk_reset.v" in library work
+Module <dump_sequencer> compiled
+Compiling verilog file "../../rtl/top.v" in library work
+Module <clk_reset> compiled
+Module <top> compiled
+No errors in compilation
+Analysis of file <"top.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <top> in library <work>.
+
+Analyzing hierarchy for module <clk_reset> in library <work>.
+
+Analyzing hierarchy for module <main_sequencer> in library <work> with parameters.
+	SEQ_DUMP_KICKED = "101"
+	SEQ_END = "110"
+	SEQ_FETCH_DONE = "100"
+	SEQ_FETCH_KICKED = "011"
+	SEQ_INIT = "000"
+	SEQ_SCCB_DONE = "010"
+	SEQ_SCCB_KICKED = "001"
+
+Analyzing hierarchy for module <sccb_bridge> in library <work> with parameters.
+	P_SCCB_IDLE = "000"
+	P_SCCB_RECEIVING_DAT = "111"
+	P_SCCB_SENDING_ADDR = "011"
+	P_SCCB_SENDING_DATA = "100"
+	P_SCCB_SENDING_IDR = "110"
+	P_SCCB_SENDING_IDW = "010"
+	P_SCCB_SENDING_START = "001"
+	P_SCCB_SENDING_STOP = "101"
+	P_SEQ_CD_END = "011111111111111111"
+	P_SEQ_CD_IDLE = "111111111111111111"
+	P_SEQ_CD_START = "111111111111111110"
+	P_SEQ_OE_END = "111111111111111111"
+	P_SEQ_OE_START = "111111111111111111"
+	P_SEQ_RUN_CLK = "101010101010101010"
+	P_SEQ_RUN_ROE = "000000000000000000"
+	P_SEQ_RUN_WOE = "111111111111111100"
+
+Analyzing hierarchy for module <sccb_config> in library <work>.
+
+Analyzing hierarchy for module <rsio_01a> in library <work>.
+
+Analyzing hierarchy for module <sram_if> in library <work>.
+
+Analyzing hierarchy for module <pixel_buffer> in library <work> with parameters.
+	P_STATE_END = "10"
+	P_STATE_INIT = "00"
+	P_STATE_RUNNING = "01"
+
+Analyzing hierarchy for module <dump_sequencer> in library <work> with parameters.
+	P_STATE_CONVERT_ASCII = "011"
+	P_STATE_DUMP0 = "100"
+	P_STATE_DUMP1 = "101"
+	P_STATE_END = "110"
+	P_STATE_INIT = "000"
+	P_STATE_READMEM = "010"
+	P_STATE_START = "001"
+
+Analyzing hierarchy for module <syncd01a> in library <work> with parameters.
+	width = "00000000000000000000000000000001"
+
+Analyzing hierarchy for module <rsync02a> in library <work>.
+
+Analyzing hierarchy for module <cgate01a> in library <work>.
+
+Analyzing hierarchy for module <case_rom> in library <work>.
+
+Analyzing hierarchy for module <rsclk01a> in library <work>.
+
+Analyzing hierarchy for module <rstx_01a> in library <work> with parameters.
+	P_STATE_IDLE = "0"
+	P_STATE_SENDING = "1"
+
+Analyzing hierarchy for module <rsrx_01a> in library <work>.
+
+Analyzing hierarchy for module <trigp01a> in library <work>.
+
+Analyzing hierarchy for module <cgate01a> in library <work>.
+
+Analyzing hierarchy for module <trign01a> in library <work>.
+
+Analyzing hierarchy for module <rsync02a> in library <work>.
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <top>.
+Module <top> is correct for synthesis.
+ 
+Analyzing module <clk_reset> in library <work>.
+WARNING:Xst:916 - "../../rtl/clk_reset.v" line 40: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/clk_reset.v" line 41: Delay is ignored for synthesis.
+Module <clk_reset> is correct for synthesis.
+ 
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <m_bufi> in unit <clk_reset>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <m_bufi> in unit <clk_reset>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <m_bufi> in unit <clk_reset>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <m_bufi> in unit <clk_reset>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <p_bufi> in unit <clk_reset>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <p_bufi> in unit <clk_reset>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <p_bufi> in unit <clk_reset>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <p_bufi> in unit <clk_reset>.
+Analyzing module <syncd01a> in library <work>.
+	width = 32'sb00000000000000000000000000000001
+WARNING:Xst:916 - "../../rtl/lib/syncd01a.v" line 21: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/syncd01a.v" line 22: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/syncd01a.v" line 24: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/syncd01a.v" line 25: Delay is ignored for synthesis.
+Module <syncd01a> is correct for synthesis.
+ 
+Analyzing module <rsync02a> in library <work>.
+WARNING:Xst:916 - "../../rtl/lib/rsync02a.v" line 19: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/rsync02a.v" line 20: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/rsync02a.v" line 22: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/rsync02a.v" line 23: Delay is ignored for synthesis.
+Module <rsync02a> is correct for synthesis.
+ 
+Analyzing module <main_sequencer> in library <work>.
+	SEQ_DUMP_KICKED = 3'b101
+	SEQ_END = 3'b110
+	SEQ_FETCH_DONE = 3'b100
+	SEQ_FETCH_KICKED = 3'b011
+	SEQ_INIT = 3'b000
+	SEQ_SCCB_DONE = 3'b010
+	SEQ_SCCB_KICKED = 3'b001
+Module <main_sequencer> is correct for synthesis.
+ 
+Analyzing module <sccb_bridge> in library <work>.
+	P_SCCB_IDLE = 3'b000
+	P_SCCB_RECEIVING_DAT = 3'b111
+	P_SCCB_SENDING_ADDR = 3'b011
+	P_SCCB_SENDING_DATA = 3'b100
+	P_SCCB_SENDING_IDR = 3'b110
+	P_SCCB_SENDING_IDW = 3'b010
+	P_SCCB_SENDING_START = 3'b001
+	P_SCCB_SENDING_STOP = 3'b101
+	P_SEQ_CD_END = 18'b011111111111111111
+	P_SEQ_CD_IDLE = 18'b111111111111111111
+	P_SEQ_CD_START = 18'b111111111111111110
+	P_SEQ_OE_END = 18'b111111111111111111
+	P_SEQ_OE_START = 18'b111111111111111111
+	P_SEQ_RUN_CLK = 18'b101010101010101010
+	P_SEQ_RUN_ROE = 18'b000000000000000000
+	P_SEQ_RUN_WOE = 18'b111111111111111100
+WARNING:Xst:916 - "../../rtl/sccb_bridge.v" line 54: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/sccb_bridge.v" line 55: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/sccb_bridge.v" line 57: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/sccb_bridge.v" line 58: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/sccb_bridge.v" line 64: Delay is ignored for synthesis.
+WARNING:Xst:915 - Message (916) is reported only 5 times for each module.
+	Calling function <seq_select_clk>.
+	Calling function <seq_select_dat>.
+	Calling function <seq_select_oe>.
+Module <sccb_bridge> is correct for synthesis.
+ 
+Analyzing module <cgate01a> in library <work>.
+WARNING:Xst:916 - "../../rtl/lib/cgate01a.v" line 20: Delay is ignored for synthesis.
+WARNING:Xst:905 - "../../rtl/lib/cgate01a.v" line 20: One or more signals are missing in the sensitivity list of always block. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <w_open>
+Module <cgate01a> is correct for synthesis.
+ 
+Analyzing module <sccb_config> in library <work>.
+WARNING:Xst:916 - "../../rtl/sccb_config.v" line 54: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/sccb_config.v" line 55: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/sccb_config.v" line 56: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/sccb_config.v" line 58: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/sccb_config.v" line 59: Delay is ignored for synthesis.
+WARNING:Xst:915 - Message (916) is reported only 5 times for each module.
+Module <sccb_config> is correct for synthesis.
+ 
+Analyzing module <case_rom> in library <work>.
+	Calling function <rom_table>.
+Module <case_rom> is correct for synthesis.
+ 
+Analyzing module <rsio_01a> in library <work>.
+WARNING:Xst:916 - "../../rtl/rsio_01a.v" line 64: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/rsio_01a.v" line 65: Delay is ignored for synthesis.
+Module <rsio_01a> is correct for synthesis.
+ 
+Analyzing module <rsclk01a> in library <work>.
+WARNING:Xst:916 - "../../rtl/lib/rsclk01a.v" line 17: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/rsclk01a.v" line 18: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/rsclk01a.v" line 51: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/rsclk01a.v" line 52: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/rsclk01a.v" line 55: Delay is ignored for synthesis.
+WARNING:Xst:915 - Message (916) is reported only 5 times for each module.
+	Calling function <EnablePeriod>.
+	Calling function <PeriodError>.
+Module <rsclk01a> is correct for synthesis.
+ 
+Analyzing module <rstx_01a> in library <work>.
+	P_STATE_IDLE = 1'b0
+	P_STATE_SENDING = 1'b1
+WARNING:Xst:916 - "../../rtl/lib/rstx_01a.v" line 38: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/rstx_01a.v" line 39: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/rstx_01a.v" line 42: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/rstx_01a.v" line 43: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/rstx_01a.v" line 46: Delay is ignored for synthesis.
+WARNING:Xst:915 - Message (916) is reported only 5 times for each module.
+Module <rstx_01a> is correct for synthesis.
+ 
+Analyzing module <rsrx_01a> in library <work>.
+WARNING:Xst:916 - "../../rtl/lib/rsrx_01a.v" line 23: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/rsrx_01a.v" line 24: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/rsrx_01a.v" line 26: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/rsrx_01a.v" line 27: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/rsrx_01a.v" line 65: Delay is ignored for synthesis.
+WARNING:Xst:915 - Message (916) is reported only 5 times for each module.
+Module <rsrx_01a> is correct for synthesis.
+ 
+Analyzing module <trigp01a> in library <work>.
+WARNING:Xst:916 - "../../rtl/lib/trigp01a.v" line 23: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/trigp01a.v" line 24: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/trigp01a.v" line 25: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/trigp01a.v" line 27: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/trigp01a.v" line 28: Delay is ignored for synthesis.
+WARNING:Xst:915 - Message (916) is reported only 5 times for each module.
+Module <trigp01a> is correct for synthesis.
+ 
+Analyzing module <trign01a> in library <work>.
+WARNING:Xst:916 - "../../rtl/lib/trign01a.v" line 23: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/trign01a.v" line 24: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/trign01a.v" line 25: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/trign01a.v" line 27: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/lib/trign01a.v" line 28: Delay is ignored for synthesis.
+WARNING:Xst:915 - Message (916) is reported only 5 times for each module.
+Module <trign01a> is correct for synthesis.
+ 
+Analyzing module <sram_if> in library <work>.
+Module <sram_if> is correct for synthesis.
+ 
+Analyzing module <pixel_buffer> in library <work>.
+	P_STATE_END = 2'b10
+	P_STATE_INIT = 2'b00
+	P_STATE_RUNNING = 2'b01
+WARNING:Xst:916 - "../../rtl/pixel_buffer.v" line 37: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/pixel_buffer.v" line 38: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/pixel_buffer.v" line 39: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/pixel_buffer.v" line 40: Delay is ignored for synthesis.
+WARNING:Xst:916 - "../../rtl/pixel_buffer.v" line 41: Delay is ignored for synthesis.
+WARNING:Xst:915 - Message (916) is reported only 5 times for each module.
+Module <pixel_buffer> is correct for synthesis.
+ 
+Analyzing module <dump_sequencer> in library <work>.
+	P_STATE_CONVERT_ASCII = 3'b011
+	P_STATE_DUMP0 = 3'b100
+	P_STATE_DUMP1 = 3'b101
+	P_STATE_END = 3'b110
+	P_STATE_INIT = 3'b000
+	P_STATE_READMEM = 3'b010
+	P_STATE_START = 3'b001
+	Calling function <convert_ascii>.
+	Calling function <convert_ascii>.
+	Calling function <convert_ascii>.
+	Calling function <convert_ascii>.
+	Calling function <convert_ascii>.
+	Calling function <convert_ascii>.
+	Calling function <convert_ascii>.
+	Calling function <convert_ascii>.
+Module <dump_sequencer> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+INFO:Xst:2679 - Register <i> in unit <dump_sequencer> has a constant value of 1100 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <send_data<2>> in unit <dump_sequencer> has a constant value of 00100000 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <send_data<5>> in unit <dump_sequencer> has a constant value of 00100000 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <send_data<8>> in unit <dump_sequencer> has a constant value of 00100000 during circuit operation. The register is replaced by logic.
+
+Synthesizing Unit <sram_if>.
+    Related source file is "../../rtl/sram_if.v".
+    Found 16-bit tristate buffer for signal <xbpDATA1>.
+    Found 16-bit tristate buffer for signal <xbpDATA2>.
+    Summary:
+	inferred  32 Tristate(s).
+Unit <sram_if> synthesized.
+
+
+Synthesizing Unit <syncd01a>.
+    Related source file is "../../rtl/lib/syncd01a.v".
+    Found 1-bit register for signal <ff1<0>>.
+    Found 1-bit register for signal <ff2<0>>.
+    Summary:
+	inferred   2 D-type flip-flop(s).
+Unit <syncd01a> synthesized.
+
+
+Synthesizing Unit <rsync02a>.
+    Related source file is "../../rtl/lib/rsync02a.v".
+    Found 1-bit register for signal <reset1_reg>.
+    Found 1-bit register for signal <reset2_reg>.
+    Summary:
+	inferred   2 D-type flip-flop(s).
+Unit <rsync02a> synthesized.
+
+
+Synthesizing Unit <cgate01a>.
+    Related source file is "../../rtl/lib/cgate01a.v".
+WARNING:Xst:737 - Found 1-bit latch for signal <latched>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+Unit <cgate01a> synthesized.
+
+
+Synthesizing Unit <case_rom>.
+    Related source file is "../../rtl/case_rom.v".
+    Found 128x18-bit ROM for signal <rom_table$mux0000>.
+    Summary:
+	inferred   1 ROM(s).
+Unit <case_rom> synthesized.
+
+
+Synthesizing Unit <rstx_01a>.
+    Related source file is "../../rtl/lib/rstx_01a.v".
+    Found 1-bit register for signal <r_HoldTrigger>.
+    Found 10-bit register for signal <r_shiftReg>.
+    Found 1-bit register for signal <r_state>.
+    Summary:
+	inferred  12 D-type flip-flop(s).
+Unit <rstx_01a> synthesized.
+
+
+Synthesizing Unit <trigp01a>.
+    Related source file is "../../rtl/lib/trigp01a.v".
+    Found 1-bit register for signal <r_stage1>.
+    Found 1-bit register for signal <r_stage2>.
+    Found 1-bit register for signal <r_trigger>.
+    Summary:
+	inferred   3 D-type flip-flop(s).
+Unit <trigp01a> synthesized.
+
+
+Synthesizing Unit <trign01a>.
+    Related source file is "../../rtl/lib/trign01a.v".
+    Found 1-bit register for signal <r_stage1>.
+    Found 1-bit register for signal <r_stage2>.
+    Found 1-bit register for signal <r_trigger>.
+    Summary:
+	inferred   3 D-type flip-flop(s).
+Unit <trign01a> synthesized.
+
+
+Synthesizing Unit <clk_reset>.
+    Related source file is "../../rtl/clk_reset.v".
+    Found 1-bit register for signal <div2clk>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <clk_reset> synthesized.
+
+
+Synthesizing Unit <main_sequencer>.
+    Related source file is "../../rtl/main_sequencer.v".
+    Found finite state machine <FSM_0> for signal <r_seq_state>.
+    -----------------------------------------------------------------------
+    | States             | 7                                              |
+    | Transitions        | 10                                             |
+    | Inputs             | 3                                              |
+    | Outputs            | 8                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Reset              | reset_n                   (negative)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 000                                            |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 1-bit register for signal <fetch_kick>.
+    Found 1-bit register for signal <sccb_kick>.
+    Found 1-bit register for signal <source_sel>.
+    Found 1-bit register for signal <dump_kick>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   4 D-type flip-flop(s).
+Unit <main_sequencer> synthesized.
+
+
+Synthesizing Unit <sccb_bridge>.
+    Related source file is "../../rtl/sccb_bridge.v".
+WARNING:Xst:646 - Signal <w_rd_en> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <r_sresp<7:2>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <r_sccb_next> of Case statement line 166 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'INIT' attribute on signal <r_sccb_next> (optimization is then done without any risk)
+   	- use the attribute 'signal_encoding user' to avoid onehot optimization
+   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+    Found finite state machine <FSM_1> for signal <r_sccb_state>.
+    -----------------------------------------------------------------------
+    | States             | 8                                              |
+    | Transitions        | 17                                             |
+    | Inputs             | 3                                              |
+    | Outputs            | 8                                              |
+    | Clock              | w_sccb_gclk               (rising_edge)        |
+    | Reset              | sccb_reset_n              (negative)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 000                                            |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Using one-hot encoding for signal <r_sccb_next>.
+    Found 1-bit tristate buffer for signal <sio_d>.
+    Found 8-bit up counter for signal <r_divcount>.
+    Found 8-bit comparator equal for signal <r_divcount$cmp_eq0000> created at line 65.
+    Found 15-bit register for signal <r_maddr>.
+    Found 3-bit register for signal <r_mcmd>.
+    Found 8-bit register for signal <r_mdata>.
+    Found 9-bit register for signal <r_read_data>.
+    Found 1-bit register for signal <r_sccb_clken>.
+    Found 8-bit register for signal <r_sccb_next>.
+    Found 1-bit register for signal <r_sccb_wclken>.
+    Found 8-bit register for signal <r_sdata>.
+    Found 5-bit register for signal <r_seq_cnt>.
+    Found 5-bit adder for signal <r_seq_cnt$addsub0000> created at line 218.
+    Found 18-bit register for signal <r_seq_sio_c>.
+    Found 18-bit register for signal <r_seq_sio_d>.
+    Found 18-bit register for signal <r_seq_sio_d_oe>.
+    Found 1-bit register for signal <r_sio_c>.
+    Found 1-bit register for signal <r_sio_c_pre>.
+    Found 1-bit register for signal <r_sio_d>.
+    Found 1-bit register for signal <r_sio_d_oe>.
+    Found 8-bit register for signal <r_sresp>.
+    Found 1-bit register for signal <r_update_seq>.
+    Found 1-bit xor2 for signal <w_mcmd_valid$xor0000> created at line 194.
+    Found 8-bit comparator equal for signal <w_sccb_wclken$cmp_eq0000> created at line 49.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 Counter(s).
+	inferred 117 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred   2 Comparator(s).
+	inferred   1 Tristate(s).
+Unit <sccb_bridge> synthesized.
+
+
+Synthesizing Unit <sccb_config>.
+    Related source file is "../../rtl/sccb_config.v".
+WARNING:Xst:647 - Input <sdata> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <r_handshake> of Case statement line 0 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'INIT' attribute on signal <r_handshake> (optimization is then done without any risk)
+   	- use the attribute 'signal_encoding user' to avoid onehot optimization
+   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+    Found finite state machine <FSM_2> for signal <r_handshake>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 7                                              |
+    | Inputs             | 2                                              |
+    | Outputs            | 1                                              |
+    | Clock              | config_clk                (rising_edge)        |
+    | Clock enable       | sccb_kick_sync            (positive)           |
+    | Reset              | config_reset_n            (negative)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 11                                             |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 8-bit register for signal <r_maddr>.
+    Found 3-bit register for signal <r_mcmd>.
+    Found 8-bit register for signal <r_mdata>.
+    Found 8-bit up counter for signal <r_rom_addr>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 Counter(s).
+	inferred  19 D-type flip-flop(s).
+Unit <sccb_config> synthesized.
+
+
+Synthesizing Unit <pixel_buffer>.
+    Related source file is "../../rtl/pixel_buffer.v".
+WARNING:Xst:646 - Signal <r_data_buffer<7:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found finite state machine <FSM_3> for signal <r_cap_state>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 6                                              |
+    | Inputs             | 2                                              |
+    | Outputs            | 3                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Reset              | reset_n                   (negative)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 00                                             |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 18-bit register for signal <last_addr>.
+    Found 18-bit up counter for signal <s0_Addr>.
+    Found 1-bit register for signal <fetch_done>.
+    Found 32-bit register for signal <s0_WD>.
+    Found 1-bit register for signal <s0_WE>.
+    Found 18-bit comparator greatequal for signal <last_addr$cmp_ge0000> created at line 142.
+    Found 8-bit register for signal <r_DATA>.
+    Found 32-bit register for signal <r_data_buffer>.
+    Found 8-bit register for signal <r_DATA_pre>.
+    Found 1-bit register for signal <r_HREF>.
+    Found 2-bit up counter for signal <r_HREF_cnt>.
+    Found 1-bit register for signal <r_HREF_pre>.
+    Found 1-bit register for signal <r_VSYNC>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   2 Counter(s).
+	inferred 103 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+Unit <pixel_buffer> synthesized.
+
+
+Synthesizing Unit <dump_sequencer>.
+    Related source file is "../../rtl/dump_sequencer.v".
+    Found finite state machine <FSM_4> for signal <dumper_state>.
+    -----------------------------------------------------------------------
+    | States             | 7                                              |
+    | Transitions        | 12                                             |
+    | Inputs             | 5                                              |
+    | Outputs            | 7                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Reset              | reset_n                   (negative)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 000                                            |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 1-bit register for signal <s1_OE>.
+    Found 1-bit register for signal <dump_done>.
+    Found 8-bit register for signal <rs_tx_data>.
+    Found 1-bit register for signal <rs_tx_start>.
+    Found 18-bit up counter for signal <s1_Addr>.
+    Found 4-bit comparator less for signal <convert_ascii$cmp_lt0000> created at line 33.
+    Found 4-bit comparator less for signal <convert_ascii$cmp_lt0001> created at line 33.
+    Found 4-bit comparator less for signal <convert_ascii$cmp_lt0002> created at line 33.
+    Found 4-bit comparator less for signal <convert_ascii$cmp_lt0003> created at line 33.
+    Found 4-bit comparator less for signal <convert_ascii$cmp_lt0004> created at line 33.
+    Found 4-bit comparator less for signal <convert_ascii$cmp_lt0005> created at line 33.
+    Found 4-bit comparator less for signal <convert_ascii$cmp_lt0006> created at line 33.
+    Found 4-bit comparator less for signal <convert_ascii$cmp_lt0007> created at line 33.
+    Found 8-bit adder for signal <convert_ascii/1/convert_ascii>.
+    Found 8-bit adder for signal <convert_ascii/2/convert_ascii>.
+    Found 8-bit adder for signal <convert_ascii/3/convert_ascii>.
+    Found 8-bit adder for signal <convert_ascii/4/convert_ascii>.
+    Found 8-bit adder for signal <convert_ascii/5/convert_ascii>.
+    Found 8-bit adder for signal <convert_ascii/6/convert_ascii>.
+    Found 8-bit adder for signal <convert_ascii/7/convert_ascii>.
+    Found 8-bit adder for signal <convert_ascii/8/convert_ascii>.
+    Found 32-bit register for signal <data_buffer>.
+    Found 18-bit comparator lessequal for signal <dump_done$cmp_le0000> created at line 78.
+    Found 18-bit comparator greater for signal <dumper_state$cmp_gt0000> created at line 78.
+    Found 16-bit register for signal <send_data<0:1>>.
+    Found 16-bit register for signal <send_data<3:4>>.
+    Found 16-bit register for signal <send_data<6:7>>.
+    Found 24-bit register for signal <send_data<9:11>>.
+    Found 4-bit up counter for signal <send_ptr>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   2 Counter(s).
+	inferred  43 D-type flip-flop(s).
+	inferred   8 Adder/Subtractor(s).
+	inferred  10 Comparator(s).
+	inferred   8 Multiplexer(s).
+Unit <dump_sequencer> synthesized.
+
+
+Synthesizing Unit <rsclk01a>.
+    Related source file is "../../rtl/lib/rsclk01a.v".
+    Found 16x20-bit ROM for signal <r_bitRateSel$rom0000>.
+    Found 1-bit register for signal <clken>.
+    Found 7-bit register for signal <r_accumulatedError>.
+    Found 4-bit register for signal <r_bitRateSel>.
+    Found 15-bit register for signal <r_periodCounter>.
+    Found 7-bit addsub for signal <w_accumulatedError$share0000> created at line 63.
+    Found 15-bit comparator equal for signal <w_clkEn>.
+    Found 7-bit comparator greater for signal <w_errorExpired>.
+    Found 15-bit adder for signal <w_periodCounter$addsub0000> created at line 27.
+    Summary:
+	inferred   1 ROM(s).
+	inferred  23 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   2 Comparator(s).
+Unit <rsclk01a> synthesized.
+
+
+Synthesizing Unit <rsrx_01a>.
+    Related source file is "../../rtl/lib/rsrx_01a.v".
+WARNING:Xst:646 - Signal <w_stopEdge> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 8-bit register for signal <rxParallelData>.
+    Found 2-bit register for signal <rxStatus>.
+    Found 8-bit register for signal <r_rxCount>.
+    Found 1-bit register for signal <r_rxdSync0>.
+    Found 1-bit register for signal <r_rxdSync1>.
+    Found 8-bit register for signal <r_shiftInData>.
+    Summary:
+	inferred  28 D-type flip-flop(s).
+Unit <rsrx_01a> synthesized.
+
+
+Synthesizing Unit <rsio_01a>.
+    Related source file is "../../rtl/rsio_01a.v".
+    Found 1-bit register for signal <r_divTxClk>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <rsio_01a> synthesized.
+
+
+Synthesizing Unit <top>.
+    Related source file is "../../rtl/top.v".
+WARNING:Xst:646 - Signal <xopCAM_PWDN> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <xonCAM_RESET> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:653 - Signal <xipRXD> is used but never assigned. This sourceless signal will be automatically connected to value 0.
+WARNING:Xst:646 - Signal <w_debug_out> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <cam_reset_n> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <cam_clk> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+Unit <top> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+WARNING:Xst:524 - All outputs of the instance <stop_trigger> of the block <trigp01a> are unconnected in block <rsrx_01a>.
+   This instance will be removed from the design along with all underlying logic
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 3
+ 128x18-bit ROM                                        : 1
+ 16x20-bit ROM                                         : 2
+# Adders/Subtractors                                   : 13
+ 15-bit adder                                          : 2
+ 5-bit adder                                           : 1
+ 7-bit addsub                                          : 2
+ 8-bit adder                                           : 8
+# Counters                                             : 6
+ 18-bit up counter                                     : 2
+ 2-bit up counter                                      : 1
+ 4-bit up counter                                      : 1
+ 8-bit up counter                                      : 2
+# Registers                                            : 100
+ 1-bit register                                        : 59
+ 10-bit register                                       : 1
+ 15-bit register                                       : 3
+ 18-bit register                                       : 4
+ 2-bit register                                        : 1
+ 3-bit register                                        : 2
+ 32-bit register                                       : 3
+ 4-bit register                                        : 2
+ 5-bit register                                        : 1
+ 7-bit register                                        : 2
+ 8-bit register                                        : 21
+ 9-bit register                                        : 1
+# Latches                                              : 4
+ 1-bit latch                                           : 4
+# Comparators                                          : 17
+ 15-bit comparator equal                               : 2
+ 18-bit comparator greatequal                          : 1
+ 18-bit comparator greater                             : 1
+ 18-bit comparator lessequal                           : 1
+ 4-bit comparator less                                 : 8
+ 7-bit comparator greater                              : 2
+ 8-bit comparator equal                                : 2
+# Multiplexers                                         : 1
+ 8-bit 12-to-1 multiplexer                             : 1
+# Tristates                                            : 3
+ 1-bit tristate buffer                                 : 1
+ 16-bit tristate buffer                                : 2
+# Xors                                                 : 1
+ 1-bit xor2                                            : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_4> for best encoding.
+Optimizing FSM <dump_sequencer/dumper_state/FSM> on signal <dumper_state[1:7]> with one-hot encoding.
+-------------------
+ State | Encoding
+-------------------
+ 000   | 0000001
+ 001   | 0000010
+ 010   | 0001000
+ 011   | 0010000
+ 100   | 0100000
+ 101   | 1000000
+ 110   | 0000100
+-------------------
+Analyzing FSM <FSM_3> for best encoding.
+Optimizing FSM <pixel_buffer/r_cap_state/FSM> on signal <r_cap_state[1:2]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 00
+ 01    | 01
+ 10    | 11
+-------------------
+Analyzing FSM <FSM_2> for best encoding.
+Optimizing FSM <sccb_config/r_handshake/FSM> on signal <r_handshake[1:2]> with user encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 00
+ 01    | 01
+ 10    | 10
+ 11    | 11
+-------------------
+Analyzing FSM <FSM_1> for best encoding.
+Optimizing FSM <sccb_bridge/r_sccb_state/FSM> on signal <r_sccb_state[1:3]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 000   | 000
+ 001   | 001
+ 010   | 011
+ 011   | 010
+ 100   | 110
+ 110   | 111
+ 101   | 101
+ 111   | 100
+-------------------
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <main_sequencer/r_seq_state/FSM> on signal <r_seq_state[1:7]> with one-hot encoding.
+-------------------
+ State | Encoding
+-------------------
+ 000   | 0000001
+ 001   | 0000010
+ 010   | 0000100
+ 011   | 0001000
+ 100   | 0010000
+ 101   | 0100000
+ 110   | 1000000
+-------------------
+WARNING:Xst:1290 - Hierarchical block <i_reset_cam> is unconnected in block <clk_reset>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <i_RxClk> is unconnected in block <rsio_01a>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <rxrx_01a> is unconnected in block <rsio_01a>.
+   It will be removed from the design.
+WARNING:Xst:1710 - FF/Latch <r_mcmd_2> (without init value) has a constant value of 0 in block <sccb_bridge>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <r_maddr_9> (without init value) has a constant value of 0 in block <sccb_bridge>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <r_maddr_10> (without init value) has a constant value of 0 in block <sccb_bridge>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <r_maddr_11> (without init value) has a constant value of 0 in block <sccb_bridge>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <r_maddr_12> (without init value) has a constant value of 0 in block <sccb_bridge>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <r_maddr_14> (without init value) has a constant value of 0 in block <sccb_bridge>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <r_sresp_1> (without init value) has a constant value of 0 in block <sccb_bridge>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <r_mcmd_2> (without init value) has a constant value of 0 in block <sccb_config>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 1 in block <r_bitRateSel>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <1> (without init value) has a constant value of 1 in block <r_bitRateSel>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <3> (without init value) has a constant value of 0 in block <r_bitRateSel>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <send_data_11>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <2> (without init value) has a constant value of 0 in block <send_data_11>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <4> (without init value) has a constant value of 0 in block <send_data_11>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <6> (without init value) has a constant value of 0 in block <send_data_11>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <7> (without init value) has a constant value of 0 in block <send_data_11>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <r_sresp_2> of sequential type is unconnected in block <sccb_bridge>.
+WARNING:Xst:2677 - Node <r_sresp_3> of sequential type is unconnected in block <sccb_bridge>.
+WARNING:Xst:2677 - Node <r_sresp_4> of sequential type is unconnected in block <sccb_bridge>.
+WARNING:Xst:2677 - Node <r_sresp_5> of sequential type is unconnected in block <sccb_bridge>.
+WARNING:Xst:2677 - Node <r_sresp_6> of sequential type is unconnected in block <sccb_bridge>.
+WARNING:Xst:2677 - Node <r_sresp_7> of sequential type is unconnected in block <sccb_bridge>.
+WARNING:Xst:2677 - Node <r_data_buffer_0> of sequential type is unconnected in block <pixel_buffer>.
+WARNING:Xst:2677 - Node <r_data_buffer_1> of sequential type is unconnected in block <pixel_buffer>.
+WARNING:Xst:2677 - Node <r_data_buffer_2> of sequential type is unconnected in block <pixel_buffer>.
+WARNING:Xst:2677 - Node <r_data_buffer_3> of sequential type is unconnected in block <pixel_buffer>.
+WARNING:Xst:2677 - Node <r_data_buffer_4> of sequential type is unconnected in block <pixel_buffer>.
+WARNING:Xst:2677 - Node <r_data_buffer_5> of sequential type is unconnected in block <pixel_buffer>.
+WARNING:Xst:2677 - Node <r_data_buffer_6> of sequential type is unconnected in block <pixel_buffer>.
+WARNING:Xst:2677 - Node <r_data_buffer_7> of sequential type is unconnected in block <pixel_buffer>.
+WARNING:Xst:2404 -  FFs/Latches <r_mcmd<2:2>> (without init value) have a constant value of 0 in block <sccb_config>.
+WARNING:Xst:2677 - Node <r_sresp_2> of sequential type is unconnected in block <sccb_bridge>.
+WARNING:Xst:2677 - Node <r_sresp_3> of sequential type is unconnected in block <sccb_bridge>.
+WARNING:Xst:2677 - Node <r_sresp_4> of sequential type is unconnected in block <sccb_bridge>.
+WARNING:Xst:2677 - Node <r_sresp_5> of sequential type is unconnected in block <sccb_bridge>.
+WARNING:Xst:2677 - Node <r_sresp_6> of sequential type is unconnected in block <sccb_bridge>.
+WARNING:Xst:2677 - Node <r_sresp_7> of sequential type is unconnected in block <sccb_bridge>.
+WARNING:Xst:2677 - Node <r_data_buffer_0> of sequential type is unconnected in block <pixel_buffer>.
+WARNING:Xst:2677 - Node <r_data_buffer_1> of sequential type is unconnected in block <pixel_buffer>.
+WARNING:Xst:2677 - Node <r_data_buffer_2> of sequential type is unconnected in block <pixel_buffer>.
+WARNING:Xst:2677 - Node <r_data_buffer_3> of sequential type is unconnected in block <pixel_buffer>.
+WARNING:Xst:2677 - Node <r_data_buffer_4> of sequential type is unconnected in block <pixel_buffer>.
+WARNING:Xst:2677 - Node <r_data_buffer_5> of sequential type is unconnected in block <pixel_buffer>.
+WARNING:Xst:2677 - Node <r_data_buffer_6> of sequential type is unconnected in block <pixel_buffer>.
+WARNING:Xst:2677 - Node <r_data_buffer_7> of sequential type is unconnected in block <pixel_buffer>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 5
+# ROMs                                                 : 3
+ 128x18-bit ROM                                        : 1
+ 16x20-bit ROM                                         : 2
+# Adders/Subtractors                                   : 13
+ 15-bit adder                                          : 2
+ 5-bit adder                                           : 1
+ 7-bit addsub                                          : 2
+ 8-bit adder                                           : 8
+# Counters                                             : 6
+ 18-bit up counter                                     : 2
+ 2-bit up counter                                      : 1
+ 4-bit up counter                                      : 1
+ 8-bit up counter                                      : 2
+# Registers                                            : 479
+ Flip-Flops                                            : 479
+# Latches                                              : 4
+ 1-bit latch                                           : 4
+# Comparators                                          : 17
+ 15-bit comparator equal                               : 2
+ 18-bit comparator greatequal                          : 1
+ 18-bit comparator greater                             : 1
+ 18-bit comparator lessequal                           : 1
+ 4-bit comparator less                                 : 8
+ 7-bit comparator greater                              : 2
+ 8-bit comparator equal                                : 2
+# Multiplexers                                         : 1
+ 8-bit 12-to-1 multiplexer                             : 1
+# Xors                                                 : 1
+ 1-bit xor2                                            : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1989 - Unit <clk_reset>: instances <i_reset_rs>, <i_reset_sccb> of unit <rsync02a> are equivalent, second instance is removed
+WARNING:Xst:1989 - Unit <clk_reset>: instances <i_reset_rs>, <i_reset_cam> of unit <rsync02a> are equivalent, second instance is removed
+WARNING:Xst:1710 - FF/Latch <r_sresp_1> (without init value) has a constant value of 0 in block <sccb_bridge>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <0> in Unit <LPM_DFF_25> is equivalent to the following 4 FFs/Latches, which will be removed : <2> <4> <6> <7> 
+INFO:Xst:2261 - The FF/Latch <1> in Unit <LPM_DFF_25> is equivalent to the following FF/Latch, which will be removed : <3> 
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <LPM_DFF_25>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rs_tx_data_7> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_10_7> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_9_7> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_7_7> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_6_7> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_4_7> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_3_7> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_1_7> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_0_7> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+
+Optimizing unit <top> ...
+
+Optimizing unit <case_rom> ...
+
+Optimizing unit <rstx_01a> ...
+
+Optimizing unit <clk_reset> ...
+
+Optimizing unit <main_sequencer> ...
+
+Optimizing unit <sccb_config> ...
+
+Optimizing unit <pixel_buffer> ...
+
+Optimizing unit <dump_sequencer> ...
+
+Optimizing unit <rsclk01a> ...
+
+Optimizing unit <rsrx_01a> ...
+WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_maddr_14> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_maddr_12> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_maddr_11> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_maddr_10> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_maddr_9> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_mcmd_2> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_mcmd_1> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sccb_config/r_mcmd_1> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rsio_01a/i_TxClk/r_bitRateSel_0> (without init value) has a constant value of 1 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rsio_01a/i_TxClk/r_bitRateSel_1> (without init value) has a constant value of 1 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rsio_01a/i_TxClk/r_bitRateSel_3> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <sccb_bridge/r_read_data_8> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <sccb_bridge/r_read_data_7> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <sccb_bridge/r_read_data_6> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <sccb_bridge/r_read_data_5> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <sccb_bridge/r_read_data_4> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <sccb_bridge/r_read_data_3> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <sccb_bridge/r_read_data_2> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <sccb_bridge/r_read_data_1> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <sccb_bridge/r_read_data_0> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <sccb_bridge/r_sdata_7> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <sccb_bridge/r_sdata_6> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <sccb_bridge/r_sdata_5> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <sccb_bridge/r_sdata_4> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <sccb_bridge/r_sdata_3> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <sccb_bridge/r_sdata_2> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <sccb_bridge/r_sdata_1> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <sccb_bridge/r_sdata_0> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/cgate01a/latched> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_bitRateSel_0> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_bitRateSel_1> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_bitRateSel_2> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_bitRateSel_3> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/clken> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_accumulatedError_6> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_accumulatedError_5> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_accumulatedError_4> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_accumulatedError_3> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_accumulatedError_2> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_accumulatedError_1> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_accumulatedError_0> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_periodCounter_14> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_periodCounter_13> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_periodCounter_12> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_periodCounter_11> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_periodCounter_10> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_periodCounter_9> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_periodCounter_8> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_periodCounter_7> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_periodCounter_6> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_periodCounter_5> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_periodCounter_4> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_periodCounter_3> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_periodCounter_2> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_periodCounter_1> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/i_RxClk/r_periodCounter_0> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/start_trigger/r_trigger> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/start_trigger/r_stage1> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/start_trigger/r_stage2> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/RxCompleteTrigger/r_trigger> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/RxCompleteTrigger/r_stage1> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/RxCompleteTrigger/r_stage2> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/internal_reset/reset1_reg> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/internal_reset/reset2_reg> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/rxParallelData_7> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/rxParallelData_6> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/rxParallelData_5> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/rxParallelData_4> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/rxParallelData_3> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/rxParallelData_2> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/rxParallelData_1> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/rxParallelData_0> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/r_shiftInData_7> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/r_shiftInData_6> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/r_shiftInData_5> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/r_shiftInData_4> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/r_shiftInData_3> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/r_shiftInData_2> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/r_shiftInData_1> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/r_shiftInData_0> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/r_rxdSync1> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/rxStatus_1> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/rxStatus_0> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/r_rxCount_7> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/r_rxCount_6> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/r_rxCount_5> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/r_rxCount_4> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/r_rxCount_3> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/r_rxCount_2> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/r_rxCount_1> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/r_rxCount_0> of sequential type is unconnected in block <top>.
+WARNING:Xst:2677 - Node <rsio_01a/rxrx_01a/r_rxdSync0> of sequential type is unconnected in block <top>.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+INFO:Xst:2261 - The FF/Latch <sccb_bridge/r_maddr_13> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <sccb_bridge/r_maddr_8> 
+INFO:Xst:2261 - The FF/Latch <sccb_config/r_mcmd_0> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <rsio_01a/i_TxClk/r_bitRateSel_2> 
+Found area constraint ratio of 100 (+ 5) on block top, actual ratio is 22.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 444
+ Flip-Flops                                            : 444
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : top.ngr
+Top Level Output File Name         : top
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 83
+
+Cell Usage :
+# BELS                             : 955
+#      GND                         : 1
+#      INV                         : 10
+#      LUT1                        : 45
+#      LUT2                        : 122
+#      LUT2_D                      : 3
+#      LUT2_L                      : 4
+#      LUT3                        : 251
+#      LUT3_D                      : 2
+#      LUT3_L                      : 5
+#      LUT4                        : 242
+#      LUT4_D                      : 14
+#      LUT4_L                      : 19
+#      MUXCY                       : 112
+#      MUXF5                       : 43
+#      MUXF6                       : 7
+#      VCC                         : 1
+#      XORCY                       : 74
+# FlipFlops/Latches                : 447
+#      FDC                         : 137
+#      FDCE                        : 197
+#      FDP                         : 62
+#      FDPE                        : 48
+#      LD_1                        : 3
+# Clock Buffers                    : 4
+#      BUFG                        : 4
+# IO Buffers                       : 83
+#      IBUF                        : 11
+#      IBUFG                       : 2
+#      IOBUF                       : 32
+#      OBUF                        : 37
+#      OBUFT                       : 1
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s200ft256-4 
+
+ Number of Slices:                      401  out of   1920    20%  
+ Number of Slice Flip Flops:            446  out of   3840    11%  
+ Number of 4 input LUTs:                717  out of   3840    18%  
+ Number of IOs:                          83
+ Number of bonded IOBs:                  83  out of    173    47%  
+    IOB Flip Flops:                       1
+ Number of GCLKs:                         4  out of      8    50%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+---------------------------------------------------------+-----------------------------------+-------+
+Clock Signal                                             | Clock buffer(FF name)             | Load  |
+---------------------------------------------------------+-----------------------------------+-------+
+sccb_bridge/w_sccb_gclk1(sccb_bridge/cgate_sccb1/gclk1:O)| BUFG(*)(sccb_bridge/r_sccb_next_0)| 75    |
+clk_reset/div2clk1                                       | BUFG                              | 216   |
+sccb_bridge/w_sccb_gwclk(sccb_bridge/cgate_sccb2/gclk1:O)| NONE(*)(sccb_bridge/r_sio_c)      | 1     |
+rsio_01a/w_TxClk(rsio_01a/i_TxClk/cgate01a/gclk1:O)      | NONE(*)(rsio_01a/rxtx_01a/r_state)| 11    |
+xipCAM_PCLK                                              | IBUFG+BUFG                        | 124   |
+xipMCLK                                                  | IBUFG+BUFG                        | 20    |
+---------------------------------------------------------+-----------------------------------+-------+
+(*) These 3 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+---------------------------------------------------------------------------------------------+-----------------------------------+-------+
+Control Signal                                                                               | Buffer(FF name)                   | Load  |
+---------------------------------------------------------------------------------------------+-----------------------------------+-------+
+dump_sequencer/dumper_state_FSM_Acst_FSM_inv(sccb_config/config_reset_n_inv1_INV_0:O)        | NONE(dump_sequencer/data_buffer_0)| 298   |
+pixel_buffer/r_cap_state_FSM_Acst_FSM_inv(pixel_buffer/r_cap_state_FSM_Acst_FSM_inv1_INV_0:O)| NONE(pixel_buffer/fetch_done)     | 122   |
+clk_reset/f50_reset_n_inv(main_sequencer/r_seq_state_FSM_Acst_FSM_inv1_INV_0:O)              | NONE(clk_reset/div2clk)           | 22    |
+N0(XST_GND:G)                                                                                | NONE(clk_reset/i_reset_sync/ff1_0)| 2     |
+---------------------------------------------------------------------------------------------+-----------------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 8.222ns (Maximum Frequency: 121.622MHz)
+   Minimum input arrival time before clock: 3.177ns
+   Maximum output required time after clock: 11.507ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'sccb_bridge/w_sccb_gclk1'
+  Clock period: 6.435ns (frequency: 155.400MHz)
+  Total number of paths / destination ports: 571 / 75
+-------------------------------------------------------------------------
+Delay:               6.435ns (Levels of Logic = 4)
+  Source:            sccb_bridge/r_seq_cnt_2 (FF)
+  Destination:       sccb_bridge/r_seq_cnt_4 (FF)
+  Source Clock:      sccb_bridge/w_sccb_gclk1 rising
+  Destination Clock: sccb_bridge/w_sccb_gclk1 rising
+
+  Data Path: sccb_bridge/r_seq_cnt_2 to sccb_bridge/r_seq_cnt_4
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              3   0.720   1.246  sccb_bridge/r_seq_cnt_2 (sccb_bridge/r_seq_cnt_2)
+     LUT2_L:I0->LO         1   0.551   0.126  sccb_bridge/w_seq_cnt_done_SW0 (N62)
+     LUT4:I3->O            8   0.551   1.109  sccb_bridge/w_seq_cnt_done (sccb_bridge/w_seq_cnt_done)
+     LUT4_D:I3->O          1   0.551   0.827  sccb_bridge/r_seq_cnt_mux0000<0>11 (N19)
+     LUT4:I3->O            1   0.551   0.000  sccb_bridge/r_seq_cnt_mux0000<0>1 (sccb_bridge/r_seq_cnt_mux0000<0>)
+     FDC:D                     0.203          sccb_bridge/r_seq_cnt_4
+    ----------------------------------------
+    Total                      6.435ns (3.127ns logic, 3.308ns route)
+                                       (48.6% logic, 51.4% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_reset/div2clk1'
+  Clock period: 8.222ns (frequency: 121.622MHz)
+  Total number of paths / destination ports: 3242 / 338
+-------------------------------------------------------------------------
+Delay:               8.222ns (Levels of Logic = 9)
+  Source:            rsio_01a/i_TxClk/r_accumulatedError_6 (FF)
+  Destination:       rsio_01a/i_TxClk/r_accumulatedError_6 (FF)
+  Source Clock:      clk_reset/div2clk1 rising
+  Destination Clock: clk_reset/div2clk1 rising
+
+  Data Path: rsio_01a/i_TxClk/r_accumulatedError_6 to rsio_01a/i_TxClk/r_accumulatedError_6
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q             28   0.720   1.856  rsio_01a/i_TxClk/r_accumulatedError_6 (rsio_01a/i_TxClk/r_accumulatedError_6)
+     LUT4:I3->O            7   0.551   1.261  rsio_01a/i_TxClk/w_errorExpired2 (rsio_01a/i_TxClk/w_errorExpired)
+     LUT2:I1->O            1   0.551   0.000  rsio_01a/i_TxClk/Maddsub_w_accumulatedError_share0000_lut<1> (rsio_01a/i_TxClk/Maddsub_w_accumulatedError_share0000_lut<1>)
+     MUXCY:S->O            1   0.500   0.000  rsio_01a/i_TxClk/Maddsub_w_accumulatedError_share0000_cy<1> (rsio_01a/i_TxClk/Maddsub_w_accumulatedError_share0000_cy<1>)
+     MUXCY:CI->O           1   0.064   0.000  rsio_01a/i_TxClk/Maddsub_w_accumulatedError_share0000_cy<2> (rsio_01a/i_TxClk/Maddsub_w_accumulatedError_share0000_cy<2>)
+     MUXCY:CI->O           1   0.064   0.000  rsio_01a/i_TxClk/Maddsub_w_accumulatedError_share0000_cy<3> (rsio_01a/i_TxClk/Maddsub_w_accumulatedError_share0000_cy<3>)
+     MUXCY:CI->O           1   0.064   0.000  rsio_01a/i_TxClk/Maddsub_w_accumulatedError_share0000_cy<4> (rsio_01a/i_TxClk/Maddsub_w_accumulatedError_share0000_cy<4>)
+     MUXCY:CI->O           0   0.064   0.000  rsio_01a/i_TxClk/Maddsub_w_accumulatedError_share0000_cy<5> (rsio_01a/i_TxClk/Maddsub_w_accumulatedError_share0000_cy<5>)
+     XORCY:CI->O           1   0.904   0.869  rsio_01a/i_TxClk/Maddsub_w_accumulatedError_share0000_xor<6> (rsio_01a/i_TxClk/w_accumulatedError_share0000<6>)
+     LUT3:I2->O            1   0.551   0.000  rsio_01a/i_TxClk/w_accumulatedError<6>1 (rsio_01a/i_TxClk/w_accumulatedError<6>)
+     FDC:D                     0.203          rsio_01a/i_TxClk/r_accumulatedError_6
+    ----------------------------------------
+    Total                      8.222ns (4.236ns logic, 3.986ns route)
+                                       (51.5% logic, 48.5% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'rsio_01a/w_TxClk'
+  Clock period: 4.914ns (frequency: 203.500MHz)
+  Total number of paths / destination ports: 29 / 11
+-------------------------------------------------------------------------
+Delay:               4.914ns (Levels of Logic = 3)
+  Source:            rsio_01a/rxtx_01a/r_shiftReg_5 (FF)
+  Destination:       rsio_01a/rxtx_01a/r_state (FF)
+  Source Clock:      rsio_01a/w_TxClk rising
+  Destination Clock: rsio_01a/w_TxClk rising
+
+  Data Path: rsio_01a/rxtx_01a/r_shiftReg_5 to rsio_01a/rxtx_01a/r_state
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              2   0.720   1.216  rsio_01a/rxtx_01a/r_shiftReg_5 (rsio_01a/rxtx_01a/r_shiftReg_5)
+     LUT2_L:I0->LO         1   0.551   0.126  rsio_01a/rxtx_01a/w_state6 (rsio_01a/rxtx_01a/w_state6)
+     LUT4:I3->O            1   0.551   0.996  rsio_01a/rxtx_01a/w_state11 (rsio_01a/rxtx_01a/w_state11)
+     LUT4:I1->O            1   0.551   0.000  rsio_01a/rxtx_01a/w_state34 (rsio_01a/rxtx_01a/w_state)
+     FDC:D                     0.203          rsio_01a/rxtx_01a/r_state
+    ----------------------------------------
+    Total                      4.914ns (2.576ns logic, 2.338ns route)
+                                       (52.4% logic, 47.6% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'xipCAM_PCLK'
+  Clock period: 8.025ns (frequency: 124.611MHz)
+  Total number of paths / destination ports: 2332 / 206
+-------------------------------------------------------------------------
+Delay:               8.025ns (Levels of Logic = 4)
+  Source:            pixel_buffer/s0_Addr_15 (FF)
+  Destination:       pixel_buffer/last_addr_17 (FF)
+  Source Clock:      xipCAM_PCLK rising
+  Destination Clock: xipCAM_PCLK rising
+
+  Data Path: pixel_buffer/s0_Addr_15 to pixel_buffer/last_addr_17
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDPE:C->Q             5   0.720   1.260  pixel_buffer/s0_Addr_15 (pixel_buffer/s0_Addr_15)
+     LUT4:I0->O            1   0.551   0.827  pixel_buffer/last_addr_not000137 (pixel_buffer/last_addr_not000137)
+     LUT4:I3->O            1   0.551   0.869  pixel_buffer/last_addr_not000139 (pixel_buffer/last_addr_not000139)
+     LUT3_L:I2->LO         1   0.551   0.126  pixel_buffer/last_addr_not0001123_SW0 (N361)
+     LUT4:I3->O           18   0.551   1.417  pixel_buffer/last_addr_not0001123 (pixel_buffer/last_addr_not0001)
+     FDCE:CE                   0.602          pixel_buffer/last_addr_0
+    ----------------------------------------
+    Total                      8.025ns (3.526ns logic, 4.499ns route)
+                                       (43.9% logic, 56.1% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'xipMCLK'
+  Clock period: 3.278ns (frequency: 305.064MHz)
+  Total number of paths / destination ports: 34 / 15
+-------------------------------------------------------------------------
+Delay:               3.278ns (Levels of Logic = 1)
+  Source:            clk_reset/div2clk (FF)
+  Destination:       clk_reset/div2clk (FF)
+  Source Clock:      xipMCLK rising
+  Destination Clock: xipMCLK rising
+
+  Data Path: clk_reset/div2clk to clk_reset/div2clk
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              6   0.720   1.003  clk_reset/div2clk (clk_reset/div2clk1)
+     INV:I->O              1   0.551   0.801  clk_reset/div2clk_not00011_INV_0 (clk_reset/div2clk_not0001)
+     FDC:D                     0.203          clk_reset/div2clk
+    ----------------------------------------
+    Total                      3.278ns (1.474ns logic, 1.804ns route)
+                                       (45.0% logic, 55.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'xipMCLK'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              3.177ns (Levels of Logic = 2)
+  Source:            xipRESET (PAD)
+  Destination:       clk_reset/i_reset_sync/ff1_0 (FF)
+  Destination Clock: xipMCLK rising
+
+  Data Path: xipRESET to clk_reset/i_reset_sync/ff1_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   0.821   0.801  xipRESET_IBUF (xipRESET_IBUF)
+     INV:I->O              1   0.551   0.801  clk_reset_not00001_INV_0 (clk_reset_not0000)
+     FDC:D                     0.203          clk_reset/i_reset_sync/ff1_0
+    ----------------------------------------
+    Total                      3.177ns (1.575ns logic, 1.602ns route)
+                                       (49.6% logic, 50.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'xipCAM_PCLK'
+  Total number of paths / destination ports: 10 / 10
+-------------------------------------------------------------------------
+Offset:              1.825ns (Levels of Logic = 1)
+  Source:            xipCAM_D<7> (PAD)
+  Destination:       pixel_buffer/r_DATA_pre_7 (FF)
+  Destination Clock: xipCAM_PCLK rising
+
+  Data Path: xipCAM_D<7> to pixel_buffer/r_DATA_pre_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   0.821   0.801  xipCAM_D_7_IBUF (xipCAM_D_7_IBUF)
+     FDC:D                     0.203          pixel_buffer/r_DATA_pre_7
+    ----------------------------------------
+    Total                      1.825ns (1.024ns logic, 0.801ns route)
+                                       (56.1% logic, 43.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_reset/div2clk1'
+  Total number of paths / destination ports: 32 / 32
+-------------------------------------------------------------------------
+Offset:              2.444ns (Levels of Logic = 2)
+  Source:            xbpDATA2<15> (PAD)
+  Destination:       dump_sequencer/data_buffer_31 (FF)
+  Destination Clock: clk_reset/div2clk1 rising
+
+  Data Path: xbpDATA2<15> to dump_sequencer/data_buffer_31
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IOBUF:IO->O           1   0.821   0.869  xbpDATA2_15_IOBUF (N129)
+     LUT3:I2->O            1   0.551   0.000  sram_if/s1_RD<31>1 (s1_RD<31>)
+     FDCE:D                    0.203          dump_sequencer/data_buffer_31
+    ----------------------------------------
+    Total                      2.444ns (1.575ns logic, 0.869ns route)
+                                       (64.4% logic, 35.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'sccb_bridge/w_sccb_gclk1'
+  Total number of paths / destination ports: 2 / 1
+-------------------------------------------------------------------------
+Offset:              8.760ns (Levels of Logic = 2)
+  Source:            sccb_bridge/r_sio_d_oe (FF)
+  Destination:       xbpCAM_SIO_D (PAD)
+  Source Clock:      sccb_bridge/w_sccb_gclk1 rising
+
+  Data Path: sccb_bridge/r_sio_d_oe to xbpCAM_SIO_D
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              1   0.720   0.801  sccb_bridge/r_sio_d_oe (sccb_bridge/r_sio_d_oe)
+     INV:I->O              1   0.551   0.801  sccb_bridge/r_sio_d_oe_inv1_INV_0 (sccb_bridge/r_sio_d_oe_inv)
+     OBUFT:T->O                5.887          xbpCAM_SIO_D_OBUFT (xbpCAM_SIO_D)
+    ----------------------------------------
+    Total                      8.760ns (7.158ns logic, 1.602ns route)
+                                       (81.7% logic, 18.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'rsio_01a/w_TxClk'
+  Total number of paths / destination ports: 2 / 1
+-------------------------------------------------------------------------
+Offset:              9.400ns (Levels of Logic = 2)
+  Source:            rsio_01a/rxtx_01a/r_state (FF)
+  Destination:       xopTXD (PAD)
+  Source Clock:      rsio_01a/w_TxClk rising
+
+  Data Path: rsio_01a/rxtx_01a/r_state to xopTXD
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q             17   0.720   1.684  rsio_01a/rxtx_01a/r_state (rsio_01a/rxtx_01a/r_state)
+     LUT2:I0->O            1   0.551   0.801  rsio_01a/rxtx_01a/txSerialData1 (xopTXD_OBUF)
+     OBUF:I->O                 5.644          xopTXD_OBUF (xopTXD)
+    ----------------------------------------
+    Total                      9.400ns (6.915ns logic, 2.485ns route)
+                                       (73.6% logic, 26.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'xipMCLK'
+  Total number of paths / destination ports: 106 / 59
+-------------------------------------------------------------------------
+Offset:              11.507ns (Levels of Logic = 2)
+  Source:            main_sequencer/source_sel (FF)
+  Destination:       xbpDATA1<15> (PAD)
+  Source Clock:      xipMCLK rising
+
+  Data Path: main_sequencer/source_sel to xbpDATA1<15>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q            85   0.720   2.496  main_sequencer/source_sel (main_sequencer/source_sel)
+     LUT2:I0->O           32   0.551   1.853  sram_if/xbpDATA1_and0000_inv1 (sram_if/xbpDATA1_and0000_inv)
+     IOBUF:T->IO               5.887          xbpDATA1_15_IOBUF (xbpDATA1<15>)
+    ----------------------------------------
+    Total                     11.507ns (7.158ns logic, 4.349ns route)
+                                       (62.2% logic, 37.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'sccb_bridge/w_sccb_gwclk'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              7.165ns (Levels of Logic = 1)
+  Source:            sccb_bridge/r_sio_c (FF)
+  Destination:       xopCAM_SIO_C (PAD)
+  Source Clock:      sccb_bridge/w_sccb_gwclk rising
+
+  Data Path: sccb_bridge/r_sio_c to xopCAM_SIO_C
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDP:C->Q              1   0.720   0.801  sccb_bridge/r_sio_c (sccb_bridge/r_sio_c)
+     OBUF:I->O                 5.644          xopCAM_SIO_C_OBUF (xopCAM_SIO_C)
+    ----------------------------------------
+    Total                      7.165ns (6.364ns logic, 0.801ns route)
+                                       (88.8% logic, 11.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_reset/div2clk1'
+  Total number of paths / destination ports: 19 / 19
+-------------------------------------------------------------------------
+Offset:              9.781ns (Levels of Logic = 2)
+  Source:            dump_sequencer/s1_OE (FF)
+  Destination:       xonOE (PAD)
+  Source Clock:      clk_reset/div2clk1 rising
+
+  Data Path: dump_sequencer/s1_OE to xonOE
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDP:C->Q             35   0.720   2.065  dump_sequencer/s1_OE (dump_sequencer/s1_OE)
+     LUT2:I1->O            1   0.551   0.801  sram_if/xonOE1 (xonOE_OBUF)
+     OBUF:I->O                 5.644          xonOE_OBUF (xonOE)
+    ----------------------------------------
+    Total                      9.781ns (6.915ns logic, 2.866ns route)
+                                       (70.7% logic, 29.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'xipCAM_PCLK'
+  Total number of paths / destination ports: 83 / 51
+-------------------------------------------------------------------------
+Offset:              10.083ns (Levels of Logic = 2)
+  Source:            pixel_buffer/s0_WE (FF)
+  Destination:       xbpDATA1<15> (PAD)
+  Source Clock:      xipCAM_PCLK rising
+
+  Data Path: pixel_buffer/s0_WE to xbpDATA1<15>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDP:C->Q              2   0.720   1.072  pixel_buffer/s0_WE (pixel_buffer/s0_WE)
+     LUT2:I1->O           32   0.551   1.853  sram_if/xbpDATA1_and0000_inv1 (sram_if/xbpDATA1_and0000_inv)
+     IOBUF:T->IO               5.887          xbpDATA1_15_IOBUF (xbpDATA1<15>)
+    ----------------------------------------
+    Total                     10.083ns (7.158ns logic, 2.925ns route)
+                                       (71.0% logic, 29.0% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 21.00 secs
+Total CPU time to Xst completion: 20.80 secs
+ 
+--> 
+
+Total memory usage is 288748 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  228 (   0 filtered)
+Number of infos    :   12 (   0 filtered)
+

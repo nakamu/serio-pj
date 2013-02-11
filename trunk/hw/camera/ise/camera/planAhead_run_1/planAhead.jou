@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# PlanAhead v14.2 (64-bit)
+# Build 194362 by xbuild on Fri Jul 20 18:52:11 MDT 2012
+# Start of session at: Mon Feb 11 23:09:44 2013
+# Process ID: 5640
+# Log file: D:/work/serio-pj/hw/camera/ise/camera/planAhead_run_1/planAhead.log
+# Journal file: D:/work/serio-pj/hw/camera/ise/camera/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+start_gui
+source D:/work/serio-pj/hw/camera/ise/camera/pa.fromNetlist.tcl

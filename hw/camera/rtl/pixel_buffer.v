@@ -74,7 +74,7 @@ always @ (posedge clk or negedge reset_n)
 			r_HREF_cnt <= r_HREF_cnt + 2'b01;
 	end
 
-reg  [3:0] r_cap_state;
+reg  [1:0] r_cap_state;
 reg [31:0] r_data_buffer;
 reg        fetch_done;
 

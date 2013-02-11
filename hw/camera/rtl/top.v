@@ -6,18 +6,18 @@ module top (
 	xonOE, xonWE, xopAddr,
 	xonCE1, xonUB1, xonLB1, xbpDATA1,
 	xonCE2, xonUB2, xonLB2, xbpDATA2,
-	xopCAM_PWDN,
+	/*xopCAM_PWDN,*/
 	xipCAM_VSYNC,
 	xipCAM_HREF,
 	xipCAM_PCLK,
-	xipCAM_STROBE,
+	/*xipCAM_STROBE,*/
 	xopCAM_XCLK,
-	xonCAM_RESET,
+	/*xonCAM_RESET,*/
 	xopCAM_SIO_C,
 	xbpCAM_SIO_D,
 	xipCAM_D,
 	xopTXD,
-	xipRXD,
+	/*xipRXD,*/
 	xopLD7, xopLD6, xopLD5, xopLD4, xopLD3, xopLD2, xopLD1, xopLD0,
 );
 // System IO
@@ -38,13 +38,13 @@ output        xonLB2;    // P5
 inout  [15:0] xbpDATA2;  // {N1,M1,K2,C3,F5,G1,E2,D2,D1,E1,G2,J1,K1,M2,N2,P2}
 
 // Camera IO
-output      xopCAM_PWDN;
+//output      xopCAM_PWDN;
 input       xipCAM_VSYNC;
 input       xipCAM_HREF;
 input       xipCAM_PCLK;
-input       xipCAM_STROBE; // open input (no use)
+//input       xipCAM_STROBE; // open input (no use)
 output      xopCAM_XCLK;
-output      xonCAM_RESET;
+//output      xonCAM_RESET;
 output      xopCAM_SIO_C;
 inout       xbpCAM_SIO_D;
 input [7:0] xipCAM_D;
@@ -61,7 +61,7 @@ output      xopLD0;    // K12
 
 // RS232C
 output      xopTXD;    // R13
-input       xipRXD;    // T13
+//input       xipRXD;    // T13
 
 /***********************************************
 * clock & reset 

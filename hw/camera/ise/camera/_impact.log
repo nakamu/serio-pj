@@ -1,0 +1,135 @@
+iMPACT Version: 14.2
+
+iMPACT log file Started on Tue Feb 12 01:28:44 2013
+
+Welcome to iMPACT
+iMPACT Version: 14.2
+Project: 'D:\work\try_bluetooth\bt-board\fpga\ise\\auto_project.ipf' alreadyexists.
+Original project has been renamed to'D:\work\try_bluetooth\bt-board\fpga\ise\\auto_project_1.ipf'.
+Project: D:\work\try_bluetooth\bt-board\fpga\ise\\auto_project.ipf created.
+// *** BATCH CMD : setMode -bs
+GUI --- Auto connect to cable...
+// *** BATCH CMD : setCable -port auto
+INFO:iMPACT - Digilent Plugin: Plugin Version: 2.2.10
+INFO:iMPACT - Digilent Plugin: no JTAG device was found.
+AutoDetecting cable. Please wait.
+PROGRESS_START - Starting Operation.
+Connecting to cable (Usb Port - USB21).
+Checking cable driver.
+ Driver file xusb_xlp.sys found.
+ Driver version: src=1029, dest=1029.
+ Driver windrvr6.sys version = 10.2.1.0. WinDriver v10.21 Jungo (c) 1997 - 2010 Build Date: Aug 31 2010 x86_64 64bit SYS14:14:44, version = 1021.
+ Cable PID = 0008.
+ Max current requested during enumeration is 74 mA.
+Type = 0x0004.
+ Cable Type = 3, Revision = 0.
+ Setting cable speed to 6 MHz.
+Cable connection established.
+Firmware version = 1303.
+File version of D:/Xilinx/14.2/ISE_DS/ISE/data/xusb_xlp.hex = 1303.
+Firmware hex file version = 1303.
+PLD file version = 0012h.
+ PLD version = 0012h.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+Type = 0x0004.
+ ESN device is not available for this cable.
+Attempting to identify devices in the boundary-scan chain configuration...
+INFO:iMPACT - Current time: 2013/02/12 1:28:56
+// *** BATCH CMD : Identify -inferir 
+PROGRESS_START - Starting Operation.
+Identifying chain contents...'0': : Manufacturer's ID = Xilinx xcf02s, Version : 0
+INFO:iMPACT:1777 - 
+   Reading D:/Xilinx/14.2/ISE_DS/ISE/xcf/data/xcf02s.bsd...
+INFO:iMPACT:501 - '1': Added Device xcf02s successfully.
+----------------------------------------------------------------------
+'1': : Manufacturer's ID = Xilinx xc3s200, Version : 0
+INFO:iMPACT:1777 - 
+   Reading D:/Xilinx/14.2/ISE_DS/ISE/spartan3/data/xc3s200.bsd...
+INFO:iMPACT:501 - '1': Added Device xc3s200 successfully.
+----------------------------------------------------------------------
+done.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+// *** BATCH CMD : identifyMPM 
+// *** BATCH CMD : assignFile -p 1 -file"D:/work/serio-pj/hw/camera/ise/camera/top.bit"
+'1': Loading file 'D:/work/serio-pj/hw/camera/ise/camera/top.bit' ...
+done.
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+UserID read from the bitstream file = 0xFFFFFFFF.
+----------------------------------------------------------------------
+INFO:iMPACT:501 - '1': Added Device xc3s200 successfully.
+----------------------------------------------------------------------
+INFO:iMPACT - Current time: 2013/02/12 1:29:21
+// *** BATCH CMD : Program -p 1 
+Maximum TCK operating frequency for this device chain: 15000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'1': Programming device...
+PROGRESS_START - Starting Operation.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '1': Completed downloading bit file to device.
+INFO:iMPACT:188 - '1': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '1': Checking done pin....done.
+'1': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      1 sec.
+INFO:iMPACT - Current time: 2013/02/12 1:29:46
+// *** BATCH CMD : Program -p 1 
+Maximum TCK operating frequency for this device chain: 15000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'1': Programming device...
+PROGRESS_START - Starting Operation.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '1': Completed downloading bit file to device.
+INFO:iMPACT:188 - '1': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '1': Checking done pin....done.
+'1': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+INFO:iMPACT - Current time: 2013/02/12 1:36:45
+// *** BATCH CMD : Program -p 1 
+Maximum TCK operating frequency for this device chain: 15000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'1': Programming device...
+PROGRESS_START - Starting Operation.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '1': Completed downloading bit file to device.
+INFO:iMPACT:188 - '1': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '1': Checking done pin....done.
+'1': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.

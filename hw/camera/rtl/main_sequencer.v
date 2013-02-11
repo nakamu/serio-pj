@@ -54,6 +54,7 @@ assign led5 = r_seq_state > SEQ_FETCH_DONE;
 assign led6 = r_seq_state > SEQ_DUMP_KICKED;
 assign led7 = 1'b0;
 
+
 // sync input flag
 wire sccb_done_sync;
 syncd01a syncd_sccb_done (

@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=D:\work\serio-pj\hw\camera\ise\camera\top.ncd
+OUTFILE=D:\work\serio-pj\hw\camera\ise\camera\top.bit
+FAMILY=Spartan3
+PART=xc3s200-4ft256
+WORKINGDIR=D:\work\serio-pj\hw\camera\ise\camera
+LICENSE=WebPack
+USER_INFO=175490219_0_0_517

@@ -65,18 +65,19 @@ always @ (posedge sccb_clk or negedge sccb_reset_n)
 	else              r_divcount <= #`D (r_divcount == sccb_div) ? 8'h00 : r_divcount + 1;
 
 // SCCB transmission control
-parameter P_SCCB_IDLE          = 3'b000;
-parameter P_SCCB_SENDING_START = 3'b001;
-parameter P_SCCB_SENDING_IDW   = 3'b010;
-parameter P_SCCB_SENDING_ADDR  = 3'b011;
-parameter P_SCCB_SENDING_DATA  = 3'b100;
-parameter P_SCCB_SENDING_STOP  = 3'b101;
-parameter P_SCCB_SENDING_IDR   = 3'b110;
-parameter P_SCCB_RECEIVING_DAT = 3'b111;
+parameter P_SCCB_IDLE          = 4'b0000;
+parameter P_SCCB_SENDING_START = 4'b0001;
+parameter P_SCCB_SENDING_IDW   = 4'b0010;
+parameter P_SCCB_SENDING_ADDR  = 4'b0011;
+parameter P_SCCB_SENDING_DATA  = 4'b0100;
+parameter P_SCCB_SENDING_STOP  = 4'b0101;
+parameter P_SCCB_SENDING_IDR   = 4'b0110;
+parameter P_SCCB_RECEIVING_DAT = 4'b0111;
+parameter P_SCCB_WAITING       = 4'b1000;
 
-reg [2:0]    r_sccb_state;
+reg [3:0]    r_sccb_state;
 wire         w_sccb_idle;
-assign w_sccb_idle = (r_sccb_state == 3'b000);
+assign w_sccb_idle = (r_sccb_state == P_SCCB_IDLE);
 reg          r_sio_c;
 reg          r_sio_c_pre;
 reg          r_sio_d;
@@ -128,7 +129,7 @@ assign w_seq_dat_data = {r_mdata[7],r_mdata[7],
 	r_mdata[2],r_mdata[2],r_mdata[1],r_mdata[1],r_mdata[0],r_mdata[0],2'b11};
 
 function [17:0] seq_select_clk;
-	input [2:0] next_state;
+	input [3:0] next_state;
 	case(next_state) 
 		P_SCCB_IDLE          : seq_select_clk = P_SEQ_CD_IDLE;
 		P_SCCB_SENDING_START : seq_select_clk = P_SEQ_CD_START;
@@ -143,7 +144,7 @@ function [17:0] seq_select_clk;
 endfunction
 
 function [17:0] seq_select_dat;
-	input [2:0] next_state;
+	input [3:0] next_state;
 	input [17:0] wrid;
 	input [17:0] rdid;
 	input [17:0] addr;
@@ -162,7 +163,7 @@ function [17:0] seq_select_dat;
 endfunction
 
 function [17:0] seq_select_oe;
-	input [2:0] next_state;
+	input [3:0] next_state;
 	case(next_state) 
 		P_SCCB_IDLE          : seq_select_oe  = P_SEQ_OE_START;
 		P_SCCB_SENDING_START : seq_select_oe  = P_SEQ_OE_START;
@@ -195,12 +196,13 @@ assign w_mcmd_valid = ~r_mcmd[2] & (r_mcmd[1] ^ r_mcmd[0]);
 assign w_wr_en = w_mcmd_valid & r_mcmd[0];
 assign w_rd_en = w_mcmd_valid & r_mcmd[1];
 
-reg  [2:0] r_sccb_next;
+reg  [3:0] r_sccb_next;
 reg        r_update_seq;
 reg  [4:0] r_seq_cnt;
 reg  [8:0] r_read_data;
 wire       w_seq_cnt_done;
 assign w_seq_cnt_done = (r_seq_cnt == 5'd17);
+reg [11:0] r_wait_count;
 
 assign w_seq_sio_c = seq_select_clk(r_sccb_next);
 assign w_seq_sio_d = seq_select_dat(r_sccb_next, w_seq_dat_wrid, w_seq_dat_rdid, w_seq_dat_addr, w_seq_dat_data);
@@ -214,6 +216,7 @@ always @ (posedge w_sccb_gclk or negedge sccb_reset_n)
 		r_seq_cnt    <= #`D 5'd0;
 		r_sdata      <= #`D 8'h00;
 		r_sresp      <= #`D 2'b00;
+		r_wait_count <= #`D 12'd0;
 	end else begin
 		r_seq_cnt    <= #`D w_sccb_idle ? 5'd0 : w_seq_cnt_done ? 5'd0 : r_seq_cnt + 5'd1;
 		r_update_seq <= #`D w_sccb_idle ? (w_mcmd_valid ? 1'b1 : 1'b0) : w_seq_cnt_done ? 1'b1 : 1'b0;
@@ -244,10 +247,19 @@ always @ (posedge w_sccb_gclk or negedge sccb_reset_n)
 			r_sresp      <= #`D w_seq_cnt_done ? 2'b01 : 2'b00; // DVA
 			r_sdata      <= #`D w_seq_cnt_done ? r_read_data[8:1] : r_sdata;
 		end else if(r_sccb_state == P_SCCB_SENDING_STOP) begin
-			r_sccb_next  <= #`D P_SCCB_IDLE;
-			r_sccb_state <= #`D w_seq_cnt_done ? P_SCCB_IDLE          : r_sccb_state;
+			r_sccb_next  <= #`D P_SCCB_WAITING;
+			r_sccb_state <= #`D w_seq_cnt_done ? P_SCCB_WAITING       : r_sccb_state;
 			r_sresp      <= #`D 2'b00; // No response
 			r_sdata      <= #`D 8'h00;
+		end else if(r_sccb_state == P_SCCB_WAITING) begin
+		   // wait 10ms : 250kHz (2500 cycle)
+			if(r_wait_count == 12'd2500) begin
+				r_wait_count <= #`D 12'd0;
+				r_sccb_next  <= #`D P_SCCB_IDLE;
+				r_sccb_state <= #`D P_SCCB_IDLE;
+			end else begin
+				r_wait_count <= #`D r_wait_count + 12'd1;
+			end
 		end
 	end
 

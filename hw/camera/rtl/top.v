@@ -19,6 +19,8 @@ module top (
 	xopTXD,
 	/*xipRXD,*/
 	xopLD7, xopLD6, xopLD5, xopLD4, xopLD3, xopLD2, xopLD1, xopLD0,
+	xonAN0, xonAN1, xonAN2, xonAN3,
+	xonDP, xonA, xonB, xonC, xonD, xonE, xonF, xonG
 );
 // System IO
 input       xipMCLK;     // T9
@@ -62,6 +64,20 @@ output      xopLD0;    // K12
 // RS232C
 output      xopTXD;    // R13
 //input       xipRXD;    // T13
+
+// 7-seg IO
+output xonAN0;
+output xonAN1;
+output xonAN2;
+output xonAN3;
+output xonDP;
+output xonA;
+output xonB;
+output xonC;
+output xonD;
+output xonE;
+output xonF;
+output xonG;
 
 /***********************************************
 * clock & reset 
@@ -245,6 +261,7 @@ pixel_buffer pixel_buffer(
 /***********************************************
 * dump sequencer
 * *********************************************/
+wire [15:0] rest;
 dump_sequencer dump_sequencer (
 	.clk          ( rs_clk       ) ,
 	.reset_n      ( rs_reset_n   ) ,
@@ -256,7 +273,29 @@ dump_sequencer dump_sequencer (
 	.rs_tx_start  ( rs_tx_start  ) ,
 	.rs_tx_status ( rs_tx_status ) ,
 	.rs_tx_data   ( rs_tx_data   ) ,
-	.last_addr    ( last_addr    )
+	.last_addr    ( last_addr    ) ,
+	.rest         ( rest         )
+);
+
+/***********************************************
+* 7-seg out
+* *********************************************/
+seg_ctrl seg_ctrl(
+    .clk     ( rs_clk     ) ,
+    .reset_n ( rs_reset_n ) ,
+    .hex     ( rest       ) ,
+    .AN0     ( xonAN0     ) ,
+	 .AN1     ( xonAN1     ) ,
+    .AN2     ( xonAN2     ) ,
+	 .AN3     ( xonAN3     ) ,
+	 .DP      ( xonDP      ) ,
+	 .A       ( xonA       ) ,
+	 .B       ( xonB       ) ,
+	 .C       ( xonC       ) ,
+	 .D       ( xonD       ) ,
+	 .E       ( xonE       ) ,
+	 .F       ( xonF       ) ,
+	 .G       ( xonG       ) 
 );
 
 endmodule

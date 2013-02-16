@@ -19,7 +19,7 @@ input   [7:0] sdata;
 input         sccb_kick;
 output        sccb_done;
 
-assign sccb_div = 8'd50;
+assign sccb_div = 8'd100;
 
 // sync input
 wire sccb_kick_sync;

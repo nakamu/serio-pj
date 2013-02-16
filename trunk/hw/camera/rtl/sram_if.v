@@ -51,6 +51,8 @@ assign xonWE   = source_sel ? s1_WE   : s0_WE;
 assign xopAddr = source_sel ? s1_Addr : s0_Addr;
 assign xbpDATA1 = (xonOE & ~xonWE) ? (source_sel ? s1_WD[15:0]  : s0_WD[15:0])  : 16'hz;
 assign xbpDATA2 = (xonOE & ~xonWE) ? (source_sel ? s1_WD[31:16] : s0_WD[31:16]) : 16'hz;
+//assign xbpDATA1 = (xonOE & ~xonWE) ? 16'hdead : 16'hz;
+//assign xbpDATA2 = (xonOE & ~xonWE) ? 16'hbeaf : 16'hz;
 assign s0_RD    = xonOE ? 32'h0 : {xbpDATA2, xbpDATA1};
 assign s1_RD    = xonOE ? 32'h0 : {xbpDATA2, xbpDATA1};
 

@@ -6,7 +6,8 @@ module dump_sequencer (
 	dump_kick, dump_done,
 	s1_OE, s1_Addr, s1_RD,
 	rs_tx_start, rs_tx_data, rs_tx_status,
-	last_addr
+	last_addr,
+	rest
 );
 input         clk;
 input         reset_n;
@@ -19,6 +20,11 @@ output        rs_tx_start;
 output  [7:0] rs_tx_data;
 input         rs_tx_status;
 input  [17:0] last_addr;
+output [15:0] rest;
+
+wire [18:0] sub;
+assign sub = {1'b0,last_addr} - {1'b0, s1_Addr};
+assign rest = sub[17:2];
 
 wire dump_kick_sync;
 syncd01a syncd_dump_kick (
@@ -120,6 +126,9 @@ always @ (posedge clk or negedge reset_n)
 			P_STATE_DUMP1 : begin
 				rs_tx_start  <= 1'b0;
 				dumper_state <= P_STATE_DUMP0;
+			end
+			default : begin
+				dumper_state <= P_STATE_END;
 			end
 		endcase
 	end

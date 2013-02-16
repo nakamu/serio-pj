@@ -68,7 +68,7 @@ always @ (posedge clk or negedge reset_n)
 	if(~reset_n) begin
 		r_HREF_cnt <= 2'b00;
 	end else begin
-		if(w_frame_start) 
+		if(w_frame_start & fetch_kick_sync) 
 			r_HREF_cnt <= 2'b00;
 		else if(r_HREF) 
 			r_HREF_cnt <= r_HREF_cnt + 2'b01;
@@ -77,27 +77,60 @@ always @ (posedge clk or negedge reset_n)
 reg  [1:0] r_cap_state;
 reg [31:0] r_data_buffer;
 reg        fetch_done;
+reg        s0_WE;
+reg [17:0] s0_Addr;
+reg [31:0] s0_WD;
+reg [17:0] last_addr;
 
 parameter P_STATE_INIT    = 2'b00;
 parameter P_STATE_RUNNING = 2'b01;
 parameter P_STATE_END     = 2'b10;
+parameter P_STATE_INIT_SRAM = 2'b11;
 
 always @ (posedge clk or negedge reset_n) 
 	if(~reset_n) begin
 		r_cap_state <= P_STATE_INIT;
 		fetch_done  <= 1'b0;
+		s0_WE       <= 1'b1;
+		s0_Addr     <= 18'h3ffff;
+		s0_WD       <= 32'h0;
+		last_addr   <= 18'h00;
 	end else begin
 		case(r_cap_state) 
 			P_STATE_INIT: begin
 				if(w_frame_start & fetch_kick_sync) begin
+					r_cap_state <= P_STATE_INIT_SRAM;
+					s0_WE   <= 1'b0;
+					s0_Addr <= 18'h0;
+					s0_WD   <= 32'ha5a5a5a5;
+				end
+			end
+			P_STATE_INIT_SRAM : begin
+				s0_Addr <= s0_Addr + 18'h1;
+				if(s0_Addr == 18'h3ffff) begin
 					r_cap_state <= P_STATE_RUNNING;
+					s0_WE       <= 1'b1;
+				end else begin
+					s0_WE   <= 1'b0;
+					s0_WD   <= 32'ha5a5a5a5;
 				end
 			end
 			P_STATE_RUNNING: begin
 				if(w_frame_start) begin
 					r_cap_state <= P_STATE_END;
+					last_addr <= s0_Addr;
 					fetch_done  <= 1'b1;
 				end
+				if((r_HREF_cnt == 2'b11) & r_HREF) begin
+					s0_WE     <= 1'b0;
+					s0_Addr   <= (s0_Addr == 18'h25800) ? 18'h25800 : s0_Addr + 18'h1;
+					s0_WD     <= {r_DATA, r_data_buffer[31:8]};
+				end else begin
+					s0_WE   <= 1'b1;
+				end
+			end
+			default : begin
+				r_cap_state    <= P_STATE_END;
 			end
 		endcase
 	end
@@ -111,38 +144,6 @@ always @ (posedge clk or negedge reset_n)
 		end
 	end
 
-reg        s0_WE;
-reg [17:0] s0_Addr;
-reg [31:0] s0_WD;
-always @ (posedge clk or negedge reset_n) 
-	if(~reset_n) begin
-		s0_WE   <= 1'b1;
-		s0_Addr <= 18'h3ffff;
-		s0_WD   <= 32'h0;
-	end else begin
-		if(r_cap_state != P_STATE_RUNNING) begin
-			s0_WE   <= 1'b1;
-			s0_Addr <= 18'h3ffff;
-			s0_WD   <= 32'h0;
-		end else if((r_HREF_cnt == 2'b11) & r_HREF) begin
-			s0_WE   <= 1'b0;
-			s0_Addr <= s0_Addr + 18'h1;
-			s0_WD   <= {r_DATA, r_data_buffer[31:8]};
-		end else begin
-			s0_WE   <= 1'b1;
-		end
-	end
-
-reg [17:0] last_addr;
-always @ (posedge clk or negedge reset_n) 
-	if(~reset_n) begin
-		last_addr <= 18'h0;
-	end else begin
-		if((s0_Addr != 18'h3ffff)&(r_cap_state==P_STATE_RUNNING)) begin
-			if(last_addr < s0_Addr) 
-				last_addr <= s0_Addr;
-		end
-	end
 
 endmodule
 

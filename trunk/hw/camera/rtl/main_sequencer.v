@@ -83,6 +83,7 @@ reg source_sel;
 always @ (posedge clk or negedge reset_n) 
 	if(~reset_n) begin
 		r_seq_state <= SEQ_INIT;
+//		r_seq_state <= SEQ_SCCB_DONE;
 		source_sel  <= 1'b0;
 		sccb_kick   <= 1'b0;
 		fetch_kick  <= 1'b0;

@@ -190,14 +190,14 @@ void sccb_lib::dump_log(Serial console) {
 	while(1) {
 		c = scl_log.get();
 		if(c == 0x0) { break; }
-		console.printf("%s", c);
+		console.printf("%s", &c);
 	}
 	console.printf("\r\n");
 	console.printf("sda: ");
 	while(1) {
 		c = sda_log.get();
 		if(c == 0x0) { break; }
-		console.printf("%s", c);
+		console.printf("%s", &c);
 	}
 	console.printf("\r\n");
 	console.printf("# End sccb_lib tracking log.\r\n");

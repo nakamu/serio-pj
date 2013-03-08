@@ -10,20 +10,23 @@ ov7670::ov7670() {
 void ov7670::set_and_verify (char addr, char data)
 {
     unsigned char ri, rw;
-    pc.printf("[set]    setting 0x%x to 0x%x...\r\n", addr, data);
     ri = this->sccb.read(addr);
+    pc.printf("[set]    setting 0x%x to 0x%x (init=0x%x)...\r\n", addr, data, ri);
     this->sccb.write(addr, data);
     pc.printf("[verify] verifing...");
     rw = this->sccb.read(addr);
     if(rw != (int)data) {
-        pc.printf(" FAIL\r\n => addr=0x%x, init=0x%x, read=0x%x (exp 0x%x)\r\n", addr, ri, rw, data);
+        pc.printf(" FAIL\r\n => addr=0x%x, read=0x%x (exp 0x%x)\r\n", addr, rw, data);
     } else {
         pc.printf(" PASS\r\n");
     }
     return;
 }
 
-void ov7670::configure(){    this->set_and_verify(0x00, 0x00);
+void ov7670::configure(){    
+
+	// 0x00 GAIN : 0x00 -> 0x00
+	this->set_and_verify(0x00, 0x00);
 
     // 0x01 BLUE : 0x80 -> 0x40
     this->set_and_verify(0x01, 0x40);
@@ -585,6 +588,7 @@ void ov7670::configure(){    this->set_and_verify(0x00, 0x00);
 
     // 0xc9 SATCTR : 0xc0 -> 0x60
     this->set_and_verify(0xc9, 0x60);
+
 
 	sccb.dump_log(pc);
     return;

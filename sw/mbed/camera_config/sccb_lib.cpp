@@ -9,6 +9,9 @@ sccb_lib::sccb_lib() {
 	scl_log   = hold_queue();
 	sda_log   = hold_queue();
 #endif
+	set_scl(1);
+	sda_drive(1);
+	set_sda(1);
 }
 
 void sccb_lib::set_device(unsigned char wid, unsigned char rid) {
@@ -21,7 +24,9 @@ void sccb_lib::set_device(unsigned char wid, unsigned char rid) {
 void sccb_lib::start() {
 	sda_drive(1);
 	set_scl(1);
+	sccb_step();
 	set_sda(1);
+	sccb_step();
 	sccb_step();
 	set_sda(0);
 	sccb_step();
@@ -30,13 +35,16 @@ void sccb_lib::start() {
 
 // Stop sequence
 void sccb_lib::stop() {
+	set_scl(0);
+	sccb_step();
 	sda_drive(1);
-	set_scl(1);
 	set_sda(0);
+	sccb_step();
+	set_scl(1);
+	sccb_step();
 	sccb_step();
 	set_sda(1);
 	sccb_step();
-	sda_drive(0);
     return;
 }
 
@@ -46,12 +54,14 @@ void sccb_lib::write_byte(unsigned char data) {
 	sda_drive(1);
     for(i = 7; i >= 0; i--) {
 		set_scl(0);
+		sccb_step();
         set_sda((data>>i)&0x1);
 		sccb_step();
 		set_scl(1);
 		sccb_step();
     }
 	set_scl(0);
+	sccb_step();
 	sda_drive(0);
 	sccb_step();
 	set_scl(1);
@@ -67,16 +77,18 @@ unsigned char sccb_lib::read_byte() {
     for(i = 0; i < 8; i++) {
 		set_scl(0);
 		sccb_step();
-		set_scl(1);
-		sccb_step();
         rd <<= 1;
         rd |= get_sda() & 0x1;
+		sccb_step();
+		set_scl(1);
+		sccb_step();
     }
 	set_scl(0);
 	sccb_step();
-	set_scl(1);
 	sda_drive(1);
     set_sda(1);
+	sccb_step();
+	set_scl(1);
 	sccb_step();
     return rd;
 }

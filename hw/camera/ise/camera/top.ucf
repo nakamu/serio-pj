@@ -143,7 +143,6 @@ NET "xonUB1" IOSTANDARD = LVCMOS33;
 NET "xonUB2" IOSTANDARD = LVCMOS33;
 NET "xonWE" IOSTANDARD = LVCMOS33;
 NET "xbpCAM_SIO_D" PULLUP;
-NET "xopCAM_SIO_C" PULLUP;
 NET "xbpCAM_SIO_D" IOSTANDARD = LVCMOS25;
 NET "xopCAM_SIO_C" IOSTANDARD = LVCMOS25;
 #Created by Constraints Editor (xc3s200-ft256-4) - 2013/02/11
@@ -158,7 +157,7 @@ TIMESPEC TS_sccb_bridge_cgate_sccb1_latched = PERIOD "sccb_bridge/cgate_sccb1/la
 NET "sccb_bridge/cgate_sccb2/latched" TNM_NET = "sccb_bridge/cgate_sccb2/latched";
 TIMESPEC TS_sccb_bridge_cgate_sccb2_latched = PERIOD "sccb_bridge/cgate_sccb2/latched" 25 MHz HIGH 50 %;
 NET "xipCAM_PCLK" TNM_NET = "xipCAM_PCLK";
-TIMESPEC TS_xipCAM_PCLK = PERIOD "xipCAM_PCLK" 50 MHz HIGH 50 %;
+TIMESPEC TS_xipCAM_PCLK = PERIOD "xipCAM_PCLK" 25 MHz HIGH 50%;
 #Created by Constraints Editor (xc3s200-ft256-4) - 2013/02/11
 INST "xipCAM_D[0]" TNM = "CAM_INPUTS";
 INST "xipCAM_D[1]" TNM = "CAM_INPUTS";
@@ -170,4 +169,25 @@ INST "xipCAM_D[6]" TNM = "CAM_INPUTS";
 INST "xipCAM_D[7]" TNM = "CAM_INPUTS";
 INST "xipCAM_HREF" TNM = "CAM_INPUTS";
 INST "xipCAM_VSYNC" TNM = "CAM_INPUTS";
-TIMEGRP "CAM_INPUTS" OFFSET = IN 5 ns VALID 10 ns BEFORE "xipCAM_PCLK" RISING;
+#Created by Constraints Editor (xc3s200-ft256-4) - 2013/03/20
+#Created by Constraints Editor (xc3s200-ft256-4) - 2013/03/20
+TIMEGRP "CAM_INPUTS" OFFSET = IN 30 ns BEFORE "xipCAM_PCLK" RISING;
+
+
+NET "xonAN0" LOC = D14;
+NET "xonAN1" LOC = G14;
+NET "xonAN2" LOC = F14;
+NET "xonAN3" LOC = E13;
+NET "xonA" LOC = E14;
+NET "xonB" LOC = G13;
+NET "xonC" LOC = N15;
+NET "xonD" LOC = P15;
+NET "xonDP" LOC = P16;
+NET "xonE" LOC = R16;
+NET "xonF" LOC = F13;
+NET "xonG" LOC = N16;
+
+# PlanAhead Generated physical constraints 
+NET "xipBTN0" LOC = M13;
+NET "xipBTN1" LOC = M14;
+NET "xipBTN2" LOC = L13;

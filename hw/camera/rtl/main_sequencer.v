@@ -6,7 +6,7 @@ module main_sequencer (
 	sccb_kick, sccb_done,
 	fetch_kick, fetch_done,
 	dump_kick, dump_done,
-	source_sel,
+	source_sel, btn0,
 	led0, led1, led2, led3, led4, led5, led6, led7
 );
 input clk;
@@ -22,6 +22,7 @@ output dump_kick;
 input  dump_done;
 
 output source_sel;
+input  btn0;
 
 output led0;
 output led1;
@@ -82,8 +83,8 @@ reg source_sel;
 
 always @ (posedge clk or negedge reset_n) 
 	if(~reset_n) begin
-		r_seq_state <= SEQ_INIT;
-//		r_seq_state <= SEQ_SCCB_DONE;
+//		r_seq_state <= SEQ_INIT;
+		r_seq_state <= SEQ_SCCB_DONE;
 		source_sel  <= 1'b0;
 		sccb_kick   <= 1'b0;
 		fetch_kick  <= 1'b0;
@@ -99,8 +100,10 @@ always @ (posedge clk or negedge reset_n)
 				r_seq_state <= sccb_done_sync ? SEQ_SCCB_DONE : r_seq_state;  
 			end
 			SEQ_SCCB_DONE : begin
-				fetch_kick  <= 1'b1;
-				r_seq_state <= SEQ_FETCH_KICKED;
+				if(btn0) begin
+					fetch_kick  <= 1'b1;
+					r_seq_state <= SEQ_FETCH_KICKED;
+				end
 			end
 			SEQ_FETCH_KICKED : begin
 				fetch_kick  <= fetch_done_sync ? 1'b0 : fetch_kick;

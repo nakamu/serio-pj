@@ -12,7 +12,10 @@ module pixel_buffer (
 	s0_WE,
 	s0_Addr,
 	s0_WD,
-	last_addr
+	last_addr,
+	pclk_cnt,
+	vsync_cnt,
+	href_cnt
 );
 input         clk;
 input         reset_n;
@@ -25,6 +28,9 @@ output        s0_WE;
 output [17:0] s0_Addr;
 output [31:0] s0_WD;
 output [17:0] last_addr;
+output [15:0] pclk_cnt;
+output [15:0] vsync_cnt;
+output [15:0] href_cnt;
 
 // retime inputs
 reg r_VSYNC;
@@ -82,14 +88,14 @@ reg [17:0] s0_Addr;
 reg [31:0] s0_WD;
 reg [17:0] last_addr;
 
-parameter P_STATE_INIT    = 2'b00;
-parameter P_STATE_RUNNING = 2'b01;
-parameter P_STATE_END     = 2'b10;
+parameter P_STATE_INIT      = 2'b00;
+parameter P_STATE_RUNNING   = 2'b01;
+parameter P_STATE_END       = 2'b10;
 parameter P_STATE_INIT_SRAM = 2'b11;
 
 always @ (posedge clk or negedge reset_n) 
 	if(~reset_n) begin
-		r_cap_state <= P_STATE_INIT;
+		r_cap_state <= P_STATE_INIT_SRAM;
 		fetch_done  <= 1'b0;
 		s0_WE       <= 1'b1;
 		s0_Addr     <= 18'h3ffff;
@@ -97,21 +103,21 @@ always @ (posedge clk or negedge reset_n)
 		last_addr   <= 18'h00;
 	end else begin
 		case(r_cap_state) 
-			P_STATE_INIT: begin
-				if(w_frame_start & fetch_kick_sync) begin
-					r_cap_state <= P_STATE_INIT_SRAM;
-					s0_WE   <= 1'b0;
-					s0_Addr <= 18'h0;
-					s0_WD   <= 32'ha5a5a5a5;
-				end
-			end
 			P_STATE_INIT_SRAM : begin
 				s0_Addr <= s0_Addr + 18'h1;
-				if(s0_Addr == 18'h3ffff) begin
-					r_cap_state <= P_STATE_RUNNING;
+				if(s0_Addr == 18'h3fffe) begin
+					r_cap_state <= P_STATE_INIT;
 					s0_WE       <= 1'b1;
 				end else begin
 					s0_WE   <= 1'b0;
+					s0_WD   <= 32'ha5a5a5a5;
+				end
+			end
+			P_STATE_INIT: begin
+				if(w_frame_start & fetch_kick_sync) begin
+					r_cap_state <= P_STATE_RUNNING;
+					s0_WE   <= 1'b1;
+					s0_Addr <= 18'h3ffff;
 					s0_WD   <= 32'ha5a5a5a5;
 				end
 			end
@@ -123,7 +129,7 @@ always @ (posedge clk or negedge reset_n)
 				end
 				if((r_HREF_cnt == 2'b11) & r_HREF) begin
 					s0_WE     <= 1'b0;
-					s0_Addr   <= (s0_Addr == 18'h25800) ? 18'h25800 : s0_Addr + 18'h1;
+					s0_Addr   <= /*(s0_Addr == 18'h25800) ? 18'h25800 :*/ s0_Addr + 18'h1;
 					s0_WD     <= {r_DATA, r_data_buffer[31:8]};
 				end else begin
 					s0_WE   <= 1'b1;
@@ -143,6 +149,23 @@ always @ (posedge clk or negedge reset_n)
 			r_data_buffer <= {r_DATA, r_data_buffer[31:8]};
 		end
 	end
+	
+reg [31:0] debug_cnt;
+reg [15:0] vsync_cnt;
+reg [15:0] href_cnt;
+always @ (posedge clk or negedge reset_n) 
+	if(~reset_n) begin
+		debug_cnt <= #`D 32'h00000000;
+		vsync_cnt <= #`D 16'h00;
+		href_cnt  <= #`D 16'h00;
+	end else begin
+		debug_cnt <= #`D debug_cnt + 32'h1;
+		vsync_cnt <= #`D ~fetch_done & r_VSYNC ? vsync_cnt + 16'h1 : vsync_cnt;
+		href_cnt  <= #`D ~fetch_done & (r_HREF_pre & ~r_HREF)  ? href_cnt  + 16'h1 : href_cnt;
+	end
+	
+assign pclk_cnt = debug_cnt[31:18];
+
 
 
 endmodule

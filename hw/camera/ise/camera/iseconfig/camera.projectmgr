@@ -12,16 +12,15 @@
          <ClosedNode>/top D:|work|serio-pj|hw|camera|rtl|top.v/rsio_01a - rsio_01a/i_RxClk - rsclk01a</ClosedNode>
          <ClosedNode>/top D:|work|serio-pj|hw|camera|rtl|top.v/rsio_01a - rsio_01a/i_TxClk - rsclk01a</ClosedNode>
          <ClosedNode>/top D:|work|serio-pj|hw|camera|rtl|top.v/rsio_01a - rsio_01a/rxrx_01a - rsrx_01a</ClosedNode>
-         <ClosedNode>/top D:|work|serio-pj|hw|camera|rtl|top.v/sccb_config - sccb_config</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>top (D:/work/serio-pj/hw/camera/rtl/top.v)</SelectedItem>
+         <SelectedItem>sccb_bridge - sccb_bridge (D:/work/serio-pj/hw/camera/rtl/sccb_bridge.v)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001a5000000020000000000000000000000000200000064ffffffff000000810000000300000002000001a50000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>top (D:/work/serio-pj/hw/camera/rtl/top.v)</CurrentItem>
+      <CurrentItem>sccb_bridge - sccb_bridge (D:/work/serio-pj/hw/camera/rtl/sccb_bridge.v)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -44,7 +43,7 @@
       <SelectedItems/>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000000000000000100000000000000000000000000000000000001b0000000040101000100000000000000000000000064ffffffff000000810000000000000004000000420000000100000000000000250000000100000000000000710000000100000000000000d80000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000000000000000100000000000000000000000000000000000003a3000000040101000100000000000000000000000064ffffffff000000810000000000000004000000420000000100000000000000250000000100000000000000710000000100000000000002cb0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem>case_rom.v</CurrentItem>
    </ItemView>
@@ -56,7 +55,7 @@
       <SelectedItems/>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000000000000000100000000000000000000000000000000000001b0000000010001000100000000000000000000000064ffffffff000000810000000000000001000001b00000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000000000000000100000000000000000000000000000000000003a3000000010001000100000000000000000000000064ffffffff000000810000000000000001000003a30000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem>work</CurrentItem>
    </ItemView>
@@ -67,43 +66,47 @@
          <ClosedNode>Implement Design/Place &amp; Route/Generate IBIS Model</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>Generate Post-Synthesis Simulation Model</SelectedItem>
+         <SelectedItem>Design Utilities</SelectedItem>
       </SelectedItems>
-      <ScrollbarPosition orientation="vertical" >19</ScrollbarPosition>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000019f000000010000000100000000000000000000000064ffffffff0000008100000000000000010000019f0000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000f8000000010000000100000000000000000000000064ffffffff000000810000000000000001000000f80000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem>Generate Post-Synthesis Simulation Model</CurrentItem>
+      <CurrentItem>Design Utilities</CurrentItem>
    </ItemView>
    <SourceProcessView>000000ff00000000000000020000011b0000011b01000000050100000002</SourceProcessView>
    <CurrentView>Implementation</CurrentView>
    <ItemView engineview="BehavioralSim" guiview="Source" compilemode="AutoCompile" >
       <ClosedNodes>
          <ClosedNodesVersion>2</ClosedNodesVersion>
-         <ClosedNode>/top D:|work|serio-pj|hw|camera|rtl|top.v</ClosedNode>
+         <ClosedNode>/top D:|work|serio-pj|hw|camera|rtl|top.v/clk_reset - clk_reset</ClosedNode>
+         <ClosedNode>/top D:|work|serio-pj|hw|camera|rtl|top.v/dump_sequencer - dump_sequencer</ClosedNode>
+         <ClosedNode>/top D:|work|serio-pj|hw|camera|rtl|top.v/main_sequencer - main_sequencer</ClosedNode>
+         <ClosedNode>/top D:|work|serio-pj|hw|camera|rtl|top.v/pixel_buffer - pixel_buffer</ClosedNode>
+         <ClosedNode>/top D:|work|serio-pj|hw|camera|rtl|top.v/rsio_01a - rsio_01a</ClosedNode>
+         <ClosedNode>/top D:|work|serio-pj|hw|camera|rtl|top.v/sccb_bridge - sccb_bridge</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>Unassigned User Library Modules</SelectedItem>
+         <SelectedItem>top (D:/work/serio-pj/hw/camera/rtl/top.v)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000020200000001000000010000006400000089000000020000000000000000000000000200000064ffffffff000000810000000300000002000000890000000100000003000000000000000100000003</ViewHeaderState>
-      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem>Unassigned User Library Modules</CurrentItem>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001a5000000020000000000000000000000000200000064ffffffff000000810000000300000002000001a50000000100000003000000000000000100000003</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
+      <CurrentItem>top (D:/work/serio-pj/hw/camera/rtl/top.v)</CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="" guiview="Process" >
       <ClosedNodes>
          <ClosedNodesVersion>1</ClosedNodesVersion>
-         <ClosedNode>Design Utilities/Compile HDL Simulation Libraries</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem></SelectedItem>
+         <SelectedItem>Update All Schematic Files</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000001b0000000010000000100000000000000000000000064ffffffff000000810000000000000001000001b00000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem></CurrentItem>
+      <CurrentItem>Update All Schematic Files</CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="DESUT_VERILOG" guiview="Process" >
       <ClosedNodes>
@@ -111,12 +114,12 @@
          <ClosedNode>ISim Simulator</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem></SelectedItem>
+         <SelectedItem/>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000001b0000000010000000100000000000000000000000064ffffffff000000810000000000000001000001b00000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem></CurrentItem>
+      <CurrentItem/>
    </ItemView>
 </Project>

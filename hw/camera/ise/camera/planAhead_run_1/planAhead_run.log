@@ -1,82 +1,124 @@
 
-****** PlanAhead v14.2 (64-bit)
-  **** Build 194362 by xbuild on Fri Jul 20 18:52:11 MDT 2012
+****** PlanAhead v14.4 (64-bit)
+  **** Build 222254 by xbuild on Tue Dec 18 05:21:09 MST 2012
     ** Copyright 1986-1999, 2001-2012 Xilinx, Inc. All Rights Reserved.
 
 INFO: [Common 17-78] Attempting to get a license: PlanAhead
 INFO: [Common 17-290] Got license for PlanAhead
-INFO: [Device 21-36] Loading parts and site information from D:/Xilinx/14.2/ISE_DS/PlanAhead/data/parts/arch.xml
-Parsing RTL primitives file [D:/Xilinx/14.2/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
-Finished parsing RTL primitives file [D:/Xilinx/14.2/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+INFO: [Device 21-36] Loading parts and site information from D:/Xilinx/14.4/ISE_DS/PlanAhead/data/parts/arch.xml
+Parsing RTL primitives file [D:/Xilinx/14.4/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+Finished parsing RTL primitives file [D:/Xilinx/14.4/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
 start_gui
-source D:/work/serio-pj/hw/camera/ise/camera/pa.fromNetlist.tcl
+source D:/work/serio-pj/hw/camera/ise/camera/pa.fromHdl.tcl
 # create_project -name camera -dir "D:/work/serio-pj/hw/camera/ise/camera/planAhead_run_1" -part xc3s200ft256-4
-Parsing template File [D:/Xilinx/14.2/ISE_DS/ISE/data/projnav/templates/verilog.xml].
-Finished parsing template File [D:/Xilinx/14.2/ISE_DS/ISE/data/projnav/templates/verilog.xml].
-Parsing template File [D:/Xilinx/14.2/ISE_DS/ISE/data/projnav/templates/vhdl.xml].
-Finished parsing template File [D:/Xilinx/14.2/ISE_DS/ISE/data/projnav/templates/vhdl.xml].
-Parsing template File [D:/Xilinx/14.2/ISE_DS/ISE/data/projnav/templates/ucf.xml].
-Finished parsing template File [D:/Xilinx/14.2/ISE_DS/ISE/data/projnav/templates/ucf.xml].
-# set_property design_mode GateLvl [get_property srcset [current_run -impl]]
-# set_property edif_top_file "D:/work/serio-pj/hw/camera/ise/camera/top.ngc" [ get_property srcset [ current_run ] ]
-# add_files -norecurse { {D:/work/serio-pj/hw/camera/ise/camera} }
+# set_param project.pinAheadLayout yes
+# set srcset [get_property srcset [current_run -impl]]
 # set_property target_constrs_file "top.ucf" [current_fileset -constrset]
 Adding file 'D:/work/serio-pj/hw/camera/ise/camera/top.ucf' to fileset 'constrs_1'
+# set hdlfile [add_files [list {../../rtl/lib/trigp01a.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {../../rtl/lib/trign01a.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {../../rtl/lib/rsync02a.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {../../rtl/lib/cgate01a.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {../../rtl/lib/syncd01a.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {../../rtl/lib/rstx_01a.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {../../rtl/lib/rsrx_01a.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {../../rtl/lib/rsclk01a.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {../../rtl/case_rom.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {../../rtl/sram_if.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {../../rtl/seg_ctrl.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {../../rtl/sccb_config.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {../../rtl/sccb_bridge.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {../../rtl/rsio_01a.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {../../rtl/pixel_buffer.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {../../rtl/main_sequencer.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {../../rtl/dump_sequencer.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {../../rtl/clk_reset.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {../../rtl/top.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set_property top top $srcset
 # add_files [list {top.ucf}] -fileset [get_property constrset [current_run]]
-# link_design
-Design is defaulting to srcset: sources_1
-Design is defaulting to constrset: constrs_1
-Design is defaulting to project part: xc3s200ft256-4
-Release 14.2 - ngc2edif P.28xd (nt64)
-Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
-Reading design top.ngc ...
-WARNING:NetListWriters:298 - No output is written to top.xncf, ignored.
-Processing design ...
-   Preping design's networks ...
-   Preping design's macros ...
-WARNING:NetListWriters:306 - Signal bus
-   rsio_01a/i_TxClk/Maddsub_w_accumulatedError_share0000_lut<6 : 1> on block top
-   is not reconstructed, because there are some missing bus signals.
-WARNING:NetListWriters:306 - Signal bus sccb_bridge/Mcount_r_divcount_lut<6 : 2>
-   on block top is not reconstructed, because there are some missing bus
-   signals.
-WARNING:NetListWriters:306 - Signal bus sccb_bridge/r_maddr<13 : 0> on block top
-   is not reconstructed, because there are some missing bus signals.
-  finished :Prep
-Writing EDIF netlist file top.edif ...
-ngc2edif: Total memory usage is 88060 kilobytes
-
-Parsing EDIF File [./planAhead_run_1/camera.data/cache/top_ngc_2ddbcaed.edif]
-Finished Parsing EDIF File [./planAhead_run_1/camera.data/cache/top_ngc_2ddbcaed.edif]
-INFO: [Designutils 20-910] Reading macro library D:/Xilinx/14.2/ISE_DS/PlanAhead/data\./parts/xilinx/spartan3/hd_int_macros.edn
-Parsing EDIF File [D:/Xilinx/14.2/ISE_DS/PlanAhead/data\./parts/xilinx/spartan3/hd_int_macros.edn]
-Finished Parsing EDIF File [D:/Xilinx/14.2/ISE_DS/PlanAhead/data\./parts/xilinx/spartan3/hd_int_macros.edn]
-WARNING: [Netlist 29-43] Netlist 'top' is not ideal for floorplanning, since the cellview 'top' defined in file 'top.ngc' contains large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
-Loading clock regions from D:/Xilinx/14.2/ISE_DS/PlanAhead/data\parts/xilinx/spartan3/spartan3/xc3s200/ClockRegion.xml
-Loading clock buffers from D:/Xilinx/14.2/ISE_DS/PlanAhead/data\parts/xilinx/spartan3/spartan3/xc3s200/ClockBuffers.xml
-Loading package from D:/Xilinx/14.2/ISE_DS/PlanAhead/data\parts/xilinx/spartan3/spartan3/xc3s200/ft256/Package.xml
-Loading io standards from D:/Xilinx/14.2/ISE_DS/PlanAhead/data\./parts/xilinx/spartan3/IOStandards.xml
-INFO: [Device 21-19] Loading pkg sso from D:/Xilinx/14.2/ISE_DS/PlanAhead/data\parts/xilinx/spartan3/spartan3/xc3s200/ft256/SSORules.xml
-Loading list of drcs for the architecture : D:/Xilinx/14.2/ISE_DS/PlanAhead/data\./parts/xilinx/spartan3/drc.xml
-INFO: [Timing 38-77] Reading timing library D:/Xilinx/14.2/ISE_DS/PlanAhead/data\parts/xilinx/spartan3/spartan3/spartan3-4.lib.
-INFO: [Timing 38-34] Done reading timing library D:/Xilinx/14.2/ISE_DS/PlanAhead/data\parts/xilinx/spartan3/spartan3/spartan3-4.lib.
+# open_rtl_design -part xc3s200ft256-4
+Using Verific elaboration
+Parsing VHDL file "D:/Xilinx/14.4/ISE_DS/PlanAhead/data/parts/xilinx/rtl/lib/synplify/synattr.vhd" into library synplify
+Analyzing Verilog file "D:/work/serio-pj/hw/camera/rtl/lib/trigp01a.v" into library work
+Analyzing Verilog file "D:/work/serio-pj/hw/camera/rtl/lib/trign01a.v" into library work
+Analyzing Verilog file "D:/work/serio-pj/hw/camera/rtl/lib/rsync02a.v" into library work
+Analyzing Verilog file "D:/work/serio-pj/hw/camera/rtl/lib/cgate01a.v" into library work
+Analyzing Verilog file "D:/work/serio-pj/hw/camera/rtl/lib/syncd01a.v" into library work
+Analyzing Verilog file "D:/work/serio-pj/hw/camera/rtl/lib/rstx_01a.v" into library work
+Analyzing Verilog file "D:/work/serio-pj/hw/camera/rtl/lib/rsrx_01a.v" into library work
+Analyzing Verilog file "D:/work/serio-pj/hw/camera/rtl/lib/rsclk01a.v" into library work
+Analyzing Verilog file "D:/work/serio-pj/hw/camera/rtl/case_rom.v" into library work
+Analyzing Verilog file "D:/work/serio-pj/hw/camera/rtl/sram_if.v" into library work
+Analyzing Verilog file "D:/work/serio-pj/hw/camera/rtl/seg_ctrl.v" into library work
+Analyzing Verilog file "D:/work/serio-pj/hw/camera/rtl/sccb_config.v" into library work
+Analyzing Verilog file "D:/work/serio-pj/hw/camera/rtl/sccb_bridge.v" into library work
+Analyzing Verilog file "D:/work/serio-pj/hw/camera/rtl/rsio_01a.v" into library work
+Analyzing Verilog file "D:/work/serio-pj/hw/camera/rtl/pixel_buffer.v" into library work
+Analyzing Verilog file "D:/work/serio-pj/hw/camera/rtl/main_sequencer.v" into library work
+Analyzing Verilog file "D:/work/serio-pj/hw/camera/rtl/dump_sequencer.v" into library work
+Analyzing Verilog file "D:/work/serio-pj/hw/camera/rtl/clk_reset.v" into library work
+Analyzing Verilog file "D:/work/serio-pj/hw/camera/rtl/top.v" into library work
+INFO: [Designutils 20-910] Reading macro library D:/Xilinx/14.4/ISE_DS/PlanAhead/data\./parts/xilinx/spartan3/hd_int_macros.edn
+Parsing EDIF File [D:/Xilinx/14.4/ISE_DS/PlanAhead/data\./parts/xilinx/spartan3/hd_int_macros.edn]
+Finished Parsing EDIF File [D:/Xilinx/14.4/ISE_DS/PlanAhead/data\./parts/xilinx/spartan3/hd_int_macros.edn]
+Loading clock regions from D:/Xilinx/14.4/ISE_DS/PlanAhead/data\parts/xilinx/spartan3/spartan3/xc3s200/ClockRegion.xml
+Loading clock buffers from D:/Xilinx/14.4/ISE_DS/PlanAhead/data\parts/xilinx/spartan3/spartan3/xc3s200/ClockBuffers.xml
+Loading package from D:/Xilinx/14.4/ISE_DS/PlanAhead/data\parts/xilinx/spartan3/spartan3/xc3s200/ft256/Package.xml
+Loading io standards from D:/Xilinx/14.4/ISE_DS/PlanAhead/data\./parts/xilinx/spartan3/IOStandards.xml
+INFO: [Device 21-19] Loading pkg sso from D:/Xilinx/14.4/ISE_DS/PlanAhead/data\parts/xilinx/spartan3/spartan3/xc3s200/ft256/SSORules.xml
+Loading list of drcs for the architecture : D:/Xilinx/14.4/ISE_DS/PlanAhead/data\./parts/xilinx/spartan3/drc.xml
+INFO: [Timing 38-77] Reading timing library D:/Xilinx/14.4/ISE_DS/PlanAhead/data\parts/xilinx/spartan3/spartan3/spartan3-4.lib.
+INFO: [Timing 38-34] Done reading timing library D:/Xilinx/14.4/ISE_DS/PlanAhead/data\parts/xilinx/spartan3/spartan3/spartan3-4.lib.
 Parsing UCF File [D:/work/serio-pj/hw/camera/ise/camera/top.ucf]
+CRITICAL WARNING: [Constraints 18-11] Could not find net 'clk_reset/div2clk1' [D:/work/serio-pj/hw/camera/ise/camera/top.ucf:149]
 Finished Parsing UCF File [D:/work/serio-pj/hw/camera/ise/camera/top.ucf]
+CRITICAL WARNING: [Constraints 18-329] No definition for group 'clk_reset/div2clk1', timing constraint is ignored [D:/work/serio-pj/hw/camera/ise/camera/top.ucf:150]
+INFO: [Designutils 20-20] Invalid constraints found, use command 'write_ucf -constraints invalid <file>' to save all the invalid constraints to a file
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Phase 0 | Netlist Checksum: b40c0f1b
-link_design: Time (s): elapsed = 00:00:09 . Memory (MB): peak = 576.449 ; gain = 119.230
-startgroup
-set_property package_pin M13 [get_ports xipBTN0]
-endgroup
-startgroup
-set_property package_pin M14 [get_ports xipBTN1]
-endgroup
-startgroup
-set_property package_pin L13 [get_ports xipBTN2]
-endgroup
-save_design
+Phase 0 | Netlist Checksum: 64af0768
+open_rtl_design: Time (s): elapsed = 00:00:11 . Memory (MB): peak = 603.273 ; gain = 166.000
+update_compile_order -fileset sim_1
 exit
-INFO: [Common 17-206] Exiting PlanAhead...
+ERROR: [Common 17-39] 'stop_gui' failed due to earlier errors.
+INFO: [Common 17-206] Exiting PlanAhead at Wed Mar 20 23:32:57 2013...
 INFO: [Common 17-83] Releasing license: PlanAhead

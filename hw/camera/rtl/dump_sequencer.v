@@ -96,17 +96,17 @@ always @ (posedge clk or negedge reset_n)
 				dumper_state <= P_STATE_CONVERT_ASCII;
 			end
 			P_STATE_CONVERT_ASCII : begin
-				send_data[0]  <= convert_ascii(data_buffer[3:0]);
-				send_data[1]  <= convert_ascii(data_buffer[7:4]);
+				send_data[0]  <= convert_ascii(data_buffer[7:4]);
+				send_data[1]  <= convert_ascii(data_buffer[3:0]);
 				send_data[2]  <= 8'h20;
-				send_data[3]  <= convert_ascii(data_buffer[11:8]);
-				send_data[4]  <= convert_ascii(data_buffer[15:12]);
+				send_data[3]  <= convert_ascii(data_buffer[15:12]);
+				send_data[4]  <= convert_ascii(data_buffer[11:8]);
 				send_data[5]  <= 8'h20;
-				send_data[6]  <= convert_ascii(data_buffer[19:16]);
-				send_data[7]  <= convert_ascii(data_buffer[23:20]);
+				send_data[6]  <= convert_ascii(data_buffer[23:20]);
+				send_data[7]  <= convert_ascii(data_buffer[19:16]);
 				send_data[8]  <= 8'h20;
-				send_data[9]  <= convert_ascii(data_buffer[27:24]);
-				send_data[10] <= convert_ascii(data_buffer[31:28]);
+				send_data[9]  <= convert_ascii(data_buffer[31:28]);
+				send_data[10] <= convert_ascii(data_buffer[27:24]);
 				send_data[11] <= 8'h0a;
 				dumper_state  <= P_STATE_DUMP0;
 			end

@@ -1,19 +1,20 @@
 <?xml version="1.0"?>
+<!--Product Version: PlanAhead v14.4 (64-bit)-->
 <Project Version="4" Minor="36">
 	<FileSet Dir="sources_1" File="fileset.xml"/>
 	<FileSet Dir="constrs_1" File="fileset.xml"/>
-	<RunSet Dir="runs" File="runs.xml"/>
+	<FileSet Dir="sim_1" File="fileset.xml"/>
 	<DefaultLaunch Dir="$PRUNDIR"/>
 	<DefaultPromote Dir="$PROMOTEDIR"/>
 	<Config>
-		<Option Name="Id" Val="da4a13ec62a64783a95981755b6a311e"/>
+		<Option Name="Id" Val="43ea930455b64688b844ee5f6d5bd54d"/>
 		<Option Name="Part" Val="xc3s200ft256-4"/>
-		<Option Name="CompiledLibDir" Val="$PCACHEDIR/compxlib"/>
+		<Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
 		<Option Name="TargetLanguage" Val="Verilog"/>
 		<Option Name="TargetSimulator" Val="ISim"/>
 		<Option Name="Board" Val=""/>
 		<Option Name="SourceMgmtMode" Val="All"/>
-		<Option Name="ActiveSimSet" Val=""/>
+		<Option Name="ActiveSimSet" Val="sim_1"/>
 		<Option Name="CxlOverwriteLibs" Val="1"/>
 		<Option Name="CxlFuncsim" Val="1"/>
 		<Option Name="CxlTimesim" Val="1"/>

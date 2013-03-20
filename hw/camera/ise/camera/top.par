@@ -1,7 +1,7 @@
 Release 14.4 par P.49d (nt64)
 Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
-DREADNOUGHT::  Wed Mar 20 22:09:31 2013
+DREADNOUGHT::  Thu Mar 21 00:33:43 2013
 
 par -filter D:/work/serio-pj/hw/camera/ise/camera/iseconfig/filter.filter -w
 -intstyle ise -ol high -t 1 top_map.ncd top.ncd top.pcf 
@@ -38,47 +38,47 @@ Placer effort level (-pl):    High
 Placer cost table entry (-t): 1
 Router effort level (-rl):    High 
 
-Starting initial Timing Analysis.  REAL time: 1 secs 
-Finished initial Timing Analysis.  REAL time: 1 secs 
+Starting initial Timing Analysis.  REAL time: 2 secs 
+Finished initial Timing Analysis.  REAL time: 2 secs 
 
 
 Starting Placer
-Total REAL time at the beginning of Placer: 1 secs 
-Total CPU  time at the beginning of Placer: 1 secs 
+Total REAL time at the beginning of Placer: 2 secs 
+Total CPU  time at the beginning of Placer: 2 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:f643faee) REAL time: 1 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:f643faee) REAL time: 3 secs 
 
 Phase 2.7  Design Feasibility Check
-Phase 2.7  Design Feasibility Check (Checksum:f643faee) REAL time: 1 secs 
+Phase 2.7  Design Feasibility Check (Checksum:f643faee) REAL time: 3 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:f643faee) REAL time: 1 secs 
+Phase 3.31  Local Placement Optimization (Checksum:f643faee) REAL time: 3 secs 
 
 Phase 4.2  Initial Clock and IO Placement
 
-Phase 4.2  Initial Clock and IO Placement (Checksum:8da598dd) REAL time: 1 secs 
+Phase 4.2  Initial Clock and IO Placement (Checksum:8da598dd) REAL time: 3 secs 
 
 Phase 5.36  Local Placement Optimization
-Phase 5.36  Local Placement Optimization (Checksum:8da598dd) REAL time: 1 secs 
+Phase 5.36  Local Placement Optimization (Checksum:8da598dd) REAL time: 3 secs 
 
 Phase 6.8  Global Placement
-............
-.....
-..
-Phase 6.8  Global Placement (Checksum:23efa769) REAL time: 3 secs 
+.............
+....
+...
+Phase 6.8  Global Placement (Checksum:e6ba2442) REAL time: 5 secs 
 
 Phase 7.5  Local Placement Optimization
-Phase 7.5  Local Placement Optimization (Checksum:23efa769) REAL time: 3 secs 
+Phase 7.5  Local Placement Optimization (Checksum:e6ba2442) REAL time: 5 secs 
 
 Phase 8.18  Placement Optimization
-Phase 8.18  Placement Optimization (Checksum:f8d032bb) REAL time: 3 secs 
+Phase 8.18  Placement Optimization (Checksum:20dc8baf) REAL time: 7 secs 
 
 Phase 9.5  Local Placement Optimization
-Phase 9.5  Local Placement Optimization (Checksum:f8d032bb) REAL time: 3 secs 
+Phase 9.5  Local Placement Optimization (Checksum:20dc8baf) REAL time: 7 secs 
 
-Total REAL time to Placer completion: 3 secs 
-Total CPU  time to Placer completion: 3 secs 
+Total REAL time to Placer completion: 7 secs 
+Total CPU  time to Placer completion: 6 secs 
 Writing design to file top.ncd
 
 
@@ -86,32 +86,26 @@ Writing design to file top.ncd
 Starting Router
 
 
-Phase  1  : 3139 unrouted;      REAL time: 3 secs 
+Phase  1  : 3139 unrouted;      REAL time: 7 secs 
 
-Phase  2  : 2815 unrouted;      REAL time: 4 secs 
+Phase  2  : 2815 unrouted;      REAL time: 7 secs 
 
-Phase  3  : 994 unrouted;      REAL time: 4 secs 
+Phase  3  : 1010 unrouted;      REAL time: 8 secs 
 
-Phase  4  : 994 unrouted; (Setup:0, Hold:374, Component Switching Limit:0)     REAL time: 4 secs 
+Phase  4  : 1010 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 8 secs 
 
-Phase  5  : 0 unrouted; (Setup:0, Hold:226, Component Switching Limit:0)     REAL time: 4 secs 
+Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 9 secs 
 
 Updating file: top.ncd with current fully routed design.
 
-Phase  6  : 0 unrouted; (Setup:0, Hold:226, Component Switching Limit:0)     REAL time: 5 secs 
+Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 10 secs 
 
-Phase  7  : 0 unrouted; (Setup:0, Hold:226, Component Switching Limit:0)     REAL time: 5 secs 
+Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 10 secs 
 
-Phase  8  : 0 unrouted; (Setup:0, Hold:226, Component Switching Limit:0)     REAL time: 5 secs 
+Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 10 secs 
 
-Phase  9  : 0 unrouted; (Setup:0, Hold:226, Component Switching Limit:0)     REAL time: 5 secs 
-
-Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 5 secs 
-
-Phase 11  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 5 secs 
-
-Total REAL time to Router completion: 5 secs 
-Total CPU time to Router completion: 5 secs 
+Total REAL time to Router completion: 10 secs 
+Total CPU time to Router completion: 10 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -129,19 +123,19 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
-|           pixel_clk |      BUFGMUX4| No   |   86 |  0.003     |  1.013      |
+|           pixel_clk |      BUFGMUX4| No   |   86 |  0.002     |  1.012      |
 +---------------------+--------------+------+------+------------+-------------+
-|   clk_reset/div2clk |      BUFGMUX7| No   |  137 |  0.005     |  1.015      |
+|   clk_reset/div2clk |      BUFGMUX7| No   |  137 |  0.004     |  1.014      |
 +---------------------+--------------+------+------+------------+-------------+
 |             f50_clk |      BUFGMUX0| No   |   12 |  0.001     |  1.011      |
 +---------------------+--------------+------+------+------------+-------------+
 |sccb_bridge/w_sccb_g |              |      |      |            |             |
-|                 clk |      BUFGMUX3| No   |   51 |  0.001     |  1.011      |
+|                 clk |      BUFGMUX3| No   |   51 |  0.002     |  1.012      |
 +---------------------+--------------+------+------+------------+-------------+
 |sccb_bridge/w_sccb_g |              |      |      |            |             |
-|                wclk |         Local|      |    1 |  0.000     |  0.877      |
+|                wclk |         Local|      |    1 |  0.000     |  1.066      |
 +---------------------+--------------+------+------+------------+-------------+
-|    rsio_01a/w_TxClk |         Local|      |    6 |  0.043     |  1.877      |
+|    rsio_01a/w_TxClk |         Local|      |    6 |  0.096     |  1.869      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -163,24 +157,24 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  TS_xipMCLK = PERIOD TIMEGRP "xipMCLK" 50  | SETUP       |    16.313ns|     3.687ns|       0|           0
-  MHz HIGH 50%                              | HOLD        |     0.853ns|            |       0|           0
+  TS_xipMCLK = PERIOD TIMEGRP "xipMCLK" 50  | SETUP       |    16.260ns|     3.740ns|       0|           0
+  MHz HIGH 50%                              | HOLD        |     0.847ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
-  TIMEGRP "CAM_INPUTS" OFFSET = IN 30 ns BE | SETUP       |    28.441ns|     1.559ns|       0|           0
+  TIMEGRP "CAM_INPUTS" OFFSET = IN 30 ns BE | SETUP       |    27.747ns|     2.253ns|       0|           0
   FORE COMP "xipCAM_PCLK" "RISING"          |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
-  TS_clk_reset_div2clk1 = PERIOD TIMEGRP "c | SETUP       |    31.109ns|     8.891ns|       0|           0
-  lk_reset/div2clk1" 25 MHz HIGH 50%        | HOLD        |     0.249ns|            |       0|           0
+  TS_clk_reset_div2clk1 = PERIOD TIMEGRP "c | SETUP       |    29.209ns|    10.791ns|       0|           0
+  lk_reset/div2clk1" 25 MHz HIGH 50%        | HOLD        |     0.860ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
-  TS_xipCAM_PCLK = PERIOD TIMEGRP "xipCAM_P | SETUP       |    31.344ns|     8.656ns|       0|           0
-  CLK" 25 MHz HIGH 50%                      | HOLD        |     0.815ns|            |       0|           0
+  TS_xipCAM_PCLK = PERIOD TIMEGRP "xipCAM_P | SETUP       |    31.287ns|     8.713ns|       0|           0
+  CLK" 25 MHz HIGH 50%                      | HOLD        |     0.825ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
-  TS_sccb_bridge_cgate_sccb1_latched = PERI | SETUP       |    33.440ns|     6.560ns|       0|           0
-  OD TIMEGRP         "sccb_bridge/cgate_scc | HOLD        |     0.927ns|            |       0|           0
+  TS_sccb_bridge_cgate_sccb1_latched = PERI | SETUP       |    32.619ns|     7.381ns|       0|           0
+  OD TIMEGRP         "sccb_bridge/cgate_scc | HOLD        |     0.899ns|            |       0|           0
   b1/latched" 25 MHz HIGH 50%               |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
-  TS_rsio_01a_i_TxClk_cgate01a_latched = PE | SETUP       |    36.289ns|     3.711ns|       0|           0
-  RIOD TIMEGRP         "rsio_01a/i_TxClk/cg | HOLD        |     0.811ns|            |       0|           0
+  TS_rsio_01a_i_TxClk_cgate01a_latched = PE | SETUP       |    36.158ns|     3.842ns|       0|           0
+  RIOD TIMEGRP         "rsio_01a/i_TxClk/cg | HOLD        |     0.929ns|            |       0|           0
   ate01a/latched" 25 MHz HIGH 50%           |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
   TS_sccb_bridge_cgate_sccb2_latched = PERI | MINPERIOD   |    38.486ns|     1.514ns|       0|           0
@@ -196,10 +190,10 @@ Generating Pad Report.
 
 All signals are completely routed.
 
-Total REAL time to PAR completion: 6 secs 
-Total CPU time to PAR completion: 6 secs 
+Total REAL time to PAR completion: 11 secs 
+Total CPU time to PAR completion: 11 secs 
 
-Peak Memory Usage:  258 MB
+Peak Memory Usage:  257 MB
 
 Placement: Completed - No errors found.
 Routing: Completed - No errors found.

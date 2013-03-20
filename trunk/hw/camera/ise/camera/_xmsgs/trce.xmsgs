@@ -5,6 +5,11 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<msg type="warning" file="ConstraintSystem" num="0" >The Offset constraint &lt;TIMEGRP &quot;CAM_INPUTS&quot; OFFSET = IN 30 ns BEFORE COMP &quot;xipCAM_PCLK&quot; &quot;RISING&quot;;&gt; [top.pcf(449)], is specified without a duration.  This will result in a lack of hold time checks in timing reports.  If hold time checks are desired a duration value should be specified following the &apos;VALID&apos; keyword.
+</msg>
+
+<msg type="warning" file="Timing" num="3391" delta="old" >Timing constraint <arg fmt="%s" index="1">TIMEGRP &quot;CAM_INPUTS&quot; OFFSET = IN 30 ns BEFORE COMP &quot;xipCAM_PCLK&quot; &quot;RISING&quot;;</arg> does not specify a data valid duration and will not be hold checked. To enable hold checking on this offset constraint please specify a data valid duration using the VALID &lt;duration&gt; option.</msg>
+
 <msg type="info" file="Timing" num="3412" delta="old" >To improve timing, see the Timing Closure User Guide (UG612).</msg>
 
 <msg type="info" file="Timing" num="2752" delta="old" >To get complete path coverage, use the unconstrained paths option. All paths that are not constrained will be reported in the unconstrained paths section(s) of the report.</msg>

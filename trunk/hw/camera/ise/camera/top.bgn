@@ -1,13 +1,13 @@
-Release 14.2 - Bitgen P.28xd (nt64)
+Release 14.4 - Bitgen P.49d (nt64)
 Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 Loading device for application Rf_Device from file '3s200.nph' in environment
-D:\Xilinx\14.2\ISE_DS\ISE\.
+D:\Xilinx\14.4\ISE_DS\ISE\.
    "top" is an NCD, version 3.2, device xc3s200, package ft256, speed -4
 Opened constraints file top.pcf.
 
-TUE 12 FEB 1:27:2 2013
+WED 20 MAR 22:9:48 2013
 
-D:\Xilinx\14.2\ISE_DS\ISE\bin\nt64\unwrapped\bitgen.exe -filter iseconfig/filter.filter -intstyle ise -w -g DebugBitstream:No -g Binary:no -g CRC:Enable -g ConfigRate:6 -g CclkPin:PullUp -g M0Pin:PullUp -g M1Pin:PullUp -g M2Pin:PullUp -g ProgPin:PullUp -g DonePin:PullUp -g HswapenPin:PullUp -g TckPin:PullUp -g TdiPin:PullUp -g TdoPin:PullUp -g TmsPin:PullUp -g UnusedPin:PullDown -g UserID:0xFFFFFFFF -g DCMShutdown:Disable -g DCIUpdateMode:AsRequired -g StartUpClk:CClk -g DONE_cycle:4 -g GTS_cycle:5 -g GWE_cycle:6 -g LCK_cycle:NoWait -g Match_cycle:Auto -g Security:None -g DonePipe:Yes -g DriveDone:No top.ncd 
+D:\Xilinx\14.4\ISE_DS\ISE\bin\nt64\unwrapped\bitgen.exe -filter iseconfig/filter.filter -intstyle ise -w -g DebugBitstream:No -g Binary:no -g CRC:Enable -g ConfigRate:6 -g CclkPin:PullUp -g M0Pin:PullUp -g M1Pin:PullUp -g M2Pin:PullUp -g ProgPin:PullUp -g DonePin:PullUp -g HswapenPin:PullUp -g TckPin:PullUp -g TdiPin:PullUp -g TdoPin:PullUp -g TmsPin:PullUp -g UnusedPin:PullDown -g UserID:0xFFFFFFFF -g DCMShutdown:Disable -g DCIUpdateMode:AsRequired -g StartUpClk:CClk -g DONE_cycle:4 -g GTS_cycle:5 -g GWE_cycle:6 -g LCK_cycle:NoWait -g Match_cycle:Auto -g Security:None -g DonePipe:Yes -g DriveDone:No top.ncd 
 
 INFO:Bitgen:40 - Replacing "Auto" with "NoWait" for option "Match_cycle".  Most
    commonly, bitgen has determined and will use a specific value instead of the
@@ -94,6 +94,8 @@ Summary of Bitgen Options:
 +----------------------+----------------------+
 | PartialRight         | (Not Specified)*     |
 +----------------------+----------------------+
+| TimeStamp            | Default*             |
++----------------------+----------------------+
 | IEEE1532             | No*                  |
 +----------------------+----------------------+
 | Binary               | No**                 |
@@ -111,9 +113,7 @@ WARNING:PhysDesignRules:372 - Gated clock. Clock net sccb_bridge/w_sccb_gwclk is
 WARNING:PhysDesignRules:372 - Gated clock. Clock net rsio_01a/w_TxClk is sourced
    by a combinatorial pin. This is not good design practice. Use the CE pin to
    control the loading of data into the flip-flop.
-WARNING:PhysDesignRules:781 - PULLUP on an active net. PULLUP of comp
-   xopCAM_SIO_C is set but the tri state is not configured. 
-DRC detected 0 errors and 3 warnings.  Please see the previously displayed
+DRC detected 0 errors and 2 warnings.  Please see the previously displayed
 individual error or warning messages for more details.
 Creating bit map...
 Saving bit stream in "top.bit".

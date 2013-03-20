@@ -20,7 +20,8 @@ module top (
 	/*xipRXD,*/
 	xopLD7, xopLD6, xopLD5, xopLD4, xopLD3, xopLD2, xopLD1, xopLD0,
 	xonAN0, xonAN1, xonAN2, xonAN3,
-	xonDP, xonA, xonB, xonC, xonD, xonE, xonF, xonG
+	xonDP, xonA, xonB, xonC, xonD, xonE, xonF, xonG,
+	xipBTN0, xipBTN1, xipBTN2
 );
 // System IO
 input       xipMCLK;     // T9
@@ -79,6 +80,11 @@ output xonE;
 output xonF;
 output xonG;
 
+// input switch
+input xipBTN0;
+input xipBTN1;
+input xipBTN2;
+
 /***********************************************
 * clock & reset 
 * *********************************************/
@@ -129,6 +135,7 @@ main_sequencer main_sequencer(
 	.dump_kick  ( dump_kick   ) ,
 	.dump_done  ( dump_done   ) ,
 	.source_sel ( source_sel  ) ,
+	.btn0       ( xipBTN0     ) ,
 	.led0       ( xopLD0      ) ,
 	.led1       ( xopLD1      ) ,
 	.led2       ( xopLD2      ) ,
@@ -191,11 +198,11 @@ rsio_01a rsio_01a(
 	.pavsv01a2rsio_01aRSClk     ( rs_clk       ) ,
 	.pavsv01a2rsio_01aReset_n   ( rs_reset_n   ) ,
 	.swdec01a2rsio_01aTestMode  ( 4'b0000      ) , // tie 0
-	.dbgif01a2rsio_01aTxBitRate ( 4'h7         ) , // tie const
+	.dbgif01a2rsio_01aTxBitRate ( 4'h8         ) , // tie const
 	.dbgif01a2rsio_01aTxStart   ( rs_tx_start  ) ,
 	.dbgif01a2rsio_01aTxData    ( rs_tx_data   ) ,
 	.rsio_01a2dbgif01aTxStatus  ( rs_tx_status ) ,
-	.dbgif01a2rsio_01aRxBitRate ( 4'h7         ) , // tie const
+	.dbgif01a2rsio_01aRxBitRate ( 4'h8         ) , // tie const
 	.dbgif01a2rsio_01aRxFetch   ( 1'b0         ) , // tie 0
 	.rsio_01a2dbgif01aRxData    (              ) , // open
 	.rsio_01a2dbgif01aRxStatus  (              ) , // open
@@ -244,7 +251,11 @@ sram_if sram_if(
 * camera interface
 * *********************************************/
 wire [17:0] last_addr;
+wire [15:0] pclk_cnt;
+wire [15:0] vsync_cnt;
+wire [15:0] href_cnt;
 pixel_buffer pixel_buffer(
+//	.clk        ( xopCAM_XCLK   ) ,
 	.clk        ( pixel_clk     ) ,
 	.reset_n    ( pixel_reset_n ) ,
 	.fetch_kick ( fetch_kick    ) ,
@@ -255,7 +266,10 @@ pixel_buffer pixel_buffer(
 	.s0_WE      ( s0_WE         ) ,
 	.s0_Addr    ( s0_Addr       ) ,
 	.s0_WD      ( s0_WD         ) ,
-	.last_addr  ( last_addr     )
+	.last_addr  ( last_addr     ) ,
+	.pclk_cnt   ( pclk_cnt      ) ,
+	.vsync_cnt  ( vsync_cnt     ) ,
+	.href_cnt   ( href_cnt      )
 );
 
 /***********************************************
@@ -283,7 +297,13 @@ dump_sequencer dump_sequencer (
 seg_ctrl seg_ctrl(
     .clk     ( rs_clk     ) ,
     .reset_n ( rs_reset_n ) ,
-    .hex     ( rest       ) ,
+	 .btn0    ( xipBTN0    ) ,
+	 .btn1    ( xipBTN1    ) ,
+	 .btn2    ( xipBTN2    ) ,
+    .hex0    ( rest       ) ,
+	 .hex1    ( last_addr[17:2] ) ,
+	 .hex2    ( vsync_cnt  ) ,
+	 .hex3    ( href_cnt   ) ,
     .AN0     ( xonAN0     ) ,
 	 .AN1     ( xonAN1     ) ,
     .AN2     ( xonAN2     ) ,

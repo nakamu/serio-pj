@@ -21,7 +21,7 @@
 module seg_ctrl(
     input clk,
     input reset_n,
-    input [15:0] hex,
+    input [15:0] hex0,
     output AN0,
     output AN1,
     output AN2,
@@ -33,7 +33,13 @@ module seg_ctrl(
     output D,
     output E,
     output F,
-    output G
+    output G,
+	 input btn0,
+	 input btn1,
+	 input btn2,
+	 input [15:0] hex1,
+	 input [15:0] hex2,
+	 input [15:0] hex3
     );
 
 assign DP = 1'b1;
@@ -98,6 +104,9 @@ case(val)
 	default : val2seg = 7'b1111111;
 endcase
 endfunction
+
+wire [15:0] hex;
+assign hex = btn0 ? hex1 : btn1 ? hex2 : btn2 ? hex3 : hex0;
 
 always @ (posedge clk or negedge reset_n)
 	if(~reset_n) begin

@@ -37,17 +37,14 @@ Processing design ...
 WARNING:NetListWriters:306 - Signal bus
    rsio_01a/i_TxClk/Maddsub_w_accumulatedError_share0000_lut<6 : 1> on block top
    is not reconstructed, because there are some missing bus signals.
-WARNING:NetListWriters:306 - Signal bus sccb_bridge/Mcount_r_divcount_lut<5 : 1>
+WARNING:NetListWriters:306 - Signal bus sccb_bridge/Mcount_r_divcount_lut<6 : 2>
    on block top is not reconstructed, because there are some missing bus
    signals.
 WARNING:NetListWriters:306 - Signal bus sccb_bridge/r_maddr<13 : 0> on block top
    is not reconstructed, because there are some missing bus signals.
-WARNING:NetListWriters:306 - Signal bus sccb_bridge/r_sccb_next_mux0000<3 : 1>
-   on block top is not reconstructed, because there are some missing bus
-   signals.
   finished :Prep
 Writing EDIF netlist file top.edif ...
-ngc2edif: Total memory usage is 90500 kilobytes
+ngc2edif: Total memory usage is 88060 kilobytes
 
 Parsing EDIF File [./planAhead_run_1/camera.data/cache/top_ngc_2ddbcaed.edif]
 Finished Parsing EDIF File [./planAhead_run_1/camera.data/cache/top_ngc_2ddbcaed.edif]
@@ -64,18 +61,22 @@ Loading list of drcs for the architecture : D:/Xilinx/14.2/ISE_DS/PlanAhead/data
 INFO: [Timing 38-77] Reading timing library D:/Xilinx/14.2/ISE_DS/PlanAhead/data\parts/xilinx/spartan3/spartan3/spartan3-4.lib.
 INFO: [Timing 38-34] Done reading timing library D:/Xilinx/14.2/ISE_DS/PlanAhead/data\parts/xilinx/spartan3/spartan3/spartan3-4.lib.
 Parsing UCF File [D:/work/serio-pj/hw/camera/ise/camera/top.ucf]
-CRITICAL WARNING: [Constraints 18-11] Could not find net or pin 'xipRXD' [D:/work/serio-pj/hw/camera/ise/camera/top.ucf:70]
-CRITICAL WARNING: [Constraints 18-11] Could not find net or pin 'xipCAM_STROBE' [D:/work/serio-pj/hw/camera/ise/camera/top.ucf:81]
-CRITICAL WARNING: [Constraints 18-11] Could not find net or pin 'xonCAM_RESET' [D:/work/serio-pj/hw/camera/ise/camera/top.ucf:83]
-CRITICAL WARNING: [Constraints 18-11] Could not find net or pin 'xopCAM_PWDN' [D:/work/serio-pj/hw/camera/ise/camera/top.ucf:85]
-CRITICAL WARNING: [Constraints 18-11] Could not find cell or net 'xipCAM_STROBE' [D:/work/serio-pj/hw/camera/ise/camera/top.ucf:175]
 Finished Parsing UCF File [D:/work/serio-pj/hw/camera/ise/camera/top.ucf]
-INFO: [Designutils 20-20] Invalid constraints found, use command 'write_ucf -constraints invalid <file>' to save all the invalid constraints to a file
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Phase 0 | Netlist Checksum: bde3de47
-link_design: Time (s): elapsed = 00:00:08 . Memory (MB): peak = 571.246 ; gain = 114.176
+Phase 0 | Netlist Checksum: b40c0f1b
+link_design: Time (s): elapsed = 00:00:09 . Memory (MB): peak = 576.449 ; gain = 119.230
+startgroup
+set_property package_pin M13 [get_ports xipBTN0]
+endgroup
+startgroup
+set_property package_pin M14 [get_ports xipBTN1]
+endgroup
+startgroup
+set_property package_pin L13 [get_ports xipBTN2]
+endgroup
+save_design
 exit
 INFO: [Common 17-206] Exiting PlanAhead...
 INFO: [Common 17-83] Releasing license: PlanAhead

@@ -1,9 +1,9 @@
-iMPACT Version: 14.2
+iMPACT Version: 14.4
 
-iMPACT log file Started on Tue Feb 12 01:28:44 2013
+iMPACT log file Started on Wed Mar 20 20:21:17 2013
 
 Welcome to iMPACT
-iMPACT Version: 14.2
+iMPACT Version: 14.4
 Project: 'D:\work\try_bluetooth\bt-board\fpga\ise\\auto_project.ipf' alreadyexists.
 Original project has been renamed to'D:\work\try_bluetooth\bt-board\fpga\ise\\auto_project_1.ipf'.
 Project: D:\work\try_bluetooth\bt-board\fpga\ise\\auto_project.ipf created.
@@ -13,6 +13,7 @@ GUI --- Auto connect to cable...
 INFO:iMPACT - Digilent Plugin: Plugin Version: 2.2.10
 INFO:iMPACT - Digilent Plugin: no JTAG device was found.
 AutoDetecting cable. Please wait.
+*** WARNING ***: When port is set to auto detect mode, cable speed is set todefault 6 MHz regardless of explicit arguments supplied for setting the baudrates
 PROGRESS_START - Starting Operation.
 Connecting to cable (Usb Port - USB21).
 Checking cable driver.
@@ -26,7 +27,7 @@ Type = 0x0004.
  Setting cable speed to 6 MHz.
 Cable connection established.
 Firmware version = 1303.
-File version of D:/Xilinx/14.2/ISE_DS/ISE/data/xusb_xlp.hex = 1303.
+File version of D:/Xilinx/14.4/ISE_DS/ISE/data/xusb_xlp.hex = 1303.
 Firmware hex file version = 1303.
 PLD file version = 0012h.
  PLD version = 0012h.
@@ -35,17 +36,76 @@ Elapsed time =      0 sec.
 Type = 0x0004.
  ESN device is not available for this cable.
 Attempting to identify devices in the boundary-scan chain configuration...
-INFO:iMPACT - Current time: 2013/02/12 1:28:56
+INFO:iMPACT - Current time: 2013/03/20 20:21:22
+// *** BATCH CMD : Identify -inferir 
+PROGRESS_START - Starting Operation.
+Identifying chain contents...done.
+ERROR:iMPACT - A problem may exist in the hardware configuration. Check that the   cable, scan chain, and power connections are intact, that the specified scan   chain configuration matches the actual hardware, and that the power supply is   adequate and delivering the correct voltage.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+// *** BATCH CMD : identifyMPM 
+Attempting to identify devices in the boundary-scan chain configuration...
+INFO:iMPACT - Current time: 2013/03/20 20:21:31
+// *** BATCH CMD : Identify -inferir 
+PROGRESS_START - Starting Operation.
+Identifying chain contents...done.
+ERROR:iMPACT - A problem may exist in the hardware configuration. Check that the   cable, scan chain, and power connections are intact, that the specified scan   chain configuration matches the actual hardware, and that the power supply is   adequate and delivering the correct voltage.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+// *** BATCH CMD : identifyMPM 
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -ss
+// *** BATCH CMD : setMode -sm
+// *** BATCH CMD : setMode -hw140
+// *** BATCH CMD : setMode -spi
+// *** BATCH CMD : setMode -acecf
+// *** BATCH CMD : setMode -acempm
+// *** BATCH CMD : setMode -pff
+Welcome to iMPACT
+iMPACT Version: 14.4
+Project: 'D:\work\try_bluetooth\bt-board\fpga\ise\\auto_project.ipf' alreadyexists.
+Original project has been renamed to'D:\work\try_bluetooth\bt-board\fpga\ise\\auto_project_1.ipf'.
+Project: D:\work\try_bluetooth\bt-board\fpga\ise\\auto_project.ipf created.
+// *** BATCH CMD : setMode -bs
+GUI --- Auto connect to cable...
+// *** BATCH CMD : setCable -port auto
+INFO:iMPACT - Digilent Plugin: Plugin Version: 2.2.10
+INFO:iMPACT - Digilent Plugin: no JTAG device was found.
+AutoDetecting cable. Please wait.
+*** WARNING ***: When port is set to auto detect mode, cable speed is set todefault 6 MHz regardless of explicit arguments supplied for setting the baudrates
+PROGRESS_START - Starting Operation.
+Connecting to cable (Usb Port - USB21).
+Checking cable driver.
+ Driver file xusb_xlp.sys found.
+ Driver version: src=1029, dest=1029.
+ Driver windrvr6.sys version = 10.2.1.0. WinDriver v10.21 Jungo (c) 1997 - 2010 Build Date: Aug 31 2010 x86_64 64bit SYS14:14:44, version = 1021.
+ Cable PID = 0008.
+ Max current requested during enumeration is 74 mA.
+Type = 0x0004.
+ Cable Type = 3, Revision = 0.
+ Setting cable speed to 6 MHz.
+Cable connection established.
+Firmware version = 1303.
+File version of D:/Xilinx/14.4/ISE_DS/ISE/data/xusb_xlp.hex = 1303.
+Firmware hex file version = 1303.
+PLD file version = 0012h.
+ PLD version = 0012h.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+Type = 0x0004.
+ ESN device is not available for this cable.
+Attempting to identify devices in the boundary-scan chain configuration...
+INFO:iMPACT - Current time: 2013/03/20 20:21:56
 // *** BATCH CMD : Identify -inferir 
 PROGRESS_START - Starting Operation.
 Identifying chain contents...'0': : Manufacturer's ID = Xilinx xcf02s, Version : 0
 INFO:iMPACT:1777 - 
-   Reading D:/Xilinx/14.2/ISE_DS/ISE/xcf/data/xcf02s.bsd...
+   Reading D:/Xilinx/14.4/ISE_DS/ISE/xcf/data/xcf02s.bsd...
 INFO:iMPACT:501 - '1': Added Device xcf02s successfully.
 ----------------------------------------------------------------------
 '1': : Manufacturer's ID = Xilinx xc3s200, Version : 0
 INFO:iMPACT:1777 - 
-   Reading D:/Xilinx/14.2/ISE_DS/ISE/spartan3/data/xc3s200.bsd...
+   Reading D:/Xilinx/14.4/ISE_DS/ISE/spartan3/data/xc3s200.bsd...
 INFO:iMPACT:501 - '1': Added Device xc3s200 successfully.
 ----------------------------------------------------------------------
 done.
@@ -61,7 +121,64 @@ UserID read from the bitstream file = 0xFFFFFFFF.
 ----------------------------------------------------------------------
 INFO:iMPACT:501 - '1': Added Device xc3s200 successfully.
 ----------------------------------------------------------------------
-INFO:iMPACT - Current time: 2013/02/12 1:29:21
+// *** BATCH CMD : assignFile -p 2 -file"D:/work/serio-pj/hw/camera/ise/camera/top.mcs"
+'2': Loading file 'D:/work/serio-pj/hw/camera/ise/camera/top.mcs' ...
+done.
+// *** BATCH CMD : setAttribute -position 2 -attr packageName -value ""
+INFO:iMPACT - Current time: 2013/03/20 20:22:17
+// *** BATCH CMD : Program -p 2 -e -v 
+Maximum TCK operating frequency for this device chain: 15000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'2': Erasing device...
+PROGRESS_START - Starting Operation.
+'2': Erasure completed successfully.
+'2': Programming device...
+done.
+'2': Putting device in ISP mode...done.
+'2': Putting device in ISP mode...done.
+'2': Verifying device...done.
+'2': Verification completed successfully.
+'2': Calculated checksum matches expected checksum, 0020c2673
+'2': Putting device in ISP mode...done.
+'2': Putting device in ISP mode...done.
+'2': Setting user-programmable bits...
+done.
+'2': Putting device in ISP mode...done.
+'2': Programming completed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =     10 sec.
+INFO:iMPACT - Current time: 2013/03/20 21:16:32
+Updating config file D:/work/serio-pj/hw/camera/ise/camera/top.bit...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+// *** BATCH CMD : Program -p 1 
+Maximum TCK operating frequency for this device chain: 15000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'1': Programming device...
+PROGRESS_START - Starting Operation.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '1': Completed downloading bit file to device.
+INFO:iMPACT:188 - '1': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '1': Checking done pin....done.
+'1': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+INFO:iMPACT - Current time: 2013/03/20 21:31:35
+Updating config file D:/work/serio-pj/hw/camera/ise/camera/top.bit...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
 // *** BATCH CMD : Program -p 1 
 Maximum TCK operating frequency for this device chain: 15000000.
 Validating chain...
@@ -85,7 +202,10 @@ INFO:iMPACT - '1': Checking done pin....done.
 '1': Programmed successfully.
 PROGRESS_END - End Operation.
 Elapsed time =      1 sec.
-INFO:iMPACT - Current time: 2013/02/12 1:29:46
+INFO:iMPACT - Current time: 2013/03/20 21:40:29
+Updating config file D:/work/serio-pj/hw/camera/ise/camera/top.bit...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
 // *** BATCH CMD : Program -p 1 
 Maximum TCK operating frequency for this device chain: 15000000.
 Validating chain...
@@ -109,7 +229,64 @@ INFO:iMPACT - '1': Checking done pin....done.
 '1': Programmed successfully.
 PROGRESS_END - End Operation.
 Elapsed time =      0 sec.
-INFO:iMPACT - Current time: 2013/02/12 1:36:45
+INFO:iMPACT - Current time: 2013/03/20 21:47:36
+Updating config file D:/work/serio-pj/hw/camera/ise/camera/top.bit...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+// *** BATCH CMD : Program -p 1 
+Maximum TCK operating frequency for this device chain: 15000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'1': Programming device...
+PROGRESS_START - Starting Operation.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '1': Completed downloading bit file to device.
+INFO:iMPACT:188 - '1': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '1': Checking done pin....done.
+'1': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+INFO:iMPACT - Current time: 2013/03/20 21:50:39
+Updating config file D:/work/serio-pj/hw/camera/ise/camera/top.bit...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+// *** BATCH CMD : Program -p 1 
+Maximum TCK operating frequency for this device chain: 15000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'1': Programming device...
+PROGRESS_START - Starting Operation.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '1': Completed downloading bit file to device.
+INFO:iMPACT:188 - '1': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '1': Checking done pin....done.
+'1': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+INFO:iMPACT - Current time: 2013/03/20 22:10:12
+Updating config file D:/work/serio-pj/hw/camera/ise/camera/top.bit...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
 // *** BATCH CMD : Program -p 1 
 Maximum TCK operating frequency for this device chain: 15000000.
 Validating chain...

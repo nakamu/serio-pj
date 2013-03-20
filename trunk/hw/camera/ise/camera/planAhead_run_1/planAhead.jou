@@ -1,20 +1,11 @@
 #-----------------------------------------------------------
-# PlanAhead v14.2 (64-bit)
-# Build 194362 by xbuild on Fri Jul 20 18:52:11 MDT 2012
-# Start of session at: Sun Feb 17 02:19:24 2013
-# Process ID: 8644
+# PlanAhead v14.4 (64-bit)
+# Build 222254 by xbuild on Tue Dec 18 05:21:09 MST 2012
+# Start of session at: Wed Mar 20 22:34:35 2013
+# Process ID: 6324
 # Log file: D:/work/serio-pj/hw/camera/ise/camera/planAhead_run_1/planAhead.log
 # Journal file: D:/work/serio-pj/hw/camera/ise/camera/planAhead_run_1/planAhead.jou
 #-----------------------------------------------------------
 start_gui
-source D:/work/serio-pj/hw/camera/ise/camera/pa.fromNetlist.tcl
-startgroup
-set_property package_pin M13 [get_ports xipBTN0]
-endgroup
-startgroup
-set_property package_pin M14 [get_ports xipBTN1]
-endgroup
-startgroup
-set_property package_pin L13 [get_ports xipBTN2]
-endgroup
-save_design
+source D:/work/serio-pj/hw/camera/ise/camera/pa.fromHdl.tcl
+update_compile_order -fileset sim_1

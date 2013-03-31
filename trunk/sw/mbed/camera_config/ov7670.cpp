@@ -24,6 +24,7 @@ void ov7670::set_and_verify (char addr, char data)
 }
 
 void ov7670::configure(){    
+	int colorbar_enable = 0;
 
 	// 0x00 GAIN : 0x00 -> 0x00
 	this->set_and_verify(0x00, 0x00);
@@ -83,7 +84,11 @@ void ov7670::configure(){
     // [4] Output format - QVGA selection
     // [5] Output format - CIF selection
     // [7] SCCB register reset (active-H)
-    this->set_and_verify(0x12, 0x04);
+	if(colorbar_enable) {
+		this->set_and_verify(0x12, 0x06);
+	} else {
+	    this->set_and_verify(0x12, 0x04);
+	}
 
     // 0x13 COM8 : 0x8F -> 0x8F
     this->set_and_verify(0x13, 0x8F);
@@ -244,7 +249,11 @@ void ov7670::configure(){
     // 0x42 COM17 : 0x00 -> 0x00
     // [3] DSP color bar enable
     // [7:6] AEC window must be the same valud as COM4[5:4]
-    this->set_and_verify(0x42, 0x00);
+	if(colorbar_enable) {
+		this->set_and_verify(0x42, 0x08);
+	} else {
+		this->set_and_verify(0x42, 0x00);
+	}
 
     // 0x43 AWBC1 : 0x14 -> 0x0a
     this->set_and_verify(0x43, 0x0a);
@@ -370,10 +379,18 @@ void ov7670::configure(){
     this->set_and_verify(0x6f, 0x9f);
 
     // 0x70 SCALING_XSC : 0x3a -> 0x3a
-    this->set_and_verify(0x70, 0x3a);
+	if(colorbar_enable) {
+	    this->set_and_verify(0x70, 0x3a);
+	} else {
+	    this->set_and_verify(0x70, 0x3a);
+	}
 
     // 0x71 SCALING_YSC : 0x35 -> 0x35
-    this->set_and_verify(0x71, 0x35);
+	if(colorbar_enable) {
+		this->set_and_verify(0x71, 0xb5);
+	} else {
+		this->set_and_verify(0x71, 0x35);
+	}
 
     // 0x72 SCALING_DCWCTR : 0x11 -> 0x11
     this->set_and_verify(0x72, 0x11);

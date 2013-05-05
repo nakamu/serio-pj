@@ -4,7 +4,7 @@ Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
 Project Information
 --------------------
 ProjectID=86F315003FD64630B9EE8D5DB204B6DC
-ProjectIteration=44
+ProjectIteration=57
 
 WebTalk Summary
 ----------------
@@ -13,4 +13,4 @@ INFO:WebTalk:1 - WebTalk is enabled because you are using a WebPACK license.
 INFO:WebTalk:8 - WebTalk Install setting is ON.
 INFO:WebTalk:6 - WebTalk User setting is ON.
 
-INFO:WebTalk:4 - D:/work/serio-pj/hw/camera/ise/camera/usage_statistics_webtalk.html WebTalk report has been successfully sent to Xilinx on 2013-03-21T00:34:34.  For additional details about this file, please refer to the WebTalk help file at D:/Xilinx/14.4/ISE_DS/ISE/data/reports/webtalk_introduction.html
+INFO:WebTalk:4 - D:/work/serio-pj/hw/camera/ise/camera/usage_statistics_webtalk.html WebTalk report has been successfully sent to Xilinx on 2013-05-05T22:16:39.  For additional details about this file, please refer to the WebTalk help file at D:/Application/XILINX/14.4/ISE_DS/ISE/data/reports/webtalk_introduction.html

@@ -4,13 +4,13 @@ Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.22 secs
+Total CPU time to Xst completion: 0.20 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.22 secs
+Total CPU time to Xst completion: 0.20 secs
  
 --> Reading design: top.prj
 
@@ -194,13 +194,15 @@ Analyzing hierarchy for module <pixel_buffer> in library <work> with parameters.
 	P_STATE_RUNNING = "01"
 
 Analyzing hierarchy for module <dump_sequencer> in library <work> with parameters.
-	P_STATE_CONVERT_ASCII = "011"
-	P_STATE_DUMP0 = "100"
-	P_STATE_DUMP1 = "101"
-	P_STATE_END = "110"
-	P_STATE_INIT = "000"
-	P_STATE_READMEM = "010"
-	P_STATE_START = "001"
+	P_STATE_CONVERT_RGB565 = "0011"
+	P_STATE_DUMP0 = "0100"
+	P_STATE_DUMP1 = "0101"
+	P_STATE_END = "0110"
+	P_STATE_HDUMP0 = "0111"
+	P_STATE_HDUMP1 = "1000"
+	P_STATE_INIT = "0000"
+	P_STATE_READMEM = "0010"
+	P_STATE_START = "0001"
 
 Analyzing hierarchy for module <seg_ctrl> in library <work> with parameters.
 	P_CNT_THRES = "11111111"
@@ -394,21 +396,15 @@ WARNING:Xst:915 - Message (916) is reported only 5 times for each module.
 Module <pixel_buffer> is correct for synthesis.
  
 Analyzing module <dump_sequencer> in library <work>.
-	P_STATE_CONVERT_ASCII = 3'b011
-	P_STATE_DUMP0 = 3'b100
-	P_STATE_DUMP1 = 3'b101
-	P_STATE_END = 3'b110
-	P_STATE_INIT = 3'b000
-	P_STATE_READMEM = 3'b010
-	P_STATE_START = 3'b001
-	Calling function <convert_ascii>.
-	Calling function <convert_ascii>.
-	Calling function <convert_ascii>.
-	Calling function <convert_ascii>.
-	Calling function <convert_ascii>.
-	Calling function <convert_ascii>.
-	Calling function <convert_ascii>.
-	Calling function <convert_ascii>.
+	P_STATE_CONVERT_RGB565 = 4'b0011
+	P_STATE_DUMP0 = 4'b0100
+	P_STATE_DUMP1 = 4'b0101
+	P_STATE_END = 4'b0110
+	P_STATE_HDUMP0 = 4'b0111
+	P_STATE_HDUMP1 = 4'b1000
+	P_STATE_INIT = 4'b0000
+	P_STATE_READMEM = 4'b0010
+	P_STATE_START = 4'b0001
 Module <dump_sequencer> is correct for synthesis.
  
 Analyzing module <seg_ctrl> in library <work>.
@@ -425,10 +421,9 @@ Module <seg_ctrl> is correct for synthesis.
 =========================================================================
 
 Performing bidirectional port resolution...
-INFO:Xst:2679 - Register <i> in unit <dump_sequencer> has a constant value of 1100 during circuit operation. The register is replaced by logic.
-INFO:Xst:2679 - Register <send_data<2>> in unit <dump_sequencer> has a constant value of 00100000 during circuit operation. The register is replaced by logic.
-INFO:Xst:2679 - Register <send_data<5>> in unit <dump_sequencer> has a constant value of 00100000 during circuit operation. The register is replaced by logic.
-INFO:Xst:2679 - Register <send_data<8>> in unit <dump_sequencer> has a constant value of 00100000 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <i> in unit <dump_sequencer> has a constant value of 1000 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <send_data<3>> in unit <dump_sequencer> has a constant value of 00000000 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <send_data<7>> in unit <dump_sequencer> has a constant value of 00000000 during circuit operation. The register is replaced by logic.
 
 Synthesizing Unit <sram_if>.
     Related source file is "../../rtl/sram_if.v".
@@ -684,55 +679,41 @@ Synthesizing Unit <dump_sequencer>.
     Related source file is "../../rtl/dump_sequencer.v".
 WARNING:Xst:646 - Signal <sub<18>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <sub<1:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:653 - Signal <send_data<8:11>> is used but never assigned. This sourceless signal will be automatically connected to value 00000000.
     Found finite state machine <FSM_4> for signal <dumper_state>.
     -----------------------------------------------------------------------
-    | States             | 7                                              |
-    | Transitions        | 12                                             |
-    | Inputs             | 5                                              |
-    | Outputs            | 7                                              |
+    | States             | 9                                              |
+    | Transitions        | 16                                             |
+    | Inputs             | 6                                              |
+    | Outputs            | 10                                             |
     | Clock              | clk                       (rising_edge)        |
     | Reset              | reset_n                   (negative)           |
     | Reset type         | asynchronous                                   |
-    | Reset State        | 000                                            |
+    | Reset State        | 0000                                           |
     | Encoding           | automatic                                      |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
+    Found 54x8-bit ROM for signal <$varindex0000> created at line 154.
     Found 1-bit register for signal <s1_OE>.
     Found 1-bit register for signal <dump_done>.
     Found 8-bit register for signal <rs_tx_data>.
     Found 1-bit register for signal <rs_tx_start>.
     Found 18-bit up counter for signal <s1_Addr>.
-    Found 4-bit comparator less for signal <convert_ascii$cmp_lt0000> created at line 39.
-    Found 4-bit comparator less for signal <convert_ascii$cmp_lt0001> created at line 39.
-    Found 4-bit comparator less for signal <convert_ascii$cmp_lt0002> created at line 39.
-    Found 4-bit comparator less for signal <convert_ascii$cmp_lt0003> created at line 39.
-    Found 4-bit comparator less for signal <convert_ascii$cmp_lt0004> created at line 39.
-    Found 4-bit comparator less for signal <convert_ascii$cmp_lt0005> created at line 39.
-    Found 4-bit comparator less for signal <convert_ascii$cmp_lt0006> created at line 39.
-    Found 4-bit comparator less for signal <convert_ascii$cmp_lt0007> created at line 39.
-    Found 8-bit adder for signal <convert_ascii/1/convert_ascii>.
-    Found 8-bit adder for signal <convert_ascii/2/convert_ascii>.
-    Found 8-bit adder for signal <convert_ascii/3/convert_ascii>.
-    Found 8-bit adder for signal <convert_ascii/4/convert_ascii>.
-    Found 8-bit adder for signal <convert_ascii/5/convert_ascii>.
-    Found 8-bit adder for signal <convert_ascii/6/convert_ascii>.
-    Found 8-bit adder for signal <convert_ascii/7/convert_ascii>.
-    Found 8-bit adder for signal <convert_ascii/8/convert_ascii>.
     Found 32-bit register for signal <data_buffer>.
-    Found 18-bit comparator lessequal for signal <dump_done$cmp_le0000> created at line 84.
-    Found 18-bit comparator greater for signal <dumper_state$cmp_gt0000> created at line 84.
-    Found 16-bit register for signal <send_data<0:1>>.
-    Found 16-bit register for signal <send_data<3:4>>.
-    Found 16-bit register for signal <send_data<6:7>>.
-    Found 24-bit register for signal <send_data<9:11>>.
+    Found 18-bit comparator less for signal <dump_done$cmp_lt0000> created at line 165.
+    Found 18-bit comparator greatequal for signal <dumper_state$cmp_ge0000> created at line 165.
+    Found 6-bit up counter for signal <header_ptr>.
+    Found 24-bit register for signal <send_data<0:2>>.
+    Found 24-bit register for signal <send_data<4:6>>.
     Found 4-bit up counter for signal <send_ptr>.
     Found 19-bit subtractor for signal <sub>.
     Summary:
 	inferred   1 Finite State Machine(s).
-	inferred   2 Counter(s).
-	inferred  43 D-type flip-flop(s).
-	inferred   9 Adder/Subtractor(s).
-	inferred  10 Comparator(s).
+	inferred   1 ROM(s).
+	inferred   3 Counter(s).
+	inferred  91 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred   2 Comparator(s).
 	inferred   8 Multiplexer(s).
 Unit <dump_sequencer> synthesized.
 
@@ -797,26 +778,27 @@ WARNING:Xst:524 - All outputs of the instance <stop_trigger> of the block <trigp
 HDL Synthesis Report
 
 Macro Statistics
-# ROMs                                                 : 7
+# ROMs                                                 : 8
  128x18-bit ROM                                        : 1
  16x20-bit ROM                                         : 2
  16x7-bit ROM                                          : 4
-# Adders/Subtractors                                   : 15
+ 54x8-bit ROM                                          : 1
+# Adders/Subtractors                                   : 7
  15-bit adder                                          : 2
  18-bit adder                                          : 1
  19-bit subtractor                                     : 1
  5-bit adder                                           : 1
  7-bit addsub                                          : 2
- 8-bit adder                                           : 8
-# Counters                                             : 10
+# Counters                                             : 11
  12-bit up counter                                     : 1
  16-bit up counter                                     : 2
  18-bit up counter                                     : 1
  2-bit up counter                                      : 1
  32-bit up counter                                     : 1
  4-bit up counter                                      : 1
+ 6-bit up counter                                      : 1
  8-bit up counter                                      : 3
-# Registers                                            : 106
+# Registers                                            : 103
  1-bit register                                        : 59
  10-bit register                                       : 1
  15-bit register                                       : 3
@@ -827,15 +809,14 @@ Macro Statistics
  4-bit register                                        : 3
  5-bit register                                        : 1
  7-bit register                                        : 6
- 8-bit register                                        : 20
+ 8-bit register                                        : 17
  9-bit register                                        : 2
 # Latches                                              : 4
  1-bit latch                                           : 4
-# Comparators                                          : 16
+# Comparators                                          : 8
  15-bit comparator equal                               : 2
- 18-bit comparator greater                             : 1
- 18-bit comparator lessequal                           : 1
- 4-bit comparator less                                 : 8
+ 18-bit comparator greatequal                          : 1
+ 18-bit comparator less                                : 1
  7-bit comparator greater                              : 2
  8-bit comparator equal                                : 2
 # Multiplexers                                         : 1
@@ -853,18 +834,20 @@ Macro Statistics
 =========================================================================
 
 Analyzing FSM <FSM_4> for best encoding.
-Optimizing FSM <dump_sequencer/dumper_state/FSM> on signal <dumper_state[1:7]> with one-hot encoding.
--------------------
+Optimizing FSM <dump_sequencer/dumper_state/FSM> on signal <dumper_state[1:9]> with one-hot encoding.
+--------------------
  State | Encoding
--------------------
- 000   | 0000001
- 001   | 0000010
- 010   | 0001000
- 011   | 0010000
- 100   | 0100000
- 101   | 1000000
- 110   | 0000100
--------------------
+--------------------
+ 0000  | 000000001
+ 0001  | 000000100
+ 0010  | 000100000
+ 0011  | 001000000
+ 0100  | 010000000
+ 0101  | 100000000
+ 0110  | 000010000
+ 0111  | 000000010
+ 1000  | 000001000
+--------------------
 Analyzing FSM <FSM_3> for best encoding.
 Optimizing FSM <pixel_buffer/r_cap_state/FSM> on signal <r_cap_state[1:2]> with gray encoding.
 -------------------
@@ -921,12 +904,11 @@ WARNING:Xst:1290 - Hierarchical block <i_RxClk> is unconnected in block <rsio_01
    It will be removed from the design.
 WARNING:Xst:1290 - Hierarchical block <rxrx_01a> is unconnected in block <rsio_01a>.
    It will be removed from the design.
-WARNING:Xst:1710 - FF/Latch <7> (without init value) has a constant value of 0 in block <send_data_11>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <6> (without init value) has a constant value of 0 in block <send_data_11>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <4> (without init value) has a constant value of 0 in block <send_data_11>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <2> (without init value) has a constant value of 0 in block <send_data_11>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <send_data_11>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <2> (without init value) has a constant value of 0 in block <r_bitRateSel>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <send_data_1_0> in Unit <dump_sequencer> is equivalent to the following 15 FFs/Latches, which will be removed : <send_data_1_1> <send_data_0_0> <send_data_0_1> <send_data_0_2> <send_data_2_0> <send_data_2_1> <send_data_2_2> <send_data_4_0> <send_data_4_1> <send_data_4_2> <send_data_5_0> <send_data_5_1> <send_data_6_0> <send_data_6_1> <send_data_6_2> 
+WARNING:Xst:1710 - FF/Latch <send_data_1_0> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <3> (without init value) has a constant value of 0 in block <r_bitRateSel>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <1> (without init value) has a constant value of 1 in block <r_bitRateSel>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 1 in block <r_bitRateSel>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <r_mcmd_2> (without init value) has a constant value of 0 in block <sccb_config>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <FFd2> (without init value) has a constant value of 1 in block <FSM>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <FFd1> (without init value) has a constant value of 1 in block <FSM>. This FF/Latch will be trimmed during the optimization process.
@@ -982,34 +964,34 @@ Advanced HDL Synthesis Report
 
 Macro Statistics
 # FSMs                                                 : 5
-# ROMs                                                 : 7
+# ROMs                                                 : 8
  128x18-bit ROM                                        : 1
  16x20-bit ROM                                         : 2
  16x7-bit ROM                                          : 4
-# Adders/Subtractors                                   : 15
+ 54x8-bit ROM                                          : 1
+# Adders/Subtractors                                   : 7
  15-bit adder                                          : 2
  18-bit adder                                          : 1
  18-bit subtractor                                     : 1
  5-bit adder                                           : 1
  7-bit addsub                                          : 2
- 8-bit adder                                           : 8
-# Counters                                             : 10
+# Counters                                             : 11
  12-bit up counter                                     : 1
  16-bit up counter                                     : 2
  18-bit up counter                                     : 1
  2-bit up counter                                      : 1
  32-bit up counter                                     : 1
  4-bit up counter                                      : 1
+ 6-bit up counter                                      : 1
  8-bit up counter                                      : 3
-# Registers                                            : 530
- Flip-Flops                                            : 530
+# Registers                                            : 506
+ Flip-Flops                                            : 506
 # Latches                                              : 4
  1-bit latch                                           : 4
-# Comparators                                          : 16
+# Comparators                                          : 8
  15-bit comparator equal                               : 2
- 18-bit comparator greater                             : 1
- 18-bit comparator lessequal                           : 1
- 4-bit comparator less                                 : 8
+ 18-bit comparator greatequal                          : 1
+ 18-bit comparator less                                : 1
  7-bit comparator greater                              : 2
  8-bit comparator equal                                : 2
 # Multiplexers                                         : 1
@@ -1026,20 +1008,24 @@ WARNING:Xst:1989 - Unit <clk_reset>: instances <i_reset_rs>, <i_reset_sccb> of u
 WARNING:Xst:1989 - Unit <clk_reset>: instances <i_reset_rs>, <i_reset_cam> of unit <rsync02a> are equivalent, second instance is removed
 WARNING:Xst:1710 - FF/Latch <sccb_kick> (without init value) has a constant value of 0 in block <main_sequencer>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <r_sresp_1> (without init value) has a constant value of 0 in block <sccb_bridge>. This FF/Latch will be trimmed during the optimization process.
-INFO:Xst:2261 - The FF/Latch <0> in Unit <LPM_DFF_28> is equivalent to the following 4 FFs/Latches, which will be removed : <2> <4> <6> <7> 
-INFO:Xst:2261 - The FF/Latch <1> in Unit <LPM_DFF_28> is equivalent to the following FF/Latch, which will be removed : <3> 
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <LPM_DFF_28>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <send_data_0_0> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_0_1> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_0_2> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_1_0> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_1_1> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_2_0> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_2_1> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_2_2> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_6_0> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_6_1> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_6_2> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_4_0> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_4_1> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_4_2> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_5_0> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_5_1> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <syncd_sccb_done/ff2_0> of sequential type is unconnected in block <main_sequencer>.
 WARNING:Xst:2677 - Node <syncd_sccb_done/ff1_0> of sequential type is unconnected in block <main_sequencer>.
-WARNING:Xst:1710 - FF/Latch <rs_tx_data_7> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_10_7> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_9_7> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_7_7> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_6_7> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_4_7> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_3_7> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_1_7> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <send_data_0_7> (without init value) has a constant value of 0 in block <dump_sequencer>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <sccb_bridge/r_sccb_next_8> of sequential type is unconnected in block <top>.
 
 Optimizing unit <top> ...
@@ -1063,19 +1049,21 @@ Optimizing unit <dump_sequencer> ...
 Optimizing unit <rsclk01a> ...
 
 Optimizing unit <rsrx_01a> ...
-WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_sccb_next_4> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_maddr_14> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_maddr_12> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_maddr_11> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_maddr_10> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_maddr_9> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_mcmd_2> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_mcmd_1> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_mcmd_0> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <sccb_config/r_rom_addr_4> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <sccb_config/syncd_sccb_done/ff1_0> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rsio_01a/i_TxClk/r_bitRateSel_3> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rsio_01a/i_TxClk/r_bitRateSel_1> (without init value) has a constant value of 1 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rsio_01a/i_TxClk/r_bitRateSel_0> (without init value) has a constant value of 1 in block <top>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <sccb_config/r_mcmd_1> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <rsio_01a/i_TxClk/r_bitRateSel_2> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sccb_config/syncd_sccb_done/ff1_0> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sccb_config/r_rom_addr_4> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_mcmd_0> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_mcmd_1> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_mcmd_2> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_maddr_9> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_maddr_10> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_maddr_11> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_maddr_12> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_maddr_14> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sccb_bridge/r_sccb_next_4> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sccb_config/syncd_sccb_done/ff2_0> (without init value) has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sccb_config/r_handshake_FSM_FFd2> (without init value) has a constant value of 1 in block <top>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sccb_config/r_handshake_FSM_FFd1> (without init value) has a constant value of 1 in block <top>. This FF/Latch will be trimmed during the optimization process.
@@ -1234,10 +1222,9 @@ WARNING:Xst:2677 - Node <sccb_config/r_mdata_0> of sequential type is unconnecte
 
 Mapping all equations...
 Building and optimizing final netlist ...
-INFO:Xst:2261 - The FF/Latch <rsio_01a/i_TxClk/r_bitRateSel_0> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <rsio_01a/i_TxClk/r_bitRateSel_1> 
 INFO:Xst:2261 - The FF/Latch <sccb_bridge/r_maddr_13> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <sccb_bridge/r_maddr_8> 
-INFO:Xst:2261 - The FF/Latch <sccb_config/r_maddr_0> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <rsio_01a/i_TxClk/r_bitRateSel_3> 
-Found area constraint ratio of 100 (+ 5) on block top, actual ratio is 23.
+INFO:Xst:2261 - The FF/Latch <sccb_config/r_maddr_0> in Unit <top> is equivalent to the following FF/Latch, which will be removed : <rsio_01a/i_TxClk/r_bitRateSel_2> 
+Found area constraint ratio of 100 (+ 5) on block top, actual ratio is 22.
 
 Final Macro Processing ...
 
@@ -1245,8 +1232,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 477
- Flip-Flops                                            : 477
+# Registers                                            : 459
+ Flip-Flops                                            : 459
 
 =========================================================================
 
@@ -1275,28 +1262,28 @@ Design Statistics
 # IOs                              : 98
 
 Cell Usage :
-# BELS                             : 1051
+# BELS                             : 1027
 #      GND                         : 1
-#      INV                         : 13
-#      LUT1                        : 102
-#      LUT2                        : 154
-#      LUT2_D                      : 1
-#      LUT3                        : 151
-#      LUT3_D                      : 3
-#      LUT3_L                      : 4
-#      LUT4                        : 265
-#      LUT4_D                      : 32
-#      LUT4_L                      : 4
+#      INV                         : 14
+#      LUT1                        : 103
+#      LUT2                        : 140
+#      LUT2_D                      : 5
+#      LUT2_L                      : 5
+#      LUT3                        : 130
+#      LUT3_D                      : 4
+#      LUT3_L                      : 7
+#      LUT4                        : 264
+#      LUT4_D                      : 35
+#      LUT4_L                      : 11
 #      MUXCY                       : 157
-#      MUXF5                       : 22
-#      MUXF6                       : 7
+#      MUXF5                       : 16
 #      VCC                         : 1
 #      XORCY                       : 134
-# FlipFlops/Latches                : 480
-#      FDC                         : 152
-#      FDCE                        : 186
-#      FDP                         : 108
-#      FDPE                        : 31
+# FlipFlops/Latches                : 462
+#      FDC                         : 162
+#      FDCE                        : 168
+#      FDP                         : 107
+#      FDPE                        : 22
 #      LD_1                        : 3
 # Clock Buffers                    : 4
 #      BUFG                        : 4
@@ -1313,9 +1300,9 @@ Device utilization summary:
 
 Selected Device : 3s200ft256-4 
 
- Number of Slices:                      403  out of   1920    20%  
- Number of Slice Flip Flops:            479  out of   3840    12%  
- Number of 4 input LUTs:                729  out of   3840    18%  
+ Number of Slices:                      400  out of   1920    20%  
+ Number of Slice Flip Flops:            461  out of   3840    12%  
+ Number of 4 input LUTs:                718  out of   3840    18%  
  Number of IOs:                          98
  Number of bonded IOBs:                  98  out of    173    56%  
     IOB Flip Flops:                       1
@@ -1343,7 +1330,7 @@ Clock Information:
 Clock Signal                                             | Clock buffer(FF name)             | Load  |
 ---------------------------------------------------------+-----------------------------------+-------+
 sccb_bridge/w_sccb_gclk1(sccb_bridge/cgate_sccb1/gclk1:O)| BUFG(*)(sccb_bridge/r_sccb_next_2)| 86    |
-clk_reset/div2clk1                                       | BUFG                              | 213   |
+clk_reset/div2clk1                                       | BUFG                              | 195   |
 sccb_bridge/w_sccb_gwclk(sccb_bridge/cgate_sccb2/gclk1:O)| NONE(*)(sccb_bridge/r_sio_c)      | 1     |
 rsio_01a/w_TxClk(rsio_01a/i_TxClk/cgate01a/gclk1:O)      | NONE(*)(rsio_01a/rxtx_01a/r_state)| 11    |
 xipCAM_PCLK                                              | IBUFG+BUFG                        | 156   |
@@ -1359,10 +1346,10 @@ Asynchronous Control Signals Information:
 ---------------------------------------------------------------------------------------------+-----------------------------------+-------+
 Control Signal                                                                               | Buffer(FF name)                   | Load  |
 ---------------------------------------------------------------------------------------------+-----------------------------------+-------+
-dump_sequencer/dumper_state_FSM_Acst_FSM_inv(seg_ctrl/active_Acst_inv1_INV_0:O)              | NONE(dump_sequencer/data_buffer_0)| 306   |
+dump_sequencer/dumper_state_FSM_Acst_FSM_inv(seg_ctrl/active_Acst_inv1_INV_0:O)              | NONE(dump_sequencer/data_buffer_0)| 288   |
 pixel_buffer/r_cap_state_FSM_Acst_FSM_inv(pixel_buffer/r_cap_state_FSM_Acst_FSM_inv1_INV_0:O)| NONE(pixel_buffer/fetch_done)     | 154   |
 clk_reset/f50_reset_n_inv(main_sequencer/r_seq_state_FSM_Acst_FSM_inv1_INV_0:O)              | NONE(clk_reset/div2clk)           | 15    |
-rsio_01a/i_TxClk/EnablePeriod_1_EnablePeriod<2>(XST_GND:G)                                   | NONE(clk_reset/i_reset_sync/ff1_0)| 2     |
+N0(XST_GND:G)                                                                                | NONE(clk_reset/i_reset_sync/ff1_0)| 2     |
 ---------------------------------------------------------------------------------------------+-----------------------------------+-------+
 
 Timing Summary:
@@ -1385,21 +1372,21 @@ Timing constraint: Default period analysis for Clock 'sccb_bridge/w_sccb_gclk1'
 -------------------------------------------------------------------------
 Delay:               8.417ns (Levels of Logic = 5)
   Source:            sccb_bridge/r_sccb_next_2 (FF)
-  Destination:       sccb_bridge/r_seq_sio_d_3 (FF)
+  Destination:       sccb_bridge/r_seq_sio_d_2 (FF)
   Source Clock:      sccb_bridge/w_sccb_gclk1 rising
   Destination Clock: sccb_bridge/w_sccb_gclk1 rising
 
-  Data Path: sccb_bridge/r_sccb_next_2 to sccb_bridge/r_seq_sio_d_3
+  Data Path: sccb_bridge/r_sccb_next_2 to sccb_bridge/r_seq_sio_d_2
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FDC:C->Q              4   0.720   1.256  sccb_bridge/r_sccb_next_2 (sccb_bridge/r_sccb_next_2)
-     LUT3_L:I0->LO         1   0.551   0.126  sccb_bridge/r_seq_sio_c_mux0000<17>11_SW0 (N53)
+     LUT3_L:I0->LO         1   0.551   0.126  sccb_bridge/r_seq_sio_c_mux0000<17>11_SW0 (N67)
      LUT4:I3->O            5   0.551   0.947  sccb_bridge/r_seq_sio_c_mux0000<17>11 (N7)
      LUT4_D:I3->O         21   0.551   1.541  sccb_bridge/seq_select_clk_1_seq_select_clk<10>1 (sccb_bridge/seq_select_clk_1_seq_select_clk<10>)
      LUT4_D:I3->O          1   0.551   0.869  sccb_bridge/r_seq_sio_d_mux0000<2>1 (N2)
-     LUT3:I2->O            1   0.551   0.000  sccb_bridge/r_seq_sio_d_mux0000<3>1 (sccb_bridge/r_seq_sio_d_mux0000<3>)
-     FDP:D                     0.203          sccb_bridge/r_seq_sio_d_3
+     LUT3:I2->O            1   0.551   0.000  sccb_bridge/r_seq_sio_d_mux0000<2>2 (sccb_bridge/r_seq_sio_d_mux0000<2>)
+     FDP:D                     0.203          sccb_bridge/r_seq_sio_d_2
     ----------------------------------------
     Total                      8.417ns (3.678ns logic, 4.739ns route)
                                        (43.7% logic, 56.3% route)
@@ -1407,7 +1394,7 @@ Delay:               8.417ns (Levels of Logic = 5)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_reset/div2clk1'
   Clock period: 9.475ns (frequency: 105.541MHz)
-  Total number of paths / destination ports: 4289 / 329
+  Total number of paths / destination ports: 4422 / 287
 -------------------------------------------------------------------------
 Delay:               9.475ns (Levels of Logic = 19)
   Source:            dump_sequencer/s1_Addr_0 (FF)
@@ -1450,16 +1437,16 @@ Timing constraint: Default period analysis for Clock 'rsio_01a/w_TxClk'
   Total number of paths / destination ports: 29 / 11
 -------------------------------------------------------------------------
 Delay:               5.488ns (Levels of Logic = 3)
-  Source:            rsio_01a/rxtx_01a/r_shiftReg_5 (FF)
+  Source:            rsio_01a/rxtx_01a/r_shiftReg_2 (FF)
   Destination:       rsio_01a/rxtx_01a/r_state (FF)
   Source Clock:      rsio_01a/w_TxClk rising
   Destination Clock: rsio_01a/w_TxClk rising
 
-  Data Path: rsio_01a/rxtx_01a/r_shiftReg_5 to rsio_01a/rxtx_01a/r_state
+  Data Path: rsio_01a/rxtx_01a/r_shiftReg_2 to rsio_01a/rxtx_01a/r_state
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDC:C->Q              2   0.720   1.216  rsio_01a/rxtx_01a/r_shiftReg_5 (rsio_01a/rxtx_01a/r_shiftReg_5)
+     FDC:C->Q              2   0.720   1.216  rsio_01a/rxtx_01a/r_shiftReg_2 (rsio_01a/rxtx_01a/r_shiftReg_2)
      LUT2:I0->O            1   0.551   0.827  rsio_01a/rxtx_01a/w_state6 (rsio_01a/rxtx_01a/w_state6)
      LUT4:I3->O            1   0.551   0.869  rsio_01a/rxtx_01a/w_state11 (rsio_01a/rxtx_01a/w_state11)
      LUT4:I2->O            1   0.551   0.000  rsio_01a/rxtx_01a/w_state34 (rsio_01a/rxtx_01a/w_state)
@@ -1470,32 +1457,27 @@ Delay:               5.488ns (Levels of Logic = 3)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'xipCAM_PCLK'
-  Clock period: 7.614ns (frequency: 131.337MHz)
+  Clock period: 7.486ns (frequency: 133.586MHz)
   Total number of paths / destination ports: 1937 / 220
 -------------------------------------------------------------------------
-Delay:               7.614ns (Levels of Logic = 8)
-  Source:            pixel_buffer/s0_Addr_4 (FF)
-  Destination:       pixel_buffer/s0_WD_31 (FF)
+Delay:               7.486ns (Levels of Logic = 3)
+  Source:            pixel_buffer/r_HREF (FF)
+  Destination:       pixel_buffer/s0_WD_30 (FF)
   Source Clock:      xipCAM_PCLK rising
   Destination Clock: xipCAM_PCLK rising
 
-  Data Path: pixel_buffer/s0_Addr_4 to pixel_buffer/s0_WD_31
+  Data Path: pixel_buffer/r_HREF to pixel_buffer/s0_WD_30
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDP:C->Q              5   0.720   1.260  pixel_buffer/s0_Addr_4 (pixel_buffer/s0_Addr_4)
-     LUT2:I0->O            1   0.551   0.000  pixel_buffer/r_cap_state_cmp_eq0000_wg_lut<0> (pixel_buffer/r_cap_state_cmp_eq0000_wg_lut<0>)
-     MUXCY:S->O            1   0.500   0.000  pixel_buffer/r_cap_state_cmp_eq0000_wg_cy<0> (pixel_buffer/r_cap_state_cmp_eq0000_wg_cy<0>)
-     MUXCY:CI->O           1   0.064   0.000  pixel_buffer/r_cap_state_cmp_eq0000_wg_cy<1> (pixel_buffer/r_cap_state_cmp_eq0000_wg_cy<1>)
-     MUXCY:CI->O           1   0.064   0.000  pixel_buffer/r_cap_state_cmp_eq0000_wg_cy<2> (pixel_buffer/r_cap_state_cmp_eq0000_wg_cy<2>)
-     MUXCY:CI->O           1   0.064   0.000  pixel_buffer/r_cap_state_cmp_eq0000_wg_cy<3> (pixel_buffer/r_cap_state_cmp_eq0000_wg_cy<3>)
-     MUXCY:CI->O           4   0.303   1.256  pixel_buffer/r_cap_state_cmp_eq0000_wg_cy<4> (pixel_buffer/r_cap_state_cmp_eq0000)
-     LUT4_D:I0->O         15   0.551   1.527  pixel_buffer/s0_WD_mux0000<0>21 (pixel_buffer/N3)
-     LUT4:I0->O            1   0.551   0.000  pixel_buffer/s0_WD_mux0000<8>1 (pixel_buffer/s0_WD_mux0000<8>)
-     FDC:D                     0.203          pixel_buffer/s0_WD_8
+     FDC:C->Q             27   0.720   1.892  pixel_buffer/r_HREF (pixel_buffer/r_HREF)
+     LUT3_D:I2->O          3   0.551   0.975  pixel_buffer/s0_WE_and00001 (pixel_buffer/s0_WE_and0000)
+     LUT3_D:I2->O         31   0.551   2.042  pixel_buffer/s0_WD_mux0000<0>11 (pixel_buffer/N2)
+     LUT4:I1->O            1   0.551   0.000  pixel_buffer/s0_WD_mux0000<9>1 (pixel_buffer/s0_WD_mux0000<9>)
+     FDC:D                     0.203          pixel_buffer/s0_WD_9
     ----------------------------------------
-    Total                      7.614ns (3.571ns logic, 4.043ns route)
-                                       (46.9% logic, 53.1% route)
+    Total                      7.486ns (2.576ns logic, 4.910ns route)
+                                       (34.4% logic, 65.6% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'xipMCLK'
@@ -1604,7 +1586,7 @@ Offset:              8.760ns (Levels of Logic = 2)
 Timing constraint: Default OFFSET OUT AFTER for Clock 'rsio_01a/w_TxClk'
   Total number of paths / destination ports: 2 / 1
 -------------------------------------------------------------------------
-Offset:              9.400ns (Levels of Logic = 2)
+Offset:              9.655ns (Levels of Logic = 2)
   Source:            rsio_01a/rxtx_01a/r_state (FF)
   Destination:       xopTXD (PAD)
   Source Clock:      rsio_01a/w_TxClk rising
@@ -1613,12 +1595,12 @@ Offset:              9.400ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDC:C->Q             17   0.720   1.684  rsio_01a/rxtx_01a/r_state (rsio_01a/rxtx_01a/r_state)
+     FDC:C->Q             22   0.720   1.939  rsio_01a/rxtx_01a/r_state (rsio_01a/rxtx_01a/r_state)
      LUT2:I0->O            1   0.551   0.801  rsio_01a/rxtx_01a/txSerialData1 (xopTXD_OBUF)
      OBUF:I->O                 5.644          xopTXD_OBUF (xopTXD)
     ----------------------------------------
-    Total                      9.400ns (6.915ns logic, 2.485ns route)
-                                       (73.6% logic, 26.4% route)
+    Total                      9.655ns (6.915ns logic, 2.740ns route)
+                                       (71.6% logic, 28.4% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'xipMCLK'
@@ -1661,24 +1643,25 @@ Offset:              7.165ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_reset/div2clk1'
-  Total number of paths / destination ports: 93 / 30
+  Total number of paths / destination ports: 128 / 30
 -------------------------------------------------------------------------
-Offset:              10.712ns (Levels of Logic = 3)
-  Source:            seg_ctrl/active_1 (FF)
+Offset:              11.162ns (Levels of Logic = 4)
+  Source:            seg_ctrl/active_2 (FF)
   Destination:       xonA (PAD)
   Source Clock:      clk_reset/div2clk1 rising
 
-  Data Path: seg_ctrl/active_1 to xonA
+  Data Path: seg_ctrl/active_2 to xonA
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDPE:C->Q            16   0.720   1.576  seg_ctrl/active_1 (seg_ctrl/active_1)
-     LUT4:I0->O            1   0.551   0.869  seg_ctrl/G18 (seg_ctrl/G18)
-     LUT4:I2->O            1   0.551   0.801  seg_ctrl/G41 (xonG_OBUF)
+     FDPE:C->Q             9   0.720   1.463  seg_ctrl/active_2 (seg_ctrl/active_2)
+     LUT4:I0->O            2   0.551   1.072  seg_ctrl/G131_SW0 (N147)
+     LUT4:I1->O            1   0.551   0.000  seg_ctrl/G1421 (seg_ctrl/G142)
+     MUXF5:I1->O           1   0.360   0.801  seg_ctrl/G142_f5 (xonG_OBUF)
      OBUF:I->O                 5.644          xonG_OBUF (xonG)
     ----------------------------------------
-    Total                     10.712ns (7.466ns logic, 3.246ns route)
-                                       (69.7% logic, 30.3% route)
+    Total                     11.162ns (7.826ns logic, 3.336ns route)
+                                       (70.1% logic, 29.9% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'xipCAM_PCLK'
@@ -1703,14 +1686,14 @@ Offset:              10.123ns (Levels of Logic = 2)
 =========================================================================
 
 
-Total REAL time to Xst completion: 27.00 secs
-Total CPU time to Xst completion: 27.53 secs
+Total REAL time to Xst completion: 15.00 secs
+Total CPU time to Xst completion: 15.20 secs
  
 --> 
 
-Total memory usage is 294692 kilobytes
+Total memory usage is 293500 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  321 (   0 filtered)
-Number of infos    :   14 (   0 filtered)
+Number of warnings :  328 (   0 filtered)
+Number of infos    :   11 (   0 filtered)
 

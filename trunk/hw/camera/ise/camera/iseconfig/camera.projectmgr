@@ -12,15 +12,17 @@
          <ClosedNode>/top D:|work|serio-pj|hw|camera|rtl|top.v/rsio_01a - rsio_01a/i_RxClk - rsclk01a</ClosedNode>
          <ClosedNode>/top D:|work|serio-pj|hw|camera|rtl|top.v/rsio_01a - rsio_01a/i_TxClk - rsclk01a</ClosedNode>
          <ClosedNode>/top D:|work|serio-pj|hw|camera|rtl|top.v/rsio_01a - rsio_01a/rxrx_01a - rsrx_01a</ClosedNode>
+         <ClosedNode>/top D:|work|serio-pj|hw|camera|rtl|top.v/sccb_bridge - sccb_bridge</ClosedNode>
+         <ClosedNode>/top D:|work|serio-pj|hw|camera|rtl|top.v/sccb_config - sccb_config</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>top (D:/work/serio-pj/hw/camera/rtl/top.v)</SelectedItem>
+         <SelectedItem>dump_sequencer - dump_sequencer (D:/work/serio-pj/hw/camera/rtl/dump_sequencer.v)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001a5000000020000000000000000000000000200000064ffffffff000000810000000300000002000001a50000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>top (D:/work/serio-pj/hw/camera/rtl/top.v)</CurrentItem>
+      <CurrentItem>dump_sequencer - dump_sequencer (D:/work/serio-pj/hw/camera/rtl/dump_sequencer.v)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -66,13 +68,13 @@
          <ClosedNode>Implement Design/Place &amp; Route/Generate IBIS Model</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>Generate Programming File</SelectedItem>
+         <SelectedItem></SelectedItem>
       </SelectedItems>
-      <ScrollbarPosition orientation="vertical" >19</ScrollbarPosition>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000e7000000010000000100000000000000000000000064ffffffff000000810000000000000001000000e70000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000f8000000010000000100000000000000000000000064ffffffff000000810000000000000001000000f80000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem>Generate Programming File</CurrentItem>
+      <CurrentItem></CurrentItem>
    </ItemView>
    <SourceProcessView>000000ff00000000000000020000011b0000011b01000000050100000002</SourceProcessView>
    <CurrentView>Implementation</CurrentView>

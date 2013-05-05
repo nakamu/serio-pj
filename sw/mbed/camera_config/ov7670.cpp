@@ -25,6 +25,7 @@ void ov7670::set_and_verify (char addr, char data)
 
 void ov7670::configure(){    
 	int colorbar_enable = 0;
+	int yuv_enable      = 1;
 
 	// 0x00 GAIN : 0x00 -> 0x00
 	this->set_and_verify(0x00, 0x00);
@@ -56,6 +57,12 @@ void ov7670::configure(){
     // 0x09 COM2 : 0x01 -> 0x01
     this->set_and_verify(0x09, 0x01);
 
+    // 0x0a PID : 0x76 -> 0x76
+    this->set_and_verify(0x0a, 0x76);
+
+    // 0x0b VER : 0x73 -> 0x73
+    this->set_and_verify(0x0b, 0x73);
+
     // 0x0c COM3 : 0x00 -> 0x00
     this->set_and_verify(0x0c, 0x00);
 
@@ -85,9 +92,17 @@ void ov7670::configure(){
     // [5] Output format - CIF selection
     // [7] SCCB register reset (active-H)
 	if(colorbar_enable) {
-		this->set_and_verify(0x12, 0x06);
+		if(yuv_enable) {
+			this->set_and_verify(0x12, 0x02);
+		} else {
+			this->set_and_verify(0x12, 0x06);
+		}
 	} else {
-	    this->set_and_verify(0x12, 0x04);
+		if(yuv_enable) {
+			this->set_and_verify(0x12, 0x00);
+		} else {
+			this->set_and_verify(0x12, 0x04);
+		}
 	}
 
     // 0x13 COM8 : 0x8F -> 0x8F

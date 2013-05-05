@@ -97,7 +97,9 @@ unsigned char sccb_lib::read_byte() {
 void sccb_lib::write(unsigned char addr, unsigned char data) {
     this->start();
     this->write_byte(write_dev);
+	wait_us(20);
     this->write_byte(addr);
+	wait_us(20);
     this->write_byte(data);
     this->stop();
 	sccb_wait();
@@ -109,11 +111,13 @@ unsigned char sccb_lib::read(unsigned char addr) {
     unsigned char rd;
     this->start();
     this->write_byte(write_dev);
+	wait_us(20);
     this->write_byte(addr);
     this->stop();
-	sccb_wait();
+	wait_us(40);
     this->start();
     this->write_byte(read_dev);
+	wait_us(20);
     rd = this->read_byte();
     this->stop();
 	sccb_wait();

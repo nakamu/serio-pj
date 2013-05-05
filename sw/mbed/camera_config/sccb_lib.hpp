@@ -5,7 +5,7 @@
 #include "mbed.h"
 
 // 100 us -> 10kHz
-#define SCCB_HCYCLE wait_us(50)
+#define SCCB_HCYCLE wait_us(2)
 
 // wait between command
 #define SCCB_WAIT   wait_ms(10)

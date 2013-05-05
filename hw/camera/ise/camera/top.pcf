@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.49d on Thu Mar 21 00:33:36 2013
+// Written by: Map P.49d on Sun May 05 22:15:26 2013
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -11,15 +11,15 @@ COMP "xonE" LOCATE = SITE "R16" LEVEL 1;
 COMP "xonF" LOCATE = SITE "F13" LEVEL 1;
 COMP "xonG" LOCATE = SITE "N16" LEVEL 1;
 COMP "xopCAM_SIO_C" LOCATE = SITE "B10" LEVEL 1;
-COMP "xipCAM_D<0>" LOCATE = SITE "A7" LEVEL 1;
-COMP "xipCAM_D<1>" LOCATE = SITE "B6" LEVEL 1;
-COMP "xipCAM_D<2>" LOCATE = SITE "B5" LEVEL 1;
-COMP "xipCAM_D<3>" LOCATE = SITE "B4" LEVEL 1;
-COMP "xipCAM_D<4>" LOCATE = SITE "D10" LEVEL 1;
-COMP "xipCAM_D<5>" LOCATE = SITE "D8" LEVEL 1;
-COMP "xipCAM_D<6>" LOCATE = SITE "D7" LEVEL 1;
-COMP "xipCAM_D<7>" LOCATE = SITE "E7" LEVEL 1;
-COMP "xipCAM_HREF" LOCATE = SITE "A12" LEVEL 1;
+COMP "xipCAM_D<0>" LOCATE = SITE "C5" LEVEL 1;
+COMP "xipCAM_D<1>" LOCATE = SITE "D6" LEVEL 1;
+COMP "xipCAM_D<2>" LOCATE = SITE "C6" LEVEL 1;
+COMP "xipCAM_D<3>" LOCATE = SITE "E7" LEVEL 1;
+COMP "xipCAM_D<4>" LOCATE = SITE "C7" LEVEL 1;
+COMP "xipCAM_D<5>" LOCATE = SITE "D7" LEVEL 1;
+COMP "xipCAM_D<6>" LOCATE = SITE "C8" LEVEL 1;
+COMP "xipCAM_D<7>" LOCATE = SITE "D8" LEVEL 1;
+COMP "xipCAM_HREF" LOCATE = SITE "A13" LEVEL 1;
 COMP "xipCAM_PCLK" LOCATE = SITE "D9" LEVEL 1;
 COMP "xonDP" LOCATE = SITE "P16" LEVEL 1;
 COMP "xonOE" LOCATE = SITE "K4" LEVEL 1;
@@ -38,8 +38,8 @@ COMP "xopAddr<6>" LOCATE = SITE "F3" LEVEL 1;
 COMP "xopAddr<7>" LOCATE = SITE "F4" LEVEL 1;
 COMP "xopAddr<8>" LOCATE = SITE "E3" LEVEL 1;
 COMP "xopAddr<9>" LOCATE = SITE "E4" LEVEL 1;
-COMP "xopCAM_XCLK" LOCATE = SITE "B11" LEVEL 1;
-COMP "xipCAM_VSYNC" LOCATE = SITE "A13" LEVEL 1;
+COMP "xopCAM_XCLK" LOCATE = SITE "A12" LEVEL 1;
+COMP "xipCAM_VSYNC" LOCATE = SITE "B11" LEVEL 1;
 COMP "xonCE1" LOCATE = SITE "P7" LEVEL 1;
 COMP "xonCE2" LOCATE = SITE "N5" LEVEL 1;
 COMP "xonAN0" LOCATE = SITE "D14" LEVEL 1;
@@ -180,38 +180,9 @@ TIMEGRP clk_reset/div2clk1 = BEL "sccb_bridge/r_sccb_next_2" BEL
         "seg_ctrl/char0_1" BEL "seg_ctrl/char0_0" BEL
         "clk_reset/i_reset_rs/reset1_reg" BEL
         "clk_reset/i_reset_rs/reset2_reg" BEL "clk_reset/div2clk" BEL
-        "sccb_config/r_maddr_0" BEL "dump_sequencer/send_data_0_0" BEL
-        "dump_sequencer/send_data_0_1" BEL "dump_sequencer/send_data_0_2" BEL
-        "dump_sequencer/send_data_0_3" BEL "dump_sequencer/send_data_0_4" BEL
-        "dump_sequencer/send_data_0_5" BEL "dump_sequencer/send_data_0_6" BEL
-        "dump_sequencer/send_data_1_0" BEL "dump_sequencer/send_data_1_1" BEL
-        "dump_sequencer/send_data_1_2" BEL "dump_sequencer/send_data_1_3" BEL
-        "dump_sequencer/send_data_1_4" BEL "dump_sequencer/send_data_1_5" BEL
-        "dump_sequencer/send_data_1_6" BEL "dump_sequencer/send_data_3_0" BEL
-        "dump_sequencer/send_data_3_1" BEL "dump_sequencer/send_data_3_2" BEL
-        "dump_sequencer/send_data_3_3" BEL "dump_sequencer/send_data_3_4" BEL
-        "dump_sequencer/send_data_3_5" BEL "dump_sequencer/send_data_3_6" BEL
-        "dump_sequencer/send_data_4_0" BEL "dump_sequencer/send_data_4_1" BEL
-        "dump_sequencer/send_data_4_2" BEL "dump_sequencer/send_data_4_3" BEL
-        "dump_sequencer/send_data_4_4" BEL "dump_sequencer/send_data_4_5" BEL
-        "dump_sequencer/send_data_4_6" BEL "dump_sequencer/send_data_6_0" BEL
-        "dump_sequencer/send_data_6_1" BEL "dump_sequencer/send_data_6_2" BEL
-        "dump_sequencer/send_data_6_3" BEL "dump_sequencer/send_data_6_4" BEL
-        "dump_sequencer/send_data_6_5" BEL "dump_sequencer/send_data_6_6" BEL
-        "dump_sequencer/send_data_7_0" BEL "dump_sequencer/send_data_7_1" BEL
-        "dump_sequencer/send_data_7_2" BEL "dump_sequencer/send_data_7_3" BEL
-        "dump_sequencer/send_data_7_4" BEL "dump_sequencer/send_data_7_5" BEL
-        "dump_sequencer/send_data_7_6" BEL "dump_sequencer/send_data_9_0" BEL
-        "dump_sequencer/send_data_9_1" BEL "dump_sequencer/send_data_9_2" BEL
-        "dump_sequencer/send_data_9_3" BEL "dump_sequencer/send_data_9_4" BEL
-        "dump_sequencer/send_data_9_5" BEL "dump_sequencer/send_data_9_6" BEL
-        "dump_sequencer/send_data_10_0" BEL "dump_sequencer/send_data_10_1"
-        BEL "dump_sequencer/send_data_10_2" BEL
-        "dump_sequencer/send_data_10_3" BEL "dump_sequencer/send_data_10_4"
-        BEL "dump_sequencer/send_data_10_5" BEL
-        "dump_sequencer/send_data_10_6" BEL "dump_sequencer/send_data_11_1"
-        BEL "dump_sequencer/send_data_11_5" BEL
-        "dump_sequencer/dumper_state_FSM_FFd3" BEL
+        "sccb_config/r_maddr_0" BEL "dump_sequencer/dumper_state_FSM_FFd3" BEL
+        "dump_sequencer/dumper_state_FSM_FFd8" BEL
+        "dump_sequencer/dumper_state_FSM_FFd7" BEL
         "dump_sequencer/dumper_state_FSM_FFd6" BEL
         "dump_sequencer/dumper_state_FSM_FFd4" BEL
         "dump_sequencer/dumper_state_FSM_FFd2" BEL
@@ -224,36 +195,55 @@ TIMEGRP clk_reset/div2clk1 = BEL "sccb_bridge/r_sccb_next_2" BEL
         "dump_sequencer/s1_Addr_6" BEL "dump_sequencer/s1_Addr_5" BEL
         "dump_sequencer/s1_Addr_4" BEL "dump_sequencer/s1_Addr_3" BEL
         "dump_sequencer/s1_Addr_2" BEL "dump_sequencer/s1_Addr_1" BEL
-        "dump_sequencer/s1_Addr_0" BEL "dump_sequencer/send_ptr_3" BEL
+        "dump_sequencer/s1_Addr_0" BEL "dump_sequencer/header_ptr_5" BEL
+        "dump_sequencer/header_ptr_4" BEL "dump_sequencer/header_ptr_3" BEL
+        "dump_sequencer/header_ptr_2" BEL "dump_sequencer/header_ptr_1" BEL
+        "dump_sequencer/header_ptr_0" BEL "dump_sequencer/send_ptr_3" BEL
         "dump_sequencer/send_ptr_2" BEL "dump_sequencer/send_ptr_1" BEL
         "dump_sequencer/send_ptr_0" BEL "dump_sequencer/syncd_dump_kick/ff1_0"
         BEL "dump_sequencer/syncd_dump_kick/ff2_0" BEL
+        "dump_sequencer/send_data_5_7" BEL "dump_sequencer/send_data_5_6" BEL
+        "dump_sequencer/send_data_5_5" BEL "dump_sequencer/send_data_5_4" BEL
+        "dump_sequencer/send_data_5_3" BEL "dump_sequencer/send_data_5_2" BEL
+        "dump_sequencer/send_data_4_7" BEL "dump_sequencer/send_data_4_6" BEL
+        "dump_sequencer/send_data_4_5" BEL "dump_sequencer/send_data_4_4" BEL
+        "dump_sequencer/send_data_4_3" BEL "dump_sequencer/send_data_6_7" BEL
+        "dump_sequencer/send_data_6_6" BEL "dump_sequencer/send_data_6_5" BEL
+        "dump_sequencer/send_data_6_4" BEL "dump_sequencer/send_data_6_3" BEL
+        "dump_sequencer/send_data_2_7" BEL "dump_sequencer/send_data_2_6" BEL
+        "dump_sequencer/send_data_2_5" BEL "dump_sequencer/send_data_2_4" BEL
+        "dump_sequencer/send_data_2_3" BEL "dump_sequencer/send_data_1_7" BEL
+        "dump_sequencer/send_data_1_6" BEL "dump_sequencer/send_data_1_5" BEL
+        "dump_sequencer/send_data_1_4" BEL "dump_sequencer/send_data_1_3" BEL
+        "dump_sequencer/send_data_1_2" BEL "dump_sequencer/send_data_0_7" BEL
+        "dump_sequencer/send_data_0_6" BEL "dump_sequencer/send_data_0_5" BEL
+        "dump_sequencer/send_data_0_4" BEL "dump_sequencer/send_data_0_3" BEL
+        "dump_sequencer/data_buffer_31" BEL "dump_sequencer/data_buffer_30"
+        BEL "dump_sequencer/data_buffer_29" BEL
+        "dump_sequencer/data_buffer_28" BEL "dump_sequencer/data_buffer_27"
+        BEL "dump_sequencer/data_buffer_26" BEL
+        "dump_sequencer/data_buffer_25" BEL "dump_sequencer/data_buffer_24"
+        BEL "dump_sequencer/data_buffer_23" BEL
+        "dump_sequencer/data_buffer_22" BEL "dump_sequencer/data_buffer_21"
+        BEL "dump_sequencer/data_buffer_20" BEL
+        "dump_sequencer/data_buffer_19" BEL "dump_sequencer/data_buffer_18"
+        BEL "dump_sequencer/data_buffer_17" BEL
+        "dump_sequencer/data_buffer_16" BEL "dump_sequencer/data_buffer_15"
+        BEL "dump_sequencer/data_buffer_14" BEL
+        "dump_sequencer/data_buffer_13" BEL "dump_sequencer/data_buffer_12"
+        BEL "dump_sequencer/data_buffer_11" BEL
+        "dump_sequencer/data_buffer_10" BEL "dump_sequencer/data_buffer_9" BEL
+        "dump_sequencer/data_buffer_8" BEL "dump_sequencer/data_buffer_7" BEL
+        "dump_sequencer/data_buffer_6" BEL "dump_sequencer/data_buffer_5" BEL
+        "dump_sequencer/data_buffer_4" BEL "dump_sequencer/data_buffer_3" BEL
+        "dump_sequencer/data_buffer_2" BEL "dump_sequencer/data_buffer_1" BEL
+        "dump_sequencer/data_buffer_0" BEL "dump_sequencer/rs_tx_data_7" BEL
         "dump_sequencer/rs_tx_data_6" BEL "dump_sequencer/rs_tx_data_5" BEL
         "dump_sequencer/rs_tx_data_4" BEL "dump_sequencer/rs_tx_data_3" BEL
         "dump_sequencer/rs_tx_data_2" BEL "dump_sequencer/rs_tx_data_1" BEL
-        "dump_sequencer/rs_tx_data_0" BEL "dump_sequencer/data_buffer_31" BEL
-        "dump_sequencer/data_buffer_30" BEL "dump_sequencer/data_buffer_29"
-        BEL "dump_sequencer/data_buffer_28" BEL
-        "dump_sequencer/data_buffer_27" BEL "dump_sequencer/data_buffer_26"
-        BEL "dump_sequencer/data_buffer_25" BEL
-        "dump_sequencer/data_buffer_24" BEL "dump_sequencer/data_buffer_23"
-        BEL "dump_sequencer/data_buffer_22" BEL
-        "dump_sequencer/data_buffer_21" BEL "dump_sequencer/data_buffer_20"
-        BEL "dump_sequencer/data_buffer_19" BEL
-        "dump_sequencer/data_buffer_18" BEL "dump_sequencer/data_buffer_17"
-        BEL "dump_sequencer/data_buffer_16" BEL
-        "dump_sequencer/data_buffer_15" BEL "dump_sequencer/data_buffer_14"
-        BEL "dump_sequencer/data_buffer_13" BEL
-        "dump_sequencer/data_buffer_12" BEL "dump_sequencer/data_buffer_11"
-        BEL "dump_sequencer/data_buffer_10" BEL "dump_sequencer/data_buffer_9"
-        BEL "dump_sequencer/data_buffer_8" BEL "dump_sequencer/data_buffer_7"
-        BEL "dump_sequencer/data_buffer_6" BEL "dump_sequencer/data_buffer_5"
-        BEL "dump_sequencer/data_buffer_4" BEL "dump_sequencer/data_buffer_3"
-        BEL "dump_sequencer/data_buffer_2" BEL "dump_sequencer/data_buffer_1"
-        BEL "dump_sequencer/data_buffer_0" BEL "dump_sequencer/rs_tx_start"
-        BEL "dump_sequencer/s1_OE" BEL "dump_sequencer/dump_done" BEL
-        "rsio_01a/i_TxClk/cgate01a/latched" BEL
-        "rsio_01a/i_TxClk/r_bitRateSel_0" BEL "rsio_01a/i_TxClk/clken" BEL
+        "dump_sequencer/rs_tx_data_0" BEL "dump_sequencer/rs_tx_start" BEL
+        "dump_sequencer/s1_OE" BEL "dump_sequencer/dump_done" BEL
+        "rsio_01a/i_TxClk/cgate01a/latched" BEL "rsio_01a/i_TxClk/clken" BEL
         "rsio_01a/i_TxClk/r_accumulatedError_6" BEL
         "rsio_01a/i_TxClk/r_accumulatedError_5" BEL
         "rsio_01a/i_TxClk/r_accumulatedError_4" BEL
@@ -276,7 +266,7 @@ TIMEGRP clk_reset/div2clk1 = BEL "sccb_bridge/r_sccb_next_2" BEL
         "rsio_01a/i_TxClk/r_periodCounter_2" BEL
         "rsio_01a/i_TxClk/r_periodCounter_1" BEL
         "rsio_01a/i_TxClk/r_periodCounter_0" BEL
-        "dump_sequencer/dumper_state_FSM_FFd7" BEL "xopCAM_XCLK" BEL
+        "dump_sequencer/dumper_state_FSM_FFd9" BEL "xopCAM_XCLK" BEL
         "clk_reset/div2clk_BUFG.GCLKMUX" BEL "clk_reset/div2clk_BUFG" BEL
         "sccb_bridge/w_sccb_gclk_BUFG.GCLKMUX" BEL
         "sccb_bridge/w_sccb_gclk_BUFG";

@@ -198,11 +198,11 @@ rsio_01a rsio_01a(
 	.pavsv01a2rsio_01aRSClk     ( rs_clk       ) ,
 	.pavsv01a2rsio_01aReset_n   ( rs_reset_n   ) ,
 	.swdec01a2rsio_01aTestMode  ( 4'b0000      ) , // tie 0
-	.dbgif01a2rsio_01aTxBitRate ( 4'h8         ) , // tie const
+	.dbgif01a2rsio_01aTxBitRate ( 4'h7         ) , // tie const
 	.dbgif01a2rsio_01aTxStart   ( rs_tx_start  ) ,
 	.dbgif01a2rsio_01aTxData    ( rs_tx_data   ) ,
 	.rsio_01a2dbgif01aTxStatus  ( rs_tx_status ) ,
-	.dbgif01a2rsio_01aRxBitRate ( 4'h8         ) , // tie const
+	.dbgif01a2rsio_01aRxBitRate ( 4'h7         ) , // tie const
 	.dbgif01a2rsio_01aRxFetch   ( 1'b0         ) , // tie 0
 	.rsio_01a2dbgif01aRxData    (              ) , // open
 	.rsio_01a2dbgif01aRxStatus  (              ) , // open

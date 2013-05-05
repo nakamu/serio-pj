@@ -5,14 +5,14 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Map" timeStamp="Thu Mar 21 00:33:37 2013">
+  <application stringID="Map" timeStamp="Sun May 05 22:15:26 2013">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
         <column stringID="value"/>
         <row stringID="row" value="0">
           <item stringID="variable" value="Path"/>
-          <item stringID="value" value="D:\Xilinx\14.4\ISE_DS\ISE\\lib\nt64;D:\Xilinx\14.4\ISE_DS\ISE\\bin\nt64;D:\Xilinx\Vivado\2012.4\bin;D:\Xilinx\14.4\ISE_DS\ISE\bin\nt64;D:\Xilinx\14.4\ISE_DS\ISE\lib\nt64;D:\Xilinx\14.4\ISE_DS\ISE\..\..\..\DocNav;D:\Xilinx\14.4\ISE_DS\PlanAhead\bin;D:\Xilinx\14.4\ISE_DS\EDK\bin\nt64;D:\Xilinx\14.4\ISE_DS\EDK\lib\nt64;D:\Xilinx\14.4\ISE_DS\EDK\gnu\microblaze\nt64\bin;D:\Xilinx\14.4\ISE_DS\EDK\gnu\powerpc-eabi\nt64\bin;D:\Xilinx\14.4\ISE_DS\EDK\gnuwin\bin;D:\Xilinx\14.4\ISE_DS\EDK\gnu\arm\nt\bin;D:\Xilinx\14.4\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_be\bin;D:\Xilinx\14.4\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_le\bin;D:\Xilinx\14.4\ISE_DS\common\bin\nt64;D:\Xilinx\14.4\ISE_DS\common\lib\nt64;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;%QUARTUS_ROOTDIR%\bin;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\MacType;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files (x86)\Common Files\Adobe\AGL;C:\VXIPNP\WINNT\BIN;C:\VXIPNP\WINNT\TekVISA\BIN;C:\altera\91\modelsim_ase\win32aloem;C:\cygwin\bin;C:\Program Files\Java\jdk1.7.0_09\bin;C:\android-sdk-windows\platform-tools;C:\android-sdk-windows\tools"/>
+          <item stringID="value" value="D:\Application\XILINX\14.4\ISE_DS\ISE\\lib\nt64;D:\Application\XILINX\14.4\ISE_DS\ISE\\bin\nt64;D:\Application\XILINX\Vivado\2012.4\bin;D:\Application\XILINX\14.4\ISE_DS\ISE\bin\nt64;D:\Application\XILINX\14.4\ISE_DS\ISE\lib\nt64;D:\Application\XILINX\14.4\ISE_DS\ISE\..\..\..\DocNav;D:\Application\XILINX\14.4\ISE_DS\PlanAhead\bin;D:\Application\XILINX\14.4\ISE_DS\EDK\bin\nt64;D:\Application\XILINX\14.4\ISE_DS\EDK\lib\nt64;D:\Application\XILINX\14.4\ISE_DS\EDK\gnu\microblaze\nt64\bin;D:\Application\XILINX\14.4\ISE_DS\EDK\gnu\powerpc-eabi\nt64\bin;D:\Application\XILINX\14.4\ISE_DS\EDK\gnuwin\bin;D:\Application\XILINX\14.4\ISE_DS\EDK\gnu\arm\nt\bin;D:\Application\XILINX\14.4\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_be\bin;D:\Application\XILINX\14.4\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_le\bin;D:\Application\XILINX\14.4\ISE_DS\common\bin\nt64;D:\Application\XILINX\14.4\ISE_DS\common\lib\nt64;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;%QUARTUS_ROOTDIR%\bin;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\MacType;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files (x86)\Common Files\Adobe\AGL;C:\VXIPNP\WINNT\BIN;C:\VXIPNP\WINNT\TekVISA\BIN;C:\Python27;C:\altera\91\modelsim_ase\win32aloem;C:\cygwin\bin;C:\Program Files\Java\jdk1.7.0_09\bin;C:\android-sdk-windows\platform-tools;C:\android-sdk-windows\tools"/>
         </row>
         <row stringID="row" value="1">
           <item stringID="variable" value="PATHEXT"/>
@@ -20,23 +20,23 @@
         </row>
         <row stringID="row" value="2">
           <item stringID="variable" value="XILINX"/>
-          <item stringID="value" value="D:\Xilinx\14.4\ISE_DS\ISE\"/>
+          <item stringID="value" value="D:\Application\XILINX\14.4\ISE_DS\ISE\"/>
         </row>
         <row stringID="row" value="3">
           <item stringID="variable" value="XILINX_DSP"/>
-          <item stringID="value" value="D:\Xilinx\14.4\ISE_DS\ISE"/>
+          <item stringID="value" value="D:\Application\XILINX\14.4\ISE_DS\ISE"/>
         </row>
         <row stringID="row" value="4">
           <item stringID="variable" value="XILINX_EDK"/>
-          <item stringID="value" value="D:\Xilinx\14.4\ISE_DS\EDK"/>
+          <item stringID="value" value="D:\Application\XILINX\14.4\ISE_DS\EDK"/>
         </row>
         <row stringID="row" value="5">
           <item stringID="variable" value="XILINX_PLANAHEAD"/>
-          <item stringID="value" value="D:\Xilinx\14.4\ISE_DS\PlanAhead"/>
+          <item stringID="value" value="D:\Application\XILINX\14.4\ISE_DS\PlanAhead"/>
         </row>
         <row stringID="row" value="6">
           <item stringID="variable" value="XILINX_VIVADO"/>
-          <item stringID="value" value="D:\Xilinx\Vivado\2012.4"/>
+          <item stringID="value" value="D:\Application\XILINX\Vivado\2012.4"/>
         </row>
       </table>
       <item stringID="User_EnvOs" value="OS Information">
@@ -73,19 +73,19 @@
         <item dataType="int" stringID="MAP_NUM_ERRORS" value="0"/>
         <item dataType="int" stringID="MAP_FILTERED_WARNINGS" value="0"/>
         <item dataType="int" stringID="MAP_NUM_WARNINGS" value="2"/>
-        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="241380"/>
-        <item stringID="MAP_TOTAL_REAL_TIME" value="4 secs "/>
-        <item stringID="MAP_TOTAL_CPU_TIME" value="4 secs "/>
+        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="240628"/>
+        <item stringID="MAP_TOTAL_REAL_TIME" value="2 secs "/>
+        <item stringID="MAP_TOTAL_CPU_TIME" value="1 secs "/>
       </section>
       <section stringID="MAP_SLICE_REPORTING">
-        <item AVAILABLE="3840" dataType="int" label="Number of Slice Registers" stringID="MAP_SLICE_REGISTERS" value="479">
-          <item dataType="int" label="Number of Slice Flip Flops" stringID="MAP_NUM_SLICE_FF" value="476"/>
+        <item AVAILABLE="3840" dataType="int" label="Number of Slice Registers" stringID="MAP_SLICE_REGISTERS" value="461">
+          <item dataType="int" label="Number of Slice Flip Flops" stringID="MAP_NUM_SLICE_FF" value="458"/>
           <item dataType="int" stringID="MAP_NUM_SLICE_LATCH" value="3"/>
         </item>
-        <item AVAILABLE="3840" dataType="int" label="Number of 4 input LUTs" stringID="MAP_NUM_4_INPUT_LUT" value="723">
-          <item dataType="int" label="Number of route-thrus" stringID="MAP_NUM_LUT_RT" value="103"/>
+        <item AVAILABLE="3840" dataType="int" label="Number of 4 input LUTs" stringID="MAP_NUM_4_INPUT_LUT" value="713">
+          <item dataType="int" label="Number of route-thrus" stringID="MAP_NUM_LUT_RT" value="104"/>
         </item>
-        <item AVAILABLE="1920" dataType="int" label="Number of occupied Slices" stringID="MAP_OCCUPIED_SLICES" value="445">
+        <item AVAILABLE="1920" dataType="int" label="Number of occupied Slices" stringID="MAP_OCCUPIED_SLICES" value="450">
           <item dataType="int" label="Number of Slices containing unrelated logic" stringID="MAP_NUM_SLICE_UNRELATED" value="0"/>
         </item>
       </section>
@@ -458,6 +458,7 @@
             <item stringID="Type" value="IOB"/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
+            <item stringID="Resistor" value="PULLDOWN"/>
           </row>
           <row stringID="row" value="46">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="xipCAM_PCLK"/>
@@ -470,6 +471,7 @@
             <item stringID="Type" value="IOB"/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
+            <item stringID="Resistor" value="PULLDOWN"/>
           </row>
           <row stringID="row" value="48">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="xipMCLK"/>
@@ -880,7 +882,7 @@
       </section>
       <section stringID="MAP_RPM_MACROS">
         <section stringID="MAP_SHAPE_SECTION">
-          <item dataType="int" stringID="MAP_NUM_SHAPE" value="20"/>
+          <item dataType="int" stringID="MAP_NUM_SHAPE" value="13"/>
         </section>
       </section>
       <section stringID="MAP_GUIDE_REPORT"/>

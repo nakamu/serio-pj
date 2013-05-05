@@ -69,17 +69,14 @@ NET "xipMCLK" LOC = T9;
 NET "xipRESET" LOC = L14;
 NET "xopTXD" LOC = R13;
 NET "xipCAM_PCLK" LOC = D9;
-NET "xipCAM_D[7]" LOC = E7;
-NET "xipCAM_D[6]" LOC = D7;
-NET "xipCAM_D[5]" LOC = D8;
-NET "xipCAM_D[4]" LOC = D10;
-NET "xipCAM_D[3]" LOC = B4;
-NET "xipCAM_D[2]" LOC = B5;
-NET "xipCAM_D[1]" LOC = B6;
-NET "xipCAM_D[0]" LOC = A7;
-NET "xipCAM_HREF" LOC = A12;
-NET "xipCAM_VSYNC" LOC = A13;
-NET "xopCAM_XCLK" LOC = B11;
+NET "xipCAM_D[7]" LOC = D8;
+NET "xipCAM_D[5]" LOC = D7;
+NET "xipCAM_D[4]" LOC = C7;
+NET "xipCAM_D[2]" LOC = C6;
+NET "xipCAM_D[1]" LOC = D6;
+NET "xipCAM_D[0]" LOC = C5;
+NET "xipCAM_HREF" LOC = A13;
+NET "xipCAM_VSYNC" LOC = B11;
 NET "xopCAM_SIO_C" LOC = B10;
 NET "xbpCAM_SIO_D" LOC = A8;
 
@@ -157,7 +154,7 @@ TIMESPEC TS_sccb_bridge_cgate_sccb1_latched = PERIOD "sccb_bridge/cgate_sccb1/la
 NET "sccb_bridge/cgate_sccb2/latched" TNM_NET = "sccb_bridge/cgate_sccb2/latched";
 TIMESPEC TS_sccb_bridge_cgate_sccb2_latched = PERIOD "sccb_bridge/cgate_sccb2/latched" 25 MHz HIGH 50 %;
 NET "xipCAM_PCLK" TNM_NET = "xipCAM_PCLK";
-TIMESPEC TS_xipCAM_PCLK = PERIOD "xipCAM_PCLK" 25 MHz HIGH 50%;
+TIMESPEC TS_xipCAM_PCLK = PERIOD "xipCAM_PCLK" 25 MHz HIGH 50 %;
 #Created by Constraints Editor (xc3s200-ft256-4) - 2013/02/11
 INST "xipCAM_D[0]" TNM = "CAM_INPUTS";
 INST "xipCAM_D[1]" TNM = "CAM_INPUTS";
@@ -187,7 +184,31 @@ NET "xonE" LOC = R16;
 NET "xonF" LOC = F13;
 NET "xonG" LOC = N16;
 
-# PlanAhead Generated physical constraints 
 NET "xipBTN0" LOC = M13;
 NET "xipBTN1" LOC = M14;
 NET "xipBTN2" LOC = L13;
+
+
+NET "xipCAM_D[7]" IOSTANDARD = LVCMOS25;
+NET "xipCAM_D[6]" IOSTANDARD = LVCMOS25;
+NET "xipCAM_D[5]" IOSTANDARD = LVCMOS25;
+NET "xipCAM_D[4]" IOSTANDARD = LVCMOS25;
+NET "xipCAM_D[3]" IOSTANDARD = LVCMOS25;
+NET "xipCAM_D[2]" IOSTANDARD = LVCMOS25;
+NET "xipCAM_D[1]" IOSTANDARD = LVCMOS25;
+NET "xipCAM_D[0]" IOSTANDARD = LVCMOS25;
+NET "xipCAM_PCLK" IOSTANDARD = LVCMOS25;
+NET "xipCAM_VSYNC" IOSTANDARD = LVCMOS25;
+
+
+NET "xopCAM_XCLK" IOSTANDARD = LVCMOS25;
+
+
+NET "xipCAM_D[3]" LOC = E7;
+NET "xipCAM_D[6]" LOC = C8;
+NET "xopCAM_XCLK" LOC = A12;
+
+# PlanAhead Generated IO constraints 
+
+NET "xipCAM_VSYNC" PULLDOWN;
+NET "xipCAM_HREF" PULLDOWN;

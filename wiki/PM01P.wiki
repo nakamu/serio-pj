@@ -20,6 +20,8 @@ http://serio-pj.googlecode.com/svn/wiki/img/PM01P/28560_connect.png
 
 ** VMOTとGNDにモータ用の電源(6V)を接続
 
+** PWMAとPWMBは、それぞれmbedでは出せるピンが決まってるので注意
+
 http://serio-pj.googlecode.com/svn/wiki/img/PM01P/tb6612-assign.jpg
 
 http://serio-pj.googlecode.com/svn/wiki/img/PM01P/tb6612-sch.jpg

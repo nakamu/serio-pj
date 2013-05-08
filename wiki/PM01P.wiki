@@ -6,9 +6,19 @@
 
 = Details =
 
+== mbed ==
+
  * VOUT: ブレッドボードの電源ラインにジャンプワイヤで接続
  * GND: ブレッドボードのGNDラインにジャンプワイヤで接続
  * VIN: マウスセンサの電源ラインにリボンケーブルで接続
+ * p15: マウスセンサclk
+ * p16: マウスセンサdata
+ * p17: BIN1
+ * p18: BIN2
+ * p19: AIN1
+ * p20: AIN2
+ * p21: PWMA
+ * p22: PWMB
 
 http://serio-pj.googlecode.com/svn/wiki/img/PM01P/mbed_pin_layout.png
 

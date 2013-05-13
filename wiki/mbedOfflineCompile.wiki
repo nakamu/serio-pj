@@ -11,7 +11,7 @@
 
 ==オフラインコンパイル手順==
  # ターゲットのコードをmbedのCompilerサイトで開きます．
- # [http://mbed.org/handbook/Exporting-to-offline-toolchains mbedのoffline-toolchainオブジェクト]を，対象のコードにインポートして，従来のmbedオブジェクトは削除．
+ # [https://mbed.org/compiler/#import:https://mbed.org/users/mbed_official/code/mbed-export/;mode:lib mbedのoffline-toolchainオブジェクト]を，対象のコードにインポートして，従来のmbedオブジェクトは削除．
  # GCC (Code Sourcery)でエクスポート
  # "make"コマンドの実行．
  # "*.bin", "*.elf"ファイルが出来る．

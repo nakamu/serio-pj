@@ -2,7 +2,7 @@
 
 * arm-none-eabi-gccが必要になります．
 == 環境の準備 (LINUX/MACユーザ) ==
-  # このサイト[https://github.com/adamgreen/gcc4mbed] からzipでdownload．
+  # [https://github.com/adamgreen/gcc4mbed このサイト] からzipでdownload．
   # シェルの起動し，インストールの実行．
   #  arm-none-eabi-gccディレクトリができるので，そのディレクトリを適切なところに移動して，arm-none-eabi-gcc/bin以下にPATHを通す．
 
@@ -11,7 +11,7 @@
 
 ==オフラインコンパイル手順==
  # ターゲットのコードをmbedのCompilerサイトで開きます．
- # mbedのoffline-toolchainオブジェクト[http://mbed.org/handbook/Exporting-to-offline-toolchains]を，対象のコードにインポートして，従来のmbedオブジェクトは削除．
+ # [http://mbed.org/handbook/Exporting-to-offline-toolchains mbedのoffline-toolchainオブジェクト]を，対象のコードにインポートして，従来のmbedオブジェクトは削除．
  # GCC (Code Sourcery)でエクスポート
  # "make"コマンドの実行．
  # "*.bin", "*.elf"ファイルが出来る．

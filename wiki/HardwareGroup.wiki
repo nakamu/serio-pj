@@ -3,7 +3,7 @@
 Hardwareグループのページ
 プロジェクトで作成するハードウェアの仕様策定・実装を担当する。
 
-= Details =
+= 仕様・設計 =
 
   * エレクトロニクス
     * [Architecture HWアーキテクチャ]
@@ -14,3 +14,6 @@ Hardwareグループのページ
   * メカニック
     * [MotorGear モーター・ギア関連]
     * [HWFrame フレーム・ボディ]
+
+= mbed環境 =
+  * [mbedOfflineCompile mbedオフラインコンパイル]

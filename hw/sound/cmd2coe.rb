@@ -1,35 +1,9 @@
 #!/usr/bin/env ruby
-
-cmd = ARGV[0]
-
-unless(File.exists?(cmd)) then
-	raise "Command file #{cmd} does not exist\n"
-end
-
-if(File.basename(cmd) =~ /(\w+)\.cmd$/) then
-	coe = "#{$1}.coe"
-end
-
-fpcmd = File.open(cmd, "r")
-fpcoe = File.open(coe, "w")
-
-fpcoe.write("; Sound Sequence from #{cmd}\n")
-fpcoe.write("memory_initialization_radix=16;\n")
-fpcoe.write("memory_initialization_vector=\n")
-
-while line = fpcmd.gets
-	next if(line =~ /^\s*#/)
-	next if(line =~ /^\s*$/)
-	decstr = decode_cmd!(line)
-	fpcoe.write(decstr)
-end
-
-fpcoe.close
-fpcmd.close
+#
 
 def decode_cmd!(str)
 	bin = 0x0
-	str.gsub!(/,/ '')
+	str.gsub!(/,/, '')
 	array = str.split(/\s+/)
 	case array[0]
 	when 'tick'
@@ -69,5 +43,39 @@ def decode_cmd!(str)
 	else
 		# do nothing
 	end
-	return sprintf("%x\n", bin)
+	return sprintf("%04x", bin)
 end
+
+cmd = ARGV[0]
+raise "No input" if(cmd.nil?)
+
+unless(File.exists?(cmd)) then
+	raise "Command file #{cmd} does not exist\n"
+end
+
+if(File.basename(cmd) =~ /(\w+)\.cmd$/) then
+	coe = "#{$1}.coe"
+end
+
+fpcmd = File.open(cmd, "r")
+fpcoe = File.open(coe, "w")
+
+fpcoe.write("; Sound Sequence from #{cmd}\n")
+fpcoe.write("memory_initialization_radix=16;\n")
+fpcoe.write("memory_initialization_vector=\n")
+first_line = 1
+while line = fpcmd.gets
+	next if(line =~ /^\s*#/)
+	next if(line =~ /^\s*$/)
+	if(first_line == 0) then
+		fpcoe.write(",\n")
+	else
+		first_line = 0
+	end
+	decstr = decode_cmd!(line)
+	fpcoe.write(decstr)
+end
+fpcoe.write(";\n")
+
+fpcoe.close
+fpcmd.close

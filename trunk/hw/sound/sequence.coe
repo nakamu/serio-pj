@@ -1,5 +1,30 @@
-; Sound Sequence
+; Sound Sequence from sequence.cmd
 memory_initialization_radix=16;
 memory_initialization_vector=
-
-
+1032,
+0014,
+2000,
+2100,
+2200,
+2300,
+3007,
+3108,
+3209,
+330a,
+4020,
+0004,
+4020,
+0004,
+4020,
+0004,
+4020,
+0004,
+4020,
+0004,
+4020,
+0004,
+4020,
+0004,
+4030,
+0004,
+f000;

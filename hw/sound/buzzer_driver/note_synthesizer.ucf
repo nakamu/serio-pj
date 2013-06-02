@@ -1,0 +1,4 @@
+
+#Created by Constraints Editor (xc3s200-ft256-4) - 2013/06/01
+NET "baseclk" TNM_NET = baseclk;
+TIMESPEC TS_baseclk = PERIOD "baseclk" 25 MHz HIGH 50%;

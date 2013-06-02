@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<generated_project xmlns="http://www.xilinx.com/XMLSchema" xmlns:xil_pn="http://www.xilinx.com/XMLSchema">
+
+  <!--                                                          -->
+
+  <!--             For tool use only. Do not edit.              -->
+
+  <!--                                                          -->
+
+  <!-- ProjectNavigator created generated project file.         -->
+
+  <!-- For use in tracking generated file and other information -->
+
+  <!-- allowing preservation of process status.                 -->
+
+  <!--                                                          -->
+
+  <!-- Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved. -->
+
+  <version xmlns="http://www.xilinx.com/XMLSchema">11.1</version>
+
+  <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="buzzer_driver.xise"/>
+
+  <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="_ngo"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/map.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/par.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/trce.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="ipcore_dir/sound_sequencer_inst_rom.sym" xil_pn:origination="imported"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VERILOG" xil_pn:name="ipcore_dir/sound_sequencer_inst_rom.v" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_VEO" xil_pn:name="ipcore_dir/sound_sequencer_inst_rom.veo" xil_pn:origination="imported"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGDBUILD_LOG" xil_pn:name="note_synthesizer.bld"/>
+    <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="note_synthesizer.cmd_log"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="note_synthesizer.lso"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NCD" xil_pn:name="note_synthesizer.ncd" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="note_synthesizer.ngc"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGD" xil_pn:name="note_synthesizer.ngd"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGR" xil_pn:name="note_synthesizer.ngr"/>
+    <file xil_pn:fileType="FILE_PAD_MISC" xil_pn:name="note_synthesizer.pad"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAR_REPORT" xil_pn:name="note_synthesizer.par" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PCF" xil_pn:name="note_synthesizer.pcf" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="note_synthesizer.prj"/>
+    <file xil_pn:fileType="FILE_TRCE_MISC" xil_pn:name="note_synthesizer.ptwx"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_STX" xil_pn:name="note_synthesizer.stx"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="note_synthesizer.syr"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_TIMING_TXT_REPORT" xil_pn:name="note_synthesizer.twr" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_TIMING_XML_REPORT" xil_pn:name="note_synthesizer.twx" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_UNROUTES" xil_pn:name="note_synthesizer.unroutes" xil_pn:subbranch="Par"/>
+    <file xil_pn:fileType="FILE_XPI" xil_pn:name="note_synthesizer.xpi"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="note_synthesizer.xst"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="note_synthesizer_envsettings.html"/>
+    <file xil_pn:fileType="FILE_NCD" xil_pn:name="note_synthesizer_guide.ncd" xil_pn:origination="imported"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="note_synthesizer_map.map" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="note_synthesizer_map.mrp" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NCD" xil_pn:name="note_synthesizer_map.ncd" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGM" xil_pn:name="note_synthesizer_map.ngm" xil_pn:subbranch="Map"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="note_synthesizer_map.xrpt"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="note_synthesizer_ngdbuild.xrpt"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAD_EXCEL_REPORT" xil_pn:name="note_synthesizer_pad.csv" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAD_TXT_REPORT" xil_pn:name="note_synthesizer_pad.txt" xil_pn:subbranch="Par"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="note_synthesizer_par.xrpt"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="note_synthesizer_summary.html"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="note_synthesizer_summary.xml"/>
+    <file xil_pn:fileType="FILE_WEBTALK" xil_pn:name="note_synthesizer_usage.xml"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="note_synthesizer_xst.xrpt"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="planAhead_run_1"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGDBUILD_LOG" xil_pn:name="synthesizer.bld"/>
+    <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="synthesizer.cmd_log"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="synthesizer.lso"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NCD" xil_pn:name="synthesizer.ncd" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="synthesizer.ngc"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGD" xil_pn:name="synthesizer.ngd"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGR" xil_pn:name="synthesizer.ngr"/>
+    <file xil_pn:fileType="FILE_PAD_MISC" xil_pn:name="synthesizer.pad"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAR_REPORT" xil_pn:name="synthesizer.par" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PCF" xil_pn:name="synthesizer.pcf" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="synthesizer.prj"/>
+    <file xil_pn:fileType="FILE_TRCE_MISC" xil_pn:name="synthesizer.ptwx"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_STX" xil_pn:name="synthesizer.stx"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="synthesizer.syr"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_TIMING_TXT_REPORT" xil_pn:name="synthesizer.twr" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_TIMING_XML_REPORT" xil_pn:name="synthesizer.twx" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_UNROUTES" xil_pn:name="synthesizer.unroutes" xil_pn:subbranch="Par"/>
+    <file xil_pn:fileType="FILE_XPI" xil_pn:name="synthesizer.xpi"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="synthesizer.xst"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="synthesizer_envsettings.html"/>
+    <file xil_pn:fileType="FILE_NCD" xil_pn:name="synthesizer_guide.ncd" xil_pn:origination="imported"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="synthesizer_map.map" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="synthesizer_map.mrp" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NCD" xil_pn:name="synthesizer_map.ncd" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGM" xil_pn:name="synthesizer_map.ngm" xil_pn:subbranch="Map"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="synthesizer_map.xrpt"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="synthesizer_ngdbuild.xrpt"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAD_EXCEL_REPORT" xil_pn:name="synthesizer_pad.csv" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAD_TXT_REPORT" xil_pn:name="synthesizer_pad.txt" xil_pn:subbranch="Par"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="synthesizer_par.xrpt"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="synthesizer_summary.html"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="synthesizer_summary.xml"/>
+    <file xil_pn:fileType="FILE_WEBTALK" xil_pn:name="synthesizer_usage.xml"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="synthesizer_xst.xrpt"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="webtalk_pn.xml"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xlnx_auto_0_xdb"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
+  </files>
+
+  <transforms xmlns="http://www.xilinx.com/XMLSchema">
+    <transform xil_pn:end_ts="1370023508" xil_pn:name="TRANEXT_compLibraries_FPGA" xil_pn:prop_ck="1321705353062746803" xil_pn:start_ts="1370023507">
+      <status xil_pn:value="FailedRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1370014214" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1370014213">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1370023519" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="2963399394333603607" xil_pn:start_ts="1370023519">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1370165203" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="-6778256217486294385" xil_pn:start_ts="1370165203">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1370014214" xil_pn:name="TRAN_SubProjectAbstractToPreProxy" xil_pn:start_ts="1370014214">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1370023519" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="-8582015345237217441" xil_pn:start_ts="1370023519">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1370014214" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:prop_ck="1110319057727724918" xil_pn:start_ts="1370014214">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1370023519" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="2007709358920253657" xil_pn:start_ts="1370023519">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1370165343" xil_pn:in_ck="5547593470528885442" xil_pn:name="TRANEXT_xstsynthesize_spartan3" xil_pn:prop_ck="-7692488604987373713" xil_pn:start_ts="1370165320">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
+      <outfile xil_pn:name="note_synthesizer.ngr"/>
+      <outfile xil_pn:name="synthesizer.lso"/>
+      <outfile xil_pn:name="synthesizer.ngc"/>
+      <outfile xil_pn:name="synthesizer.ngr"/>
+      <outfile xil_pn:name="synthesizer.prj"/>
+      <outfile xil_pn:name="synthesizer.stx"/>
+      <outfile xil_pn:name="synthesizer.syr"/>
+      <outfile xil_pn:name="synthesizer.xst"/>
+      <outfile xil_pn:name="synthesizer_xst.xrpt"/>
+      <outfile xil_pn:name="webtalk_pn.xml"/>
+      <outfile xil_pn:name="xst"/>
+    </transform>
+    <transform xil_pn:end_ts="1370165367" xil_pn:in_ck="1882038447159179593" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="-5805296098221167734" xil_pn:start_ts="1370165367">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1370165380" xil_pn:in_ck="6345010104140454926" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="-8715914227151005907" xil_pn:start_ts="1370165367">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="_ngo"/>
+      <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
+      <outfile xil_pn:name="synthesizer.bld"/>
+      <outfile xil_pn:name="synthesizer.ngd"/>
+      <outfile xil_pn:name="synthesizer_ngdbuild.xrpt"/>
+    </transform>
+    <transform xil_pn:end_ts="1370165388" xil_pn:in_ck="-8903177156015059336" xil_pn:name="TRANEXT_map_spartan3" xil_pn:prop_ck="-684010993939208968" xil_pn:start_ts="1370165380">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="_xmsgs/map.xmsgs"/>
+      <outfile xil_pn:name="synthesizer.pcf"/>
+      <outfile xil_pn:name="synthesizer_map.map"/>
+      <outfile xil_pn:name="synthesizer_map.mrp"/>
+      <outfile xil_pn:name="synthesizer_map.ncd"/>
+      <outfile xil_pn:name="synthesizer_map.ngm"/>
+      <outfile xil_pn:name="synthesizer_map.xrpt"/>
+      <outfile xil_pn:name="synthesizer_summary.xml"/>
+      <outfile xil_pn:name="synthesizer_usage.xml"/>
+    </transform>
+    <transform xil_pn:end_ts="1370165402" xil_pn:in_ck="8829897129926384017" xil_pn:name="TRANEXT_par_spartan3" xil_pn:prop_ck="3333849164707216606" xil_pn:start_ts="1370165388">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="_xmsgs/par.xmsgs"/>
+      <outfile xil_pn:name="synthesizer.ncd"/>
+      <outfile xil_pn:name="synthesizer.pad"/>
+      <outfile xil_pn:name="synthesizer.par"/>
+      <outfile xil_pn:name="synthesizer.ptwx"/>
+      <outfile xil_pn:name="synthesizer.unroutes"/>
+      <outfile xil_pn:name="synthesizer.xpi"/>
+      <outfile xil_pn:name="synthesizer_pad.csv"/>
+      <outfile xil_pn:name="synthesizer_pad.txt"/>
+      <outfile xil_pn:name="synthesizer_par.xrpt"/>
+    </transform>
+    <transform xil_pn:end_ts="1370179469" xil_pn:in_ck="-8903177156015059468" xil_pn:name="TRAN_fpgaFloorplanPostPAR" xil_pn:start_ts="1370179469">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1370165402" xil_pn:in_ck="-8903177156015059468" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416186" xil_pn:start_ts="1370165397">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="_xmsgs/trce.xmsgs"/>
+      <outfile xil_pn:name="synthesizer.twr"/>
+      <outfile xil_pn:name="synthesizer.twx"/>
+    </transform>
+    <transform xil_pn:end_ts="1370014354" xil_pn:in_ck="1882038447159172100" xil_pn:name="TRAN_createTimingConstraints" xil_pn:start_ts="1370014349">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputAdded"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="InputRemoved"/>
+    </transform>
+  </transforms>
+
+</generated_project>

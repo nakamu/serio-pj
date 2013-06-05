@@ -23,7 +23,19 @@ def decode_cmd!(str)
 		end
 		array[1].sub!(/ch/, '')
 		ch = array[1].to_i
-		bin = 0x2000 | ch << 8 | array[2].to_i
+		mode = 0x0
+		if   (array[2] == 'mute') then
+			mode = 0x0
+		elsif(array[2] == 'normal') then
+			mode = 0x1
+		elsif(array[2] == 'duty') then
+			mode = 0x2
+		elsif(array[2] == 'prbs') then
+			mode = 0x3
+		else
+			raise "Syntax Error : #{str}\n"
+		end
+		bin = 0x2000 | ch << 8 | mode
 	when 'set_duty'
 		if(array[1].nil? or array[2].nil?) then
 			raise "Command Error : set_duty must have 2 arguments"

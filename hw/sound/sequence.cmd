@@ -1,7 +1,7 @@
 
 # sample commands for sequencer test
 set_tick 50ms
-tick 20
+tick 2
 set_mode ch0, normal
 set_mode ch1, mute
 set_mode ch2, mute

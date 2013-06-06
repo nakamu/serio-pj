@@ -58,8 +58,81 @@ def decode_cmd!(str)
 	return sprintf("%04x", bin)
 end
 
-cmd = ARGV[0]
+def write_coe_header(fptr)
+	fpr.write("; Sound Sequence from #{cmd}\n")
+	fpr.write("memory_initialization_radix=16;\n")
+	fpr.write("memory_initialization_vector=\n")
+end
+
+def write_case_header(fptr)
+	header = <<EOS
+`timescale 1ns/1ps
+module case_rom(clk, asyncrst_n, addr, data);
+input         clk;
+input         asyncrst_n;
+input  [12:0] addr;
+output [15:0] data;
+
+reg    [15:0] data;
+
+always @ (posedge clk or negedge asyncrst_n)
+	if(~asyncrst_n) data <= 16'h0000;
+	else            data <= rom_data(addr);
+
+function [15:0] rom_data;
+input [12:0] address;
+	case(address)	
+EOS
+	fptr.write(header)
+end
+
+def write_case_body(fpout, fpcmd)
+	address = 0x0
+	while line = fpcmd.gets
+		next if(line =~ /^\s*#/)
+		next if(line =~ /^\s*$/)
+		decstr = decode_cmd!(line)
+		outstr = sprintf("\t\t13'h%04x : rom_data = 16'h%s;\n", address, decstr)
+		fpout.write(outstr)
+		address += 1
+	end
+	fpout.write("\t\tdefault  : rom_data = 16'hffff;\n")
+	fpout.write("\tendcase\n")
+	fpout.write("endfunction\n")
+	fpout.write("endmodule\n")
+end
+
+def write_coe_body(fpout, fpcmd)
+	first_line = 1
+	while line = fpcmd.gets
+		next if(line =~ /^\s*#/)
+		next if(line =~ /^\s*$/)
+		if(first_line == 0) then
+			fpout.write(",\n")
+		else
+			first_line = 0
+		end
+		decstr = decode_cmd!(line)
+		fpout.write(decstr)
+	end
+	fpout.write(";\n")
+end
+
+#------------------------------------------------------------------
+cmd  = ARGV[0]
 raise "No input" if(cmd.nil?)
+mode = ARGV[1]
+if(mode.nil?) then
+	print "mode default : verilog case\n"
+	mode = 'verilog'
+else 
+	case mode
+	when 'verilog', 'coe' 
+		print "setting mode : #{mode}¥n"
+	else
+		raise "unknown mode : #{mode}¥n"
+	end
+end
 
 unless(File.exists?(cmd)) then
 	raise "Command file #{cmd} does not exist\n"
@@ -70,24 +143,15 @@ if(File.basename(cmd) =~ /(\w+)\.cmd$/) then
 end
 
 fpcmd = File.open(cmd, "r")
-fpcoe = File.open(coe, "w")
-
-fpcoe.write("; Sound Sequence from #{cmd}\n")
-fpcoe.write("memory_initialization_radix=16;\n")
-fpcoe.write("memory_initialization_vector=\n")
-first_line = 1
-while line = fpcmd.gets
-	next if(line =~ /^\s*#/)
-	next if(line =~ /^\s*$/)
-	if(first_line == 0) then
-		fpcoe.write(",\n")
-	else
-		first_line = 0
-	end
-	decstr = decode_cmd!(line)
-	fpcoe.write(decstr)
+if(mode == 'verilog') then
+	fpout = File.open("case_rom.v", "w")
+	write_case_header(fpout)
+	write_case_body(fpout, fpcmd)
+elsif(mode == 'coe') then
+	fpout = File.open(coe, "w")
+	write_coe_header(fpout)
+	write_coe_body(fpout, fpcmd)
 end
-fpcoe.write(";\n")
 
-fpcoe.close
+fpout.close
 fpcmd.close

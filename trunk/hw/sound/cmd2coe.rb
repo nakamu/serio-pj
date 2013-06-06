@@ -49,7 +49,38 @@ def decode_cmd!(str)
 		end
 		array[1].sub!(/ch/, '')
 		ch = array[1].to_i
-		bin = 0x4000 | ch << 8 | array[2].to_i << 4 | array[3].to_i
+		sharp = 0
+		flat  = 0
+		if(array[3] =~ /#/) then
+			sharp = 1
+			array[3].gsub!('#', '')
+		end
+		if(array[3] =~ /b/) then
+			flat = 1
+			array[3].gsub!('b', '')
+		end
+		case array[3]
+			when 'C'
+				note = 0x0
+			when 'D'
+				note = 0x2
+			when 'E'
+				note = 0x4
+			when 'F'
+				note = 0x5
+			when 'G'
+				note = 0x7
+			when 'A'
+				note = 0x9
+			when 'B'
+				note = 0x11
+			else 
+				note = 0x0
+				raise "Unknown note #{note}\n"
+		end
+		note += 1 if sharp
+		note -= 1 if flat
+		bin = 0x4000 | ch << 8 | array[2].to_i << 4 | note
 	when 'halt'
 		bin = 0xf000
 	else
@@ -58,10 +89,10 @@ def decode_cmd!(str)
 	return sprintf("%04x", bin)
 end
 
-def write_coe_header(fptr)
-	fpr.write("; Sound Sequence from #{cmd}\n")
-	fpr.write("memory_initialization_radix=16;\n")
-	fpr.write("memory_initialization_vector=\n")
+def write_coe_header(fptr, cmd)
+	fptr.write("; Sound Sequence from #{cmd}\n")
+	fptr.write("memory_initialization_radix=16;\n")
+	fptr.write("memory_initialization_vector=\n")
 end
 
 def write_case_header(fptr)
@@ -128,9 +159,9 @@ if(mode.nil?) then
 else 
 	case mode
 	when 'verilog', 'coe' 
-		print "setting mode : #{mode}¥n"
+		print "setting mode : #{mode}\n"
 	else
-		raise "unknown mode : #{mode}¥n"
+		raise "unknown mode : #{mode}\n"
 	end
 end
 
@@ -149,7 +180,7 @@ if(mode == 'verilog') then
 	write_case_body(fpout, fpcmd)
 elsif(mode == 'coe') then
 	fpout = File.open(coe, "w")
-	write_coe_header(fpout)
+	write_coe_header(fpout, cmd)
 	write_coe_body(fpout, fpcmd)
 end
 

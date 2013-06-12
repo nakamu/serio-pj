@@ -40,7 +40,21 @@ input [12:0] address;
 		13'h0017 : rom_data = 16'h0004;
 		13'h0018 : rom_data = 16'h4030;
 		13'h0019 : rom_data = 16'h0004;
-		13'h001a : rom_data = 16'hf000;
+		13'h001a : rom_data = 16'h4032;
+		13'h001b : rom_data = 16'h0004;
+		13'h001c : rom_data = 16'h4034;
+		13'h001d : rom_data = 16'h0004;
+		13'h001e : rom_data = 16'h4035;
+		13'h001f : rom_data = 16'h0004;
+		13'h0020 : rom_data = 16'h4037;
+		13'h0021 : rom_data = 16'h0004;
+		13'h0022 : rom_data = 16'h4039;
+		13'h0023 : rom_data = 16'h0004;
+		13'h0024 : rom_data = 16'h4031;
+		13'h0025 : rom_data = 16'h0004;
+		13'h0026 : rom_data = 16'h4030;
+		13'h0027 : rom_data = 16'h0004;
+		13'h0028 : rom_data = 16'hf000;
 		default  : rom_data = 16'hffff;
 	endcase
 endfunction

@@ -26,4 +26,18 @@ set_note ch0, 2, B
 tick 4
 set_note ch0, 3, C
 tick 4
+set_note ch0, 3, D
+tick 4
+set_note ch0, 3, E
+tick 4
+set_note ch0, 3, F
+tick 4
+set_note ch0, 3, G
+tick 4
+set_note ch0, 3, A
+tick 4
+set_note ch0, 3, B
+tick 4
+set_note ch0, 3, C
+tick 4
 halt

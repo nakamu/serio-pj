@@ -40,18 +40,20 @@ int main(){
 
 
 
-    if(ii>1000){
-      ii=0;
-      totalx=xcoord;
-      totaly=ycoord;
-    }
-    else{
-      totalx+=xcoord;
-      totaly+=ycoord;
-    }
-    ii++;
+//     if(ii>1000){ //1000毎に初期化
+//       ii=0;
+//       totalx=xcoord;
+//       totaly=ycoord;
+//       ii++;
+//     }
+//     else{
+    totalx+=xcoord;
+    totaly+=ycoord;
+//     }
+
 
     lcd.printf("x %04x,y %04x", xcoord&0xffff, ycoord&0xffff);
+    //lcd.printf("%d", ii);
     lcd.printf("\n");
     lcd.printf("%06x, %06x", totalx&0xffffff, totaly&0xffffff);
     lcd.printf("\n");
